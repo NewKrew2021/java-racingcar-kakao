@@ -22,5 +22,16 @@ public class RacingGameTest {
 
     }
 
+    @Test
+    public void testMakeCars(){
+        RacingGame racing = new RacingGame();
+        String input = "pobi,crong";
+        String[] names = racing.stringToNames(input);
+        racing.makeCars(names);
+        assertThat(racing.cars).extracting("name").contains("pobi", "crong");
+
+
+    }
+
 
 }
