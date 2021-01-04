@@ -5,6 +5,6 @@ public class Calculate {
         if(formula==null||formula.isEmpty()){
             return 0;
         }
-        return 1;
+        return Integer.parseInt(formula);
     }
 }
