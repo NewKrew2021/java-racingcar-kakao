@@ -44,4 +44,11 @@ public class CalculateTest {
         Assertions.assertThat(calculate.calculating("4:7")).isEqualTo(11);
     }
 
+    @Test
+    public void customSeparator(){
+        assertEquals(3,calculate.calculating("//;\n1;2"));
+        assertEquals(3,calculate.calculating("//-l\n1-l2"));
+
+    }
+
 }

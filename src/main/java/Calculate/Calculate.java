@@ -1,7 +1,10 @@
 package Calculate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Calculate {
     public int parser(String formula) {
@@ -11,7 +14,6 @@ public class Calculate {
 
         return Integer.parseInt(formula);
     }
-
 
     public boolean isEmpty(String formula){
         return formula.isEmpty();
@@ -30,6 +32,7 @@ public class Calculate {
     }
 
     public int calculating(String formula) {
+        formula=customToDefault(formula);
         List<Integer> list =splitToInt(formula);
         int sum=0;
         for (int number: list) {
@@ -37,4 +40,20 @@ public class Calculate {
         }
         return sum;
     }
+
+    public String customToDefault(String formula){
+
+        Matcher m = Pattern.compile("//(.*)\n(.*)").matcher(formula);
+        if (m.find()) {
+            return replaceSeparator(formula,m.group(1));
+        }
+        return formula;
+    }
+
+    public String replaceSeparator(String formula,String separator){
+        String[] str=formula.split("\n");
+        return str[1].replace(separator,",");
+    }
+
+
 }
