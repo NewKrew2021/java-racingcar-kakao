@@ -30,4 +30,12 @@ public class CalculateTest {
     public void singleNumber() {
         Assertions.assertThat(calculate.parser("1")).isEqualTo(1);
     }
+
+    @Test
+    public void twoNumberOneComma(){
+        assertEquals( 4, calculate.calculating("1,3"));
+        assertEquals( 2, calculate.calculating("1,1"));
+
+    }
+
 }
