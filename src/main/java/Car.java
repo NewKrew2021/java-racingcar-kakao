@@ -18,4 +18,11 @@ public class Car {
     public int getPosition() {
         return this.position;
     }
+
+    public void run(int value) {
+        if (value <= 3) {
+            return;
+        }
+        go();
+    }
 }
