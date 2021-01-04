@@ -61,5 +61,10 @@ public class CalculateTest {
     public void NumberFormatException() {
         assertThatExceptionOfType(NumberFormatException.class)
                 .isThrownBy(() -> calculate.calculating("//;;\n1;;2;;ㄱ"));
+        assertThatExceptionOfType(NumberFormatException.class)
+                .isThrownBy(() -> calculate.calculating("//;;\n1;; 2;;3"));
     }
+
+
 }
+
