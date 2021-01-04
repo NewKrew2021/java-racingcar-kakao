@@ -57,5 +57,9 @@ public class CalculateTest {
                 .isThrownBy(() -> calculate.calculating("//;;\n1;;2;;-3"))
                 .withMessageMatching("Negative value");
     }
-
+    @Test
+    public void NumberFormatException() {
+        assertThatExceptionOfType(NumberFormatException.class)
+                .isThrownBy(() -> calculate.calculating("//;;\n1;;2;;ㄱ"));
+    }
 }
