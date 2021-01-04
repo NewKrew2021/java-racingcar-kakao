@@ -27,4 +27,13 @@ public class Car {
         }
         return getPosition();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }
