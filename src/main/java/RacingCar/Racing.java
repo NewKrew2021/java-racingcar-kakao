@@ -1,6 +1,7 @@
 package RacingCar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Racing {
     private ArrayList<RacingCar> racingCars;
@@ -13,11 +14,13 @@ public class Racing {
         return input.split(",");
     }
 
-    /*
-    public void setNames(String input) {
-        for (String name : splitNames(input)) {
+    public void setRacingCars(String[] names) {
+        for (String name : names) {
             racingCars.add(new RacingCar(name));
         }
-    }*/
+    }
 
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
 }
