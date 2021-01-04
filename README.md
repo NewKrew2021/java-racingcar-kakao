@@ -16,7 +16,5 @@
 6. 음수를 전달할 경우 RuntimeException 예외가 발생해야 한다. (예 : “-1,2,3”)
 7. 숫자가 아닌 경우 WrongInputException 예외가 발생해야 한다. (예: "ㄱㄴㄷ")
 8. 문자열 사이에 공백이 입력되는 경우 WrongInputException 예외가 발생해야한다. (예: "12, 3")
-9. 커스텀 구분자에 /,\가 포함되는 경우 WrongInputException 예외가 발생해야한다. (예:"///;\\n")
-
 
 
