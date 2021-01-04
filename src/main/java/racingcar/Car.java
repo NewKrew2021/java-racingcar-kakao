@@ -4,6 +4,14 @@ public class Car {
 
     private int position;
     public static final int STEP = 1;
+    private String name;
+
+    public Car() {
+    }
+
+    public Car(String name) {
+        setName(name);
+    }
 
     public void goFront() {
         position += STEP;

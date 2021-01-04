@@ -24,4 +24,9 @@ class CarTest {
         assertThat(car.racing(3)).isEqualTo(prePosition);
     }
 
+    @Test
+    void createCar() {
+        Car car = new Car("붕붕이");
+        assertThat(car.getName()).isEqualTo("붕붕이");
+    }
 }
