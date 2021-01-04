@@ -21,7 +21,7 @@ public class Calculate {
         return null==formula;
     }
     public List<Integer> splitToInt(String formula){
-        String[] numbers=formula.split(",");
+        String[] numbers=formula.split(",|:");
         List<Integer> list =new ArrayList<Integer>();
         for (String number : numbers) {
             list.add(parser(number));

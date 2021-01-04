@@ -38,4 +38,10 @@ public class CalculateTest {
 
     }
 
+    @Test
+    public void splitByCommaAndColon() {
+        Assertions.assertThat(calculate.calculating("1:3")).isEqualTo(4);
+        Assertions.assertThat(calculate.calculating("4:7")).isEqualTo(11);
+    }
+
 }
