@@ -22,7 +22,7 @@ public class StringTest {
     }
 
     @Test
-    void emptyTest(){
+    void emptyTest() {
         String s = "";
         Assertions.assertThat(stringCalculator.calculate(s)).isEqualTo(0);
     }
@@ -43,5 +43,28 @@ public class StringTest {
     void multiNumberTestWithCustomDelimiter() {
         String s = "//;\n1;2:3";
         Assertions.assertThat(stringCalculator.calculate(s)).isEqualTo(6);
+    }
+
+    @Test
+    void notNumberTest() {
+        String s = "!;2:3";
+        Assertions.assertThatExceptionOfType(RuntimeException.class).
+                isThrownBy(() -> {
+                    Assertions.assertThat(stringCalculator.calculate(s));
+                });
+    }
+
+    @Test
+    void negativeNumberTest() {
+        String s = "-1";
+        Assertions.assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
+            Assertions.assertThat(stringCalculator.calculate(s));
+        });
+    }
+
+    @Test
+    void noNumberTest() {
+        String s = ",";
+        Assertions.assertThat(stringCalculator.calculate(s)).isEqualTo(0);
     }
 }
