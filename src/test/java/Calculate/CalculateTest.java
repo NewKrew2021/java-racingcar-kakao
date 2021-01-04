@@ -3,7 +3,7 @@ package Calculate;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CalculateTest {
@@ -49,6 +49,13 @@ public class CalculateTest {
         assertEquals(3,calculate.calculating("//;\n1;2"));
         assertEquals(3,calculate.calculating("//-l\n1-l2"));
 
+    }
+
+    @Test
+    public void minusValueException() {
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> calculate.calculating("//;;\n1;;2;;-3"))
+                .withMessageMatching("Negative value");
     }
 
 }

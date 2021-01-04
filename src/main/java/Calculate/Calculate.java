@@ -7,12 +7,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Calculate {
-    public int parser(String formula) {
-        if(isNull(formula)||isEmpty(formula)){
+    public int parser(String formula) throws RuntimeException {
+        if (isNull(formula) || isEmpty(formula)) {
             return 0;
         }
+        Integer value = Integer.parseInt(formula);
+        raiseWhenValueIsMinus(value);
+        return value;
+    }
 
-        return Integer.parseInt(formula);
+    public void raiseWhenValueIsMinus(int value){
+        if (value < 0) throw new RuntimeException("Negative value");
     }
 
     public boolean isEmpty(String formula){
