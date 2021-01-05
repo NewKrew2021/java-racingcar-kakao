@@ -7,13 +7,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private List<Car> cars;
 
     private static final int RANGE = 10;
-    private static final int SPEED = 4;
-
     private static final String DEFAULT_SPLIT_DELIMITER = ",";
+
     private Random random;
+    private List<Car> cars;
 
     public RacingGame(String inputCarNames) {
         random = new Random();
@@ -45,7 +44,7 @@ public class RacingGame {
 
     public void racing() {
         for (Car car : cars) {
-            moveCar(car);
+            car.nextStep(generateRandomNumber());
         }
     }
 
@@ -57,14 +56,8 @@ public class RacingGame {
         return carInfos;
     }
 
-    boolean isCarGo(int number) {
-        return number >= SPEED;
-    }
-
-    void moveCar(Car car) {
-        if (isCarGo(random.nextInt(RANGE))) {
-            car.nextStep();
-        }
+    private int generateRandomNumber() {
+        return random.nextInt(RANGE);
     }
 
     public List<String> findWinners() {

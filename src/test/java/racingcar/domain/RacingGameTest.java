@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingGameTest {
 
     private RacingGame racingGame;
+    private static final int SPEED = 4;
 
     @BeforeEach
     void setUp() {
@@ -36,7 +37,7 @@ public class RacingGameTest {
         Car car2 = new Car("dino");
         Car car3 = new Car("pobi");
 
-        car1.nextStep();
+        car1.nextStep(SPEED);
         racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
 
         assertThat(racingGame.findWinners()).containsExactly("yell");
@@ -48,22 +49,10 @@ public class RacingGameTest {
         Car car2 = new Car("dino");
         Car car3 = new Car("pobi");
 
-        car1.nextStep(); car3.nextStep();
+        car1.nextStep(SPEED); car3.nextStep(SPEED);
         racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
 
         assertThat(racingGame.findWinners()).containsExactly("yell", "pobi");
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {-2,-1,0,1,2,3})
-    void carGoFailTest(int number) {
-        org.junit.jupiter.api.Assertions.assertFalse(racingGame.isCarGo(number));
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {4,5,6,7,8,9})
-    void carGoTrueTest(int number) {
-        org.junit.jupiter.api.Assertions.assertTrue(racingGame.isCarGo(number));
     }
 
 }
