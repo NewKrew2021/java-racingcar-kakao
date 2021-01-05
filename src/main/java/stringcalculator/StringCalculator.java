@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
 
+    private static final String DEFAULT_SPLIT_DELIMITER = ",|:";
+
     public int calculate(String text) {
         if (isBlank(text)) {
             return 0;
