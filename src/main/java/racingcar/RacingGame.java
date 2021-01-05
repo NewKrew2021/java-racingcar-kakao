@@ -14,8 +14,7 @@ public class RacingGame {
         cars = new Car[names.length];
         for(int i=0; i< names.length;i++){
             checkNameLength(names[i]);
-            cars[i] = new Car();
-            cars[i].setName(names[i]);
+            cars[i] = new Car(names[i]);
         }
     }
     public void checkNameLength(String name){
@@ -41,4 +40,9 @@ public class RacingGame {
         return (int) (Math.random()*10);
     }
 
+    public void printCarsStatus(){
+        for (Car car : cars) {
+            car.printStatus();
+        }
+    }
 }

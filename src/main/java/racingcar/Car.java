@@ -4,7 +4,7 @@ public class Car {
     private String name;
     int location;
 
-    public void setName(String name){
+    public Car(String name){
         this.name = name;
     }
 
@@ -17,5 +17,13 @@ public class Car {
         if(number>=4)
             return true;
         return false;
+    }
+
+    public void printStatus(){
+        String length = "";
+        for(int i = 0; i < this.location; i++){
+            length += "-";
+        }
+        System.out.println(this.name + " : " + length);
     }
 }
