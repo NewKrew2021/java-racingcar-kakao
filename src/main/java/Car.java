@@ -12,6 +12,11 @@ public class Car {
         this.position = 0;
     }
 
+    public Car(String name, int initialPosition) {
+        this(name);
+        this.position = initialPosition;
+    }
+
     private void validateName(String name) {
         if (name == null || name.length() == 0 || name.length() > MAX_NAME_LENGTH) {
             throw new InvalidCarNameException(STRING_CAR_NAME_ERROR);

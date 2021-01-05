@@ -26,13 +26,30 @@ public class CarTest {
         assertThatExceptionOfType(Car.InvalidCarNameException.class).isThrownBy(() -> new Car("123456"));
     }
 
-    @Test
-    void move() {
+    @ParameterizedTest
+    @CsvSource({"0","1","2"})
+    void move0(int trial) {
         Car car = new Car("danny");
-        car.moveOrNot(NEVER_MOVE_CONDITION);
-        assertThat(car.getPosition()).isEqualTo(0);
-        car.moveOrNot(ALWAYS_MOVE_CONDITION);
-        assertThat(car.getPosition()).isEqualTo(1);
+        for (int i = 0; i < trial; i++) {
+            car.moveOrNot(NEVER_MOVE_CONDITION);
+        }
+
+        int nowPosition = car.getPosition();
+
+        assertThat(nowPosition).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"0","1","2"})
+    void moveForward(int trial) {
+        Car car = new Car("danny");
+        for (int i = 0; i < trial; i++) {
+            car.moveOrNot(ALWAYS_MOVE_CONDITION);
+        }
+
+        int nowPosition = car.getPosition();
+
+        assertThat(nowPosition).isEqualTo(trial);
     }
 
 
@@ -41,7 +58,10 @@ public class CarTest {
         Car car1 = new Car("danny");
         Car car2 = new Car("corby");
         car1.moveOrNot(ALWAYS_MOVE_CONDITION);
-        assertThat(car1.isForwardThan(car2)).isTrue();
+
+        boolean isForward = car1.isForwardThan(car2);
+
+        assertThat(isForward).isTrue();
     }
 
     @ParameterizedTest
@@ -58,6 +78,9 @@ public class CarTest {
         for(int i=0; i<car2Position; i++){
             car2.moveOrNot(ALWAYS_MOVE_CONDITION);
         }
-        assertThat(car1.isAtSamePositionWith(car2)).isEqualTo(car1Position == car2Position);
+
+        boolean isSamePosition = car1.isAtSamePositionWith(car2);
+
+        assertThat(isSamePosition).isEqualTo(car1Position == car2Position);
     }
 }
