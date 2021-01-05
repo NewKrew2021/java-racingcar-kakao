@@ -1,10 +1,13 @@
 package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.*;
+
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import racingcar.CarNameInvalidException;
 
 public class CarTest {
     private Car car;
@@ -21,6 +24,13 @@ public class CarTest {
             car.nextStep();
         }
         assertThat(car.getPosition()).isEqualTo(number);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"LONGCA", "LONGCAR", "LONGCARNAME"})
+    void invalidNameTest(String carName) {
+        Assertions.assertThatExceptionOfType(CarNameInvalidException.class).
+                isThrownBy(() -> { new Car(carName); });
     }
 
     @Test

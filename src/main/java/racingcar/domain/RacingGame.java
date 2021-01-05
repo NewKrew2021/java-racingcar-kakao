@@ -11,7 +11,7 @@ public class RacingGame {
 
     private static final int RANGE = 10;
     private static final int SPEED = 4;
-    private static final int NAME_MAX_LENGTH = 5;
+
     private static final String DEFAULT_SPLIT_DELIMITER = ",";
     private Random random;
 
@@ -36,19 +36,11 @@ public class RacingGame {
     }
 
     private void addCar(String name) {
-        if (checkName(name)) {
-            cars.add(new Car(name));
-        }
+        cars.add(new Car(name));
     }
 
     private void addCar(Car car) {
-        if (checkName(car.getName())) {
-            cars.add(car);
-        }
-    }
-
-    private boolean checkName(String name) {
-        return name.length() <= NAME_MAX_LENGTH;
+        cars.add(car);
     }
 
     public void racing() {

@@ -30,16 +30,6 @@ public class RacingGameTest {
         assertThat(carNames).containsExactly("d","b","v");
     }
 
-    @Test @DisplayName("글자 수가 5자 이하의 객체만 생성하는지 확인")
-    void splitUnderFiveTest(){
-        racingGame = new RacingGame("abcdef,a,b");
-        racingGame.racing();
-        List<CarInfo> carInfos = racingGame.getStatus();
-        List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());
-        List<Integer> carPositions = carInfos.stream().map(CarInfo::getPosition).collect(Collectors.toList());
-        assertThat(carNames).containsExactly("a","b");
-    }
-
     @Test
     void singleWinnerTest() {
         Car car1 = new Car("yell");
