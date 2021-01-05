@@ -7,13 +7,6 @@ import static org.assertj.core.api.Assertions.*;
 
 public class RacingCarTest {
     private RacingCar racingCar;
-    private Racing racing;
-
-    @Test
-    public void setRacingCarNameCheck() {
-        racing = new Racing("aaa,bbb,ccc");
-        assertThat(racing.getRacingCars()).extracting(RacingCar::getName).containsExactly("aaa", "bbb", "ccc");
-    }
 
     @Test
     public void moveRacingCarCheck() {

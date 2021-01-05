@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class InputValidChecker {
 
     public static boolean isValidNames(String input) {
-        String[] names = splitNames(input);
+        String[] names = input.split(",");
         return isNameLengthValid(names) && isNotDuplicatedName(names);
     }
 
@@ -18,10 +18,6 @@ public class InputValidChecker {
             return false;
         }
         return true;
-    }
-
-    private static String[] splitNames(String input) {
-        return input.split(",");
     }
 
     private static boolean isNameLengthValid(String[] names) {
