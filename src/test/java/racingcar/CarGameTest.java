@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarGameTest {
 
@@ -24,7 +23,7 @@ public class CarGameTest {
     void getWinnerTest(){
         ArrayList<Car> carList = new ArrayList<Car>(Arrays.asList(new Car("hendo", 5), new Car("brody", 3)));
         CarGame game = new CarGame(carList,3);
-        assertThat(game.getWinner()).contains("hendo");
+        assertThat(game.getWinner()).containsOnly("hendo");
     }
 
 }
