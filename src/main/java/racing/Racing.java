@@ -2,8 +2,10 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Racing {
+    private static final Random random = new Random();
 
     private List<Car> cars;
     int progressNumber = 0;
@@ -73,7 +75,7 @@ public class Racing {
     private List<Integer> makeRandomValues() {
         List<Integer> results = new ArrayList<>();
         for (int i = 0; i < this.cars.size(); i++) {
-            results.add((int) (Math.random() * 10000 % 10));
+            results.add(random.nextInt(10));
         }
         return results;
     }

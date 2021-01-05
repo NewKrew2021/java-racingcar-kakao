@@ -1,15 +1,14 @@
 package racing;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class RacingGame {
     private static final Scanner sc = new Scanner(System.in);
-    private static final Random random = new Random();
     private Racing racing;
 
     public RacingGame(){
+
     }
 
     public void run() {
