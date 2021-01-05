@@ -7,3 +7,12 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+1. 랜덤 값 생성기 만들기
+Repeatedtest로 이외 값 나오면 실패
+2. 자동차 이름 받아서 split하기
+2-1. 5이하 검증하는 함수
+Exception 하고, UI에서 처리하는 것으로
+3. Car 클래스 (이름 받기, 앞으로 가기 등 메소드 존재)
+랜덤 값을 받아서, 전진인지 멈추는지 계산
+4. UI, 수행 횟수 입력받기(문자 출력, 기타 입력받기 등..)
