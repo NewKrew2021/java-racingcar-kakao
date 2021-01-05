@@ -61,7 +61,7 @@ public class RacingGameUI {
     }
 
     private static boolean allowedLength(String name) {
-        return name.length() <= MAX_NAME_LENGTH;
+        return 0 < name.length() && name.length() <= MAX_NAME_LENGTH;
     }
 
     private static boolean isAlpha(String name) {
