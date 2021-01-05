@@ -1,40 +1,49 @@
 package com.nextstep.racingcar;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Racingcar {
 
   private List<Car> cars;
-  private List<String> winners;
 
   public Racingcar() {
     cars = new ArrayList<>();
-    winners = new ArrayList<>();
   }
 
   public void addCar(Car newCar) {
     cars.add(newCar);
   }
 
-  public List<String> result() {
-    int highest = cars.stream()
-        .max(Comparator.comparing(num -> num.getLocation()))
-        .get()
-        .getLocation();
-
-    for (Car car : cars) {
-      appendIfWinner(highest, car);
-    }
-    return winners;
+  public void race() {
+    cars.forEach(car -> car.run(Utils.getRandomInt()));
   }
 
-  private void appendIfWinner(int highest, Car car) {
-    if (isWinner(highest, car)) {
-      winners.add(car.getName());
-    }
+  public List<String> getWinners() {
+    int highest = getHighestAdvancedCar();
+
+    return cars.stream()
+        .filter(car -> isWinner(highest, car))
+        .map(Car::getName)
+        .collect(Collectors.toList());
+  }
+
+  private int getHighestAdvancedCar() {
+    Comparator<Car> cmp = Comparator.comparingInt(Car::getLocation);
+
+    return Collections.max(cars, cmp)
+        .getLocation();
   }
 
   private boolean isWinner(int highest, Car car) {
     return highest == car.getLocation();
+  }
+
+  public String toString() {
+    StringBuilder raceResult = new StringBuilder();
+    for (Car car : cars) {
+      raceResult.append(car.toString());
+    }
+    return raceResult.toString();
   }
 }

@@ -2,7 +2,9 @@ package com.nextstep.racingcar;
 
 public class Car {
 
-  private String name;
+  private static final int MOVE_NUMBER = 4;
+
+  private final String name;
   private int location;
 
   public Car(String carName) {
@@ -10,8 +12,8 @@ public class Car {
     this.location = 0;
   }
 
-  public CarResult shouldMove(int number) {
-    if (carShouldAdvance(number)) {
+  public CarResult run(int number) {
+    if (carShouldMove(number)) {
       move();
       return CarResult.MOVE;
     }
@@ -22,8 +24,8 @@ public class Car {
     this.location += 1;
   }
 
-  private boolean carShouldAdvance(int number) {
-    return number >= 4;
+  private boolean carShouldMove(int number) {
+    return number >= MOVE_NUMBER;
   }
 
   public String getName() {
@@ -32,5 +34,9 @@ public class Car {
 
   public int getLocation() {
     return this.location;
+  }
+
+  public String toString() {
+    return String.format("%s : %s\n", name, "-".repeat(location));
   }
 }

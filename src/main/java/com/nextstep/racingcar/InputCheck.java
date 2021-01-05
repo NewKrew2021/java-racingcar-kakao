@@ -1,6 +1,6 @@
 package com.nextstep.racingcar;
 
-public class InputCheck {
+public class  InputCheck {
 
   public static boolean checkName(String input) {
       if (!isAllowedInput(input)) {
@@ -10,14 +10,6 @@ public class InputCheck {
   }
 
   private static boolean isAllowedInput(String input) {
-    return !isOverMaxLength(input) && isAlpha(input);
-  }
-
-  private static boolean isOverMaxLength(String input) {
-    return input.length() > 5;
-  }
-
-  private static boolean isAlpha(String input) {
-    return input.matches("[a-zA-Z]+");
+    return input.matches("[a-zA-Z]{1,5}");
   }
 }
