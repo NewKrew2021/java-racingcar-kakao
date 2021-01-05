@@ -1,6 +1,6 @@
 package Calculator;
 
-import exception.NegativeNumberInputException;
+import Calculator.exception.NegativeNumberInputException;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

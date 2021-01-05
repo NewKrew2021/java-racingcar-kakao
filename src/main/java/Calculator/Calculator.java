@@ -1,6 +1,6 @@
 package Calculator;
 
-import exception.NegativeNumberInputException;
+import Calculator.exception.NegativeNumberInputException;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

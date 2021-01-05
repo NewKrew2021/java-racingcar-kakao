@@ -10,19 +10,27 @@ public class Car {
         this.position = 0;
     }
 
-    public void go(){
-        this.position++;
+    public int go(){
+        return this.position += 1;
     }
 
-    public void show(){
+    public String getCarInfoString(){
         StringBuilder positionBuilder = new StringBuilder();
 
-        positionBuilder.append(name + " : ");
+        positionBuilder.append(this.name + " : ");
 
         for (int i = 0; i < this.position; i++) {
             positionBuilder.append(POSITION_MARKER);
         }
 
-        System.out.println(positionBuilder.toString());
+        return positionBuilder.toString();
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public int getPosition(){
+        return this.position;
     }
 }
