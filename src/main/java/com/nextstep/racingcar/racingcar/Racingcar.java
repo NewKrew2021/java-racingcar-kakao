@@ -46,7 +46,7 @@ public class Racingcar {
   }
 
   public boolean isFinished() {
-    return currentStep < repeatCount;
+    return repeatCount <= currentStep;
   }
 
   private void addCarsWithNames(String[] carNames) {

@@ -15,7 +15,7 @@ public class RacingcarTest {
     String[] carNames = new String[]{"losea", "loseb", "win"};
     Racingcar racingcar = new Racingcar(carNames, 3);
 
-    while (racingcar.isFinished()) {
+    while (!racingcar.isFinished()) {
       racingcar.simulateOnce(Arrays.asList(STOP, STOP, MOVE));
     }
 
@@ -27,7 +27,7 @@ public class RacingcarTest {
     String[] carNames = new String[]{"lose", "wina", "winb"};
     Racingcar racingcar = new Racingcar(carNames, 3);
 
-    while (racingcar.isFinished()) {
+    while (!racingcar.isFinished()) {
       racingcar.simulateOnce(Arrays.asList(STOP, MOVE, MOVE));
     }
 
