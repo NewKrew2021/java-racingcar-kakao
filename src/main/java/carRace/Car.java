@@ -1,11 +1,16 @@
 package carRace;
 
-public class Car{
+public class Car implements Comparable<Car>{
     private final String name;
     private int location;
 
     public Car(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        return otherCar.location - location;
     }
 
     public void judgeAndGo(int randomNo) {

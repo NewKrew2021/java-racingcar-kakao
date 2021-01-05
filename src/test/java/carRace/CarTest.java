@@ -14,4 +14,14 @@ public class CarTest {
         testCar.judgeAndGo(1);
         assertThat(testCar.toString()).isEqualTo("test : --");
     }
+
+    @Test
+    public void compareToTest() {
+        Car testCar1 = new Car("test1");
+        Car testCar2 = new Car("test2");
+        testCar1.judgeAndGo(5);
+        testCar2.judgeAndGo(5);
+        testCar2.judgeAndGo(5);
+        assertThat(testCar1.compareTo(testCar2)).isGreaterThan(0);
+    }
 }
