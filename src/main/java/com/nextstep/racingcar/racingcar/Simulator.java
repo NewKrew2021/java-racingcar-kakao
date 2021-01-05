@@ -16,7 +16,7 @@ public class Simulator {
     printResultGuide();
     while (racingcar.isInProgress()) {
       racingcar.simulate();
-      printSimulationResults(racingcar);
+      printSimulationResults(racingcar.getCars());
     }
 
     printWinners(racingcar.getWinners());

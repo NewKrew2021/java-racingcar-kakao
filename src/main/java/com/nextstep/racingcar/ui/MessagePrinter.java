@@ -1,7 +1,6 @@
 package com.nextstep.racingcar.ui;
 
 import com.nextstep.racingcar.racingcar.Car;
-import com.nextstep.racingcar.racingcar.Racingcar;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,9 +18,7 @@ public class MessagePrinter {
     printer("실행 결과");
   }
 
-  public static void printSimulationResults(Racingcar racingcar) {
-    List<Car> cars = racingcar.getCars();
-
+  public static void printSimulationResults(List<Car> cars) {
     for (Car car : cars) {
       printCarStatus(car);
     }
@@ -39,7 +36,7 @@ public class MessagePrinter {
   private static void printer(String message) {
     System.out.println(message);
   }
-  
+
   private static void printCarStatus(Car car) {
     String status = String.format("%s : %s",
         car.getName(),
