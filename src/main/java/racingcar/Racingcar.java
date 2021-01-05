@@ -2,15 +2,16 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Racingcar {
     private List<String> carList;
-
-    public List<String> getName(String s) {
-        return carList = Arrays.asList(s.split(","));
+    
+    List<String> getCarName(String s) {
+        return this.carList = Arrays.asList(s.split(","));
     }
 
-    public int carNameCheck() {
-        return carList.size();
+    boolean carNameCheck(){
+        return this.carList.size() <= 5;
     }
 }
