@@ -26,21 +26,30 @@ public class Cars {
     }
 
     private void checkCarNames(String[] carNames){
-        if (carNames.length > 5){
+        for (String carName : carNames) {
+            lengthCheck(carName);
+        }
+
+    }
+
+    private void lengthCheck(String carName) {
+        if (carName.length() > 5){
             throw new RuntimeException("길이를 5이하로 설정해주세요");
         }
     }
+
 
     /* getter */
     public List<Car> getCars(){
         return cars;
     }
 
-    /* 난수 생성후 해당 난수 조건에 따라 이동 */
+    /* 난수 생성후 해당 난수 조건에 따라 이 */
     public void move(){
         for(Car car:cars){
             car.move(checkMove());
         }
+        Output.printNewLine();
     }
 
     private int checkMove(){
@@ -55,75 +64,24 @@ public class Cars {
         return (int)(Math.random()*10);
     }
 
+    /* 우승자 확인 */
+    public String checkWinner(){
+        int winnerLocation = getWinnerLocation();
+        return getWinnerNames(winnerLocation);
+    }
 
-//    public boolean setCarList(){
-//        String[] carNames = getCarNames(Race.carNames);
-//        this.carList = new ArrayList<>();
-//        addCarName(carNames);
-//
-//        return checkCarNames();
-//    }
+    private String getWinnerNames(int winnerLocation) {
+        String winner = "";
+        for(Car car:cars){
+            if (car.getLoccation() == winnerLocation){
+                winner += car.getName() + " ";
+            }
+        }
+        return winner;
+    }
 
-//    String[] getCarNames(String carNames) {
-//        return carNames.replace(" ", "").split(",");
-//    }
-
-
-
-
-
-
-//    boolean checkCarNames(){
-//        return this.carList.stream().allMatch(car -> car.carNameLengthCheck());
-//    }
-//
-//    /* 자동차의 위치 설정 */
-//    public void setCarLoc(RandomNumber randomNumber){
-//        this.carList.forEach(car -> {
-//            car.setLoc(dirToDis(randomNumber.setDirection()));
-//        });
-//    }
-//
-//    private int dirToDis(CarStatus dir) {
-//        if (dir == CarStatus.Go) return 1;
-//
-//        return 0;
-//    }
-//
-//    List<Car> setCalLocTest(RandomNumber randomNumber){
-//        this.carList.forEach(car -> {
-//            car.setLoc(dirToDis(randomNumber.setDirection()));
-//        });
-//        return this.carList;
-//    }
-//
-//    /* 한 사이클마다 자동차의 위치 */
-//    public void printCarLoc(){
-//        this.carList.forEach(car -> {
-//            String loc = makeStrLoc(car.getLoc());
-//            System.out.println(car.getName() + " : " + loc);
-//        });
-//        System.out.print("\n");
-//    }
-//
-//    private String makeStrLoc(int loc) {
-//        String str = "";
-//        for (int i = 0; i < loc; i++) {
-//            str += "-";
-//        }
-//        return str;
-//    }
-//
-//    /* 우승자 결정 */
-//    public void winner(){
-//        for (int i = 0; i < this.carList.size(); i++) {
-//            this.carList.get(i).findWinnerLoc();
-//        }
-//        for (int i = 0; i < this.carList.size(); i++) {
-//            this.carList.get(i).winnerName();
-//        }
-//        System.out.println(this.carList.get(0).getWinnerName() + "가 최종 우승했습니다.");
-//
-//    }
+    private int getWinnerLocation(){
+        return cars.stream().mapToInt(car -> car.getLoccation()).max().orElse(0);
+    }
 
 }

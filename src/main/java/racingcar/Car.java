@@ -24,35 +24,8 @@ public class Car {
         printLocation();
     }
 
-    public void printLocation(){
+    private void printLocation(){
         Output.printRoundResult(name, loccation);
     }
 
-//
-//    public int getLoc(){
-//        return this.loc;
-//    }
-//
-//    public boolean carNameLengthCheck(){
-//        return this.name.length() <= 5;
-//    }
-//
-//    public String getWinnerName(){
-//        return winner;
-//    }
-//    public void setLoc(int loc){
-//        this.loc += loc;
-//    }
-//
-//    public void findWinnerLoc(){
-//        if (winnerLoc < this.loc){
-//            winnerLoc = this.loc;
-//        }
-//    }
-//
-//    public void winnerName(){
-//        if (winnerLoc == this.loc){
-//            winner += this.name + " ";
-//        }
-//    }
 }

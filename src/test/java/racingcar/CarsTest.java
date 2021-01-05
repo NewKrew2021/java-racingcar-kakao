@@ -42,26 +42,5 @@ class CarsTest {
         }
         assertThat(cars.getCars()).extracting(Car::getLoccation).hasSizeBetween(0,round);
     }
-//
-//    @Test
-//    @DisplayName("1대의 자동차 방향 확인")
-//    void carDirection() {
-//        CarStatus dir = randomNumber.setDirection();
-//        assertThat(dir).isInstanceOfAny(CarStatus.class);
-//    }
-
-//    @Test
-//    @DisplayName("N대의 자동차 전진/멈춤")
-//    void carMoveCheck() {
-//        Race.carNames = "pobi,crong,honux";
-//        cars.setCarList();
-//        List<Car> car = cars.setCalLocTest(randomNumber);
-//        for (int i = 0; i <car.size() ; i++) {
-//            assertThat(car.get(i).getLoc()).isNotNegative();
-//        }
-//    }
-
-
-
 
 }

@@ -21,4 +21,8 @@ public class Output {
     public static void printNewLine() {
         System.out.print("\n");
     }
+
+    public static void printWinner(String winner) {
+        System.out.println(winner + "가 최종 우승했습니다.");
+    }
 }
