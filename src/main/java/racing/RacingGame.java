@@ -1,6 +1,5 @@
 package racing;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class RacingGame {
@@ -14,10 +13,11 @@ public class RacingGame {
     public void run() {
         this.startMessagePrint();
         String carNames = sc.next();
+
         this.tryMessagePrint();
         int progressNumber = sc.nextInt();
-        this.racing = new Racing(progressNumber);
-        racing.setCars(carNames);
+        this.racing = new Racing(carNames, progressNumber);
+
         System.out.println("\n실행 결과");
         racing.repeatRacing();
         this.printWinner();

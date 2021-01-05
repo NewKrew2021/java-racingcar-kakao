@@ -1,6 +1,9 @@
 package racing;
 
+import exception.InvalidCarNameException;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -11,16 +14,35 @@ public class Racing {
     int progressNumber;
     int maxPosition;
 
-    public Racing(int progressNumber) {
+    public Racing(String carNames, int progressNumber) {
         this.progressNumber = progressNumber;
+        setCars(carNames);
     }
 
     public void setCars(String s) {
-        String[] nameArray = s.split(",");
+        List<String> nameArray = Arrays.asList(s.split(","));
+        if (!checkValidAllCarName(nameArray)) {
+            throw new InvalidCarNameException();
+        }
         this.cars = new ArrayList<>();
         for (String name : nameArray) {
             this.cars.add(new Car(name));
         }
+    }
+
+    /**
+     * 2depth 제약조건 때문에 어쩔수 없이 삼항연산자 사용합니다.
+     */
+    private boolean checkValidAllCarName(List<String> nameArray) {
+        int invalidCnt = 0;
+        for (String name : nameArray) {
+            invalidCnt += checkValidCarName(name) ? 0 : 1;
+        }
+        return invalidCnt == 0;
+    }
+
+    private boolean checkValidCarName(String carName) {
+        return carName.length() <= 5;
     }
 
     public List<Car> getCars() {
