@@ -8,17 +8,17 @@ public class InputValidCheckerTest {
 
     @Test
     public void validNameLengthCheck() {
-        assertThat(InputValidChecker.isValidInput("aaaa")).isTrue();
+        assertThat(InputValidChecker.isValidNames("aaaa")).isTrue();
     }
 
     @Test
     public void invalidNameLengthCheck() {
-        assertThat(InputValidChecker.isValidInput("aaaaaa")).isFalse();
+        assertThat(InputValidChecker.isValidNames("aaaaaa")).isFalse();
     }
 
 
     @Test
     public void nameDuplicationCheck() {
-        assertThat(InputValidChecker.isValidInput("aaa,aaa,bbb")).isFalse();
+        assertThat(InputValidChecker.isValidNames("aaa,aaa,bbb")).isFalse();
     }
 }
