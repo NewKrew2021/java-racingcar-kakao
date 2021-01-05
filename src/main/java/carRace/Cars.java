@@ -22,16 +22,6 @@ public class Cars {
         }
     }
 
-    public List<Integer> getCarsRandomNumber(){
-        List<Integer> numbers = new ArrayList<>();
-
-        for(int i = 0; i < carList.size(); i++){
-            numbers.add((int)(Math.random() * 10));
-        }
-
-        return numbers;
-    }
-
     public List<Car> getWinners(){
         Collections.sort(carList);
         Car maxCar = carList.get(0);
@@ -46,5 +36,9 @@ public class Cars {
             sb.append(car).append("\n");
         }
         return sb.toString();
+    }
+
+    public int getNumOfCars() {
+        return carList.size();
     }
 }

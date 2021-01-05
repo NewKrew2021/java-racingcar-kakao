@@ -1,5 +1,8 @@
 package carRace;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingGame {
 
     public void run(){
@@ -11,8 +14,18 @@ public class RacingGame {
     private void race(int n, Cars cars) {
         RacingGameUI.printStartMessage();
         for (int i = 0; i < n; i++) {
-            cars.moveAllCars(cars.getCarsRandomNumber());
+            cars.moveAllCars(makeRandomNumber(cars.getNumOfCars()));
             RacingGameUI.printAllCars(cars);
         }
+    }
+
+    public List<Integer> makeRandomNumber(int numOfCars){
+        List<Integer> numbers = new ArrayList<>();
+
+        for(int i = 0; i < numOfCars; i++){
+            numbers.add((int)(Math.random() * 10));
+        }
+
+        return numbers;
     }
 }
