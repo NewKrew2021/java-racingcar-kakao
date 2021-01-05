@@ -13,4 +13,12 @@ public class Output {
     public static void printResult() {
         System.out.println("실행 결과");
     }
+
+    public static void printRoundResult(String name, int num) {
+        System.out.println(name + " : " + "-".repeat(num));
+    }
+
+    public static void printNewLine() {
+        System.out.print("\n");
+    }
 }

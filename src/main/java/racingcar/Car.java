@@ -21,10 +21,11 @@ public class Car {
 
     public void move(int condition){
         loccation += condition;
+        printLocation();
     }
 
     public void printLocation(){
-
+        Output.printRoundResult(name, loccation);
     }
 
 //
