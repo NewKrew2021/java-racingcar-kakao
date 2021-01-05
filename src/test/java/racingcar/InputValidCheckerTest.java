@@ -9,17 +9,22 @@ public class InputValidCheckerTest {
 
     @Test
     public void validNameLengthCheck() {
-        assertThat(InputValidChecker.isValidNames("aaaa")).isTrue();
+        assertThat(InputValidChecker.isValidNames("ocean")).isTrue();
     }
 
     @Test
     public void invalidNameLengthCheck() {
-        assertThat(InputValidChecker.isValidNames("aaaaaa")).isFalse();
+        assertThat(InputValidChecker.isValidNames("oocean")).isFalse();
     }
-
 
     @Test
     public void nameDuplicationCheck() {
-        assertThat(InputValidChecker.isValidNames("aaa,aaa,bbb")).isFalse();
+        assertThat(InputValidChecker.isValidNames("ocean,ocean,tars")).isFalse();
     }
+
+    @Test
+    public void nameConsecutiveCommaCheck() { assertThat(InputValidChecker.isValidNames("ocean,,tars,pobi")).isFalse(); }
+
+    @Test
+    public void nameStartWithCommaCheck() { assertThat(InputValidChecker.isValidNames(",ocean,tars")).isFalse(); }
 }
