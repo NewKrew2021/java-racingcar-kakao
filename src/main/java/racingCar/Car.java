@@ -15,6 +15,9 @@ public class Car implements Comparable<Car> {
         this.name = name;
         this.position = position;
     }
+    public String getName(){
+        return this.name;
+    }
 
     public void goForward(Integer value) {
         if (value >= 4) this.position++;
@@ -49,5 +52,14 @@ public class Car implements Comparable<Car> {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    @Override
+    public String toString(){
+        String str =this.name+" : ";
+        for(int i=0;i<position;i++){
+            str+='-';
+        }
+        return str;
     }
 }
