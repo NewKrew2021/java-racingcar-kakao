@@ -17,13 +17,6 @@ public class RacingTest {
         assertThat(rc.getWinner(new int[]{4, 5, 6})).isEqualTo(arr);
     }
 
-    @Test
-    public void goOrStopTest(){
-        Car car = new Car();
-        car.goOrStop(6);
-        assertThat(car.getPosition()).isEqualTo(1);
-    }
-
 
 
 }
