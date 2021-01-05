@@ -15,19 +15,19 @@ public class CarManager {
         }
     }
 
-    public List<Car> findWinners() {
-        Car winner = findWinner();
+    public List<Car> findWinnerCars() {
+        Car winner = findWinnerCar();
 
         return cars.stream()
                 .filter(car -> car.isAtSamePositionWith(winner))
                 .collect(Collectors.toList());
     }
 
-    private Car findWinner() {
+    private Car findWinnerCar() {
         Car maxPositionCar = cars.get(0);
 
         return cars.stream()
-                .reduce(maxPositionCar, (car, max) -> findForwardingCarBetween(car, max));
+                .reduce(maxPositionCar, this::findForwardingCarBetween);
     }
 
     private Car findForwardingCarBetween(Car car1, Car car2) {

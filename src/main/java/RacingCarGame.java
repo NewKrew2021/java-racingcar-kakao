@@ -1,7 +1,6 @@
 import java.util.List;
 
 public class RacingCarGame {
-
     public static void main(String[] args) {
         List<String> carNames = InputView.readNames();
 
@@ -18,6 +17,6 @@ public class RacingCarGame {
             OutputView.printCars(carManager.getCars());
         }
 
-        OutputView.printWinnerCars(carManager.findWinners());
+        OutputView.printWinnerCars(carManager.findWinnerCars());
     }
 }
