@@ -36,10 +36,6 @@ public class Racingcar {
     simulate(randoms);
   }
 
-  public boolean isFinished() {
-    return currentStep < repeatCount;
-  }
-
   private void simulate(List<Integer> randoms) {
     IntStream.range(0, cars.size())
         .filter(i -> moveResult(randoms.get(i)) == CarResult.MOVE)
@@ -49,23 +45,8 @@ public class Racingcar {
     increaseCounter();
   }
 
-  private void increaseCounter() {
-    currentStep++;
-  }
-
-  private List<Integer> getRandomDigitsForCars() {
-    return new Random()
-        .ints(cars.size())
-        .boxed()
-        .map(n -> n % 10)
-        .collect(Collectors.toList());
-  }
-
-  private CarResult moveResult(int number) {
-    if (isCarAdvance(number)) {
-      return CarResult.MOVE;
-    }
-    return CarResult.STOP;
+  public boolean isFinished() {
+    return currentStep < repeatCount;
   }
 
   private void addCarsWithNames(String[] carNames) {
@@ -78,14 +59,33 @@ public class Racingcar {
     cars.add(new Car(carName));
   }
 
-  private boolean isCarAdvance(int number) {
-    return number >= 4;
-  }
-
   private int getHighestAdvancedCar() {
     return cars.stream()
         .max(Comparator.comparing(Car::getLocation))
         .map(Car::getLocation)
         .orElse(0);
+  }
+
+  private List<Integer> getRandomDigitsForCars() {
+    return new Random()
+        .ints(cars.size())
+        .boxed()
+        .map(n -> n % 10)
+        .collect(Collectors.toList());
+  }
+
+  private void increaseCounter() {
+    currentStep++;
+  }
+
+  private CarResult moveResult(int number) {
+    if (isCarAdvance(number)) {
+      return CarResult.MOVE;
+    }
+    return CarResult.STOP;
+  }
+
+  private boolean isCarAdvance(int number) {
+    return number >= 4;
   }
 }
