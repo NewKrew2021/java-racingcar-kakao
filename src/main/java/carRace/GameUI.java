@@ -9,35 +9,36 @@ public class GameUI {
 
     public static CarSet getCarsFromUser() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String input = scanner.nextLine();
-        return validationAndConvert(split(input));
+        String[] names;
+
+        do {
+            System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+            String userText = scanner.nextLine();
+
+            names = split(userText);
+        }while(!isValid(names));
+
+        return new CarSet(names);
     }
 
     private static String[] split(String userInput) {
         return userInput.split(",");
     }
 
-    private static CarSet validationAndConvert(String[] names) {
-        validationForAll(names);
-        return new CarSet(names);
-    }
+    private static boolean isValid(String[] names){
+        boolean valid = true;
 
-    private static void validationForAll(String[] names){
         for (String name : names) {
-            validationForEach(name);
+            valid &= isValidForEach(name);
         }
-    }
-    private static void validationForEach(String name){
-        if(!isAlpha(name)){
-            throw new RuntimeException(String.format("차 이름은 알파벳이어야 합니다 (문제되는 이름 : \"%s\")", name));
-        }
-        if(!allowedLength(name)) {
-            throw new RuntimeException(String.format("차 이름은 1글자 이상 5글자 이하여야 합니다 (문제되는 이름 : \"%s\")", name));
-        }
+        return valid;
     }
 
-    private static boolean isAlpha(String name) {
+    private static boolean isValidForEach(String name){
+        return isAlphabetString(name) && isAllowedLength(name);
+    }
+
+    private static boolean isAlphabetString(String name) {
         boolean result = true;
         for (char c : name.toCharArray()) {
             result &= Character.isAlphabetic(c);
@@ -45,7 +46,7 @@ public class GameUI {
         return result;
     }
 
-    private static boolean allowedLength(String name) {
+    private static boolean isAllowedLength(String name) {
         return 0 < name.length() && name.length() <= MAX_NAME_LENGTH;
     }
 
