@@ -16,10 +16,22 @@ public class Car {
         return this.position;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void run(int value) {
         if (value <= THRESHOLD) {
             return;
         }
         go();
+    }
+
+    public void print() {
+        System.out.print(this.name + " : ");
+        for (int i = 0; i < this.position; ++i) {
+            System.out.print("-");
+        }
+        System.out.println();
     }
 }
