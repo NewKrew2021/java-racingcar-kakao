@@ -1,7 +1,6 @@
 package racingcar.io;
 
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 

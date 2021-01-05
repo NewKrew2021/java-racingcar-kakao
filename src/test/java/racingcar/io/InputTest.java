@@ -1,7 +1,6 @@
 package racingcar.io;
 
 import org.junit.jupiter.api.Test;
-import racingcar.io.Input;
 
 import java.util.Arrays;
 
