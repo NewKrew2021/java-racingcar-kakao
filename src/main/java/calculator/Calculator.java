@@ -12,10 +12,22 @@ public class Calculator {
         return sum(checkNegative(toInts(values)));
     }
 
+    private static int parseInt(String text) {
+        int num = 0;
+
+        try {
+            num = Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            System.out.println("계산기에 , : 를 제외한 문자는 입력이 불가능합니다.");
+        }
+
+        return num;
+    }
+
     private static int[] toInts(String[] text) {
         int[] numbers = new int[text.length];
         for (int i = 0; i < text.length; i++) {
-            numbers[i] = Integer.parseInt(text[i]);
+            numbers[i] = parseInt(text[i]);
         }
         return numbers;
     }

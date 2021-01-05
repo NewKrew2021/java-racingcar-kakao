@@ -2,11 +2,13 @@ package racingcar;
 
 public class Car {
 
-    private int position = 1;
-    private final String name;
-
     private static final int STEP = 1;
     private static final int FORWARD_NUM = 4;
+
+    private final String name;
+
+    private int position = 1;
+
 
     public Car(String name) {
         this.name = name;

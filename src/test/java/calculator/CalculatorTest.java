@@ -25,6 +25,16 @@ public class CalculatorTest {
     }
 
     @Test
+    void sum2() {
+        assertThat(Calculator.splitAndSum("516,22")).isEqualTo(538);
+    }
+
+    @Test
+    void sum3() {
+        assertThat(Calculator.splitAndSum("516,22,12,3,4")).isEqualTo(557);
+    }
+
+    @Test
     void tokenSum() {
         assertThat(Calculator.splitAndSum("1,2:3")).isEqualTo(6);
     }

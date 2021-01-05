@@ -6,6 +6,7 @@ import java.util.List;
 public class RacingCarGame {
     private static final int LIMIT_NAME = 5;
     private static final int RANDOM_SCOPE = 10;
+
     private List<Car> cars;
     private List<String> winners;
 
