@@ -10,19 +10,18 @@ public class RacingCarTest {
     private RacingCar racingCar;
     private Racing racing;
 
-    @BeforeEach
-    public void setUp() {
-        racingCar = new RacingCar();
-        racing = new Racing();
+    @Test
+    public void validNameLengthCheck() {
+        racingCar = new RacingCar("aaaaa");
+        assertThat(racingCar.isNameLengthValid()).isTrue();
     }
 
     @Test
-    public void nameLengthCheck() {
-        racingCar.setName("aaaaa");
-        assertThat(racingCar.isNameLengthValid()).isTrue();
-        racingCar.setName("aaaaaa");
+    public void invalidNameLengthCheck() {
+        racingCar = new RacingCar("aaaaaa");
         assertThat(racingCar.isNameLengthValid()).isFalse();
     }
+
 
     @Test
     public void nameSplitCheck() {
