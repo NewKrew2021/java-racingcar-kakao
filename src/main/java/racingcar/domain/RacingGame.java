@@ -13,6 +13,7 @@ public class RacingGame {
 
     private Random random;
     private List<Car> cars;
+    private Winners winners;
 
     public RacingGame(String inputCarNames) {
         random = new Random();
@@ -21,6 +22,7 @@ public class RacingGame {
         for (String name : names) {
             addCar(name);
         }
+        winners = new Winners(cars);
     }
 
     private List<String> splitName(String str) {
@@ -32,6 +34,7 @@ public class RacingGame {
         for (Car car : cars) {
             addCar(car);
         }
+        winners = new Winners(cars);
     }
 
     private void addCar(String name) {
@@ -61,15 +64,6 @@ public class RacingGame {
     }
 
     public List<String> findWinners() {
-        List<String> winners = new ArrayList<>();
-        int maxPosition = cars.stream().
-                max(Comparator.comparing(Car::getCarInfo)).get().getCarInfo().getPosition();
-        List<Car> winnerCars = cars.stream().
-                filter(car -> car.getCarInfo().getPosition() == maxPosition).collect(Collectors.toList());
-
-        for (Car winnerCar : winnerCars) {
-            winners.add(winnerCar.getCarInfo().getName());
-        }
-        return winners;
+        return winners.findWinners();
     }
 }
