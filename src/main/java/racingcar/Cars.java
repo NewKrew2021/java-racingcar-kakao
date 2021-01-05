@@ -36,6 +36,26 @@ public class Cars {
         return cars;
     }
 
+    /* 난수 생성후 해당 난수 조건에 따라 이동 */
+    public void move(){
+        for(Car car:cars){
+            car.move(checkMove());
+        }
+    }
+
+    private int checkMove(){
+        if (setRandomNumber() >= 4){
+            return 1;
+        }
+        return 0;
+
+    }
+
+    private int setRandomNumber(){
+        return (int)(Math.random()*10);
+    }
+
+
 //    public boolean setCarList(){
 //        String[] carNames = getCarNames(Race.carNames);
 //        this.carList = new ArrayList<>();

@@ -22,6 +22,13 @@ class CarsTest {
         assertThat(cars.getCars()).extracting(Car::getName).isSubsetOf("pobi","crong","honux");
     }
 
+    @Test
+    @DisplayName("1회 자동차 이동 확인")
+    void moveTest(){
+        cars.setCars("pobi,crong,honux");
+        cars.move();
+        assertThat(cars.getCars()).extracting(Car::getLoccation).isSubsetOf(0,1);
+    }
 //
 //    @Test
 //    @DisplayName("1대의 자동차 방향 확인")

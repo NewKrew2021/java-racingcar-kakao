@@ -4,43 +4,54 @@ import java.util.List;
 
 public class Car {
     private String name;
-    private static String winner = "";
-    private int loc;
-    private static int winnerLoc = 0;
+    private int loccation;
 
-    public Car(String name, int loc){
+    public Car(String name){
         this.name = name;
-        this.loc = loc;
+        this.loccation = 0;
     }
 
     public String getName(){
         return this.name;
     }
 
-    public int getLoc(){
-        return this.loc;
+    public int getLoccation(){
+        return this.loccation;
     }
 
-    public boolean carNameLengthCheck(){
-        return this.name.length() <= 5;
+    public void move(int condition){
+        loccation += condition;
     }
 
-    public String getWinnerName(){
-        return winner;
-    }
-    public void setLoc(int loc){
-        this.loc += loc;
+    public void printLocation(){
+
     }
 
-    public void findWinnerLoc(){
-        if (winnerLoc < this.loc){
-            winnerLoc = this.loc;
-        }
-    }
-
-    public void winnerName(){
-        if (winnerLoc == this.loc){
-            winner += this.name + " ";
-        }
-    }
+//
+//    public int getLoc(){
+//        return this.loc;
+//    }
+//
+//    public boolean carNameLengthCheck(){
+//        return this.name.length() <= 5;
+//    }
+//
+//    public String getWinnerName(){
+//        return winner;
+//    }
+//    public void setLoc(int loc){
+//        this.loc += loc;
+//    }
+//
+//    public void findWinnerLoc(){
+//        if (winnerLoc < this.loc){
+//            winnerLoc = this.loc;
+//        }
+//    }
+//
+//    public void winnerName(){
+//        if (winnerLoc == this.loc){
+//            winner += this.name + " ";
+//        }
+//    }
 }
