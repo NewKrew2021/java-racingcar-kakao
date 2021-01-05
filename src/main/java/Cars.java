@@ -20,4 +20,10 @@ public class Cars {
             car.move();
         }
     }
+
+    public void printPositions(){
+        for(Car car : cars){
+            car.printPosition();
+        }
+    }
 }
