@@ -32,13 +32,6 @@ public class RacingGame {
     }
 
     public void printWinner() {
-        String s = "";
-        List<Integer> resultPosition = racing.getPositions();
-        for (int i = 0; i < resultPosition.size(); i++) {
-            s += racing.isWinner(i);
-        }
-        s = s.substring(0, s.length() - 2);
-        s += "가 최종 우승했습니다.";
-        System.out.print(s);
+        System.out.print(racing.returnWinnerString());
     }
 }
