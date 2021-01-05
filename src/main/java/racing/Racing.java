@@ -49,12 +49,12 @@ public class Racing {
     }
 
     public String returnWinnerString(){
-        String s = "";
+        StringBuilder s = new StringBuilder();
         List<Integer> resultPosition = this.getPositions();
         for (int i = 0; i < resultPosition.size(); i++) {
-            s += this.getWinnerNameWithComma(i);
+            s.append(this.getWinnerNameWithComma(i));
         }
-        s = s.substring(0, s.length() - 2);
+        s = new StringBuilder(s.substring(0, s.length() - 2));
         return s + "가 최종 우승했습니다.";
     }
 
