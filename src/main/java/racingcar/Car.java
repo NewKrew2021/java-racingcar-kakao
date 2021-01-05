@@ -25,7 +25,8 @@ public class Car {
         this.distance = distance;
     }
 
-    public void go() {
-        this.distance++;
+    public void move(CarStatus status) {
+        if (status == CarStatus.Go)
+            this.distance++;
     }
 }

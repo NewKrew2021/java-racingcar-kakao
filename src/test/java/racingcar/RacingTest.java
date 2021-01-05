@@ -18,7 +18,7 @@ class RacingTest {
     }
 
     @Test
-    void getName() {
+    void setName() {
         List<String> nameList = Arrays.asList("pobi", "crong", "honux");
 
         for (int i = 0; i < nameList.size(); i++) {
@@ -27,8 +27,14 @@ class RacingTest {
     }
 
     @Test
-    void carNameCheck() {
-        assertThat(racing.getMaxLength()).isLessThan(6);
+    void nameLengthCheck() {
+        Racing case1 = new Racing();
+        case1.setCarList("12345,1234,123");
+        assertThat(case1.isTooLong()).isFalse();
+
+        Racing case2 = new Racing();
+        case2.setCarList("123456,12345,1234");
+        assertThat(case2.isTooLong()).isTrue();
     }
 
     @Test
@@ -49,11 +55,19 @@ class RacingTest {
     @Test
     void move() {
         Car car = new Car("test", 0);
-        racing.move(car, CarStatus.Stop);
+        car.move(CarStatus.Stop);
         assertThat(car.getDistance()).isEqualTo(0);
 
-        racing.move(car, CarStatus.Go);
+        car.move(CarStatus.Go);
         assertThat(car.getDistance()).isEqualTo(1);
     }
 
+    @Test
+    void winner() {
+        racing.getCarList().get(0).move(CarStatus.Go);
+        assertThat(racing.getWinner()).hasSize(1).contains(racing.getCarList().get(0));
+
+        racing.getCarList().get(2).move(CarStatus.Go);
+        assertThat(racing.getWinner()).hasSize(2).doesNotContain(racing.getCarList().get(1));
+    }
 }

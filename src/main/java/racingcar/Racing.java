@@ -1,7 +1,9 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Racing {
     private List<Car> carList;
@@ -17,6 +19,12 @@ public class Racing {
         for (int i = 0; i < carName.length; i++) {
             carList.add(new Car(carName[i], 0));
         }
+    }
+
+    public boolean isTooLong() {
+        if (getMaxLength() > 5)
+            return true;
+        return false;
     }
 
     public int getMaxLength() {
@@ -39,12 +47,34 @@ public class Racing {
     public void moveAll() {
         for (int i = 0; i < carList.size(); i++) {
             CarStatus status = goStop(RandomNumber.generate());
-            move(carList.get(i), status);
+            carList.get(i).move(status);
         }
     }
 
-    public void move(Car car, CarStatus status) {
-        if (status == CarStatus.Go)
-            car.go();
+
+    public Set<Car> getWinner() {
+        Set<Car> winner = new HashSet<>();
+        int maxDistance = getMaxDistance();
+
+        for (int i = 0; i < carList.size(); i++) {
+            addWinner(winner, carList.get(i), maxDistance);
+        }
+
+        return winner;
+    }
+
+    public int getMaxDistance() {
+        int maxDistance = 0;
+
+        for (int i = 0; i < carList.size(); i++) {
+            maxDistance = Math.max(maxDistance, carList.get(i).getDistance());
+        }
+
+        return maxDistance;
+    }
+
+    public void addWinner(Set<Car> winner, Car car, int maxDistance) {
+        if (car.getDistance() == maxDistance)
+            winner.add(car);
     }
 }
