@@ -1,21 +1,30 @@
-package racingcar;
+package racingcar.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.GameManager;
 
 import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GameManagerTest {
+    private GameManager gameManager;
+
+    @BeforeEach
+    void setupGameManager(){
+        gameManager = new GameManager();
+        gameManager.createCars(Arrays.asList("jayk", "jack"));
+    }
+
     @Test
     void setCars() {
-        GameManager gameManager = new GameManager();
-        gameManager.createCars(Arrays.asList("jayk", "jack"));
         List<Car> cars = gameManager.getCars();
         assertThat(cars.size()).isEqualTo(2);
 
         List<Car> trueCars = Arrays.asList(new Car("jayk"), new Car("jack"));
-        List<Car> falseCars = Arrays.asList(new Car("jak"), new Car("jack"));
+        List<Car> falseCars = Arrays.asList(new Car("not"), new Car("here"));
         assertThat(cars.equals(trueCars)).isTrue();
         assertThat(cars.equals(falseCars)).isFalse();
     }

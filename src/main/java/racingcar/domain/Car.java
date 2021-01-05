@@ -1,12 +1,15 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.io.Text;
 
 import java.util.Objects;
 
 public class Car {
-    private String name;
+    private final String name;
     private int location = 0;
-    static final int MIN_NAME_LENGTH = 5;
-    static final int MIN_FORWARD_RANDOM = 4;
+
+    private static final int MIN_NAME_LENGTH = 5;
+    private static final int MIN_FORWARD_RANDOM = 4;
 
     public Car(String name){
         validateName(name);
@@ -15,17 +18,17 @@ public class Car {
 
     public static void validateName(String carName) {
         if (carName.length() > MIN_NAME_LENGTH) {
-            throw new IllegalArgumentException("길이 5 초과");
+            throw new IllegalArgumentException(Text.ILLEGAL_CAR_NAME_LENGTH);
         }
     }
 
-    public boolean isForword(int randomNumber) {
+    public boolean isForward(int randomNumber) {
         return randomNumber >= MIN_FORWARD_RANDOM;
     }
 
     public void tryForward(int randomResult) {
-        if(isForword(randomResult)) {
-            this.location += 1;
+        if(isForward(randomResult)) {
+            this.location++;
         }
     }
 

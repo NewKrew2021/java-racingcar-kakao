@@ -1,9 +1,11 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import racingcar.domain.Car;
+import racingcar.io.Text;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
@@ -11,15 +13,19 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOf
 public class CarTest {
     private Car car;
 
+    private static final String VALID_NAME = "valid";
+    private static final String INVALID_NAME = "invalid";
+
     @BeforeEach
     void createCar(){
-        car = new Car("dummy");
+        car = new Car(VALID_NAME);
     }
 
     @Test
     void carNameCheckTest() {
         assertThatExceptionOfType(IllegalArgumentException.class)
-                .isThrownBy(() -> Car.validateName("jaasdf")).withMessageMatching("길이 5 초과");
+                .isThrownBy(() -> Car.validateName(INVALID_NAME))
+                .withMessageMatching(Text.ILLEGAL_CAR_NAME_LENGTH);
     }
 
     @ParameterizedTest
@@ -31,7 +37,7 @@ public class CarTest {
 
     @ParameterizedTest
     @CsvSource({"5,true","4,true","3,false","2,false"})
-    void isForwordTest(int randomNumber, boolean result) {
-        assertThat(car.isForword(randomNumber)).isEqualTo(result);
+    void isForwardTest(int randomNumber, boolean result) {
+        assertThat(car.isForward(randomNumber)).isEqualTo(result);
     }
 }
