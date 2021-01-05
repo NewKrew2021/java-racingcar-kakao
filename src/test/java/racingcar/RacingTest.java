@@ -11,6 +11,11 @@ import static org.assertj.core.api.Assertions.*;
 public class RacingTest {
 
     @Test
+    public void raceThreeCars() {
+
+    }
+
+    @Test
     public void winnerTestOne(){
         Racing rc = new Racing();
         rc.startRacing(3, 0);
@@ -49,6 +54,7 @@ public class RacingTest {
         arr.add(0);
         assertThat(rc.getFinalCarPositions()).isEqualTo(arr);
     }
+
 
 
 
