@@ -31,4 +31,14 @@ public class RacingGame {
         this.count = count;
     }
 
+    public void moveCars(){
+        for (Car car : cars) {
+            car.move(getRandomNo());
+        }
+    }
+
+    public int getRandomNo(){
+        return (int) (Math.random()*10);
+    }
+
 }
