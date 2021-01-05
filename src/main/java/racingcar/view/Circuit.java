@@ -1,32 +1,32 @@
-package racingcar;
+package racingcar.view;
+
+import racingcar.domain.RacingGame;
+import racingcar.domain.CarInfo;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Circuit {
-    private static RacingGame racingGame;
-    private static int time;
 
-    public static void main(String[] args) {
-        Circuit circuit = new Circuit();
-        circuit.opening();
-        circuit.start();
-        circuit.end();
+    private Scanner sc;
+
+    public Circuit() {
+        this.sc = new Scanner(System.in);
     }
 
-    public void opening() {
+    public String getCarNames() {
         Scanner sc = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String carNames = sc.nextLine();
-        racingGame = new RacingGame(carNames);
-        System.out.println("시도할 회수는 몇회인가요?");
-        time = sc.nextInt();
+
+        return carNames;
     }
 
-    public void start() {
-        for (int i = 0; i < time; i++) {
-            printStatus(racingGame.racing());
-        }
+    public int getIterNo() {
+        int iterationNumber;
+        System.out.println("시도할 회수는 몇회인가요?");
+        iterationNumber = sc.nextInt();
+        return iterationNumber;
     }
 
     public void printStatus(List<CarInfo> carInfos) {
@@ -36,7 +36,7 @@ public class Circuit {
         System.out.println();
     }
 
-    public void end() {
+    public void printResult(RacingGame racingGame) {
         List<String> winnerNames = racingGame.findWinners();
         printStatus(racingGame.getStatus());
         System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");

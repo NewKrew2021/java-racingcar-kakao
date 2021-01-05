@@ -1,20 +1,29 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.domain.Car;
+import racingcar.domain.CarInfo;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingGame {
     private List<Car> cars;
 
     private static final int RANGE = 10;
     private static final int SPEED = 4;
+    private static final int NAME_MAX_LENGTH = 5;
 
-    RacingGame(String str) {
+    public RacingGame(String str) {
         cars = new ArrayList<>();
         List<String> names = splitName(str);
         for (String name : names) {
             addCar(name);
+        }
+    }
+
+    public RacingGame(List<Car> cars) {
+        for (Car car : cars) {
+            addCar(car);
         }
     }
 
@@ -28,15 +37,20 @@ public class RacingGame {
         }
     }
 
-    private boolean checkName(String name) {
-        return name.length() <= 5;
+    private void addCar(Car car) {
+        if (checkName(car.getName())) {
+            cars.add(car);
+        }
     }
 
-    public List<CarInfo> racing() {
+    private boolean checkName(String name) {
+        return name.length() <= NAME_MAX_LENGTH;
+    }
+
+    public void racing() {
         for (Car car : cars) {
             moveCar(car);
         }
-        return getStatus();
     }
 
     public List<CarInfo> getStatus() {

@@ -1,12 +1,10 @@
-package racingcar;
+package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RacingGame;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
@@ -39,9 +37,27 @@ public class RacingGameTest {
     }
 
     @Test
-    void winnerTest(){
-        racingGame.racing();
-        assertThat(racingGame.findWinners()).containsExactly("d","b","v");
+    void singleWinnerTest() {
+        Car car1 = new Car("yell");
+        Car car2 = new Car("dino");
+        Car car3 = new Car("pobi");
+
+        car1.nextStep();
+        racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
+
+        assertThat(racingGame.findWinners()).containsExactly("yell");
+    }
+
+    @Test
+    void multiWinnersTest(){
+        Car car1 = new Car("yell");
+        Car car2 = new Car("dino");
+        Car car3 = new Car("pobi");
+
+        car1.nextStep(); car3.nextStep();
+        racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
+
+        assertThat(racingGame.findWinners()).containsExactly("yell", "pobi");
     }
 
     @Test
