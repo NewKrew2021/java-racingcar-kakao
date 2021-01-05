@@ -13,11 +13,11 @@ public class CarView {
 
     public static void validateCarName(ArrayList<String> nameList) throws IllegalStateException {
         for (String name : nameList) {
-            testLength(name);
+            lengthValidationTest(name);
         }
     }
 
-    private static void testLength(String name){
+    private static void lengthValidationTest(String name){
         if(name.length() > 5) {
             throw new IllegalStateException();
         }
@@ -35,10 +35,6 @@ public class CarView {
         return scanner.nextInt();
     }
 
-    public static void printWinnerCar(ArrayList<String> winners) {
-        System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
-    }
-
     public static void printRoundStart() {
         System.out.println();
         System.out.println("실행 결과");
@@ -50,4 +46,9 @@ public class CarView {
         }
         System.out.println();
     }
+
+    public static void printWinnerCar(ArrayList<String> winners) {
+        System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
+    }
+
 }

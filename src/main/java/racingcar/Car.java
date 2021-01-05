@@ -1,6 +1,7 @@
 package racingcar;
 
 public class Car {
+
     private int position = 0;
     private final int RANDOM_SCOPE = 10;
     private String name = "";
@@ -10,12 +11,8 @@ public class Car {
         this.position = position;
     }
 
-    public int getPosition(){
-        return position;
-    }
-
     public int makeRandomNumber(){
-        return ((int)(Math.random() * 10000) % RANDOM_SCOPE);
+        return ((int)(Math.random() * RANDOM_SCOPE) % RANDOM_SCOPE);
     }
 
     public int getDistance(int distance){
@@ -27,6 +24,10 @@ public class Car {
 
     public int updateCarPosition(int distance){
         position += distance;
+        return position;
+    }
+
+    public int getPosition(){
         return position;
     }
 

@@ -1,17 +1,12 @@
 package racingcar;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class CarGame {
+
     private final ArrayList<Car> carList;
     private final int totalRound;
     private int currentRound = 0;
-
-    public ArrayList<Car> getCarList() {
-        return carList;
-    }
 
     public CarGame(ArrayList<Car> carList, int totalRound) {
         this.carList = carList;
@@ -27,10 +22,6 @@ public class CarGame {
         for(Car car : carList){
             car.updateCarPosition(car.getDistance(car.makeRandomNumber()));
         }
-    }
-
-    public boolean isFinished() {
-        return totalRound == currentRound;
     }
 
     public ArrayList<String> getWinner() {
@@ -56,4 +47,11 @@ public class CarGame {
         return maxPosition;
     }
 
+    public boolean isFinished() {
+        return totalRound == currentRound;
+    }
+
+    public ArrayList<Car> getCarList() {
+        return carList;
+    }
 }
