@@ -1,7 +1,8 @@
 package racingcar.model;
 
 public class RacingCar {
-    static final int MIN_MOVABLE_NUMBER = 4;
+
+    private static final int MIN_MOVABLE_NUMBER = 4;
 
     private String name;
     private int dist;
@@ -11,15 +12,15 @@ public class RacingCar {
         this.dist = 0;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public int move(int value) {
         if (isMove(value)) {
-            return ++dist;
+            return ++this.dist;
         }
-        return dist;
+        return this.dist;
+    }
+
+    private boolean isMove(int value) {
+        return value >= MIN_MOVABLE_NUMBER;
     }
 
     public void printDist() {
@@ -31,13 +32,12 @@ public class RacingCar {
         System.out.println(stringBuilder.toString());
     }
 
-    private boolean isMove(int value) {
-        return value >= MIN_MOVABLE_NUMBER;
+    public String getName() {
+        return this.name;
     }
 
     public int getDist() {
         return this.dist;
     }
-
 
 }

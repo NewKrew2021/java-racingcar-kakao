@@ -17,9 +17,9 @@ public class InputValidCheckerTest {
         assertThat(InputValidChecker.isValidNames("aaaaaa")).isFalse();
     }
 
-
     @Test
     public void nameDuplicationCheck() {
         assertThat(InputValidChecker.isValidNames("aaa,aaa,bbb")).isFalse();
+        assertThat(InputValidChecker.isValidNames("aaa,bbb,aaa")).isFalse();
     }
 }

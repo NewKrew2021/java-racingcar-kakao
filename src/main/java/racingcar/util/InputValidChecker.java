@@ -27,6 +27,7 @@ public class InputValidChecker {
 
     private static boolean isNotDuplicatedName(String[] names) {
         return Arrays.stream(names)
-                .distinct().count() == names.length;
+                .distinct()
+                .count() == names.length;
     }
 }

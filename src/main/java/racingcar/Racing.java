@@ -16,25 +16,25 @@ public class Racing {
     }
 
     private void getInput() {
-        racingCars = new RacingCars(InputScanner.scanName());
-        round = InputScanner.scanRound();
+        this.racingCars = new RacingCars(InputScanner.inputName());
+        this.round = InputScanner.inputRound();
     }
 
     private void playAndShowRound() {
         System.out.println("\n실행 결과");
-        for (int i = 0; i < round; i++) {
-            racingCars.run();
+        for (int i = 0; i < this.round; i++) {
+            this.racingCars.run();
             printRoundResult();
         }
     }
 
     private void printRoundResult() {
-        racingCars.printRoundResult();
+        this.racingCars.printRoundResult();
         System.out.println("");
     }
 
     private void printFinalResult() {
-        List<RacingCar> winners = racingCars.getWinners();
+        List<RacingCar> winners = this.racingCars.getWinners();
         StringBuilder stringBuilder = new StringBuilder();
         for (RacingCar winner : winners) {
             stringBuilder.append(", ").append(winner.getName());
