@@ -2,11 +2,25 @@ package racingCar;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class GameManager {
 
-    public GameManager() {
+    private final GameView gameView= new GameView();
+    private final Scanner sc=new Scanner(System.in);
+
+    public void startGame() {
+        // 입력 받아서 자동차 생성
+        gameView.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String carString=sc.nextLine();
+        gameView.print("시도할 회수는 몇회인가요?");
+        int round=sc.nextInt();
+
+        // 게임 실행
+        List<Car> cars=makeCarList(parsing(carString));
+        executeRound(cars,round);
+
+        List<Car> winner = getWinner(cars);
+        gameView.gameResult(winner);
     }
 
     public List<String> parsing(String userInput) throws RuntimeException {
@@ -25,17 +39,7 @@ public class GameManager {
         return carName;
     }
 
-    public List<Car> getWinner(List<Car> cars){
-        List<Car> winners=new ArrayList<Car>();
 
-        Collections.sort(cars);
-        Car first=cars.get(0);
-        int index=0;
-        while(first.equalPosition(cars.get(index))) {
-            winners.add(cars.get(index++));
-        }
-        return winners;
-    }
     public List<Car> makeCarList(List<String> carNames){
         List<Car> cars=new ArrayList<Car>();
         for (String carName : carNames) {
@@ -48,10 +52,22 @@ public class GameManager {
     public void executeRound(List<Car> cars, Integer rounds) {
         for (int i = 0; i < rounds; i++) {
             carMove(cars);
-            // 라운드 출
+            gameView.roundResult(cars);
         }
         List<Car> winners = getWinner(cars);
 
+    }
+
+    public List<Car> getWinner(List<Car> cars){
+        List<Car> winners=new ArrayList<Car>();
+
+        Collections.sort(cars);
+        Car first=cars.get(0);
+        int index=0;
+        while(first.equalPosition(cars.get(index))) {
+            winners.add(cars.get(index++));
+        }
+        return winners;
     }
 
     private void carMove(List<Car> cars) {
