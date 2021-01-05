@@ -16,27 +16,6 @@ public class RacingGameUI {
         return validationAndConvert(split(input));
     }
 
-    public static int getNumOfRepeatFromUser() {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("시도할 회수는 몇회인가요?");
-        return scanner.nextInt();
-    }
-
-    public static void printStartMessage() {
-        System.out.println("실행 결과");
-    }
-
-    public static void printAllCars(Cars cars) {
-        System.out.println(cars);
-    }
-
-    public static void printWinners(List<Car> winners) {
-        List<String> winnerNames = winners.stream().map(Car::getName).collect(Collectors.toList());
-        System.out.print(String.join(", ", winnerNames));
-        System.out.println(" 가 최종 우승했습니다.");
-    }
-
     private static String[] split(String userInput) {
         return userInput.split(",");
     }
@@ -60,10 +39,6 @@ public class RacingGameUI {
         }
     }
 
-    private static boolean allowedLength(String name) {
-        return 0 < name.length() && name.length() <= MAX_NAME_LENGTH;
-    }
-
     private static boolean isAlpha(String name) {
         boolean result = true;
         for (char c : name.toCharArray()) {
@@ -71,4 +46,30 @@ public class RacingGameUI {
         }
         return result;
     }
+
+    private static boolean allowedLength(String name) {
+        return 0 < name.length() && name.length() <= MAX_NAME_LENGTH;
+    }
+
+    public static int getNumOfRepeatFromUser() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("시도할 회수는 몇회인가요?");
+        return scanner.nextInt();
+    }
+
+    public static void printStartMessage() {
+        System.out.println("실행 결과");
+    }
+
+    public static void printAllCars(Cars cars) {
+        System.out.println(cars);
+    }
+
+    public static void printWinners(List<Car> winners) {
+        List<String> winnerNames = winners.stream().map(Car::getName).collect(Collectors.toList());
+        System.out.print(String.join(", ", winnerNames));
+        System.out.println(" 가 최종 우승했습니다.");
+    }
+
 }
