@@ -8,6 +8,14 @@ public class Car {
         }
         return 1;
     }
+
+    public int getDistance(int distance){
+        if(distance<4){
+            return 0;
+        }
+        return 1;
+    }
+
     public int updateCarPosition(int distance){
         position += distance;
         return position;
