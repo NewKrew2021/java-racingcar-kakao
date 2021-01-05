@@ -1,6 +1,6 @@
 public class Car {
     private final String name;
-    private final int THRESHOLD = 3;
+    private static final int THRESHOLD = 3;
     private int position;
 
     public Car(String name) {

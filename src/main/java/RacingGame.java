@@ -5,15 +5,23 @@ import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    private final int ROUND_NO;
-    private final List<Car> cars;
+    private final int FINAL_ROUND;
     private static final int MAX_LENGTH = 5;
+    private final List<Car> cars;
     private int curRound;
 
-    public RacingGame(int roundNo, List<Car> cars) {
-        this.ROUND_NO = roundNo;
+    public RacingGame(int finalRound, List<Car> cars) {
+        this.FINAL_ROUND = finalRound;
         this.cars = cars;
         this.curRound = 0;
+    }
+
+    private int getMaxPosition() {
+        int maxPosition = 0;
+        for (Car car : cars) {
+            maxPosition = Math.max(maxPosition, car.getPosition());
+        }
+        return maxPosition;
     }
 
     public List<Car> getWinners() {
@@ -36,7 +44,7 @@ public class RacingGame {
     }
 
     public boolean isEnd() {
-        return curRound == ROUND_NO;
+        return curRound == FINAL_ROUND;
     }
 
     public void playRound() {
@@ -46,14 +54,6 @@ public class RacingGame {
             car.print();
         }
         curRound++;
-    }
-
-    private int getMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
     }
 
     private static boolean isValidNames(String[] names) {
