@@ -1,8 +1,8 @@
-package RacingCar;
+package racingcar;
 
-import RacingCar.Model.RacingCar;
+import racingcar.model.RacingCar;
+import racingcar.util.InputScanner;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Racing {
