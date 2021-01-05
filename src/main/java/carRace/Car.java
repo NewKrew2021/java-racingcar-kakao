@@ -31,9 +31,9 @@ public class Car implements Comparable<Car>{
         location++;
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder(name + " : ");
-        for(int i = 0; i < location; i++){
+        for (int i = 0; i < location; i++){
             sb.append('-');
         }
         return sb.toString();

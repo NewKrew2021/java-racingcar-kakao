@@ -1,6 +1,5 @@
 package carRace;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -46,13 +45,13 @@ public class RacingGameUI {
         return new Cars(names);
     }
 
-    private static void validationForAll(String[] names){
+    private static void validationForAll(String[] names) {
         for (String name : names) {
             validationForEach(name);
         }
     }
-    private static void validationForEach(String name){
-        if(!isAlpha(name)){
+    private static void validationForEach(String name) {
+        if(!isAlpha(name)) {
             throw new RuntimeException(String.format("차 이름은 알파벳이어야 합니다 - error name : \"%s\"", name));
         }
         if(!allowedLength(name)) {

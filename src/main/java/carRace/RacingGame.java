@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RacingGame {
 
-    public void run(){
+    public void run() {
         Cars cars = RacingGameUI.getCarsFromUser();
         race(RacingGameUI.getNumOfRepeatFromUser(), cars);
         RacingGameUI.printWinners(cars.getWinners());
@@ -19,10 +19,10 @@ public class RacingGame {
         }
     }
 
-    public List<Integer> makeRandomNumber(int numOfCars){
+    public List<Integer> makeRandomNumber(int numOfCars) {
         List<Integer> numbers = new ArrayList<>();
 
-        for(int i = 0; i < numOfCars; i++){
+        for (int i = 0; i < numOfCars; i++){
             numbers.add((int)(Math.random() * 10));
         }
 

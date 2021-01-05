@@ -16,13 +16,13 @@ public class Cars {
         }
     }
 
-    public void moveAllCars(List<Integer> numbers){
+    public void moveAllCars(List<Integer> numbers) {
         for (int i = 0; i < carList.size(); i++) {
             carList.get(i).judgeAndGo(numbers.get(i));
         }
     }
 
-    public List<Car> getWinners(){
+    public List<Car> getWinners() {
         Collections.sort(carList);
         Car maxCar = carList.get(0);
         return carList.stream()
@@ -30,7 +30,7 @@ public class Cars {
                 .collect(Collectors.toList());
     }
 
-    public String toString(){
+    public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Car car : carList) {
             sb.append(car).append("\n");
