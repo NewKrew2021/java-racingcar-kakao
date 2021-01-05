@@ -15,8 +15,8 @@ public class RacingcarTest {
     String[] carNames = new String[]{"losea", "loseb", "win"};
     Racingcar racingcar = new Racingcar(carNames, 3);
 
-    while (!racingcar.isFinished()) {
-      racingcar.simulateOnce(Arrays.asList(STOP, STOP, MOVE));
+    while (racingcar.isInProgress()) {
+      racingcar.simulate(Arrays.asList(STOP, STOP, MOVE));
     }
 
     assertThat(racingcar.getWinners()).isEqualTo(Arrays.asList("win"));
@@ -27,8 +27,8 @@ public class RacingcarTest {
     String[] carNames = new String[]{"lose", "wina", "winb"};
     Racingcar racingcar = new Racingcar(carNames, 3);
 
-    while (!racingcar.isFinished()) {
-      racingcar.simulateOnce(Arrays.asList(STOP, MOVE, MOVE));
+    while (racingcar.isInProgress()) {
+      racingcar.simulate(Arrays.asList(STOP, MOVE, MOVE));
     }
 
     assertThat(racingcar.getWinners()).isEqualTo(Arrays.asList("wina", "winb"));

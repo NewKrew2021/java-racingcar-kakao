@@ -1,6 +1,9 @@
 package com.nextstep.racingcar.racingcar;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -23,7 +26,7 @@ public class Racingcar {
   }
 
   public List<String> getWinners() {
-    int highest = getHighestAdvancedCar();
+    int highest = getLocationOfHighestAdvancedCar();
 
     return cars.stream()
         .filter(car -> car.getLocation() == highest)
@@ -31,16 +34,16 @@ public class Racingcar {
         .collect(Collectors.toList());
   }
 
-  public void simulateOnce(List<Integer> customRandom) {
-    simulate(customRandom);
+  public void simulate(List<Integer> customRandom) {
+    simulateOnce(customRandom);
   }
 
-  public void simulateOnce() {
+  public void simulate() {
     List<Integer> randoms = getRandomDigitsForCars();
-    simulate(randoms);
+    simulateOnce(randoms);
   }
 
-  private void simulate(List<Integer> randoms) {
+  private void simulateOnce(List<Integer> randoms) {
     IntStream.range(0, cars.size())
         .filter(i -> moveResult(randoms.get(i)) == CarResult.MOVE)
         .mapToObj(i -> cars.get(i))
@@ -49,8 +52,8 @@ public class Racingcar {
     increaseCounter();
   }
 
-  public boolean isFinished() {
-    return repeatCount <= currentStep;
+  public boolean isInProgress() {
+    return currentStep < repeatCount;
   }
 
   private void addCarsWithNames(String[] carNames) {
@@ -63,7 +66,7 @@ public class Racingcar {
     cars.add(new Car(carName));
   }
 
-  private int getHighestAdvancedCar() {
+  private int getLocationOfHighestAdvancedCar() {
     return cars.stream()
         .max(Comparator.comparing(Car::getLocation))
         .map(Car::getLocation)

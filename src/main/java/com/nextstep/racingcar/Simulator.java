@@ -18,8 +18,8 @@ public class Simulator {
     createNewRacingcarBasedOnInputs();
 
     printResultGuide();
-    while (!racingcar.isFinished()) {
-      racingcar.simulateOnce();
+    while (racingcar.isInProgress()) {
+      racingcar.simulate();
       printSimulationResults(racingcar);
     }
 
