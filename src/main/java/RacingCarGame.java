@@ -1,3 +1,8 @@
+import domain.Car;
+import domain.CarManager;
+import view.InputView;
+import view.OutputView;
+
 import java.util.List;
 
 public class RacingCarGame {

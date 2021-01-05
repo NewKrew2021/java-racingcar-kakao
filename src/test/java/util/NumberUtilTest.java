@@ -1,4 +1,7 @@
+package util;
+
 import org.junit.jupiter.api.RepeatedTest;
+import util.NumberUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

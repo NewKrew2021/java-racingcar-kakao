@@ -1,3 +1,7 @@
+package domain;
+
+import domain.Car;
+import domain.CarManager;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

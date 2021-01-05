@@ -1,3 +1,7 @@
+package view;
+
+import util.StringUtil;
+
 import java.util.List;
 import java.util.Scanner;
 
