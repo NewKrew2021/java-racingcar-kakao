@@ -11,7 +11,7 @@ public class CarManager {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.moveOrNot(NumberUtil.createRandomNumber());
+            car.moveOrNot(NumberUtil.generateRandomNumber());
         }
     }
 

@@ -3,17 +3,15 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        if (name == null) {
-            throw new IllegalArgumentException();
-        }
-        if (name.length() == 0) {
-            throw new IllegalArgumentException();
-        }
-        if (name.length() >= 6) {
-            throw new IllegalArgumentException();
-        }
+        validateName(name);
         this.name = name;
         this.position = 0;
+    }
+
+    private void validateName(String name) {
+        if (name == null || name.length() == 0 || name.length() >= 6) {
+            throw new IllegalArgumentException("이름은 null 이 아니고 길이가 1과 5 사이여야 합니다");
+        }
     }
 
     public void moveOrNot(int condition) {
