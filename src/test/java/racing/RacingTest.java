@@ -11,7 +11,8 @@ public class RacingTest {
 
     @Test
     void racingConstructorTest() {
-        Racing racing = new Racing();
+        int NUMBERS = 5;
+        Racing racing = new Racing(NUMBERS);
         racing.setCars("pobi,crong,honux");
         List<Car> cars = racing.getCars();
         List<String> dest = Arrays.asList("pobi", "crong", "honux");
@@ -47,9 +48,9 @@ public class RacingTest {
     @Test
     void raceTest() {
         int NUMBERS = 5;
-        Racing racing = new Racing();
+        Racing racing = new Racing(NUMBERS);
         racing.setCars("pobi,crong,honux");
-        List<Integer> resultPosition = racing.repeatRacing(NUMBERS);
+        List<Integer> resultPosition = racing.repeatRacing();
         assertThat(resultPosition.size()).isEqualTo(racing.getCars().size());
         assertThat(resultPosition).asList()
                 .contains(NUMBERS);

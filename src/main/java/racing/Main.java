@@ -3,8 +3,8 @@ package racing;
 public class Main {
 
     public static void main(String[] args) {
-        Racing racing = new Racing();
-        racing.run();
+        RacingGame racingGame = new RacingGame();
+        racingGame.run();
     }
 
 }

@@ -3,7 +3,7 @@ package racing;
 public class Car {
 
     private final int STOP_VALUE = 3;
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name) {
