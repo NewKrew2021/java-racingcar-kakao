@@ -8,7 +8,7 @@ public class Car {
     static final int MIN_NAME_LENGTH = 5;
     static final int MIN_FORWARD_RANDOM = 4;
 
-    public Car(String name){
+    public Car(String name) {
         validateName(name);
         this.name = name;
     }
@@ -19,7 +19,7 @@ public class Car {
         }
     }
 
-    public boolean isForword(int randomNumber) {
+    private boolean isForword(int randomNumber) {
         return randomNumber >= MIN_FORWARD_RANDOM;
     }
 
@@ -29,7 +29,7 @@ public class Car {
         }
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 

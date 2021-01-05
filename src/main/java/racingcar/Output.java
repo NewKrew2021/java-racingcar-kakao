@@ -11,8 +11,11 @@ public class Output {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    static void printSimulationResult(List<Car> cars){
+    static void printResultStart() {
         System.out.println("실행 결과");
+    }
+
+    static void printSimulationResult(List<Car> cars){
         for(Car car: cars){
             System.out.print(car.getName() + " : ");
             printLocation(car.getLocation());

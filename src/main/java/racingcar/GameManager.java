@@ -3,12 +3,10 @@ package racingcar;
 import java.util.*;
 
 public class GameManager {
-    private final RandomNumber randomNumber;
     private final List<Car> cars;
     private int gameTime;
 
     GameManager(){
-        this.randomNumber = new RandomNumber();
         this.cars = new ArrayList<>();
     }
 
@@ -17,9 +15,11 @@ public class GameManager {
     }
 
     public void playGame(){
-        for(int i = 0; i <= gameTime; ++i){
-            Output.printSimulationResult(cars);
+        Output.printResultStart();
+        Output.printSimulationResult(cars);
+        for(int i = 0; i < gameTime; ++i) {
             simulateCars();
+            Output.printSimulationResult(cars);
         }
         Output.printWinner(getWinners());
     }
@@ -33,17 +33,17 @@ public class GameManager {
     }
 
     private List<String> getWinners(){
-        final int maxval = getMaxLocation();
+        final int maxVal = getMaxLocation();
         List<String> winners = new ArrayList<>();
         cars.stream()
-                .filter((car) -> car.getLocation() == maxval)
+                .filter((car) -> car.getLocation() == maxVal)
                 .forEach((car) -> winners.add(car.getName()));
         return winners;
     }
 
     private void simulateCars(){
         for(Car car: cars){
-            car.tryForward(randomNumber.getRandomNumber());
+            car.tryForward(RandomNumber.getRandomNumber());
         }
     }
 
