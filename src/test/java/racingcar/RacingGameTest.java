@@ -22,7 +22,8 @@ public class RacingGameTest {
 
     @Test
     void splitTest(){
-        List<CarInfo> carInfos = racingGame.racing();
+        racingGame.racing();
+        List<CarInfo> carInfos = racingGame.getStatus();
         List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());
         assertThat(carNames).containsExactly("d","b","v");
     }
@@ -30,7 +31,8 @@ public class RacingGameTest {
     @Test
     void splitUnderFiveTest(){
         racingGame = new RacingGame("abcdef,a,b");
-        List<CarInfo> carInfos = racingGame.racing();
+        racingGame.racing();
+        List<CarInfo> carInfos = racingGame.getStatus();
         List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());
         List<Integer> carPositions = carInfos.stream().map(CarInfo::getPosition).collect(Collectors.toList());
         assertThat(carNames).containsExactly("a","b");

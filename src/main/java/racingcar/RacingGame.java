@@ -33,9 +33,15 @@ public class RacingGame {
     }
 
     public List<CarInfo> racing() {
-        List<CarInfo> carInfos = new ArrayList<>();
         for (Car car : cars) {
             moveCar(car);
+        }
+        return getStatus();
+    }
+
+    public List<CarInfo> getStatus() {
+        List<CarInfo> carInfos = new ArrayList<>();
+        for (Car car : cars) {
             carInfos.add(new CarInfo(car.getName(), car.getPosition()));
         }
         return carInfos;
