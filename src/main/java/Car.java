@@ -1,14 +1,11 @@
 public class Car {
     private final String name;
+    private final int THRESHOLD = 3;
     private int position;
 
     public Car(String name) {
         this.name = name;
         this.position = 0;
-    }
-
-    public boolean isValid() {
-        return name.length() <= 5;
     }
 
     public void go() {
@@ -20,7 +17,7 @@ public class Car {
     }
 
     public void run(int value) {
-        if (value <= 3) {
+        if (value <= THRESHOLD) {
             return;
         }
         go();
