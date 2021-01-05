@@ -23,14 +23,14 @@ public class Racing {
     private void playAndShowRound() {
         System.out.println("\n실행 결과");
         for (int i = 0; i < round; i++) {
-            racingCars.run();
+            racingCars.runRound();
             printRoundResult();
         }
     }
 
     private void printRoundResult() {
         racingCars.printRoundResult();
-        System.out.println("");
+        System.out.println();
     }
 
     private void printFinalResult() {
