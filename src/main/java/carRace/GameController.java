@@ -3,16 +3,16 @@ package carRace;
 public class GameController {
 
     public void run(){
-        CarSet carSet = GameUI.getCarsFromUser();
-        race(GameUI.getNumOfRepeatFromUser(), carSet);
-        GameUI.printWinners(carSet.getWinners());
+        CarSet candidates = GameUI.getCarsFromUser();
+        race(candidates, GameUI.getNumOfRepeatFromUser());
+        GameUI.printWinners(candidates.getWinners());
     }
 
-    private void race(int n, CarSet carSet) {
+    private void race(CarSet candidates, int repeatNumber) {
         GameUI.printStartMessage();
-        for (int i = 0; i < n; i++) {
-            carSet.moveAllCars(carSet.getCarsRandomNumber());
-            GameUI.printAllCars(carSet);
+        for (int i = 0; i < repeatNumber; i++) {
+            candidates.moveAllCars(candidates.getCarsRandomNumber());
+            GameUI.printAllCars(candidates);
         }
     }
 }
