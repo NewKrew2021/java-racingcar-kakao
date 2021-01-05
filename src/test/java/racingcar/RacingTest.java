@@ -14,26 +14,26 @@ class RacingTest {
     @BeforeAll
     static void setUp() {
         racing = new Racing();
-        racing.setCarList("pobi,crong,honux");
+        racing.setCars("pobi,crong,honux");
     }
 
     @Test
     void setName() {
-        List<String> nameList = Arrays.asList("pobi", "crong", "honux");
+        List<String> names = Arrays.asList("pobi", "crong", "honux");
 
-        for (int i = 0; i < nameList.size(); i++) {
-            assertThat(racing.getCarList().get(i).getName()).isEqualTo(nameList.get(i));
+        for (int i = 0; i < names.size(); i++) {
+            assertThat(racing.getCars().get(i).getName()).isEqualTo(names.get(i));
         }
     }
 
     @Test
     void nameLengthCheck() {
         Racing case1 = new Racing();
-        case1.setCarList("12345,1234,123");
+        case1.setCars("12345,1234,123");
         assertThat(case1.isTooLong()).isFalse();
 
         Racing case2 = new Racing();
-        case2.setCarList("123456,12345,1234");
+        case2.setCars("123456,12345,1234");
         assertThat(case2.isTooLong()).isTrue();
     }
 
@@ -64,10 +64,10 @@ class RacingTest {
 
     @Test
     void winner() {
-        racing.getCarList().get(0).move(CarStatus.Go);
-        assertThat(racing.getWinner()).hasSize(1).contains(racing.getCarList().get(0));
+        racing.getCars().get(0).move(CarStatus.Go);
+        assertThat(racing.getWinners()).hasSize(1).contains(racing.getCars().get(0));
 
-        racing.getCarList().get(2).move(CarStatus.Go);
-        assertThat(racing.getWinner()).hasSize(2).doesNotContain(racing.getCarList().get(1));
+        racing.getCars().get(2).move(CarStatus.Go);
+        assertThat(racing.getWinners()).hasSize(2).doesNotContain(racing.getCars().get(1));
     }
 }

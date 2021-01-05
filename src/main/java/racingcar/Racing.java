@@ -1,41 +1,30 @@
 package racingcar;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Racing {
-    private List<Car> carList;
+    private List<Car> cars;
 
-    public List<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void setCarList(String s) {
+    public void setCars(String s) {
         String[] carName = s.split(",");
-        carList = new ArrayList<>();
+        cars = new ArrayList<>();
 
         for (int i = 0; i < carName.length; i++) {
-            carList.add(new Car(carName[i], 0));
+            cars.add(new Car(carName[i], 0));
         }
     }
 
     public boolean isTooLong() {
-        if (getMaxLength() > 5)
+        if (cars.stream().anyMatch(o1 -> o1.getName().length() > 5))
             return true;
+
         return false;
-    }
-
-    public int getMaxLength() {
-        int maxLength = 0;
-
-        for (int i = 0; i < carList.size(); i++) {
-            maxLength = Integer.max(maxLength, carList.get(i).getName().length());
-        }
-
-        return maxLength;
     }
 
     public CarStatus goStop(int rand) {
@@ -46,36 +35,26 @@ public class Racing {
     }
 
     public void moveAll() {
-        for (int i = 0; i < carList.size(); i++) {
+        for (int i = 0; i < cars.size(); i++) {
             CarStatus status = goStop(RandomNumber.generate());
-            carList.get(i).move(status);
+            cars.get(i).move(status);
         }
     }
 
-
-    public List<Car> getWinner() {
-        List<Car> winner = new ArrayList<>();
+    public List<Car> getWinners() {
         int maxDistance = getMaxDistance();
+        List<Car> winners = cars.stream().filter(o1 -> o1.getDistance() == maxDistance).collect(Collectors.toList());
 
-        for (int i = 0; i < carList.size(); i++) {
-            addWinner(winner, carList.get(i), maxDistance);
-        }
-
-        return winner;
+        return winners;
     }
 
     public int getMaxDistance() {
         int maxDistance = 0;
 
-        for (int i = 0; i < carList.size(); i++) {
-            maxDistance = Math.max(maxDistance, carList.get(i).getDistance());
+        for (int i = 0; i < cars.size(); i++) {
+            maxDistance = Math.max(maxDistance, cars.get(i).getDistance());
         }
 
         return maxDistance;
-    }
-
-    public void addWinner(List<Car> winner, Car car, int maxDistance) {
-        if (car.getDistance() == maxDistance)
-            winner.add(car);
     }
 }

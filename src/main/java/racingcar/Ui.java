@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Ui {
     private Scanner sc;
@@ -21,7 +20,7 @@ public class Ui {
 
         while (!complete) {
             System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-            racing.setCarList(sc.next());
+            racing.setCars(sc.next());
             complete = !racing.isTooLong();
         }
     }
@@ -43,8 +42,8 @@ public class Ui {
     }
 
     public void printDistance() {
-        for (int i = 0; i < racing.getCarList().size(); i++) {
-            Car car = racing.getCarList().get(i);
+        for (int i = 0; i < racing.getCars().size(); i++) {
+            Car car = racing.getCars().get(i);
             System.out.println(car.getName() + " : " + new String(new char[car.getDistance()]).replace("\0", "-"));
         }
 
@@ -52,10 +51,10 @@ public class Ui {
     }
 
     public void printWinner() {
-        List<Car> winner = racing.getWinner();
+        List<Car> winners = racing.getWinners();
         String s = "";
 
-        for (Car car : winner)
+        for (Car car : winners)
             s += car.getName() + ", ";
 
         s = s.substring(0, s.length() - 2);
