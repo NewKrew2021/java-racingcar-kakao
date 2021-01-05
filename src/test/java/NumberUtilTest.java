@@ -6,7 +6,7 @@ public class NumberUtilTest {
 
     @RepeatedTest(100)
     void 난수생성() {
-        int randomNumber = NumberUtil.createRandomNumber();
+        int randomNumber = NumberUtil.generateRandomNumber();
         assertThat(randomNumber).isBetween(0, 9);
     }
 }
