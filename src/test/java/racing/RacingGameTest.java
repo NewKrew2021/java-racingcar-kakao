@@ -9,32 +9,20 @@ public class RacingGameTest {
 
     @Test
     void racingConstructorTest() {
-        RacingGameLogic racing = new RacingGameLogic();
-        racing.setCars("pobi,crong,honux");
-        List<Car> cars = racing.getCars();
-        List<String> dest = Arrays.asList("pobi", "crong", "honux");
+        RacingGameLogic racingGame = new RacingGameLogic("pobi,crong,honux");
+        final List<String> dest = Arrays.asList("pobi", "crong", "honux");
+
+        List<Car> cars = racingGame.getCars();
+
         for (int i = 0; i < cars.size(); i++) {
             assertThat(cars.get(i).getName()).isEqualTo(dest.get(i));
         }
     }
 
     @Test
-    void stopTest() {
-        Car car = new Car("pobi");
-        boolean isMoved = car.decideGoOrStop(2);
-        assertThat(isMoved).isFalse();
-    }
-
-    @Test
-    void goTest() {
-        Car car = new Car("pobi");
-        boolean isMoved = car.decideGoOrStop(4);
-        assertThat(isMoved).isTrue();
-    }
-
-    @Test
     void moveTest() {
         Car car = new Car("pobi");
+
         car.move(true);
         assertThat(car.getPosition()).isEqualTo(1);
         car.move(true);
@@ -43,13 +31,28 @@ public class RacingGameTest {
     }
 
     @Test
+    void repeatRace() {
+        RacingGameLogic racingGame = new RacingGameLogic("pobi,crong,honux");
+        final int repeatMaxNumber = 5;
+
+        while(racingGame.checkPosition(repeatMaxNumber)) {
+            racingGame.race();
+        }
+        assertThat(racingGame.getCarsPosition().toArray())
+                .contains(repeatMaxNumber);
+    }
+
+    @Test
     void playRacingGameTest() {
-        int NUMBERS = 5;
+        final int NUMBERS = 5;
         RacingGameUI racingGame = new RacingGameUI();
+
         racingGame.setCarsName("pobi,crong,honux");
         List<Integer> resultPosition = racingGame.playRacingGame(NUMBERS);
+
         assertThat(resultPosition).asList()
                 .contains(NUMBERS);
+
         for (int position : resultPosition) {
             assertThat(position).isBetween(0, NUMBERS);
         }

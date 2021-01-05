@@ -9,20 +9,21 @@ import java.util.Scanner;
 
 /*
  * Class    : RacingGameUI
- * Version  : 1.0
+ * Version  : 1.1
  * author   : eli.nabro
  *
  * Racing game UI class
  */
 public class RacingGameUI {
 
-    RacingGameLogic racingGame;
+    private static final String PRINT_CAR_NAME_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String PRINT_TRIALS_QUESTION = "시도할 횟수는 몇회인가요?";
+    private static final String PRINT_PRE_RACING_RESULT = "\n실행 결과";
+    private static final String PRINT_RESULT_TAILS = "가 최종 우승했습니다.";
+
+    private RacingGameLogic racingGame;
     private static Scanner sc = new Scanner(System.in);
     private int numberOfTrials = 0;
-
-    public RacingGameUI() {
-        this.racingGame = new RacingGameLogic();
-    }
 
     public void run() {
         this.setCarsName(this.inputCarNames());
@@ -32,21 +33,21 @@ public class RacingGameUI {
     }
 
     private String inputCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        System.out.println(PRINT_CAR_NAME_QUESTION);
         return sc.next();
     }
 
     public void setCarsName(String carNames) {
-        this.racingGame.setCars(carNames);
+        this.racingGame = new RacingGameLogic(carNames);
     }
 
     private int inputNumberOfTrials() {
-        System.out.println("시도할 횟수는 몇회인가요?");
+        System.out.println(PRINT_TRIALS_QUESTION);
         return sc.nextInt();
     }
 
     public List<Integer> playRacingGame(int numbers) {
-        System.out.println("\n실행 결과");
+        System.out.println(PRINT_PRE_RACING_RESULT);
         while (this.racingGame.checkPosition(numbers)) {
             this.racingGame.race();
             this.racePrint();
@@ -56,7 +57,7 @@ public class RacingGameUI {
 
     private void printWinner() {
         String winners = this.racingGame.whoAreWinner(this.numberOfTrials);
-        winners = winners.substring(0, winners.length() - 2) + "가 최종 우승했습니다.";
+        winners = winners.substring(0, winners.length() - 2) + PRINT_RESULT_TAILS;
         System.out.print(winners);
     }
 

@@ -7,20 +7,18 @@ package racing;
 
 /*
  * Class    : Car
- * Version  : 1.0
+ * Version  : 1.1
  * author   : eli.nabro
  *
  * Car property class
  */
 public class Car {
 
-    private final int STOP_VALUE = 3;
     private String name;
-    private int position;
+    private int position = 0;
 
     public Car(String name) {
         this.name = name;
-        this.position = 0;
     }
 
     public String getName() {
@@ -31,10 +29,6 @@ public class Car {
         return this.position;
     }
 
-    public boolean decideGoOrStop(int i) {
-        return i > STOP_VALUE;
-    }
-
     public void move(boolean isMoved) {
         if(isMoved){
             this.position++;
@@ -43,10 +37,12 @@ public class Car {
 
     @Override
     public String toString() {
-        String posBar = "";
+        StringBuilder posBar = new StringBuilder();
+
         for(int i = 0; i < this.position; i++) {
-            posBar += "-";
+            posBar.append("-");
         }
+
         return this.name + " : " + posBar;
     }
 }
