@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.racingcar;
 
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.racingcar;
 
 public enum CarResult {
     STOP, MOVE

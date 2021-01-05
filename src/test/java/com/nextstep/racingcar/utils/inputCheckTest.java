@@ -1,4 +1,4 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.utils;
 
 import org.junit.jupiter.api.Test;
 
