@@ -8,6 +8,10 @@ public class Car implements Comparable<Car>{
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public int compareTo(Car otherCar) {
         return otherCar.location - location;

@@ -31,6 +31,12 @@ public class RacingGameUI {
         System.out.println(cars);
     }
 
+    public static void printWinners(List<Car> winners) {
+        List<String> winnerNames = winners.stream().map(Car::getName).collect(Collectors.toList());
+        System.out.print(String.join(", ", winnerNames));
+        System.out.println(" 가 최종 우승했습니다.");
+    }
+
     private static String[] split(String userInput) {
         return userInput.split(",");
     }
