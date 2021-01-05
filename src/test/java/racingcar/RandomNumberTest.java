@@ -9,13 +9,13 @@ public class RandomNumberTest {
     private RandomNumber randomNum;
 
     @BeforeEach
-    void setting() {
+    void set() {
         randomNum = new RandomNumber();
     }
 
     @Test
     void randomNumber() {
-        assertThat(randomNum.generate()).isBetween(0, 9);
+        assertThat(randomNum.setRandomNum()).isBetween(0, 9);
     }
 
     @Test

@@ -52,5 +52,33 @@ public class Racingcar {
         return this.carList;
     }
 
+    /* 한 사이클마다 자동차의 위치 */
+    public void printCarLoc(){
+        this.carList.forEach(car -> {
+            String loc = makeStrLoc(car.getLoc());
+            System.out.println(car.getName() + " : " + loc);
+        });
+        System.out.print("\n");
+    }
+
+    private String makeStrLoc(int loc) {
+        String str = "";
+        for (int i = 0; i < loc; i++) {
+            str += "-";
+        }
+        return str;
+    }
+
+    /* 우승자 결정 */
+    public void winner(){
+        for (int i = 0; i < this.carList.size(); i++) {
+            this.carList.get(i).findWinnerLoc();
+        }
+        for (int i = 0; i < this.carList.size(); i++) {
+            this.carList.get(i).winnerName();
+        }
+        System.out.println(this.carList.get(0).getWinnerName() + "가 최종 우승했습니다.");
+
+    }
 
 }
