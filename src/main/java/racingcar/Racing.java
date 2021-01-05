@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 
 public class Racing {
 
-    private List<Car> cars;
+    public List<Car> cars;
 
     public void startRacing(int carCount, int round) {
         createCars(carCount);
@@ -35,35 +35,35 @@ public class Racing {
 
     public ArrayList<Integer> getFinalCarPositions() {
         ArrayList<Integer> positions = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            positions.add(0);
+        for (int i = 0; i < this.cars.size(); i++) {
+            positions.add(this.cars.get(i).getPosition());
         }
         return positions;
     }
 
-    public ArrayList<Integer> getWinner(int[] currentCarPositions) {
-        int farthest = max(currentCarPositions);
-        return getWinnerCarsIndex(farthest, currentCarPositions);
+    public ArrayList<Integer> getWinner() {
+        int maxPosition = max(getFinalCarPositions());
+        return getWinnerCarsIndex(maxPosition, getFinalCarPositions());
     }
 
-    private ArrayList<Integer> getWinnerCarsIndex(int farthest, int[] currentCarPositions) {
+    private ArrayList<Integer> getWinnerCarsIndex(int maxPosition, List<Integer> currentCarPositions) {
         ArrayList<Integer> result = new ArrayList<>();
-        for (int i = 0; i < currentCarPositions.length; i++) {
-            result.add(checkFarthestCarIndex(farthest, currentCarPositions[i], i));
+        for (int i = 0; i < currentCarPositions.size(); i++) {
+            result.add(checkFarthestCarIndex(maxPosition, currentCarPositions.get(i), i));
         }
-        return result.stream().filter(a -> a > 0).collect(Collectors.toCollection(ArrayList::new));
+        return result.stream().filter(a -> a >= 0).collect(Collectors.toCollection(ArrayList::new));
     }
 
-    private int checkFarthestCarIndex(int farthest, int currentCarPosition,int index){
-        if(farthest == currentCarPosition){
+    private int checkFarthestCarIndex(int maxPosition, int currentCarPosition,int index){
+        if(maxPosition == currentCarPosition){
             return index;
         }
         return -1;
     }
 
-    private int max(int[] arr) {
-        int maxVal = arr[0];
-        for (int element : arr) {
+    private int max(List<Integer> positions) {
+        int maxVal = positions.get(0);
+        for (int element : positions) {
             maxVal = highValueBetween(maxVal, element);
         }
         return maxVal;
