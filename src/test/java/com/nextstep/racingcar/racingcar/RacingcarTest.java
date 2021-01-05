@@ -3,47 +3,34 @@ package com.nextstep.racingcar.racingcar;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingcarTest {
 
+  private final int MOVE = 4;
+  private final int STOP = 0;
+
   @Test
   void oneCarWins() {
-    Racingcar racingcar = new Racingcar();
-    Car tCar = new Car("t");
-    Car iCar = new Car("i");
+    String[] carNames = new String[]{"losea", "loseb", "win"};
+    Racingcar racingcar = new Racingcar(carNames, 3);
 
-    for (int i = 0; i < 4; i++) {
-      tCar.shouldMove(4);
+    while (racingcar.isFinished()) {
+      racingcar.simulateOnce(Arrays.asList(STOP, STOP, MOVE));
     }
 
-    for (int i = 0; i < 3; i++) {
-      iCar.shouldMove(4);
-    }
-
-    racingcar.addCar(tCar);
-    racingcar.addCar(iCar);
-
-    assertThat(racingcar.result()).isEqualTo(Arrays.asList("t"));
+    assertThat(racingcar.getWinners()).isEqualTo(Arrays.asList("win"));
   }
 
   @Test
   void twoCarWins() {
-    Racingcar racingcar = new Racingcar();
-    Car tCar = new Car("t");
-    Car iCar = new Car("i");
+    String[] carNames = new String[]{"lose", "wina", "winb"};
+    Racingcar racingcar = new Racingcar(carNames, 3);
 
-    for (int i = 0; i < 4; i++) {
-      tCar.shouldMove(4);
+    while (racingcar.isFinished()) {
+      racingcar.simulateOnce(Arrays.asList(STOP, MOVE, MOVE));
     }
 
-    for (int i = 0; i < 4; i++) {
-      iCar.shouldMove(4);
-    }
-
-    racingcar.addCar(tCar);
-    racingcar.addCar(iCar);
-
-    assertThat(racingcar.result()).isEqualTo(Arrays.asList("t", "i"));
+    assertThat(racingcar.getWinners()).isEqualTo(Arrays.asList("wina", "winb"));
   }
 }
