@@ -19,7 +19,7 @@ public class RacingGame {
         }
     }
 
-    public List<Integer> makeRandomNumber(int numOfCars) {
+    private List<Integer> makeRandomNumber(int numOfCars) {
         List<Integer> numbers = new ArrayList<>();
 
         for (int i = 0; i < numOfCars; i++){
