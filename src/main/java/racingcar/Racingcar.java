@@ -6,7 +6,11 @@ import java.util.List;
 public class Racingcar {
     private List<String> carList;
 
-   public List<String> getName(String s) {
+    public List<String> getName(String s) {
         return carList = Arrays.asList(s.split(","));
+    }
+
+    public int carNameCheck() {
+        return carList.size();
     }
 }

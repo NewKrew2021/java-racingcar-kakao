@@ -17,7 +17,13 @@ class RacingcarTest {
 
     @Test
     void getName() {
-        assertThat(racingcar.getName("pobi,crong,honux")).isEqualTo(Arrays.asList("pobi", "crong", "honux"));
+        assertThat(racingcar.getName("pobi,crong,honux")).isEqualTo(Arrays.asList("pobi","crong","honux"));
+    }
+
+    @Test
+    void carNameCheck() {
+        racingcar.getName("pobi, crong, honux");
+        assertThat(racingcar.carNameCheck()).isLessThan(5);
     }
 
 }
