@@ -1,7 +1,5 @@
 package domain;
 
-import util.NumberUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +13,7 @@ public class CarManager {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.moveOrNot(NumberUtil.generateRandomNumber());
+            car.tryMoving();
         }
     }
 

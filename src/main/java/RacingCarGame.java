@@ -1,5 +1,6 @@
 import domain.Car;
 import domain.CarManager;
+import domain.RandomEngine;
 import view.InputView;
 import view.OutputView;
 
@@ -12,7 +13,7 @@ public class RacingCarGame {
         CarManager carManager = new CarManager();
 
         for (String carName : carNames) {
-            carManager.pushCar(new Car(carName));
+            carManager.pushCar(new Car(new RandomEngine(), carName));
         }
 
         int round = InputView.readRound();

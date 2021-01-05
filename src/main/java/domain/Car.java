@@ -1,15 +1,16 @@
 package domain;
 
 public class Car {
-    private static final int MOVE_THRESHOLD = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
+    private final Engine engine;
     private final String name;
     private int position;
 
-    public Car(String name) {
+    public Car(Engine engine, String name) {
         validate(name);
 
+        this.engine = engine;
         this.name = name;
         this.position = 0;
     }
@@ -20,8 +21,8 @@ public class Car {
         }
     }
 
-    public void moveOrNot(int condition) {
-        if (condition >= MOVE_THRESHOLD) {
+    public void tryMoving() {
+        if (engine.canMove()) {
             position++;
         }
     }

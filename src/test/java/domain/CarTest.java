@@ -1,62 +1,79 @@
 package domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
-    private static final int NEVER_MOVE_CONDITION = 3;
-    private static final int ALWAYS_MOVE_CONDITION = 4;
+    private Engine alwaysMoveEngine;
+    private Engine neverMoveEngine;
+
+    @BeforeEach
+    void setUp() {
+        alwaysMoveEngine = new AlwaysMoveEngine();
+        neverMoveEngine = new NeverMoveEngine();
+    }
+
+    @Test
+    void createCar() {
+        Car car = new Car(alwaysMoveEngine, "valid");
+        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getName()).isEqualTo("valid");
+    }
 
     @Test
     void length0orNull() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Car(""));
+                .isThrownBy(() -> new Car(alwaysMoveEngine, ""));
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Car(null));
+                .isThrownBy(() -> new Car(alwaysMoveEngine, null));
     }
 
     @Test
-    void length5이하() {
-        Car car = new Car("12345");
-        assertThat(car.getPosition()).isEqualTo(0);
-        assertThat(car.getName()).isEqualTo("12345");
-    }
-
-    @Test
-    void length6이상() {
+    void longerThan6() {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new Car("123456"));
+                .isThrownBy(() -> new Car(alwaysMoveEngine, "sixlen"));
     }
 
     @Test
     void move() {
-        Car car = new Car("12345");
-        car.moveOrNot(NEVER_MOVE_CONDITION);
-        assertThat(car.getPosition()).isEqualTo(0);
-        car.moveOrNot(ALWAYS_MOVE_CONDITION);
+        Car car = new Car(alwaysMoveEngine, "car");
+        car.tryMoving();
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+    @Test
+    void dontMove() {
+        Car car = new Car(neverMoveEngine, "car");
+        car.tryMoving();
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
 
     @Test
     void isForwardThan() {
-        Car car1 = new Car("car1");
-        Car car2 = new Car("car2");
-        car1.moveOrNot(ALWAYS_MOVE_CONDITION);
+        Car car1 = new Car(alwaysMoveEngine, "car1");
+        car1.tryMoving();
+        car1.tryMoving();
+        Car car2 = new Car(alwaysMoveEngine, "car2");
+        car2.tryMoving();
+
         assertThat(car1.isForwardThan(car2)).isTrue();
     }
 
     @Test
     void isSamePositionWith() {
-        Car car1 = new Car("car1");
-        Car car2 = new Car("car2");
+        Car car1 = new Car(alwaysMoveEngine, "car1");
+        Car car2 = new Car(alwaysMoveEngine, "car2");
         assertThat(car1.isSamePositionWith(car2)).isTrue();
-        car1.moveOrNot(ALWAYS_MOVE_CONDITION);
-        car2.moveOrNot(ALWAYS_MOVE_CONDITION);
+
+        car1.tryMoving();
+        car2.tryMoving();
         assertThat(car1.isSamePositionWith(car2)).isTrue();
-        car2.moveOrNot(ALWAYS_MOVE_CONDITION);
+
+        car2.tryMoving();
         assertThat(car1.isSamePositionWith(car2)).isFalse();
     }
 }
