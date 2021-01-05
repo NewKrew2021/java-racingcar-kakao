@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -17,7 +18,6 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"3,0","4,1"})
     void tryForwardTest(int randomResult, int nextLocation){
-        Car car = new Car();
         car.tryForward(randomResult);
         assertThat(car.getLocation()).isEqualTo(nextLocation);
     }
@@ -25,8 +25,6 @@ public class CarTest {
     @ParameterizedTest
     @CsvSource({"5,true","4,true","3,false","2,false"})
     void isForwordTest(int randomNumber, boolean result) {
-        Car car = new Car();
-
         assertThat(car.isForword(randomNumber)).isEqualTo(result);
     }
 }
