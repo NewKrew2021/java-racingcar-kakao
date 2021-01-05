@@ -64,7 +64,10 @@ public class RacingCarGame {
         for (Car car : carList) {
             mx = Math.max(mx, car.getPosition());
         }
-        return mx;
+return carList.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
     }
 
     private void addName(ArrayList<String> names, Car car) {
