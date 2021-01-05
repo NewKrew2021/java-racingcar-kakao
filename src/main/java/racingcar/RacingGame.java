@@ -12,9 +12,14 @@ public class RacingGame {
     public void makeCars(String[] names){
         cars = new Car[names.length];
         for(int i=0; i< names.length;i++){
+            checkNameLength(names[i]);
             cars[i] = new Car();
             cars[i].setName(names[i]);
         }
+    }
+    public void checkNameLength(String name){
+        if(name.length()>5)
+            throw new IllegalArgumentException("차 이름은 5자 이하여야 합니다.");
     }
 
     private static boolean isBlank(String input) {

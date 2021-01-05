@@ -15,8 +15,8 @@ public class RacingGameTest {
 
     @Test
     public void testInputIsEmpty(){
-        String input = "";
         assertThatIllegalArgumentException().isThrownBy(() -> {
+            String input = "";
             String[] names = RacingGame.stringToNames(input);
         });
 
@@ -29,8 +29,15 @@ public class RacingGameTest {
         String[] names = racing.stringToNames(input);
         racing.makeCars(names);
         assertThat(racing.cars).extracting("name").contains("pobi", "crong");
+    }
 
-
+    @Test
+    public void testCheckNameLength(){
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            RacingGame racing = new RacingGame();
+            String input = "carname";
+            racing.checkNameLength(input);
+        });
     }
 
 
