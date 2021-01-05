@@ -3,6 +3,9 @@ package com.nextstep.racingcar.racingcar;
 import static com.nextstep.racingcar.ui.UserInput.*;
 import static com.nextstep.racingcar.ui.MessagePrinter.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Simulator {
 
   private Racingcar racingcar;
@@ -31,6 +34,12 @@ public class Simulator {
   }
 
   private void createNewRacingcarBasedOnInputs() {
-    racingcar = new Racingcar(carNames, repeatCount);
+    List<Car> cars = new ArrayList<>();
+    
+    for (String carName : carNames) {
+      cars.add(new Car(carName));
+    }
+
+    racingcar = new Racingcar(cars, repeatCount);
   }
 }

@@ -13,12 +13,10 @@ public class Racingcar {
   private int repeatCount;
   private int currentStep;
 
-  public Racingcar(String[] carNames, int repeatCount) {
-    cars = new ArrayList<>();
+  public Racingcar(List<Car> cars, int repeatCount) {
+    this.cars = cars;
     this.repeatCount = repeatCount;
     this.currentStep = 0;
-
-    addCarsWithNames(carNames);
   }
 
   public List<Car> getCars() {
@@ -54,16 +52,6 @@ public class Racingcar {
 
   public boolean isInProgress() {
     return currentStep < repeatCount;
-  }
-
-  private void addCarsWithNames(String[] carNames) {
-    for (String carName : carNames) {
-      addCarWithName(carName);
-    }
-  }
-
-  private void addCarWithName(String carName) {
-    cars.add(new Car(carName));
   }
 
   private int getLocationOfHighestAdvancedCar() {

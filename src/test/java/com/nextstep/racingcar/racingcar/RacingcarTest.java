@@ -1,5 +1,6 @@
 package com.nextstep.racingcar.racingcar;
 
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,8 +13,11 @@ public class RacingcarTest {
   private final int MOVE = 4;
   private final int REPEAT_COUNT = 3;
   private final int STOP = 0;
-  private final String[] CAR_NAMES = new String[]{"one", "two", "three"};
-  private final Racingcar RACINGCAR = new Racingcar(CAR_NAMES, REPEAT_COUNT);
+  private final List<Car> CARS = Arrays.asList(
+      new Car("one"),
+      new Car("two"),
+      new Car("three"));
+  private final Racingcar RACINGCAR = new Racingcar(CARS, REPEAT_COUNT);
 
   @Test
   void oneCarWins() {
