@@ -7,3 +7,11 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현 사항
+* 이름과 위치를 갖는 자동차 클래스 생성
+* move 로직 구현
+* position 출력 구현
+* car 리스트를 가진 cars 구현
+* cars로 car를 이동시키기 구현
+* 입출력 구현
