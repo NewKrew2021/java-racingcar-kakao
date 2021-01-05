@@ -1,6 +1,5 @@
 package carRace;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -8,7 +7,7 @@ import java.util.stream.Collectors;
 public class RacingGameUI {
     private static final int MAX_NAME_LENGTH = 5;
 
-    public static Cars getCarsFromUser() {
+    public static CarSet getCarsFromUser() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.nextLine();
@@ -19,9 +18,9 @@ public class RacingGameUI {
         return userInput.split(",");
     }
 
-    private static Cars validationAndConvert(String[] names) {
+    private static CarSet validationAndConvert(String[] names) {
         validationForAll(names);
-        return new Cars(names);
+        return new CarSet(names);
     }
 
     private static void validationForAll(String[] names){
@@ -61,8 +60,8 @@ public class RacingGameUI {
         System.out.println("실행 결과");
     }
 
-    public static void printAllCars(Cars cars) {
-        System.out.println(cars);
+    public static void printAllCars(CarSet carSet) {
+        System.out.println(carSet);
     }
 
     public static void printWinners(List<Car> winners) {

@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class Cars {
+public class CarSet {
 
     List<Car> carList;
 
-    public Cars(String[] names) {
+    public CarSet(String[] names) {
         this.carList = new ArrayList<>();
         for (String name : names) {
             carList.add(new Car(name));
