@@ -1,11 +1,20 @@
 package racingcar;
 
 import calculator.StringCalculator;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 
 public class RacingGameTest {
+    RacingGame racing;
+
+    @BeforeEach
+    void setUp(){
+        racing = new RacingGame();
+    }
+
     @Test
     public void stringToNames(){
         String input = "pobi,crong,honux";
@@ -24,7 +33,6 @@ public class RacingGameTest {
 
     @Test
     public void testMakeCars(){
-        RacingGame racing = new RacingGame();
         String input = "pobi,crong";
         String[] names = racing.stringToNames(input);
         racing.makeCars(names);
@@ -34,7 +42,6 @@ public class RacingGameTest {
     @Test
     public void testCheckNameLength(){
         assertThatIllegalArgumentException().isThrownBy(() -> {
-            RacingGame racing = new RacingGame();
             String input = "carname";
             racing.checkNameLength(input);
         });
@@ -42,10 +49,18 @@ public class RacingGameTest {
 
     @Test
     public void testSetcount(){
-        RacingGame racing = new RacingGame();
         racing.setCount(5);
         assertThat(racing.count).isEqualTo(5);
     }
 
+    @Test
+    public void testWinner(){
+        Car[] cars = new Car[3];
+        cars[0] = new Car("pobi", 5);
+        cars[1] = new Car("crong",3);
+        cars[2] = new Car("honux",5);
+        racing.cars = cars;
+        assertThat(racing.getWinners()).contains("pobi","honux");
+    }
 
 }

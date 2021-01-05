@@ -1,8 +1,11 @@
 package racingcar;
 
+import java.util.ArrayList;
+
 public class RacingGame {
     Car[] cars;
     int count;
+    ArrayList<String> winners = new ArrayList<>();
 
     public static String[] stringToNames(String input){
         if(isBlank(input))
@@ -43,6 +46,25 @@ public class RacingGame {
     public void printCarsStatus(){
         for (Car car : cars) {
             car.printStatus();
+        }
+    }
+
+    public ArrayList<String> getWinners(){
+        int maxLocation = 0;
+        for (Car car : cars) {
+            maxLocation = Math.max(maxLocation, car.location);
+        }
+
+        for(int i=0;i<cars.length;i++){
+            addWinner(i, maxLocation);
+        }
+
+        return this.winners;
+    }
+
+    private void addWinner(int idx, int maxLocation){
+        if(cars[idx].location == maxLocation) {
+            this.winners.add(cars[idx].name);
         }
     }
 }

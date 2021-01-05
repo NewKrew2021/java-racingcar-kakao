@@ -1,11 +1,16 @@
 package racingcar;
 
 public class Car {
-    private String name;
+    String name;
     int location;
 
     public Car(String name){
         this.name = name;
+    }
+
+    public Car(String name, int location){
+        this(name);
+        this.location = location;
     }
 
     public void move(int num){
