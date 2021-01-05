@@ -24,7 +24,24 @@ class RacingCarGameTest {
     }
 
     @Test
-    void printWinners() {
+    void getWinner() {
+        String text = "crong";
+        int racingNum = 4;
+        RacingCarGame game = new RacingCarGame();
 
+        game.start(text, racingNum);
+        ArrayList<String> winners = game.getWinners();
+        assertThat(winners).contains("crong");
+    }
+
+    @Test
+    void getWinners() {
+        String text = "crong,wkd";
+        int racingNum = 0;
+        RacingCarGame game = new RacingCarGame();
+
+        game.start(text, racingNum);
+        ArrayList<String> winners = game.getWinners();
+        assertThat(winners).contains("crong").contains("wkd");
     }
 }

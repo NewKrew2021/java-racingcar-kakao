@@ -8,11 +8,10 @@ public class RacingCarGame {
     private static final int LIMIT_NAME = 5;
     private static final int RANDOM_SCOPE = 10;
     private final List<Car> carList = new ArrayList<>();
-    private final Scanner sc = new Scanner(System.in);
 
-    public void start() {
-        scanName();
-        int racingNum = scanRacingNum();
+    public void start(String text, int racingNum) {
+
+        initCar(splitName(text));
 
         printResult();
         for (int i = 0; i < racingNum; i++) {
@@ -21,24 +20,10 @@ public class RacingCarGame {
         }
     }
 
-    private void scanName() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-
-        String text = sc.nextLine();
-        String[] names = splitName(text);
-        initCar(names);
-    }
-
     private void initCar(String[] names) {
         for (String name : names) {
             carList.add(new Car(name));
         }
-    }
-
-    private int scanRacingNum() {
-        System.out.println("시도할 회수는 몇회인가요?");
-
-        return sc.nextInt();
     }
 
     private int randomNum() {
@@ -73,5 +58,32 @@ public class RacingCarGame {
         if (name.length() > LIMIT_NAME) {
             throw new RuntimeException();
         }
+    }
+
+    private int getMaxPosition() {
+        int mx = 0;
+        for (Car car : carList) {
+            mx = Math.max(mx, car.getPosition());
+        }
+        return mx;
+    }
+
+    private void addName(ArrayList<String> names, Car car) {
+        int mx = getMaxPosition();
+
+        if (mx == car.getPosition()) {
+            names.add(car.getName());
+        }
+
+    }
+
+    public ArrayList<String> getWinners() {
+        ArrayList<String> names = new ArrayList<>();
+
+        for (Car car : carList) {
+            addName(names, car);
+        }
+
+        return names;
     }
 }
