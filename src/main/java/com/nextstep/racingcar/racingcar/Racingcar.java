@@ -23,12 +23,11 @@ public class Racingcar {
     return cars;
   }
 
-  public List<String> getWinners() {
+  public List<Car> getWinners() {
     int highest = getLocationOfHighestAdvancedCar();
 
     return cars.stream()
         .filter(car -> car.getLocation() == highest)
-        .map(Car::getName)
         .collect(Collectors.toList());
   }
 

@@ -6,9 +6,9 @@ import java.util.Scanner;
 
 public class UserInput {
 
-  private final static Scanner SC = new Scanner(System.in);
+  private final Scanner SC = new Scanner(System.in);
 
-  public static String[] scanCarNames() {
+  public String[] scanCarNames() {
     String[] names = carNames();
 
     for (String name : names) {
@@ -17,25 +17,25 @@ public class UserInput {
     return names;
   }
 
-  public static int scanRepeatCount() {
+  public int scanRepeatCount() {
     int repeatCount = repeatCount();
     checkCountIsValid(repeatCount);
     return repeatCount;
   }
 
-  private static void checkNameIsValid(String name) {
+  private void checkNameIsValid(String name) {
     if (!InputCheck.isValidName(name)) {
       String message = String.format("Name: %s is invalid.", name);
       throw new RuntimeException(message);
     }
   }
 
-  private static String[] carNames() {
+  private String[] carNames() {
     String namesInput = SC.next();
     return namesInput.split(",");
   }
 
-  private static int repeatCount() {
+  private int repeatCount() {
     int count;
 
     try {
@@ -47,13 +47,13 @@ public class UserInput {
     return count;
   }
 
-  private static void checkCountIsValid(int repeatCount) {
+  private void checkCountIsValid(int repeatCount) {
     if (isNegative(repeatCount)) {
       throw new RuntimeException("Repeat count should be positive");
     }
   }
 
-  private static boolean isNegative(int value) {
+  private boolean isNegative(int value) {
     return value < 0;
   }
 }
