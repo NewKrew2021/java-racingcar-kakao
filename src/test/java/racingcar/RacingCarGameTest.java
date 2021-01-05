@@ -22,4 +22,9 @@ class RacingCarGameTest {
         RacingCarGame game = new RacingCarGame();
         assertThrows(RuntimeException.class, () -> game.splitName(text));
     }
+
+    @Test
+    void printWinners() {
+
+    }
 }

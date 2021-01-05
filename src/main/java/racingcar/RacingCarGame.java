@@ -13,8 +13,11 @@ public class RacingCarGame {
     public void start() {
         scanName();
         int racingNum = scanRacingNum();
+
+        printResult();
         for (int i = 0; i < racingNum; i++) {
             racingGame();
+            printResult();
         }
     }
 
@@ -46,6 +49,13 @@ public class RacingCarGame {
         for (Car car : carList) {
             car.racing(randomNum());
         }
+    }
+
+    private void printResult() {
+        for (Car car : carList) {
+            car.printResult();
+        }
+        System.out.println();
     }
 
     public String[] splitName(String text) {
