@@ -10,29 +10,30 @@ public class GameManager {
 
     public void startGame() {
         // 입력 받아서 자동차 생성
-        gameView.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        gameView.gameStartMessageView();
         String carString = sc.nextLine();
-        gameView.print("시도할 회수는 몇회인가요?");
+        gameView.gameRoundMessage();
         int round = sc.nextInt();
 
         // 게임 실행
+        gameView.roundTitleView();
         List<Car> cars = makeCarList(parsing(carString));
         executeRound(cars, round);
 
+        // 우승자 출력
         List<Car> winner = getWinner(cars);
-        gameView.gameResult(winner);
+        gameView.gameResultView(winner);
     }
 
     public List<String> parsing(String userInput) throws RuntimeException {
         String[] split = userInput.split(",");
         return Arrays.stream(split)
                 .map(String::trim)
-                .map(this::isLong)
+                .map(this::throwExceptionWhenNameIsLong)
                 .collect(Collectors.toList());
     }
 
-    public String isLong(String carName) {
-
+    public String throwExceptionWhenNameIsLong(String carName) {
         if (carName.length() > 5) {
             throw new RuntimeException("이름이 너무 깁니다");
         }
@@ -52,28 +53,28 @@ public class GameManager {
     public void executeRound(List<Car> cars, Integer rounds) {
         for (int i = 0; i < rounds; i++) {
             carMove(cars);
-            gameView.roundResult(cars);
+            gameView.roundResultView(cars);
         }
-        List<Car> winners = getWinner(cars);
-
-    }
-
-    public List<Car> getWinner(List<Car> cars) {
-        List<Car> winners = new ArrayList<>();
-
-        Collections.sort(cars);
-        Car first = cars.get(0);
-        int index = 0;
-        while (first.equalPosition(cars.get(index))) {
-            winners.add(cars.get(index++));
-        }
-        return winners;
     }
 
     private void carMove(List<Car> cars) {
         for (Car car : cars) {
             car.goForward(RandomUtil.getRandomValue());
         }
+    }
+
+    public List<Car> getWinner(List<Car> cars) {
+        int maxPosition = getMaxPosition(cars);
+        return cars.stream()
+                .filter(e -> e.getPosition() == maxPosition)
+                .collect(Collectors.toList());
+    }
+
+    public Integer getMaxPosition(List<Car> cars) {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
     }
 
 }
