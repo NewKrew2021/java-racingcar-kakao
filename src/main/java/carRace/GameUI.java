@@ -9,16 +9,16 @@ public class GameUI {
 
     public static CarSet getCarsFromUser() {
         Scanner scanner = new Scanner(System.in);
-        String[] names;
 
-        do {
-            System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-            String userText = scanner.nextLine();
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String[] names = split(scanner.nextLine());
 
-            names = split(userText);
-        }while(!isValid(names));
+        if(isValid(names)){
+            return new CarSet(names);
+        }
 
-        return new CarSet(names);
+        System.out.println("잘못된 이름입니다. 다시 입력을 시작합니다.\n");
+        return getCarsFromUser();
     }
 
     private static String[] split(String userInput) {
