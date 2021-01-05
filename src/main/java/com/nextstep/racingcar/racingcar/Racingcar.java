@@ -67,7 +67,7 @@ public class Racingcar {
     currentStep++;
   }
 
-  private CarResult moveResult(int number) {
+  CarResult moveResult(int number) {
     if (isCarAdvance(number)) {
       return CarResult.MOVE;
     }

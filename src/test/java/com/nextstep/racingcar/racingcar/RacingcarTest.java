@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -45,5 +46,17 @@ public class RacingcarTest {
     }
 
     assertThat(RACINGCAR.isInProgress()).isEqualTo(expected);
+  }
+
+  @ParameterizedTest
+  @ValueSource(ints = {0, 3})
+  void shouldMove(int value) {
+    assertThat(RACINGCAR.moveResult(value)).isEqualTo(CarResult.MOVE);
+  }
+
+  @ParameterizedTest
+  @ValueSource(ints = {4, 9})
+  void shouldStop(int value) {
+    assertThat(RACINGCAR.moveResult(value)).isEqualTo(CarResult.STOP);
   }
 }
