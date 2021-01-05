@@ -14,4 +14,10 @@ public class Cars {
     public int getCount(){
         return cars.size();
     }
+
+    public void moveAll(){
+        for(Car car : cars){
+            car.move();
+        }
+    }
 }
