@@ -1,12 +1,44 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Racing {
 
-    public void startRacing() {
+    private List<Car> cars;
 
+    public void startRacing(int carCount, int round) {
+        createCars(carCount);
+        IntStream.range(0, round).forEach(i -> {
+            racing();
+            printCurrentCarPositions();
+        });
+    }
+
+    private void createCars(int carCount) {
+        this.cars = new ArrayList<>();
+        for (int i = 0; i < carCount; i++) {
+            cars.add(new Car());
+        }
+    }
+
+    private void racing(){
+        for (Car car : this.cars) {
+            car.move(createNumber());
+        }
+    }
+
+    private void printCurrentCarPositions() {
+        System.out.println("AAA");
+    }
+
+    public ArrayList<Integer> getFinalCarPositions() {
+        ArrayList<Integer> positions = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            positions.add(0);
+        }
+        return positions;
     }
 
     public ArrayList<Integer> getWinner(int[] currentCarPositions) {
