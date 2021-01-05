@@ -40,5 +40,12 @@ public class RacingGameTest {
         });
     }
 
+    @Test
+    public void testSetcount(){
+        RacingGame racing = new RacingGame();
+        racing.setCount(5);
+        assertThat(racing.count).isEqualTo(5);
+    }
+
 
 }

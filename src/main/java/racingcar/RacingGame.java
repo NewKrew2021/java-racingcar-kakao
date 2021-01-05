@@ -2,6 +2,7 @@ package racingcar;
 
 public class RacingGame {
     Car[] cars;
+    int count;
 
     public static String[] stringToNames(String input){
         if(isBlank(input))
@@ -24,6 +25,10 @@ public class RacingGame {
 
     private static boolean isBlank(String input) {
         return input.equals("") || input == null;
+    }
+
+    public void setCount(int count){
+        this.count = count;
     }
 
 }
