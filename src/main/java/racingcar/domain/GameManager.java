@@ -37,7 +37,7 @@ public class GameManager {
 
     public void simulateGame(){
         Output.printSimulationResults(cars);
-        for(int i = 0; i <= gameTime; ++i){
+        for(int i = 0; i < gameTime; ++i){
             simulateCars();
             Output.printSimulationResults(cars);
         }
