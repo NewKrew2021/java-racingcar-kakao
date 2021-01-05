@@ -1,5 +1,6 @@
 package racingcar;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -52,8 +53,8 @@ public class Racing {
     }
 
 
-    public Set<Car> getWinner() {
-        Set<Car> winner = new HashSet<>();
+    public List<Car> getWinner() {
+        List<Car> winner = new ArrayList<>();
         int maxDistance = getMaxDistance();
 
         for (int i = 0; i < carList.size(); i++) {
@@ -73,7 +74,7 @@ public class Racing {
         return maxDistance;
     }
 
-    public void addWinner(Set<Car> winner, Car car, int maxDistance) {
+    public void addWinner(List<Car> winner, Car car, int maxDistance) {
         if (car.getDistance() == maxDistance)
             winner.add(car);
     }
