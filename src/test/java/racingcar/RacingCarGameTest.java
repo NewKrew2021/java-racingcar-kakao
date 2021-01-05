@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -60,5 +61,15 @@ class RacingCarGameTest {
         for (int i = 0; i < 10000; i++) {
             assertThat(num).isGreaterThan(-1).isLessThan(10);
         }
+    }
+
+    @Test
+    void initGame() {
+        final String text = "pobi,crong,honux";
+        final String[] names = game.splitName(text);
+
+        game.initGame(names);
+
+        assertThat(game.cars.toString()).contains("pobi").contains("crong").contains("honux");
     }
 }

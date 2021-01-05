@@ -7,8 +7,8 @@ public class RacingCarGame {
     private static final int LIMIT_NAME = 5;
     private static final int RANDOM_SCOPE = 10;
 
-    private List<Car> cars;
-    private List<String> winners;
+    protected List<Car> cars;
+    protected List<String> winners;
 
     public void start(String text, int racingNum) {
 
@@ -23,7 +23,7 @@ public class RacingCarGame {
         addWinners();
     }
 
-    private void initGame(String[] names) {
+    protected void initGame(String[] names) {
         cars = new ArrayList<>();
         winners = new ArrayList<>();
 
@@ -66,7 +66,7 @@ public class RacingCarGame {
         }
     }
 
-    private int getMaxPosition() {
+    protected int getMaxPosition() {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
@@ -74,11 +74,9 @@ public class RacingCarGame {
     }
 
     private void addName(Car car, int mx) {
-
         if (isMaxPosition(car, mx)) {
             winners.add(car.getName());
         }
-
     }
 
     private boolean isMaxPosition(Car car, int mx) {
@@ -87,10 +85,6 @@ public class RacingCarGame {
 
     public List<String> getWinners() {
         return winners;
-    }
-
-    public List<Car> getCars() {
-        return cars;
     }
 
     private void addWinners() {
