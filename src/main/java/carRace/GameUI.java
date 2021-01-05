@@ -39,11 +39,11 @@ public class GameUI {
     }
 
     private static boolean isAlphabetString(String name) {
-        boolean result = true;
+        boolean valid = true;
         for (char c : name.toCharArray()) {
-            result &= Character.isAlphabetic(c);
+            valid &= Character.isAlphabetic(c);
         }
-        return result;
+        return valid;
     }
 
     private static boolean isAllowedLength(String name) {
@@ -70,5 +70,4 @@ public class GameUI {
         System.out.print(String.join(", ", winnerNames));
         System.out.println(" 가 최종 우승했습니다.");
     }
-
 }
