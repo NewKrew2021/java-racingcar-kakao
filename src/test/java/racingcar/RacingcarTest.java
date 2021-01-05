@@ -26,4 +26,11 @@ class RacingcarTest {
         assertThat(racingcar.carNameCheck()).isLessThan(5);
     }
 
+    @Test
+    void randomNumber() {
+        assertThat(RandomNumber.generate()).isBetween(0, 10);
+    }
+
+
+
 }
