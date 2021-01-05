@@ -1,10 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 public class Car {
     private int position;
     private final String name;
 
-    Car(String name){
+    public Car(String name) {
         this.name = name;
     }
 

@@ -1,16 +1,16 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class RacingGame {
     private List<Car> cars;
 
     private static final int RANGE = 10;
     private static final int SPEED = 4;
+    private static final int NAME_LENGTH = 5;
 
-    RacingGame(String str) {
+    public RacingGame(String str) {
         cars = new ArrayList<>();
         List<String> names = splitName(str);
         for (String name : names) {
@@ -29,17 +29,16 @@ public class RacingGame {
     }
 
     private boolean checkName(String name) {
-        return name.length() <= 5;
+        return name.length() <= NAME_LENGTH;
     }
 
-    public List<CarInfo> racing() {
+    public void race() {
         for (Car car : cars) {
             moveCar(car);
         }
-        return getStatus();
     }
 
-    public List<CarInfo> getStatus() {
+    public List<CarInfo> getRaceStatus() {
         List<CarInfo> carInfos = new ArrayList<>();
         for (Car car : cars) {
             carInfos.add(new CarInfo(car.getName(), car.getPosition()));
@@ -47,18 +46,18 @@ public class RacingGame {
         return carInfos;
     }
 
-    boolean isCarGo(int number) {
+    public boolean isCarGo(int number) {
         return number >= SPEED;
     }
 
-    void moveCar(Car car) {
+    private void moveCar(Car car) {
         Random random = new Random();
         if (isCarGo(random.nextInt(RANGE))) {
             car.nextStep();
         }
     }
 
-    public List<String> findWinners() {
+    public List<String> getRaceWinners() {
         List<String> winners = new ArrayList<>();
         int maxPosition = cars.stream().max(Comparator.comparing(Car::getPosition)).get().getPosition();
         List<Car> winnerCars = cars.stream().

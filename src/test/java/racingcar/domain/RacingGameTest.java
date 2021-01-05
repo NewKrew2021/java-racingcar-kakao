@@ -1,12 +1,8 @@
-package racingcar;
+package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.*;
@@ -17,32 +13,26 @@ public class RacingGameTest {
 
     @BeforeEach
     void setUp() {
-        racingGame = new RacingGame("d,b,v");
+        racingGame = new RacingGame("dino,yell,pobi");
     }
 
     @Test
     void splitTest(){
-        racingGame.racing();
-        List<CarInfo> carInfos = racingGame.getStatus();
+        racingGame.race();
+        List<CarInfo> carInfos = racingGame.getRaceStatus();
         List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());
-        assertThat(carNames).containsExactly("d","b","v");
+        assertThat(carNames).containsExactly("dino","yell","pobi");
     }
 
     @Test
     void splitUnderFiveTest(){
-        racingGame = new RacingGame("abcdef,a,b");
-        racingGame.racing();
-        List<CarInfo> carInfos = racingGame.getStatus();
+        racingGame = new RacingGame("dinobin,yell,pobi");
+        racingGame.race();
+        List<CarInfo> carInfos = racingGame.getRaceStatus();
         List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());
-        List<Integer> carPositions = carInfos.stream().map(CarInfo::getPosition).collect(Collectors.toList());
-        assertThat(carNames).containsExactly("a","b");
+        assertThat(carNames).containsExactly("yell","pobi");
     }
 
-    @Test
-    void winnerTest(){
-        racingGame.racing();
-        assertThat(racingGame.findWinners()).containsExactly("d","b","v");
-    }
 
     @Test
     void carGoTest() {
