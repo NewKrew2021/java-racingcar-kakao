@@ -1,17 +1,15 @@
 package racing;
 
 import org.junit.jupiter.api.Test;
-
 import java.util.Arrays;
 import java.util.List;
-
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
-public class RacingTest {
+public class RacingGameTest {
 
     @Test
     void racingConstructorTest() {
-        Racing racing = new Racing();
+        RacingGameLogic racing = new RacingGameLogic();
         racing.setCars("pobi,crong,honux");
         List<Car> cars = racing.getCars();
         List<String> dest = Arrays.asList("pobi", "crong", "honux");
@@ -23,14 +21,14 @@ public class RacingTest {
     @Test
     void stopTest() {
         Car car = new Car("pobi");
-        boolean isMoved = car.goOrStop(2);
+        boolean isMoved = car.decideGoOrStop(2);
         assertThat(isMoved).isFalse();
     }
 
     @Test
     void goTest() {
         Car car = new Car("pobi");
-        boolean isMoved = car.goOrStop(4);
+        boolean isMoved = car.decideGoOrStop(4);
         assertThat(isMoved).isTrue();
     }
 
@@ -45,12 +43,11 @@ public class RacingTest {
     }
 
     @Test
-    void raceTest() {
+    void playRacingGameTest() {
         int NUMBERS = 5;
-        Racing racing = new Racing();
-        racing.setCars("pobi,crong,honux");
-        List<Integer> resultPosition = racing.repeatRacing(NUMBERS);
-        assertThat(resultPosition.size()).isEqualTo(racing.getCars().size());
+        RacingGameUI racingGame = new RacingGameUI();
+        racingGame.setCarsName("pobi,crong,honux");
+        List<Integer> resultPosition = racingGame.playRacingGame(NUMBERS);
         assertThat(resultPosition).asList()
                 .contains(NUMBERS);
         for (int position : resultPosition) {

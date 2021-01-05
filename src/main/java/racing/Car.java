@@ -1,5 +1,17 @@
+/*
+ * File     : Car.java
+ * Date     : 2021. 01. 05
+ */
+
 package racing;
 
+/*
+ * Class    : Car
+ * Version  : 1.0
+ * author   : eli.nabro
+ *
+ * Car property class
+ */
 public class Car {
 
     private final int STOP_VALUE = 3;
@@ -15,26 +27,26 @@ public class Car {
         return this.name;
     }
 
-    public boolean goOrStop(int i) {
-        return i > STOP_VALUE;
-    }
-
     public int getPosition() {
         return this.position;
     }
 
-    public void move(boolean isMove) {
-        if(isMove){
+    public boolean decideGoOrStop(int i) {
+        return i > STOP_VALUE;
+    }
+
+    public void move(boolean isMoved) {
+        if(isMoved){
             this.position++;
         }
     }
 
     @Override
     public String toString() {
-        String pos = "";
+        String posBar = "";
         for(int i = 0; i < this.position; i++) {
-            pos += "-";
+            posBar += "-";
         }
-        return this.name + " : " + pos;
+        return this.name + " : " + posBar;
     }
 }
