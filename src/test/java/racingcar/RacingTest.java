@@ -33,7 +33,7 @@ class RacingTest {
 
     @Test
     void randomNumber() {
-        assertThat(RandomNumber.generate()).isBetween(0, 10);
+        assertThat(RandomNumber.generate()).isBetween(0, 9);
     }
 
     @Test
@@ -45,4 +45,15 @@ class RacingTest {
     void stop() {
         assertThat(racing.goStop(3)).isEqualTo(CarStatus.Stop);
     }
+
+    @Test
+    void move() {
+        Car car = new Car("test", 0);
+        racing.move(car, CarStatus.Stop);
+        assertThat(car.getDistance()).isEqualTo(0);
+
+        racing.move(car, CarStatus.Go);
+        assertThat(car.getDistance()).isEqualTo(1);
+    }
+
 }

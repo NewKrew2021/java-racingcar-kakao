@@ -35,4 +35,16 @@ public class Racing {
 
         return CarStatus.Stop;
     }
+
+    public void moveAll() {
+        for (int i = 0; i < carList.size(); i++) {
+            CarStatus status = goStop(RandomNumber.generate());
+            move(carList.get(i), status);
+        }
+    }
+
+    public void move(Car car, CarStatus status) {
+        if (status == CarStatus.Go)
+            car.go();
+    }
 }

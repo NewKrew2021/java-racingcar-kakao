@@ -3,7 +3,6 @@ package racingcar;
 public class Car {
     private String name;
     private int distance;
-    private CarStatus status;
 
     public Car(String name, int distance) {
         this.name = name;
@@ -26,11 +25,7 @@ public class Car {
         this.distance = distance;
     }
 
-    public CarStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(CarStatus status) {
-        this.status = status;
+    public void go() {
+        this.distance++;
     }
 }
