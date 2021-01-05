@@ -25,7 +25,6 @@ public class RacingTest {
         assertThat(rc.getWinner()).isEqualTo(arr);
 
 
-
         Racing rc2 = new Racing();
         rc.startRacing(3, 0);
         rc.cars.get(2).move(5);

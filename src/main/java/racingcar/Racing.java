@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Collection;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -40,19 +39,18 @@ public class Racing {
         System.out.println("가 최종 우승했습니다.");
     }
 
-    public void createCars(List<String> names) {
+    private void createCars(List<String> names) {
         this.cars = new ArrayList<>();
 
-        for (int i = 0; i < names.size(); i++) {
-            cars.add(new Car(names.get(i)));
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 
     private String enterCarNames() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        return str;
+        return sc.nextLine();
     }
 
     private List<String> splitNames(String str) {
@@ -72,8 +70,7 @@ public class Racing {
     private int enterRound() {
         System.out.println("시도할 회수는 몇회인가요?");
         Scanner sc = new Scanner(System.in);
-        int round = sc.nextInt();
-        return round;
+        return sc.nextInt();
     }
 
     private void racing(){
@@ -97,18 +94,18 @@ public class Racing {
 
     public ArrayList<Integer> getFinalCarPositions() {
         ArrayList<Integer> positions = new ArrayList<>();
-        for (int i = 0; i < this.cars.size(); i++) {
-            positions.add(this.cars.get(i).getPosition());
+        for (Car car : this.cars) {
+            positions.add(car.getPosition());
         }
         return positions;
     }
 
     public ArrayList<Car> getWinner() {
-        int maxPosition = max(getFinalCarPositions());
+        int maxPosition = getMaxPosition(getFinalCarPositions());
 
         ArrayList<Car> winnerCars = new ArrayList<>();
-        for(int carInex: getWinnerCarsIndex(maxPosition, getFinalCarPositions())){
-            winnerCars.add(this.cars.get(carInex));
+        for(int carIndex: getWinnerCarsIndex(maxPosition, getFinalCarPositions())){
+            winnerCars.add(this.cars.get(carIndex));
         }
         return winnerCars;
     }
@@ -137,19 +134,12 @@ public class Racing {
         return -1;
     }
 
-    private int max(List<Integer> positions) {
+    private int getMaxPosition(List<Integer> positions) {
         int maxVal = positions.get(0);
         for (int element : positions) {
-            maxVal = highValueBetween(maxVal, element);
+            maxVal = Math.max(maxVal, element);
         }
         return maxVal;
-    }
-
-    private int highValueBetween(int a, int b) {
-        if (a < b) {
-            return b;
-        }
-        return a;
     }
 
     private int createNumber() {
