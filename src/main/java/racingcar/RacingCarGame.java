@@ -31,7 +31,7 @@ public class RacingCarGame {
         }
     }
 
-    private int randomNum() {
+    protected int randomNum() {
         return (int) (Math.random() * RANDOM_SCOPE);
     }
 
@@ -61,7 +61,7 @@ public class RacingCarGame {
 
     private void checkOverflow(String name) {
         if (name.length() > LIMIT_NAME) {
-            throw new RuntimeException();
+            throw new RuntimeException("이름이 5자를 초과하였습니다.");
         }
     }
 

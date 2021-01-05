@@ -5,7 +5,7 @@ public class Car {
     private int position = 1;
     private final String name;
 
-    public static final int STEP = 1;
+    private static final int STEP = 1;
     private static final int FORWARD_NUM = 4;
 
     public Car(String name) {
@@ -20,11 +20,10 @@ public class Car {
         return position;
     }
 
-    public int racing(int randomNum) {
+    public void racing(int randomNum) {
         if (randomNum >= FORWARD_NUM) {
             goFront();
         }
-        return getPosition();
     }
 
     public String getName() {
@@ -34,10 +33,12 @@ public class Car {
     @Override
     public String toString() {
         StringBuilder stb = new StringBuilder();
+
         stb.append(name).append(" : ");
         for (int i = 0; i < position; i++) {
             stb.append("-");
         }
+
         return stb.toString();
     }
 }

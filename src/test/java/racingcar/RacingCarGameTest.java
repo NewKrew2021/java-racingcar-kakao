@@ -52,4 +52,13 @@ class RacingCarGameTest {
 
         assertThat(winners).contains("crong").contains("wkd");
     }
+
+    @Test
+    void randomNum() {
+        final int num = game.randomNum();
+
+        for (int i = 0; i < 10000; i++) {
+            assertThat(num).isGreaterThan(-1).isLessThan(10);
+        }
+    }
 }
