@@ -18,6 +18,10 @@ public class Racingcar {
     addCarsWithNames(carNames);
   }
 
+  public List<Car> getCars() {
+    return cars;
+  }
+
   public List<String> getWinners() {
     int highest = getHighestAdvancedCar();
 
