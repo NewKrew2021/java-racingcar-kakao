@@ -28,10 +28,4 @@ public class CarTest {
         car.tryForward(randomResult);
         assertThat(car.getLocation()).isEqualTo(nextLocation);
     }
-
-    @ParameterizedTest
-    @CsvSource({"5,true","4,true","3,false","2,false"})
-    void isForwordTest(int randomNumber, boolean result) {
-        assertThat(car.isForword(randomNumber)).isEqualTo(result);
-    }
 }
