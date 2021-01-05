@@ -82,17 +82,12 @@ public class Racing {
     }
 
     private void race() {
-        List<Integer> randomValues = this.makeRandomValues();
-        for (int i = 0; i < this.cars.size(); i++) {
-            cars.get(i).move(cars.get(i).goOrStop(randomValues.get(i)));
+        for (Car car : this.cars) {
+            car.move(car.goOrStop(makeRandomValue()));
         }
     }
 
-    private List<Integer> makeRandomValues() {
-        List<Integer> results = new ArrayList<>();
-        for (int i = 0; i < this.cars.size(); i++) {
-            results.add(random.nextInt(10));
-        }
-        return results;
+    private int makeRandomValue() {
+        return random.nextInt(10);
     }
 }
