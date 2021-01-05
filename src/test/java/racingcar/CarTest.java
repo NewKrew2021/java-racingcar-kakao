@@ -14,4 +14,14 @@ public class CarTest {
         assertThat(car.getDistance(stopRandomNumber)).isEqualTo(0);
         assertThat(car.getDistance(goRandomNumber)).isEqualTo(1);
     }
+
+    @Test
+    void updateCarPositionTest(){
+        Car car = new Car();
+        int stopDistance = 0;
+        int goDistance = 1;
+        assertThat(car.updateCarPosition(stopDistance)).isEqualTo(0);
+        assertThat(car.updateCarPosition(goDistance)).isEqualTo(1);
+
+    }
 }
