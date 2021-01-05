@@ -10,7 +10,6 @@ public class RacingGameUI {
 
     public static Cars getCarsFromUser() {
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.next();
         return validationAndConvert(split(input));
@@ -32,10 +31,10 @@ public class RacingGameUI {
     }
     private static void validationForEach(String name){
         if(!isAlpha(name)){
-            throw new RuntimeException(String.format("차 이름은 알파벳이어야 합니다 - error name : \"%s\"", name));
+            throw new RuntimeException(String.format("차 이름은 알파벳이어야 합니다 (문제되는 이름 : \"%s\")", name));
         }
         if(!allowedLength(name)) {
-            throw new RuntimeException(String.format("차 이름은 1글자 이상 5글자 이하여야 합니다 - error name : \"%s\"", name));
+            throw new RuntimeException(String.format("차 이름은 1글자 이상 5글자 이하여야 합니다 (문제되는 이름 : \"%s\")", name));
         }
     }
 
