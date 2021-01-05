@@ -1,11 +1,13 @@
 package racingCar;
 
+import org.assertj.core.api.Assert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
@@ -24,16 +26,25 @@ public class racingTest {
     * */
     @Test
     public void carNameTest() {
+        // given
         String userInput = "pobi,crong,honux, teo ";
-        List<String> result = gameManager.parsing(userInput);
-        Assertions.assertThat(result)
+
+        // when
+        List<String> parsedName = gameManager.parsing(userInput);
+
+        // then
+        Assertions.assertThat(parsedName)
                 .containsAll(Arrays.asList("pobi", "crong", "honux", "teo"));
     }
 
     @Test
     public void longNameExceptionTest() {
+        // given
         String userInput = "bmoadv,pobi,vavaa";
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> gameManager.parsing(userInput));
+
+        // when, then
+        assertThatExceptionOfType(RuntimeException.class)
+                .isThrownBy(() -> gameManager.parsing(userInput));
     }
 
     /*
@@ -41,45 +52,54 @@ public class racingTest {
      * */
     @Test
     public void forwardTest() {
+        // given
         Car car = new Car("TestCar");
+
+        // when
         car.goForward(4);
-        Assertions.assertThat(car.getPosition()).isEqualTo(1);
         car.goForward(3);
-        Assertions.assertThat(car.getPosition()).isEqualTo(1);
         car.goForward(9);
+
+        // then
         Assertions.assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
-    public void winnerTest() {
-        List<Car> cars = gameManager.makeCarList(Arrays.asList("pobi", "crong", "honux", "teo"));
+    public void singleWinnerTest() {
+        // given
         int[] fixedNumber = {1, 2, 3, 6};
+        List<Car> cars = gameManager.makeCarList(Arrays.asList("pobi", "crong", "honux", "teo"));
+
+        // when
         for (int i = 0; i < 12; i++) {
             cars.get(i % 4).goForward(fixedNumber[i % 4]);
         }
 
-        List<Car> winners = Arrays.asList(new Car("teo"));
-        List<Car> rank = gameManager.getWinner(cars);
-        for (int i = 0; i < winners.size(); i++) {
-            Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
-        }
-
+        // then
+        List<String> actualWinner = gameManager.getWinner(cars).stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        List<String> expectedWinner = Arrays.asList("teo");
+        Assertions.assertThat(actualWinner).isEqualTo(expectedWinner);
     }
 
     @Test
     public void multiWinnerTest() {
+        // given
         int[] fixedNumber = {5, 2, 3, 6};
         List<Car> cars = gameManager.makeCarList(Arrays.asList("pobi", "crong", "honux", "teo"));
+
+        // when
         for (int i = 0; i < 12; i++) {
             cars.get(i % 4).goForward(fixedNumber[i % 4]);
         }
-        List<Car> realWinner = gameManager.getWinner(cars);
 
-        List<Car> expectedWinner = Arrays.asList(new Car("pobi"), new Car("teo"));
-
-        for (int i = 0; i < realWinner.size(); i++) {
-            Assertions.assertThat(realWinner.get(i).equals(expectedWinner.get(i))).isEqualTo(true);
-        }
+        // then
+        List<String> actualWinners = gameManager.getWinner(cars).stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
+        List<String> expectedWinners = Arrays.asList("pobi", "teo");
+        Assertions.assertThat(actualWinners).isEqualTo(expectedWinners);
     }
 
 }
