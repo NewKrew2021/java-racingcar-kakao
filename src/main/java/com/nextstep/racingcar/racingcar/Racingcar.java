@@ -1,13 +1,11 @@
 package com.nextstep.racingcar.racingcar;
 
-import java.util.ArrayList;
+import static com.nextstep.racingcar.utils.RandomDigitsGenerator.getNRandomDigitsForCars;
+
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import static com.nextstep.racingcar.utils.RandomDigitsGenerator.*;
 
 public class Racingcar {
 
@@ -43,6 +41,10 @@ public class Racingcar {
     simulateOnce(randoms);
   }
 
+  public boolean isInProgress() {
+    return currentStep < repeatCount;
+  }
+
   private void simulateOnce(List<Integer> randoms) {
     IntStream.range(0, cars.size())
         .filter(i -> moveResult(randoms.get(i)) == CarResult.MOVE)
@@ -50,10 +52,6 @@ public class Racingcar {
         .forEach(Car::move);
 
     increaseCounter();
-  }
-
-  public boolean isInProgress() {
-    return currentStep < repeatCount;
   }
 
   private int getLocationOfHighestAdvancedCar() {

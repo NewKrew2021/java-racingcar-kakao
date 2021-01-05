@@ -23,7 +23,7 @@ public class MessagePrinter {
       printCarStatus(car);
     }
 
-    System.out.println();
+    printer("");
   }
 
   public static void printWinners(List<String> winners) {
@@ -33,14 +33,14 @@ public class MessagePrinter {
     printer(message);
   }
 
-  private static void printer(String message) {
-    System.out.println(message);
-  }
-
   private static void printCarStatus(Car car) {
     String status = String.format("%s : %s",
         car.getName(),
         String.join("", Collections.nCopies(car.getLocation(), "-")));
-    System.out.println(status);
+    printer(status);
+  }
+
+  private static void printer(String message) {
+    System.out.println(message);
   }
 }
