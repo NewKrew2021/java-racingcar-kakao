@@ -3,18 +3,18 @@ import java.util.stream.Collectors;
 
 public class OutputView {
     public static void printCars(List<Car> cars) {
-        for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            printDistance(car.getPosition());
-            System.out.println();
-        }
-        System.out.println();
+        String str = cars.stream()
+                .map(car -> car.getName() + " : " + getDistanceString(car.getPosition())+"\n")
+                .collect(Collectors.joining());
+        System.out.println(str);
     }
 
-    private static void printDistance(int position) {
+    private static String getDistanceString(int position) {
+        String s = "";
         for (int i = 0; i < position; i++) {
-            System.out.print('-');
+            s += "-";
         }
+        return s;
     }
 
     public static void printWinnerCars(List<Car> winnerCars) {
