@@ -12,9 +12,6 @@ public class RacingCar {
         this.dist = 0;
     }
 
-    public boolean isNameLengthValid() {
-        return this.name.length() <= 5;
-    }
 
     public String getName() {
         return name;
