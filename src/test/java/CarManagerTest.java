@@ -39,7 +39,7 @@ public class CarManagerTest {
         carManager.pushCar(loser2);
         carManager.pushCar(winner2);
 
-        assertThat(carManager.findWinners())
+        assertThat(carManager.findWinnerCars())
                 .extracting(Car::getName)
                 .isEqualTo(Arrays.asList("win1", "win2"));
     }

@@ -6,7 +6,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class StringUtilTest {
-
     @Test
     void parseString() {
         String nameString = "pobi,crong,honux";
