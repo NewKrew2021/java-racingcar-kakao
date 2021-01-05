@@ -2,35 +2,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarManager {
+public class Cars {
     private List<Car> cars = new ArrayList<>();
 
-    public void pushCar(Car car) {
+    public void createCarsByNames(List<String> names) {
+        names.forEach(name -> push(new Car(name)));
+    }
+
+    public void push(Car car) {
         cars.add(car);
     }
 
-    public void moveCars() {
-        for (Car car : cars) {
-            car.moveOrNot(NumberUtil.generateRandomNumber());
-        }
+    public void tryMove() {
+        cars.forEach(car -> car.moveOrNot(NumberUtil.generateRandomNumber()));
     }
 
-    public List<Car> findWinnerCars() {
-        Car winner = findWinnerCar();
-
+    public List<Car> findWinners() {
+        Car winner = findWinner();
         return cars.stream()
                 .filter(car -> car.isAtSamePositionWith(winner))
                 .collect(Collectors.toList());
     }
 
-    private Car findWinnerCar() {
+    private Car findWinner() {
         Car maxPositionCar = cars.get(0);
-
         return cars.stream()
-                .reduce(maxPositionCar, this::findForwardingCarBetween);
+                .reduce(maxPositionCar, Cars::findForwardingCarBetween);
     }
 
-    private Car findForwardingCarBetween(Car car1, Car car2) {
+    private static Car findForwardingCarBetween(Car car1, Car car2) {
         if (car2.isForwardThan(car1)) {
             return car2;
         }
@@ -40,5 +40,4 @@ public class CarManager {
     public List<Car> getCars() {
         return cars;
     }
-
 }

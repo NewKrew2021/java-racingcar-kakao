@@ -1,20 +1,19 @@
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
     public static void printCars(List<Car> cars) {
-        String str = cars.stream()
-                .map(car -> car.getName() + " : " + getDistanceString(car.getPosition())+"\n")
+        String formattedCarsStatus = cars.stream()
+                .map(car -> String.format("%s : %s\n", car.getName(), getDistanceString(car.getPosition())))
                 .collect(Collectors.joining());
-        System.out.println(str);
+        System.out.println(formattedCarsStatus);
     }
 
     private static String getDistanceString(int position) {
-        String s = "";
-        for (int i = 0; i < position; i++) {
-            s += "-";
-        }
-        return s;
+        return Collections.nCopies(position, "-")
+                .stream()
+                .collect(Collectors.joining());
     }
 
     public static void printWinnerCars(List<Car> winnerCars) {

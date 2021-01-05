@@ -1,22 +1,13 @@
-import java.util.List;
-
 public class RacingCarGame {
     public static void main(String[] args) {
-        List<String> carNames = InputView.readNames();
-
-        CarManager carManager = new CarManager();
-
-        for (String carName : carNames) {
-            carManager.pushCar(new Car(carName));
-        }
+        Cars cars = new Cars();
+        cars.createCarsByNames(InputView.readNames());
 
         int round = InputView.readRound();
-
         for (int i = 0; i < round; i++) {
-            carManager.moveCars();
-            OutputView.printCars(carManager.getCars());
+            cars.tryMove();
+            OutputView.printCars(cars.getCars());
         }
-
-        OutputView.printWinnerCars(carManager.findWinnerCars());
+        OutputView.printWinnerCars(cars.findWinners());
     }
 }

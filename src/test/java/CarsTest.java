@@ -4,15 +4,15 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarManagerTest {
+public class CarsTest {
     @Test
     void cars() {
-        CarManager carManager = new CarManager();
-        carManager.pushCar(new Car("pobi"));
-        carManager.pushCar(new Car("honux"));
-        carManager.pushCar(new Car("crong"));
+        Cars cars = new Cars();
+        cars.push(new Car("pobi"));
+        cars.push(new Car("honux"));
+        cars.push(new Car("crong"));
 
-        assertThat(carManager.getCars())
+        assertThat(cars.getCars())
                 .extracting(Car::getName)
                 .isEqualTo(Arrays.asList("pobi", "honux", "crong"));
     }
@@ -33,14 +33,22 @@ public class CarManagerTest {
         Car loser2 = new Car("lose2");
         loser2.moveOrNot(9);
 
-        CarManager carManager = new CarManager();
-        carManager.pushCar(loser1);
-        carManager.pushCar(winner1);
-        carManager.pushCar(loser2);
-        carManager.pushCar(winner2);
+        Cars cars = new Cars();
+        cars.push(loser1);
+        cars.push(winner1);
+        cars.push(loser2);
+        cars.push(winner2);
 
-        assertThat(carManager.findWinnerCars())
+        assertThat(cars.findWinners())
                 .extracting(Car::getName)
                 .isEqualTo(Arrays.asList("win1", "win2"));
+    }
+
+    @Test
+    void createByNames(){
+        Cars cars = new Cars();
+        cars.createCarsByNames(Arrays.asList("danny","corby","joy"));
+        assertThat(cars.getCars()).extracting(Car::getName)
+                .isEqualTo(Arrays.asList("danny","corby","joy"));
     }
 }

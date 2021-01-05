@@ -1,8 +1,9 @@
 public class Car {
-    private static final int MOVE_THRESHOLD = 4;
+    public static final int MOVE_THRESHOLD = 4;
     private static final int MAX_NAME_LENGTH = 5;
+    private static final String STRING_CAR_NAME_ERROR = "자동차 이름 길이는 1이상 5이하 입니다";
 
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name) {
@@ -13,7 +14,7 @@ public class Car {
 
     private void validateName(String name) {
         if (name == null || name.length() == 0 || name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("자동차 이름 길이는 1이상 5이하 입니다");
+            throw new InvalidCarNameException(STRING_CAR_NAME_ERROR);
         }
     }
 
@@ -41,5 +42,11 @@ public class Car {
 
     public int getPosition() {
         return this.position;
+    }
+
+    public static class InvalidCarNameException extends RuntimeException {
+        public InvalidCarNameException(String e) {
+            super(e);
+        }
     }
 }
