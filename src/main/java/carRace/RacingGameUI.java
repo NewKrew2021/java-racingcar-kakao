@@ -53,10 +53,10 @@ public class RacingGameUI {
     }
     private static void validationForEach(String name){
         if(!isAlpha(name)){
-            throw new RuntimeException(String.format("차 이름은 알파벳이어야 합니다 - %s", name));
+            throw new RuntimeException(String.format("차 이름은 알파벳이어야 합니다 - error name : \"%s\"", name));
         }
         if(!allowedLength(name)) {
-            throw new RuntimeException(String.format("차 이름은 다섯글자 이하여야 합니다 - %s", name));
+            throw new RuntimeException(String.format("차 이름은 1글자 이상 5글자 이하여야 합니다 - error name : \"%s\"", name));
         }
     }
 
