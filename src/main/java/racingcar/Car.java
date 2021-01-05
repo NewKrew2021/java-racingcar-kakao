@@ -2,18 +2,15 @@ package racingcar;
 
 public class Car {
 
-    private int position;
+    private int position = 1;
     public static final int STEP = 1;
     private String name;
 
-    public Car() {
-    }
-
     public Car(String name) {
-        setName(name);
+        this.name = name;
     }
 
-    public void goFront() {
+    private void goFront() {
         position += STEP;
     }
 
@@ -32,8 +29,12 @@ public class Car {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void printResult() {
+        StringBuilder stb = new StringBuilder();
+        stb.append(name).append(" : ");
+        for (int i = 0; i < position; i++) {
+            stb.append("-");
+        }
+        System.out.println(stb.toString());
     }
-
 }

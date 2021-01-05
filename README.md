@@ -62,3 +62,4 @@
 - git commit 메시지 컨벤션에서 ($)가 의미하는것이 무엇인가? 어떻게 써야하는가
 - `car.java` 안에 있는 public static final 변수 합당한가?
 - RacingCarGame.java 안에 있는 token 변수를 빼야하는지?? 아니면 그냥 `,` 상태로 두어도 괜찮은지?
+- random 에 연관되어있는 다른 메소드들의 테스트는 어떻게 하는지?
