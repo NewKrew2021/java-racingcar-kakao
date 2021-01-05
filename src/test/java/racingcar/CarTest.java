@@ -14,13 +14,15 @@ class CarTest {
 
     @Test
     void goFront() {
-        int prePosition = car.getPosition();
+        final int prePosition = car.getPosition();
+
         assertThat(car.racing(4)).isEqualTo(prePosition + Car.STEP);
     }
 
     @Test
     void stop() {
-        int prePosition = car.getPosition();
+        final int prePosition = car.getPosition();
+
         assertThat(car.racing(3)).isEqualTo(prePosition);
     }
 

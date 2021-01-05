@@ -1,12 +1,12 @@
 package racingcar;
 
-import java.util.Comparator;
-
 public class Car {
 
     private int position = 1;
+    private final String name;
+
     public static final int STEP = 1;
-    private String name;
+    private static final int FORWARD_NUM = 4;
 
     public Car(String name) {
         this.name = name;
@@ -21,7 +21,7 @@ public class Car {
     }
 
     public int racing(int randomNum) {
-        if (randomNum >= 4) {
+        if (randomNum >= FORWARD_NUM) {
             goFront();
         }
         return getPosition();

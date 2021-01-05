@@ -1,10 +1,12 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingCarGameApp {
+
     private static final Scanner sc = new Scanner(System.in);
+
     public static void main(String[] args) {
         RacingCarGame game = new RacingCarGame();
 
@@ -27,13 +29,14 @@ public class RacingCarGameApp {
     }
 
     private static void printWinners(RacingCarGame game) {
-        StringBuilder stb = new StringBuilder();
+        StringBuilder winnerString = new StringBuilder();
 
-        ArrayList<String> winners = game.getWinners();
+        List<String> winners = game.getWinners();
         for (String winner : winners) {
-            stb.append(winner).append(",");
+            winnerString.append(winner).append(",");
         }
-        System.out.print(stb.substring(0,stb.length() - 1));
+        System.out.print(winnerString.substring(0,winnerString.length() - 1));
         System.out.println("가 최종 우승했습니다.");
     }
+
 }
