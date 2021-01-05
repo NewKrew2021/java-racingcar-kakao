@@ -28,6 +28,10 @@ public class Car implements Comparable<Car> {
         return rand.nextInt(10);
     }
 
+    public void printName(){
+        System.out.print(this.name);
+    }
+
     public void printPosition(){
         System.out.println(name + " : " + "-".repeat(position));
     }
