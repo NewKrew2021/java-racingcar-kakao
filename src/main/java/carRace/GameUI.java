@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class RacingGameUI {
+public class GameUI {
     private static final int MAX_NAME_LENGTH = 5;
 
     public static CarSet getCarsFromUser() {
