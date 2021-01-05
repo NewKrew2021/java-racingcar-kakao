@@ -10,39 +10,39 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
+    private final int MOVE = 4;
+    private final int NOT_MOVE = 3;
+
     private Cars testCars;
+
+    private Cars expectedCars;
+    private List<Integer> moveNumbers1;
+    private List<Integer> moveNumbers2;
 
     @BeforeEach
     public void setUp() {
         String[] testNames = {"car1", "car2", "car3", "car4"};
         testCars = new Cars(testNames);
+        moveNumbers1 = Arrays.asList(MOVE, NOT_MOVE, MOVE, NOT_MOVE);
+        moveNumbers2 = Arrays.asList(MOVE, NOT_MOVE, MOVE, MOVE);
     }
 
     @Test
-    public void toStringTest() {
-        List<Integer> numbers = Arrays.asList(0, 3, 4, 9);
-        testCars.moveAllCars(numbers);
-        String expectedString = "car1 : \ncar2 : \ncar3 : -\ncar4 : -\n";
-        assertThat(testCars.toString()).isEqualTo(expectedString);
+    public void moveAllCarsTest() {
+        testCars.moveAllCars(moveNumbers1);
+        testCars.moveAllCars(moveNumbers2);
+        String expected = "car1 : --\ncar2 : \ncar3 : --\ncar4 : -\n";
+        assertThat(testCars.toString()).isEqualTo(expected);
     }
 
     @Test
-    public void getWinners(){
-        /* phase 1 (0, 0, 1, 1)*/
-        List<Integer> numbers1 = Arrays.asList(0, 3, 4, 9);
-        testCars.moveAllCars(numbers1);
-
-        /* phase 2 (0, 1, 1, 1)*/
-        List<Integer> numbers2 = Arrays.asList(0, 4, 3, 2);
-        testCars.moveAllCars(numbers2);
-
-        /* phase 3 (1, 1, 2, 2)*/
-        List<Integer> numbers3 = Arrays.asList(4, 3, 6, 9);
-        testCars.moveAllCars(numbers3);
+    public void getWinners() {
+        testCars.moveAllCars(moveNumbers1);
+        testCars.moveAllCars(moveNumbers2);
 
         List<Car> winners = testCars.getWinners();
 
-        String expectedString = "[car3 : --, car4 : --]";
-        assertThat(winners.toString()).isEqualTo(expectedString);
+        String expected = "[car1 : --, car3 : --]";
+        assertThat(winners.toString()).isEqualTo(expected);
     }
 }
