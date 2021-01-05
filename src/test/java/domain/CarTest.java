@@ -1,6 +1,5 @@
 package domain;
 
-import domain.Car;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -12,8 +11,10 @@ public class CarTest {
 
     @Test
     void length0orNull() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car(""));
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car(null));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car(""));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car(null));
     }
 
     @Test
@@ -25,7 +26,8 @@ public class CarTest {
 
     @Test
     void length6이상() {
-        assertThatIllegalArgumentException().isThrownBy(() -> new Car("123456"));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new Car("123456"));
     }
 
     @Test
@@ -40,21 +42,21 @@ public class CarTest {
 
     @Test
     void isForwardThan() {
-        Car car1 = new Car("12345");
-        Car car2 = new Car("12345");
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
         car1.moveOrNot(ALWAYS_MOVE_CONDITION);
         assertThat(car1.isForwardThan(car2)).isTrue();
     }
 
     @Test
-    void isAtSamePositionWith() {
-        Car car1 = new Car("12345");
-        Car car2 = new Car("12345");
-        assertThat(car1.isAtSamePositionWith(car2)).isTrue();
+    void isSamePositionWith() {
+        Car car1 = new Car("car1");
+        Car car2 = new Car("car2");
+        assertThat(car1.isSamePositionWith(car2)).isTrue();
         car1.moveOrNot(ALWAYS_MOVE_CONDITION);
         car2.moveOrNot(ALWAYS_MOVE_CONDITION);
-        assertThat(car1.isAtSamePositionWith(car2)).isTrue();
+        assertThat(car1.isSamePositionWith(car2)).isTrue();
         car2.moveOrNot(ALWAYS_MOVE_CONDITION);
-        assertThat(car1.isAtSamePositionWith(car2)).isFalse();
+        assertThat(car1.isSamePositionWith(car2)).isFalse();
     }
 }

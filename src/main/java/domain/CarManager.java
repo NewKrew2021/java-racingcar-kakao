@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarManager {
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
 
     public void pushCar(Car car) {
         cars.add(car);
@@ -23,7 +23,7 @@ public class CarManager {
         Car winner = findWinnerCar();
 
         return cars.stream()
-                .filter(car -> car.isAtSamePositionWith(winner))
+                .filter(car -> car.isSamePositionWith(winner))
                 .collect(Collectors.toList());
     }
 
