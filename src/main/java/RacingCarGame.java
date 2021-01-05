@@ -1,14 +1,9 @@
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingCarGame {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-
-        String carString = scanner.next();
-
-        List<String> carNames = StringUtil.parseString(carString);
+        List<String> carNames = InputView.readNames();
 
         CarManager carManager = new CarManager();
 
@@ -16,8 +11,13 @@ public class RacingCarGame {
             carManager.pushCar(new Car(carName));
         }
 
-        for (Car car : carManager.getCars()) {
-            System.out.println(car.getName());
+        int round = InputView.readRound();
+
+        for (int i = 0; i < round; i++) {
+            carManager.moveCars();
+            OutputView.printCars(carManager.getCars());
         }
+
+        OutputView.printWinnerCars(carManager.findWinners());
     }
 }
