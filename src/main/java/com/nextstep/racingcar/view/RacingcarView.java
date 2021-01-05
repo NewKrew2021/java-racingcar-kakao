@@ -1,5 +1,6 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.view;
 
+import com.nextstep.racingcar.domain.Racingcar;
 import java.util.Scanner;
 
 public class RacingcarView {

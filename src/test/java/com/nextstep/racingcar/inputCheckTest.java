@@ -1,5 +1,6 @@
 package com.nextstep.racingcar;
 
+import com.nextstep.racingcar.domain.InputCheck;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;

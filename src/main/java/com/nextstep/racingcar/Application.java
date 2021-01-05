@@ -1,5 +1,8 @@
 package com.nextstep.racingcar;
 
+import com.nextstep.racingcar.domain.Car;
+import com.nextstep.racingcar.domain.Racingcar;
+import com.nextstep.racingcar.view.RacingcarView;
 import java.util.Arrays;
 
 public class Application {
