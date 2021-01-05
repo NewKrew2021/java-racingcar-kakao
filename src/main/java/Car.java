@@ -26,6 +26,14 @@ public class Car {
         this.position++;
     }
 
+    public boolean isForwardThan(Car car) {
+        return this.position > car.position;
+    }
+
+    public boolean isAtSamePositionWith(Car car) {
+        return this.position == car.position;
+    }
+
     public String getName() {
         return this.name;
     }
