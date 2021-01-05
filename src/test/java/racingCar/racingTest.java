@@ -4,19 +4,15 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class racingTest {
 
-    private Parser parser;
+    private GameManager gameManager;
     @BeforeEach
     public void setUp(){
-        parser=new Parser();
+        gameManager =new GameManager();
     }
     /*
     1. 자동차 이름 문자열은 ,로 구분된다.
@@ -25,7 +21,7 @@ public class racingTest {
     @Test
     public void carNameTest() {
         String userInput = "pobi,crong,honux, teo ";
-        List<String>  result = parser.parsing(userInput);
+        List<String>  result = gameManager.parsing(userInput);
         Assertions.assertThat(result)
                     .containsAll(Arrays.asList("pobi", "crong", "honux", "teo"));
     }
@@ -33,7 +29,7 @@ public class racingTest {
     @Test
     public void longNameExceptionTest() {
         String userInput = "bmoadv,pobi,vavaa";
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> parser.parsing(userInput));
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> gameManager.parsing(userInput));
     }
 
     /*
@@ -70,7 +66,7 @@ public class racingTest {
         //honux: 0,0,1 -> 1
         //teo: 1, 1, 1-> 3
         List<Car> winners=Arrays.asList(new Car("teo",3));
-        List<Car> rank=parser.getWinner(cars);
+        List<Car> rank= gameManager.getWinner(cars);
         for(int i=0;i<winners.size();i++){
             Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
         }
@@ -97,7 +93,7 @@ public class racingTest {
         //honux: 0,0,1 -> 1
         //teo: 1, 1, 1-> 3
         List<Car> winners=Arrays.asList(new Car("pobi",3),new Car("teo",3));
-        List<Car> rank=parser.getWinner(cars);
+        List<Car> rank= gameManager.getWinner(cars);
         for(int i=0;i<winners.size();i++){
             Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
         }
