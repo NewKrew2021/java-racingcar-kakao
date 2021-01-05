@@ -9,33 +9,18 @@ public class CarGame {
     private final int totalRound;
     private int currentRound = 0;
 
-    public CarGame(ArrayList<Car> carList, int totalRound){
+    public ArrayList<Car> getCarList() {
+        return carList;
+    }
+
+    public CarGame(ArrayList<Car> carList, int totalRound) {
         this.carList = carList;
         this.totalRound = totalRound;
     }
 
-
-    public static ArrayList<String> parseCarName(String text){
-        return new ArrayList<String>(Arrays.asList(text.split(",")));
-    }
-
-    public static void validateCarName(ArrayList<String> nameList) throws IllegalStateException {
-        for (String name : nameList) {
-            testLength(name);
-        }
-    }
-
-    private static void testLength(String name){
-        if(name.length() > 5){
-            throw new IllegalStateException();
-        }
-    }
-
     public void playRound() {
-        while(!isFinished()){
-            currentRound++;
-            updateCar();
-        }
+        currentRound++;
+        updateCar();
     }
 
     private void updateCar() {
@@ -57,7 +42,7 @@ public class CarGame {
         return winners;
     }
 
-    private void addWinner(String name, ArrayList<String> winners){
+    private void addWinner(String name, ArrayList<String> winners) {
         if(!name.isEmpty()){
             winners.add(name);
         }
