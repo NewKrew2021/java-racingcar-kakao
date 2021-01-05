@@ -6,17 +6,19 @@ import racingcar.domain.CarInfo;
 import java.util.List;
 import java.util.Scanner;
 
-public class Circuit {
+public class RacingGameView {
 
+    private static final String GET_CAR_NAMES_MESSAGE = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    private static final String GET_ITER_NO_MESSAGE = "시도할 회수는 몇회인가요?";
     private Scanner sc;
 
-    public Circuit() {
+    public RacingGameView() {
         this.sc = new Scanner(System.in);
     }
 
     public String getCarNames() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        System.out.println(GET_CAR_NAMES_MESSAGE);
         String carNames = sc.nextLine();
 
         return carNames;
@@ -24,7 +26,7 @@ public class Circuit {
 
     public int getIterNo() {
         int iterationNumber;
-        System.out.println("시도할 회수는 몇회인가요?");
+        System.out.println(GET_ITER_NO_MESSAGE);
         iterationNumber = sc.nextInt();
         return iterationNumber;
     }

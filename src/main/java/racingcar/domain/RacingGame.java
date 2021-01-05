@@ -12,23 +12,27 @@ public class RacingGame {
     private static final int RANGE = 10;
     private static final int SPEED = 4;
     private static final int NAME_MAX_LENGTH = 5;
+    private static final String DEFAULT_SPLIT_DELIMITER = ",";
+    private Random random;
 
-    public RacingGame(String str) {
+    public RacingGame(String inputCarNames) {
+        random = new Random();
         cars = new ArrayList<>();
-        List<String> names = splitName(str);
+        List<String> names = splitName(inputCarNames);
         for (String name : names) {
             addCar(name);
         }
     }
 
+    private List<String> splitName(String str) {
+        return Arrays.asList(str.split(DEFAULT_SPLIT_DELIMITER));
+    }
+
     public RacingGame(List<Car> cars) {
+        this.cars = new ArrayList<>();
         for (Car car : cars) {
             addCar(car);
         }
-    }
-
-    private List<String> splitName(String str) {
-        return Arrays.asList(str.split(","));
     }
 
     private void addCar(String name) {
@@ -66,7 +70,6 @@ public class RacingGame {
     }
 
     void moveCar(Car car) {
-        Random random = new Random();
         if (isCarGo(random.nextInt(RANGE))) {
             car.nextStep();
         }

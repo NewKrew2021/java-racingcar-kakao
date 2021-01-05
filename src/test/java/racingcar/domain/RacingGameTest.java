@@ -1,6 +1,10 @@
 package racingcar.domain;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.RacingGame;
 
 import java.util.Arrays;
@@ -26,7 +30,7 @@ public class RacingGameTest {
         assertThat(carNames).containsExactly("d","b","v");
     }
 
-    @Test
+    @Test @DisplayName("글자 수가 5자 이하의 객체만 생성하는지 확인")
     void splitUnderFiveTest(){
         racingGame = new RacingGame("abcdef,a,b");
         racingGame.racing();
@@ -60,12 +64,16 @@ public class RacingGameTest {
         assertThat(racingGame.findWinners()).containsExactly("yell", "pobi");
     }
 
-    @Test
-    void carGoTest() {
-        assertThat(racingGame.isCarGo(0)).isEqualTo(false);
-        assertThat(racingGame.isCarGo(3)).isEqualTo(false);
-        assertThat(racingGame.isCarGo(4)).isEqualTo(true);
-        assertThat(racingGame.isCarGo(9)).isEqualTo(true);
+    @ParameterizedTest
+    @ValueSource(ints = {-2,-1,0,1,2,3})
+    void carGoFailTest(int number) {
+        org.junit.jupiter.api.Assertions.assertFalse(racingGame.isCarGo(number));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {4,5,6,7,8,9})
+    void carGoTrueTest(int number) {
+        org.junit.jupiter.api.Assertions.assertTrue(racingGame.isCarGo(number));
     }
 
 }

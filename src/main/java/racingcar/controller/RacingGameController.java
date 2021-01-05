@@ -1,22 +1,22 @@
 package racingcar.controller;
 
 import racingcar.domain.RacingGame;
-import racingcar.view.Circuit;
+import racingcar.view.RacingGameView;
 
 public class RacingGameController {
-    private static Circuit circuit = new Circuit();
+    private static RacingGameView racingGameView = new RacingGameView();
     private static RacingGame racingGame;
 
     public static void main(String[] args) {
-        String carNames = circuit.getCarNames();
+        String carNames = racingGameView.getCarNames();
         racingGame = new RacingGame(carNames);
 
-        int iterationNumber = circuit.getIterNo();
+        int iterationNumber = racingGameView.getIterNo();
         for (int i = 0; i < iterationNumber; i++) {
             racingGame.racing();
-            circuit.printStatus(racingGame.getStatus());
+            racingGameView.printStatus(racingGame.getStatus());
         }
 
-        circuit.printResult(racingGame);
+        racingGameView.printResult(racingGame);
     }
 }
