@@ -11,9 +11,8 @@ public class CarTest {
 
     Car car;
 
-
     @BeforeAll
-    public void setup(){
+    public void setup() {
         car = new Car("testCar");
     }
 
@@ -29,10 +28,5 @@ public class CarTest {
                 .isThrownBy(() -> {
                     car.move(10);
                 }).withNoCause();
-    }
-
-    @Test
-    public void carNameTest(){
-
     }
 }

@@ -4,155 +4,165 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Collection;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class Racing {
 
-    public List<Car> cars;
+    private List<Car> cars;
+    private int round;
 
     private final int MAX_CAR_NAME_LENGTH = 5;
 
+    public Racing() {
+        this.cars = new ArrayList<>();
+    }
+
     public void startRacing() {
-
-        List<String> names;
-        do{
-            names = splitNames(enterCarNames());
-        }while(!checkCarNames(names));
-
-        createCars(names);
-
-        int round = enterRound();
+        List<String> names = splitNames(enterCarNames());
+        if (!isValidCarName(names)) {
+            return;
+        }
+        registerCars(names);
+        setRound(enterRound());
 
         System.out.println("실행 결과");
-        IntStream.range(0, round).forEach(i -> {
-            racing();
-            printCurrentCarStatus();
-            System.out.println();
-        });
-
-        printWinnerName();
+        race();
     }
 
-    private void printWinnerName() {
-        System.out.print(String.join(",", getWinnerName()));
-        System.out.println("가 최종 우승했습니다.");
-    }
-
-    public void createCars(List<String> names) {
-        this.cars = new ArrayList<>();
-
+    public void registerCars(List<String> names) {
         for (int i = 0; i < names.size(); i++) {
             cars.add(new Car(names.get(i)));
         }
-    }
-
-    private String enterCarNames() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        return str;
     }
 
     private List<String> splitNames(String str) {
         return new ArrayList<>(Arrays.asList(str.split(",")));
     }
 
-    //리펙토링 필요(들여쓰기 문)
-    private boolean checkCarNames(List<String> names) {
-        for(String name: names){
-            if (name.length() > MAX_CAR_NAME_LENGTH) {
-                return false;
-            }
+    private boolean isValidCarName(List<String> names) {
+        boolean valid = true;
+        for (String name: names) {
+            valid = isValidNameLength(name.length());
         }
-        return true;
+        return valid;
     }
 
-    private int enterRound() {
-        System.out.println("시도할 회수는 몇회인가요?");
-        Scanner sc = new Scanner(System.in);
-        int round = sc.nextInt();
-        return round;
+    private boolean isValidNameLength(int len) {
+        return len <= MAX_CAR_NAME_LENGTH;
     }
 
-    private void racing(){
-        for (Car car : this.cars) {
-            car.move(createNumber());
-        }
+    public void setRound(int round) {
+        this.round = round;
     }
 
-    private void printCurrentCarStatus() {
-        for(Car car: this.cars){
-            System.out.print(car.getName()+" : ");
-            printBars(car.getPosition());
+    public void race() {
+        printCurrentStatus();
+        for (int i = 0; i < round; i++) {
+            raceOneRepeat();
+            printCurrentStatus();
         }
+        printWinnerName();
     }
-    private void printBars(int number){
-        IntStream.range(0, number).forEach(i ->{
-            System.out.print("-");
-        });
+
+    private void printWinnerName() {
+        System.out.print(String.join(",", winnerName()));
+        System.out.println("가 최종 우승했습니다.");
+    }
+
+    private void printCurrentStatus() {
+        for (Car car: this.cars) {
+            System.out.printf("%-4s : ", car.getName());
+            printStatusBar(car.getPosition());
+        }
         System.out.println();
     }
 
-    public ArrayList<Integer> getFinalCarPositions() {
-        ArrayList<Integer> positions = new ArrayList<>();
+    private void printStatusBar(int number) {
+        for (int i = 0; i < number; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+    }
+
+    private void raceOneRepeat() {
+        for (Car car: this.cars) {
+            car.move(createRandomNumber());
+        }
+    }
+
+    private int createRandomNumber() {
+        return (int) (Math.random() * 10);
+    }
+
+    private List<String> winnerName() {
+        List<String> names = new ArrayList<>();
+        for (Car car: whoWinner()) {
+            names.add(car.getName());
+        }
+        return names;
+    }
+
+    private List<Car> whoWinner() {
+        List<Car> winnerCars = new ArrayList<>();
+        for(int carIndex: winnerCarIndex()) {
+            winnerCars.add(this.cars.get(carIndex));
+        }
+        return winnerCars;
+    }
+
+    public List<Integer> winnerCarIndex() {
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < finalCarPositions().size(); i++) {
+            result.add(checkFarthestCarIndex(i));
+        }
+        return result.stream()
+                     .filter(idx -> idx >= 0)
+                     .collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    public List<Integer> finalCarPositions() {
+        List<Integer> positions = new ArrayList<>();
         for (int i = 0; i < this.cars.size(); i++) {
             positions.add(this.cars.get(i).getPosition());
         }
         return positions;
     }
 
-    public ArrayList<Car> getWinner() {
-        int maxPosition = max(getFinalCarPositions());
-
-        ArrayList<Car> winnerCars = new ArrayList<>();
-        for(int carInex: getWinnerCarsIndex(maxPosition, getFinalCarPositions())){
-            winnerCars.add(this.cars.get(carInex));
-        }
-        return winnerCars;
-    }
-
-    private ArrayList<String> getWinnerName(){
-        ArrayList<String> names = new ArrayList<>();
-        for(Car car: getWinner()){
-            names.add(car.getName());
-        }
-        return names;
-    }
-
-
-    private ArrayList<Integer> getWinnerCarsIndex(int maxPosition, List<Integer> currentCarPositions) {
-        ArrayList<Integer> result = new ArrayList<>();
-        for (int i = 0; i < currentCarPositions.size(); i++) {
-            result.add(checkFarthestCarIndex(maxPosition, currentCarPositions.get(i), i));
-        }
-        return result.stream().filter(a -> a >= 0).collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    private int checkFarthestCarIndex(int maxPosition, int currentCarPosition,int index){
-        if(maxPosition == currentCarPosition){
-            return index;
+    private int checkFarthestCarIndex(int idx) {
+        if (isSameBoth(max(finalCarPositions()), finalCarPositions().get(idx))) {
+            return idx;
         }
         return -1;
     }
 
     private int max(List<Integer> positions) {
         int maxVal = positions.get(0);
-        for (int element : positions) {
-            maxVal = highValueBetween(maxVal, element);
+        for (int element: positions) {
+            maxVal = higherValueBoth(maxVal, element);
         }
         return maxVal;
     }
 
-    private int highValueBetween(int a, int b) {
+    private int higherValueBoth(int a, int b) {
         if (a < b) {
             return b;
         }
         return a;
     }
 
-    private int createNumber() {
-        return (int) (Math.random() * 10);
+    private boolean isSameBoth(int a, int b) {
+        return a == b;
+    }
+
+    private String enterCarNames() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    private int enterRound() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
     }
 }
