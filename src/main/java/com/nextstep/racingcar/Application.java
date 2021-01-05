@@ -4,29 +4,33 @@ import com.nextstep.racingcar.domain.Car;
 import com.nextstep.racingcar.domain.InputCheck;
 import com.nextstep.racingcar.domain.Racingcar;
 import com.nextstep.racingcar.view.RacingcarView;
-import java.util.Arrays;
 
 public class Application {
 
   public static void main(String[] args) {
     Racingcar racingcar = new Racingcar();
-    RacingcarView racingcarView = new RacingcarView(racingcar);
+    RacingcarView racingcarView = new RacingcarView();
 
     createCars(racingcar, racingcarView);
     runRacing(racingcar, racingcarView);
-    finishRacing(racingcarView);
+    finishRacing(racingcar, racingcarView);
   }
 
   private static void createCars(Racingcar racingcar, RacingcarView racingcarView) {
     String[] carNames = racingcarView.inputCarNames().split(",");
     for (String carName : carNames) {
-      createValidCar(racingcar, carName);
+      createValidCar(racingcar, carName.trim());
     }
   }
 
   private static void createValidCar(Racingcar racingcar, String carName) {
-    if(InputCheck.checkName(carName)) {
-      racingcar.addCar(new Car(carName));
+    try {
+      if(InputCheck.checkName(carName)) {
+        racingcar.addCar(new Car(carName));
+      }
+    } catch (RuntimeException e) {
+      System.out.println(e);
+      System.exit(1);
     }
   }
 
@@ -36,11 +40,11 @@ public class Application {
     racingcarView.printRaceResultMessage();
     for (int i = 0; i < repetitionCount; i++) {
       racingcar.race();
-      racingcarView.printCars();
+      racingcarView.printCars(racingcar);
     }
   }
 
-  private static void finishRacing(RacingcarView racingcarView) {
-    racingcarView.printWinners();
+  private static void finishRacing(Racingcar racingcar, RacingcarView racingcarView) {
+    racingcarView.printWinners(racingcar);
   }
 }

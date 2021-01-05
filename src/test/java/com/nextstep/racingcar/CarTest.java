@@ -1,7 +1,7 @@
 package com.nextstep.racingcar;
 
 import com.nextstep.racingcar.domain.Car;
-import com.nextstep.racingcar.domain.CarResult;
+import com.nextstep.racingcar.domain.OutOfBoundNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class CarTest {
 
@@ -38,15 +39,25 @@ public class CarTest {
   @ParameterizedTest
   @ValueSource(ints = {4, 9})
   void shouldAdvance(int number) {
-    CarResult result = car.run(number); // MOVE, STOP
-    assertThat(result).isEqualTo(CarResult.MOVE);
+    boolean result = car.run(number); // MOVE, STOP
+    assertThat(result).isEqualTo(true);
   }
 
   @ParameterizedTest
   @ValueSource(ints = {0, 3})
   void shouldStop(int number) {
-    CarResult result = car.run(number);
-    assertThat(result).isEqualTo(CarResult.STOP);
+    boolean result = car.run(number);
+    assertThat(result).isEqualTo(false);
+  }
+
+  @ParameterizedTest
+  @ValueSource(ints = {-1, 10})
+  void shouldException(int number) {
+    assertThatExceptionOfType(OutOfBoundNumberException.class).
+        isThrownBy(
+            () -> {
+              car.run(number);
+            });
   }
 
   @ParameterizedTest

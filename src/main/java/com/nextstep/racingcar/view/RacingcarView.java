@@ -6,11 +6,9 @@ import java.util.Scanner;
 public class RacingcarView {
 
   Scanner sc;
-  Racingcar racingcar;
 
-  public RacingcarView(Racingcar racingcar) {
+  public RacingcarView() {
     sc = new Scanner(System.in);
-    this.racingcar = racingcar;
   }
 
   public String inputCarNames() {
@@ -23,15 +21,13 @@ public class RacingcarView {
     return sc.nextInt();
   }
 
-  public void printRaceResultMessage() {
-    System.out.println("경기 결과");
-  }
+  public void printRaceResultMessage() { System.out.println("경기 결과"); }
 
-  public void printCars() {
+  public void printCars(Racingcar racingcar) {
     System.out.println(racingcar.toString());
   }
 
-  public void printWinners() {
+  public void printWinners(Racingcar racingcar) {
     System.out.println(String.join(", ", racingcar.getWinners()) + "가 최종 우승했습니다.");
   }
 }

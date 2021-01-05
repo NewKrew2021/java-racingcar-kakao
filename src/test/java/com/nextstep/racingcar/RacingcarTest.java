@@ -30,7 +30,6 @@ public class RacingcarTest {
     for (int i = 0; i < 3; i++) {
       iCar.run(4);
     }
-
     addCars();
     assertThat(racingcar.getWinners()).isEqualTo(Arrays.asList("t"));
   }

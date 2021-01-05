@@ -12,12 +12,14 @@ public class Car {
     this.location = 0;
   }
 
-  public CarResult run(int number) {
+  public boolean run(int number) {
+    if(number < 0 || number > 9) throw new OutOfBoundNumberException();
+
     if (carShouldMove(number)) {
       move();
-      return CarResult.MOVE;
+      return true;
     }
-    return CarResult.STOP;
+    return false;
   }
 
   private void move() {
