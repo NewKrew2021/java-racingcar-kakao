@@ -4,14 +4,26 @@ import java.util.List;
 
 public class GameView {
 
-    public void roundResult(List<Car> cars) {
+    public void gameStartMessageView() {
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+    }
+
+    public void gameRoundMessage() {
+        System.out.println("시도할 회수는 몇회인가요?");
+    }
+
+    public void roundTitleView() {
+        System.out.println("실행 결과");
+    }
+
+    public void roundResultView(List<Car> cars) {
         for (Car car : cars) {
             System.out.println(car.toString());
         }
         System.out.println();
     }
 
-    public void gameResult(List<Car> winners) {
+    public void gameResultView(List<Car> winners) {
         for (int i = 0; i < winners.size(); i++) {
             System.out.print(convertCarName(winners, i));
         }
@@ -24,10 +36,6 @@ public class GameView {
             return name;
         }
         return name + ", ";
-    }
-
-    public void print(String statement) {
-        System.out.println(statement);
     }
 
 }
