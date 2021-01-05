@@ -4,8 +4,9 @@ public class RacingCar {
 
     private static final int MIN_MOVABLE_NUMBER = 4;
 
-    private String name;
     private int dist;
+
+    private final String name;
 
     public RacingCar(String name) {
         this.name = name;

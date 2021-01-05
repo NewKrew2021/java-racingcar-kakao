@@ -30,7 +30,7 @@ public class Racing {
 
     private void printRoundResult() {
         this.racingCars.printRoundResult();
-        System.out.println("");
+        System.out.println();
     }
 
     private void printFinalResult() {

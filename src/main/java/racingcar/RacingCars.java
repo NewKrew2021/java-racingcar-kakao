@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class RacingCars {
     private static final int DISTANCE_LIMIT = 10;
 
-    private ArrayList<RacingCar> racingCars = new ArrayList<>();
+    private final ArrayList<RacingCar> racingCars = new ArrayList<>();
 
     public RacingCars(String input) {
         setUpCarName(input.split(","));
@@ -49,6 +49,6 @@ public class RacingCars {
     }
 
     public void printRoundResult() {
-        racingCars.stream().forEach(racingCar -> racingCar.printDist());
+        racingCars.forEach(RacingCar::printDist);
     }
 }

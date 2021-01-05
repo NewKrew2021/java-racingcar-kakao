@@ -10,24 +10,27 @@ public class InputValidChecker {
     }
 
     public static boolean isValidRounds(String input) {
+        int round = 0;
         try {
-            Integer.parseInt(input);
+            round = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             return false;
-        } catch (NullPointerException e) {
-            return false;
         }
-        return true;
+        return isRoundPositive(round);
     }
 
     private static boolean isNameLengthValid(String[] names) {
         return Arrays.stream(names)
-                .noneMatch(name -> name.length() > 5);
+                .noneMatch(name -> name.length() > 0 && name.length() > 5);
     }
 
     private static boolean isNotDuplicatedName(String[] names) {
         return Arrays.stream(names)
                 .distinct()
                 .count() == names.length;
+    }
+
+    private static boolean isRoundPositive(int round) {
+        return round > 0;
     }
 }
