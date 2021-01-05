@@ -2,15 +2,20 @@ package racingcar;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 public class Input {
-    private String input;
+    private static final Scanner scanner = new Scanner(System.in);
 
-    public void setInput(String input) {
-        this.input = input;
+    public static int getGameTime(){
+        return scanner.nextInt();
     }
 
-    public List<String> getSplitName() {
+    public static List<String> getNames(){
+        return getSplitName(scanner.nextLine());
+    }
+
+    public static List<String> getSplitName(String input) {
         return Arrays.asList(input.split(","));
     }
 }

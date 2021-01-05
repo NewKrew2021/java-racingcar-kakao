@@ -9,6 +9,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class CarTest {
+    private Car car;
+
+    @BeforeEach
+    void createCar(){
+        car = new Car("dummy");
+    }
+
     @Test
     void carNameCheckTest() {
         assertThatExceptionOfType(IllegalArgumentException.class)
