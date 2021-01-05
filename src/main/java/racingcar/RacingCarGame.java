@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 public class RacingCarGame {
     private static final int LIMIT_NAME = 5;
-    private List<Car> carList = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
+    private static final int RANDOM_SCOPE = 10;
+    private final List<Car> carList = new ArrayList<>();
+    private final Scanner sc = new Scanner(System.in);
 
     public void start() {
         scanName();
@@ -37,8 +38,14 @@ public class RacingCarGame {
         return sc.nextInt();
     }
 
-    private void racingGame() {
+    private int randomNum() {
+        return (int) (Math.random() * RANDOM_SCOPE);
+    }
 
+    private void racingGame() {
+        for (Car car : carList) {
+            car.racing(randomNum());
+        }
     }
 
     public String[] splitName(String text) {
