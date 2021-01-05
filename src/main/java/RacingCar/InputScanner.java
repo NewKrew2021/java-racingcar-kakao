@@ -20,5 +20,4 @@ public class InputScanner {
         int round = scan.nextInt();
         return round;
     }
-
 }

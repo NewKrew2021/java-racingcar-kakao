@@ -26,13 +26,25 @@ public class RacingCarTest {
     @Test
     public void nameSplitCheck() {
         racing = new Racing("");
-        assertThat(racing.splitNames("aaa,bbb,ccc")).containsExactly(new String[] {"aaa", "bbb", "ccc"});
+        assertThat(racing.splitNames("aaa,bbb,ccc")).containsExactly(new String[]{"aaa", "bbb", "ccc"});
     }
 
     @Test
     public void setRacingCarNameCheck() {
         racing = new Racing("aaa,bbb,ccc");
         assertThat(racing.getRacingCars()).extracting(RacingCar::getName).containsExactly("aaa", "bbb", "ccc");
+    }
+
+    @Test
+    public void moveRacingCarCheck() {
+        racingCar = new RacingCar("aaa");
+        assertThat(racingCar.move(4)).isEqualTo(1);
+    }
+
+    @Test
+    public void stopRacingCarCheck() {
+        racingCar = new RacingCar("aaa");
+        assertThat(racingCar.move(3)).isEqualTo(0);
     }
 
 }
