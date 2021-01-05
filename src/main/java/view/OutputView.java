@@ -6,18 +6,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
+    private static final String NEW_LINE = System.lineSeparator();
+
     public static void printCars(List<Car> cars) {
+        StringBuilder sb = new StringBuilder();
+
         for (Car car : cars) {
-            System.out.print(car.getName() + " : ");
-            printDistance(car.getPosition());
-            System.out.println();
+            sb.append(car.getName()).append(" : ");
+            appendDistance(sb, car);
+            sb.append(NEW_LINE);
         }
-        System.out.println();
+
+        System.out.println(sb.toString());
     }
 
-    private static void printDistance(int position) {
-        for (int i = 0; i < position; i++) {
-            System.out.print('-');
+    private static void appendDistance(StringBuilder sb, Car car) {
+        for (int i = 0; i < car.getPosition(); i++) {
+            sb.append("-");
         }
     }
 
