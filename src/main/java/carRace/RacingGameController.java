@@ -1,6 +1,6 @@
 package carRace;
 
-public class RacingGame {
+public class RacingGameController {
 
     public void run(){
         Cars cars = RacingGameUI.getCarsFromUser();
