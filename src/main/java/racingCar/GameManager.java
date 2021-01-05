@@ -41,7 +41,7 @@ public class GameManager {
 
 
     public List<Car> makeCarList(List<String> carNames) {
-        List<Car> cars = new ArrayList<Car>();
+        List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
@@ -59,7 +59,7 @@ public class GameManager {
     }
 
     public List<Car> getWinner(List<Car> cars) {
-        List<Car> winners = new ArrayList<Car>();
+        List<Car> winners = new ArrayList<>();
 
         Collections.sort(cars);
         Car first = cars.get(0);

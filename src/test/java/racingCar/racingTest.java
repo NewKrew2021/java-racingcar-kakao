@@ -66,15 +66,17 @@ public class racingTest {
 
     @Test
     public void multiWinnerTest() {
-        List<Car> cars = gameManager.makeCarList(Arrays.asList("pobi", "crong", "honux", "teo"));
         int[] fixedNumber = {5, 2, 3, 6};
+        List<Car> cars = gameManager.makeCarList(Arrays.asList("pobi", "crong", "honux", "teo"));
         for (int i = 0; i < 12; i++) {
             cars.get(i % 4).goForward(fixedNumber[i % 4]);
         }
-        List<Car> winners = Arrays.asList(new Car("pobi", 3), new Car("teo", 3));
-        List<Car> rank = gameManager.getWinner(cars);
-        for (int i = 0; i < winners.size(); i++) {
-            Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
+        List<Car> realWinner = gameManager.getWinner(cars);
+
+        List<Car> expectedWinner = Arrays.asList(new Car("pobi"), new Car("teo"));
+
+        for (int i = 0; i < realWinner.size(); i++) {
+            Assertions.assertThat(realWinner.get(i).equals(expectedWinner.get(i))).isEqualTo(true);
         }
     }
 
