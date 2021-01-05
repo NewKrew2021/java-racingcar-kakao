@@ -23,7 +23,7 @@ public class CarTest {
         for (int i = 0; i < number; i++) {
             car.nextStep();
         }
-        assertThat(car.getPosition()).isEqualTo(number);
+        assertThat(car.getCarInfo().getPosition()).isEqualTo(number);
     }
 
     @ParameterizedTest
@@ -35,6 +35,6 @@ public class CarTest {
 
     @Test
     void nameTest(){
-        assertThat(car.getName()).isEqualTo("yell");
+        assertThat(car.getCarInfo().getName()).isEqualTo("yell");
     }
 }

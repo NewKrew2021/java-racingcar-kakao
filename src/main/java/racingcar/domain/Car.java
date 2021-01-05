@@ -3,10 +3,11 @@ package racingcar.domain;
 import racingcar.CarNameInvalidException;
 
 public class Car {
-    private int position;
-    private final String name;
     private static final int MOVEMENT = 1;
     private static final int NAME_MAX_LENGTH = 5;
+
+    private int position;
+    private final String name;
 
     public Car(String name){
         if(!isValidName(name)) {
@@ -15,16 +16,12 @@ public class Car {
         this.name = name;
     }
 
+    public CarInfo getCarInfo() {
+        return new CarInfo(this.name, this.position);
+    }
+
     public void nextStep() {
         position += MOVEMENT;
-    }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public String getName() {
-        return name;
     }
 
     private boolean isValidName(String name) {

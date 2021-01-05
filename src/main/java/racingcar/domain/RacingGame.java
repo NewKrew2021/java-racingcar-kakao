@@ -52,7 +52,7 @@ public class RacingGame {
     public List<CarInfo> getStatus() {
         List<CarInfo> carInfos = new ArrayList<>();
         for (Car car : cars) {
-            carInfos.add(new CarInfo(car.getName(), car.getPosition()));
+            carInfos.add(car.getCarInfo());
         }
         return carInfos;
     }
@@ -69,12 +69,13 @@ public class RacingGame {
 
     public List<String> findWinners() {
         List<String> winners = new ArrayList<>();
-        int maxPosition = cars.stream().max(Comparator.comparing(Car::getPosition)).get().getPosition();
+        int maxPosition = cars.stream().
+                max(Comparator.comparing(Car::getCarInfo)).get().getCarInfo().getPosition();
         List<Car> winnerCars = cars.stream().
-                filter(car -> car.getPosition() == maxPosition).collect(Collectors.toList());
+                filter(car -> car.getCarInfo().getPosition() == maxPosition).collect(Collectors.toList());
 
         for (Car winnerCar : winnerCars) {
-            winners.add(winnerCar.getName());
+            winners.add(winnerCar.getCarInfo().getName());
         }
         return winners;
     }
