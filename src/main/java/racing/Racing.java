@@ -8,9 +8,10 @@ public class Racing {
     private static final Random random = new Random();
 
     private List<Car> cars;
-    int progressNumber = 0;
+    int progressNumber;
+    int maxPosition;
 
-    public Racing(int progressNumber){
+    public Racing(int progressNumber) {
         this.progressNumber = progressNumber;
     }
 
@@ -27,28 +28,37 @@ public class Racing {
     }
 
     public List<Integer> repeatRacing() {
-        while (checkPosition(progressNumber)) {
+        while (progressNumber > 0) {
             this.race();
+            this.setMaxPosition();
             this.racePrint();
+            progressNumber--;
         }
         return getPositions();
+    }
+
+    private void setMaxPosition() {
+        for (Car car : cars) {
+            maxPosition = Math.max(car.getPosition(), maxPosition);
+        }
     }
 
     /**
      * cars 리스트에서 index를 확인하여 해당 cars가 승자이면 승자의 이름을 콤마를 붙혀서 반환합니다.
      * 승자가 아닐경우 공백이 출력됩니다.
+     *
      * @param carIndex 확인할 cars의 index를 넣습니다.
      * @return 승자의 이름, 혹은 공백을 반환합니다.
      */
     private String getWinnerNameWithComma(int carIndex) {
         String s = "";
-        if(cars.get(carIndex).getPosition() == this.progressNumber) {
+        if (cars.get(carIndex).getPosition() == this.maxPosition) {
             s += cars.get(carIndex).getName() + ", ";
         }
         return s;
     }
 
-    public String returnWinnerString(){
+    public String returnWinnerString() {
         StringBuilder s = new StringBuilder();
         List<Integer> resultPosition = this.getPositions();
         for (int i = 0; i < resultPosition.size(); i++) {
@@ -71,14 +81,6 @@ public class Racing {
             result.add(car.getPosition());
         }
         return result;
-    }
-
-    private boolean checkPosition(int numbers) {
-        int maxPosition = 0;
-        for (Car car : this.cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition < numbers;
     }
 
     private void race() {
