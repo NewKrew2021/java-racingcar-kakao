@@ -1,18 +1,17 @@
 package com.nextstep.racingcar.racingcar;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
-import java.util.Arrays;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.*;
-
 public class RacingcarTest {
 
   private final int REPEAT_COUNT = 3;
-  private final int STOP = 0;
 
   @Test
   void oneCarWins() {
@@ -46,7 +45,7 @@ public class RacingcarTest {
     Racingcar racingcar = new Racingcar(cars, REPEAT_COUNT);
 
     for (int i = 0; i < simulateCount; i++) {
-      racingcar.simulate(Arrays.asList(STOP, STOP, STOP));
+      racingcar.simulate();
     }
 
     assertThat(racingcar.isInProgress()).isEqualTo(expected);

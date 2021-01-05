@@ -32,26 +32,19 @@ public class Racingcar {
         .collect(Collectors.toList());
   }
 
-  public void simulate(List<Integer> customRandom) {
-    simulateOnce(customRandom);
-  }
-
   public void simulate() {
     List<Integer> randoms = getNRandomDigitsForCars(cars.size());
-    simulateOnce(randoms);
-  }
 
-  public boolean isInProgress() {
-    return currentStep < repeatCount;
-  }
-
-  private void simulateOnce(List<Integer> randoms) {
     IntStream.range(0, cars.size())
         .filter(i -> moveResult(randoms.get(i)) == CarResult.MOVE)
         .mapToObj(i -> cars.get(i))
         .forEach(Car::move);
 
-    increaseCounter();
+    increaseStep();
+  }
+
+  public boolean isInProgress() {
+    return currentStep < repeatCount;
   }
 
   private int getLocationOfHighestAdvancedCar() {
@@ -61,7 +54,7 @@ public class Racingcar {
         .orElse(0);
   }
 
-  private void increaseCounter() {
+  private void increaseStep() {
     currentStep++;
   }
 
