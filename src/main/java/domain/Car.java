@@ -2,6 +2,7 @@ package domain;
 
 public class Car {
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int INITIAL_POSITION = 0;
 
     private final Engine engine;
     private final String name;
@@ -12,7 +13,7 @@ public class Car {
 
         this.engine = engine;
         this.name = name;
-        this.position = 0;
+        this.position = INITIAL_POSITION;
     }
 
     private void validate(String name) {

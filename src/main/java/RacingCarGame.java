@@ -1,5 +1,4 @@
-import domain.Car;
-import domain.CarManager;
+import domain.Cars;
 import domain.RandomEngine;
 import view.InputView;
 import view.OutputView;
@@ -10,19 +9,15 @@ public class RacingCarGame {
     public static void main(String[] args) {
         List<String> carNames = InputView.readNames();
 
-        CarManager carManager = new CarManager();
-
-        for (String carName : carNames) {
-            carManager.pushCar(new Car(new RandomEngine(), carName));
-        }
+        Cars cars = Cars.create(new RandomEngine(), carNames);
 
         int round = InputView.readRound();
 
         for (int i = 0; i < round; i++) {
-            carManager.moveCars();
-            OutputView.printCars(carManager.getCars());
+            cars.moveCars();
+            OutputView.printCars(cars.getCars());
         }
 
-        OutputView.printWinnerCars(carManager.findWinnerCars());
+        OutputView.printWinnerCars(cars.findWinnerCars());
     }
 }

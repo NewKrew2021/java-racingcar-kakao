@@ -54,23 +54,16 @@ public class CarTest {
 
     @Test
     void isForwardThan() {
-        Car car1 = new Car(alwaysMoveEngine, "car1");
-        car1.tryMoving();
-        car1.tryMoving();
-        Car car2 = new Car(alwaysMoveEngine, "car2");
-        car2.tryMoving();
+        Car car1 = CarFixture.createCar("car1", 2);
+        Car car2 = CarFixture.createCar("car2", 1);
 
         assertThat(car1.isForwardThan(car2)).isTrue();
     }
 
     @Test
     void isSamePositionWith() {
-        Car car1 = new Car(alwaysMoveEngine, "car1");
-        Car car2 = new Car(alwaysMoveEngine, "car2");
-        assertThat(car1.isSamePositionWith(car2)).isTrue();
-
-        car1.tryMoving();
-        car2.tryMoving();
+        Car car1 = CarFixture.createCar("car1", 2);
+        Car car2 = CarFixture.createCar("car2", 2);
         assertThat(car1.isSamePositionWith(car2)).isTrue();
 
         car2.tryMoving();

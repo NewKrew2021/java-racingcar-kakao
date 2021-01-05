@@ -1,14 +1,23 @@
 package domain;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CarManager {
-    private final List<Car> cars = new ArrayList<>();
+public class Cars {
+    private static final int FIRST_CAR_INDEX = 0;
 
-    public void pushCar(Car car) {
-        cars.add(car);
+    private final List<Car> cars;
+
+    Cars(List<Car> cars) {
+        this.cars = Collections.unmodifiableList(cars);
+    }
+
+    public static Cars create(Engine engine, List<String> carNames) {
+        List<Car> cars = carNames.stream()
+                .map(name -> new Car(engine, name))
+                .collect(Collectors.toList());
+        return new Cars(cars);
     }
 
     public void moveCars() {
@@ -19,20 +28,18 @@ public class CarManager {
 
     public List<Car> findWinnerCars() {
         Car winner = findWinnerCar();
-
         return cars.stream()
                 .filter(car -> car.isSamePositionWith(winner))
                 .collect(Collectors.toList());
     }
 
     private Car findWinnerCar() {
-        Car maxPositionCar = cars.get(0);
-
+        Car winner = cars.get(FIRST_CAR_INDEX);
         return cars.stream()
-                .reduce(maxPositionCar, this::findForwardingCarBetween);
+                .reduce(winner, this::findForwardingCar);
     }
 
-    private Car findForwardingCarBetween(Car car1, Car car2) {
+    private Car findForwardingCar(Car car1, Car car2) {
         if (car2.isForwardThan(car1)) {
             return car2;
         }
@@ -42,5 +49,4 @@ public class CarManager {
     public List<Car> getCars() {
         return cars;
     }
-
 }
