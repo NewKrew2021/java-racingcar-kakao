@@ -12,10 +12,6 @@ public class Car implements Comparable<Car> {
         this.position = 0;
     }
 
-    public void goForward(Integer value) {
-        if (value >= 4) this.position++;
-    }
-
     public Integer getPosition() {
         return position;
     }
@@ -24,27 +20,17 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
+    public void goForward(Integer value) {
+        if (value >= 4) this.position++;
+    }
+
     public boolean equalPosition(Car car) {
         return this.position == car.position;
     }
 
     @Override
     public int compareTo(Car car) {
-        if (car.position > this.position) {
-            return 1;
-        }
-        if (car.position == this.position) {
-            return 0;
-        }
-        return -1;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(name, car.name);
+        return Integer.compare(car.getPosition(), getPosition());
     }
 
     @Override
@@ -60,4 +46,5 @@ public class Car implements Comparable<Car> {
         }
         return result;
     }
+
 }
