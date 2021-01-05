@@ -18,20 +18,20 @@ public class GameManager {
         List<Car> cars=makeCarList(parsing(carString));
         executeRound(cars,round);
 
-        List<Car> winner = getWinner(cars);
+        List<Car> winner = getWinners(cars);
         gameView.gameResult(winner);
     }
 
     public List<String> parsing(String userInput) throws RuntimeException {
 
-        String[] split = userInput.split(",");
-        return Arrays.stream(split)
+        String[] carNames = userInput.split(",");
+        return Arrays.stream(carNames)
                      .map(String::trim)
-                     .map(this::isLong)
+                     .map(this::tooLong)
                      .collect(Collectors.toList());
     }
 
-    public String isLong(String carName){
+    public String tooLong(String carName){
 
         if(carName.length()>5){
             throw new RuntimeException("이름이 너무 깁니다");
@@ -56,18 +56,16 @@ public class GameManager {
             carMove(cars);
             gameView.roundResult(cars);
         }
-        List<Car> winners = getWinner(cars);
-
+        List<Car> winners = getWinners(cars);
     }
 
-    public List<Car> getWinner(List<Car> cars){
+    public List<Car> getWinners(List<Car> cars){
 
         List<Car> winners=new ArrayList<Car>();
-
         Collections.sort(cars);
-        Car first=cars.get(0);
+        Car firstPlaceCar=cars.get(0);
         int index=0;
-        while(first.equalPosition(cars.get(index))) {
+        while(firstPlaceCar.isEqualPosition(cars.get(index))) {
             winners.add(cars.get(index++));
         }
         return winners;

@@ -57,7 +57,7 @@ public class racingTest {
         }
 
         List<Car> winners=Arrays.asList(new Car("teo",3));
-        List<Car> rank= gameManager.getWinner(cars);
+        List<Car> rank= gameManager.getWinners(cars);
         for(int i=0;i<winners.size();i++){
             Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
         }
@@ -72,7 +72,7 @@ public class racingTest {
             cars.get(i%4).goForward(fixedNumber[i%4]);
         }
         List<Car> winners=Arrays.asList(new Car("pobi",3),new Car("teo",3));
-        List<Car> rank= gameManager.getWinner(cars);
+        List<Car> rank= gameManager.getWinners(cars);
         for(int i=0;i<winners.size();i++){
             Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
         }
