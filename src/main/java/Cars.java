@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Cars {
     private List<Car> cars = new ArrayList<Car>();
@@ -8,6 +10,12 @@ public class Cars {
         String[] names = carNames.split(",");
         for(String name : names){
             cars.add(new Car(name, 0));
+        }
+    }
+
+    public Cars(List<Car> cars){
+        for(Car car : cars){
+            this.cars.add(car);
         }
     }
 
@@ -25,5 +33,13 @@ public class Cars {
         for(Car car : cars){
             car.printPosition();
         }
+    }
+
+    public List<Car> getHeads(){
+        Collections.sort(cars);
+        Car headCar = cars.get(0);
+        return cars.stream()
+                .filter(car -> car.isEqualPosition(headCar))
+                .collect(Collectors.toList());
     }
 }

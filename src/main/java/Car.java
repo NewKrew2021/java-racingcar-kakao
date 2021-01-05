@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Car {
+public class Car implements Comparable<Car> {
     private static final int MOVE_THRESHOLD = 4;
     private final String name;
     private int position;
@@ -30,5 +30,12 @@ public class Car {
 
     public void printPosition(){
         System.out.println(name + " : " + "-".repeat(position));
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        if(o.position > position) return 1;
+        if(o.position < position) return -1;
+        return 0;
     }
 }
