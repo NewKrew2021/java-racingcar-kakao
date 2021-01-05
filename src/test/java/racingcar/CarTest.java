@@ -10,7 +10,6 @@ public class CarTest {
 
     Car car;
 
-
     @BeforeAll
     public void setup(){
         car = new Car("testCar");
@@ -30,8 +29,4 @@ public class CarTest {
                 }).withNoCause();
     }
 
-    @Test
-    public void carNameTest(){
-
-    }
 }

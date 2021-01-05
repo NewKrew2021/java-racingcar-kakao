@@ -1,5 +1,6 @@
 package racingcar;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -10,51 +11,45 @@ import static org.assertj.core.api.Assertions.*;
 
 public class RacingTest {
 
+    Racing rc;
+
+    @BeforeEach
+    public void setup(){
+        this.rc = new Racing();
+    }
+
     @Test
-    public void raceThreeCars() {
+    public void getFinalCarPositionsTest(){
+        Car car1 = new Car("a");
+        Car car2 = new Car("b");
+        Car car3 = new Car("c");
+        ArrayList<Car> cars = new ArrayList<>(Arrays.asList(car1, car2, car3));
+        cars.get(1).move(5);
+        assertThat(rc.getFinalCarPositions(cars)).isEqualTo(new ArrayList<Integer>(Arrays.asList(0,1,0)));
+    }
+
+    @Test
+    public void getWinnerNameTest(){
+        Car car1 = new Car("a");
+        Car car2 = new Car("b");
+        Car car3 = new Car("c");
+        ArrayList<Car> cars = new ArrayList<>(Arrays.asList(car1, car2, car3));
+        cars.get(1).move(5);
+        assertThat(rc.getWinnerName(cars)).isEqualTo(new ArrayList<String>(Arrays.asList("b")));
 
     }
 
     @Test
-    public void winnerTestOne(){
-        Racing rc = new Racing();
-        rc.startRacing(3, 0);
-        rc.cars.get(0).move(5);
-
-        List<Integer> arr =  new ArrayList<>(Arrays.asList(0));
-        assertThat(rc.getWinner()).isEqualTo(arr);
-
-
-        Racing rc2 = new Racing();
-        rc.startRacing(3, 0);
-        rc.cars.get(2).move(5);
-
-        List<Integer> arr2 =  new ArrayList<>(Arrays.asList(2));
-        assertThat(rc.getWinner()).isEqualTo(arr2);
+    public void getRandomIntegerTest(){
+        assertThat(rc.getRandomInteger(0,9)).isBetween(0,9);
     }
 
     @Test
-    public void winnerTestTwo() {
-        Racing rc = new Racing();
-        rc.startRacing(3, 0);
-        rc.cars.get(0).move(5);
-        rc.cars.get(2).move(5);
-        List<Integer> arr = new ArrayList<>(Arrays.asList(0, 2));
-        assertThat(rc.getWinner()).isEqualTo(arr);
+    public void checkCarNamesTest(){
+        ArrayList<String> arr1 = new ArrayList<>(Arrays.asList("12345","123","123"));
+        assertThat(rc.checkCarNames(arr1)).isTrue();
+
+        ArrayList<String> arr2 = new ArrayList<>(Arrays.asList("123456","123","123"));
+        assertThat(rc.checkCarNames(arr2)).isFalse();
     }
-
-    @Test
-    public void startRacingTest(){
-        Racing rc = new Racing();
-        rc.startRacing(3,0);
-        ArrayList<Integer> arr = new ArrayList<>();
-        arr.add(0);
-        arr.add(0);
-        arr.add(0);
-        assertThat(rc.getFinalCarPositions()).isEqualTo(arr);
-    }
-
-
-
-
 }

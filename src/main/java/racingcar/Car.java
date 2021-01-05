@@ -6,8 +6,9 @@ public class Car {
     private int position;
     private String name;
 
-    private final int MAX_VALUE = 9;
-    private final int MIN_VALUE = 0;
+    private final int MAX_RANDOM_VALUE = 9;
+    private final int MIN_RANDOM_VALUE = 0;
+    private final int THRESHOLD_RANDOM_VALUE = 4;
 
     public Car(String name) {
         this.name = name;
@@ -22,10 +23,8 @@ public class Car {
         return this.position;
     }
 
-    public void move(int value) {
-        if(value > MAX_VALUE || value < MIN_VALUE) throw new RuntimeException();
-        if (value >= 4) {
-            this.position++;
-        }
+    public void move(int randomValue){
+        if (randomValue < THRESHOLD_RANDOM_VALUE) return;
+        this.position++;
     }
 }
