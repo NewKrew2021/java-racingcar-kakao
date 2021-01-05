@@ -46,7 +46,7 @@ public class CarsTest {
 
         Cars cars = new Cars(Arrays.asList(loser1, winner1, loser2, winner2));
 
-        assertThat(cars.findWinnerCars())
+        assertThat(cars.findWinners())
                 .extracting(Car::getName)
                 .isEqualTo(Arrays.asList("win1", "win2"));
     }

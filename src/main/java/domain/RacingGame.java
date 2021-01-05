@@ -42,7 +42,7 @@ public class RacingGame {
     }
 
     public List<Car> findWinnerCars() {
-        return cars.findWinnerCars();
+        return cars.findWinners();
     }
 
     public List<Car> getCars() {

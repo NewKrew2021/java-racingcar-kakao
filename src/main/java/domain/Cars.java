@@ -26,14 +26,17 @@ public class Cars {
         }
     }
 
-    public List<Car> findWinnerCars() {
-        Car winner = findWinnerCar();
+    public List<Car> findWinners() {
+        return findSamePositionWith(findWinner());
+    }
+
+    private List<Car> findSamePositionWith(Car winner) {
         return cars.stream()
                 .filter(car -> car.isSamePositionWith(winner))
                 .collect(Collectors.toList());
     }
 
-    private Car findWinnerCar() {
+    private Car findWinner() {
         Car winner = cars.get(FIRST_CAR_INDEX);
         return cars.stream()
                 .reduce(winner, this::findForwardingCar);
