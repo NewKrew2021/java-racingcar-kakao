@@ -9,13 +9,12 @@ public class GameManager {
     private final Scanner sc=new Scanner(System.in);
 
     public void startGame() {
-        // 입력 받아서 자동차 생성
+
         gameView.print("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String carString=sc.nextLine();
         gameView.print("시도할 회수는 몇회인가요?");
         int round=sc.nextInt();
 
-        // 게임 실행
         List<Car> cars=makeCarList(parsing(carString));
         executeRound(cars,round);
 
@@ -24,6 +23,7 @@ public class GameManager {
     }
 
     public List<String> parsing(String userInput) throws RuntimeException {
+
         String[] split = userInput.split(",");
         return Arrays.stream(split)
                      .map(String::trim)
@@ -41,6 +41,7 @@ public class GameManager {
 
 
     public List<Car> makeCarList(List<String> carNames){
+
         List<Car> cars=new ArrayList<Car>();
         for (String carName : carNames) {
             cars.add(new Car(carName));
@@ -50,6 +51,7 @@ public class GameManager {
     }
 
     public void executeRound(List<Car> cars, Integer rounds) {
+
         for (int i = 0; i < rounds; i++) {
             carMove(cars);
             gameView.roundResult(cars);
@@ -59,6 +61,7 @@ public class GameManager {
     }
 
     public List<Car> getWinner(List<Car> cars){
+
         List<Car> winners=new ArrayList<Car>();
 
         Collections.sort(cars);
@@ -71,6 +74,7 @@ public class GameManager {
     }
 
     private void carMove(List<Car> cars) {
+
         for (Car car : cars) {
             car.goForward(RandomUtil.getRandomValue());
         }

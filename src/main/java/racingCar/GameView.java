@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 public class GameView {
 
     public void roundResult(List<Car> cars){
+
         for (Car car : cars) {
             System.out.println(car.toString());
         }
@@ -15,6 +16,7 @@ public class GameView {
     }
 
     public void gameResult(List<Car> winners){
+
         for (int i=0;i<winners.size();i++){
             System.out.print(convertCarName(winners,i));
         }
@@ -22,6 +24,7 @@ public class GameView {
     }
 
     public String convertCarName(List<Car> winners,int index){
+
         String name = winners.get(index).getName();
         if(index==winners.size()-1){
             return name;
@@ -30,6 +33,7 @@ public class GameView {
     }
 
     public void print(String statement){
+
         System.out.println(statement);
     }
 
