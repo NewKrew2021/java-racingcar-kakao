@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.Comparator;
+
 public class Car {
 
     private int position = 1;
@@ -29,12 +31,13 @@ public class Car {
         return name;
     }
 
-    public void printResult() {
+    @Override
+    public String toString() {
         StringBuilder stb = new StringBuilder();
         stb.append(name).append(" : ");
         for (int i = 0; i < position; i++) {
             stb.append("-");
         }
-        System.out.println(stb.toString());
+        return stb.toString();
     }
 }

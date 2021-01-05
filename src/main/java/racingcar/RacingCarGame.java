@@ -2,7 +2,6 @@ package racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingCarGame {
     private static final int LIMIT_NAME = 5;
@@ -22,7 +21,7 @@ public class RacingCarGame {
 
     private void initCar(String[] names) {
         for (String name : names) {
-            carList.add(new Car(name));
+            carList.add(new Car(name.trim()));
         }
     }
 
@@ -38,7 +37,7 @@ public class RacingCarGame {
 
     private void printResult() {
         for (Car car : carList) {
-            car.printResult();
+            System.out.println(car);
         }
         System.out.println();
     }
