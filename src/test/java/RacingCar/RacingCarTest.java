@@ -1,6 +1,6 @@
 package RacingCar;
 
-import org.junit.jupiter.api.BeforeEach;
+import RacingCar.Model.RacingCar;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -25,12 +25,13 @@ public class RacingCarTest {
 
     @Test
     public void nameSplitCheck() {
+        racing = new Racing("");
         assertThat(racing.splitNames("aaa,bbb,ccc")).containsExactly(new String[] {"aaa", "bbb", "ccc"});
     }
 
     @Test
     public void setRacingCarNameCheck() {
-        racing.setRacingCars(new String[] {"aaa", "bbb", "ccc"});
+        racing = new Racing("aaa,bbb,ccc");
         assertThat(racing.getRacingCars()).extracting(RacingCar::getName).containsExactly("aaa", "bbb", "ccc");
     }
 

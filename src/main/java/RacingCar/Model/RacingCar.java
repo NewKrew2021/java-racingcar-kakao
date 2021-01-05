@@ -1,13 +1,9 @@
-package RacingCar;
+package RacingCar.Model;
 
 public class RacingCar {
     private String name;
     private int dist;
 
-
-    public RacingCar() {
-        this.dist = 0;
-    }
 
     public RacingCar(String name) {
         this.name = name;
@@ -22,7 +18,4 @@ public class RacingCar {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }
