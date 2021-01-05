@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Cars {
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
 
     /* 자동차 이름 설정 */
     public void setCars(String carNames){
-        addCarName(splitCarNames(carNames));
+        String[] parsingCarNames = splitCarNames(carNames);
+        checkCarNames(parsingCarNames);
+        addCarName(parsingCarNames);
     }
 
     private String[] splitCarNames(String carNames){
@@ -19,10 +21,20 @@ public class Cars {
 
     private void addCarName(String[] carNames) {
         for(String carName: carNames){
-            carList.add(new Car(carName));
+            cars.add(new Car(carName));
         }
     }
 
+    private void checkCarNames(String[] carNames){
+        if (carNames.length > 5){
+            throw new RuntimeException("길이를 5이하로 설정해주세요");
+        }
+    }
+
+    /* getter */
+    public List<Car> getCars(){
+        return cars;
+    }
 
 //    public boolean setCarList(){
 //        String[] carNames = getCarNames(Race.carNames);
