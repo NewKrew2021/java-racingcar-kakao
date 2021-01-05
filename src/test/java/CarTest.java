@@ -1,8 +1,12 @@
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class CarTest {
+    private static final int NEVER_MOVE_CONDITION = 3;
+    private static final int ALWAYS_MOVE_CONDITION = 4;
+
     @Test
     void length0orNull() {
         assertThatIllegalArgumentException().isThrownBy(() -> new Car(""));
@@ -24,9 +28,30 @@ public class CarTest {
     @Test
     void move() {
         Car car = new Car("12345");
-        car.moveOrNot(3);
+        car.moveOrNot(NEVER_MOVE_CONDITION);
         assertThat(car.getPosition()).isEqualTo(0);
-        car.moveOrNot(4);
+        car.moveOrNot(ALWAYS_MOVE_CONDITION);
         assertThat(car.getPosition()).isEqualTo(1);
+    }
+
+
+    @Test
+    void isForwardThan() {
+        Car car1 = new Car("12345");
+        Car car2 = new Car("12345");
+        car1.moveOrNot(ALWAYS_MOVE_CONDITION);
+        assertThat(car1.isForwardThan(car2)).isTrue();
+    }
+
+    @Test
+    void isAtSamePositionWith() {
+        Car car1 = new Car("12345");
+        Car car2 = new Car("12345");
+        assertThat(car1.isAtSamePositionWith(car2)).isTrue();
+        car1.moveOrNot(ALWAYS_MOVE_CONDITION);
+        car2.moveOrNot(ALWAYS_MOVE_CONDITION);
+        assertThat(car1.isAtSamePositionWith(car2)).isTrue();
+        car2.moveOrNot(ALWAYS_MOVE_CONDITION);
+        assertThat(car1.isAtSamePositionWith(car2)).isFalse();
     }
 }

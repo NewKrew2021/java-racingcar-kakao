@@ -2,12 +2,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class OutputView {
-
-
     public static void printCars(List<Car> cars) {
         for (Car car : cars) {
-            System.out.print(car.getName());
-            System.out.print(" : ");
+            System.out.print(car.getName() + " : ");
             printDistance(car.getPosition());
             System.out.println();
         }
@@ -22,17 +19,8 @@ public class OutputView {
 
     public static void printWinnerCars(List<Car> winnerCars) {
         String winnerCarNames = winnerCars.stream()
-                .map(car -> car.getName())
+                .map(Car::getName)
                 .collect(Collectors.joining(", "));
         System.out.println(winnerCarNames + "가 최종 우승했습니다.");
     }
-
-
-/*
-    pobi : --
-    crong : -
-    honux : --
-    손코딩 뇌컴파일 눈디버깅
-*/
-
 }
