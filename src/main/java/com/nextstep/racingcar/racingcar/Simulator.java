@@ -1,10 +1,16 @@
 package com.nextstep.racingcar.racingcar;
 
-import static com.nextstep.racingcar.ui.UserInput.*;
-import static com.nextstep.racingcar.ui.MessagePrinter.*;
+import static com.nextstep.racingcar.ui.MessagePrinter.printRequestCarNames;
+import static com.nextstep.racingcar.ui.MessagePrinter.printRequestRepeatCount;
+import static com.nextstep.racingcar.ui.MessagePrinter.printResultGuide;
+import static com.nextstep.racingcar.ui.MessagePrinter.printSimulationResults;
+import static com.nextstep.racingcar.ui.MessagePrinter.printWinners;
+import static com.nextstep.racingcar.ui.UserInput.scanCarNames;
+import static com.nextstep.racingcar.ui.UserInput.scanRepeatCount;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Simulator {
 
@@ -34,12 +40,10 @@ public class Simulator {
   }
 
   private void createNewRacingcarBasedOnInputs() {
-    List<Car> cars = new ArrayList<>();
-
-    for (String carName : carNames) {
-      cars.add(new Car(carName, 0));
-    }
-
+    List<Car> cars = Stream.of(carNames)
+        .map(carName -> new Car(carName, 0))
+        .collect(Collectors.toList());
+    
     racingcar = new Racingcar(cars, repeatCount);
   }
 }
