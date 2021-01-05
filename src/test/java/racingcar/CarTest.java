@@ -16,6 +16,12 @@ public class CarTest {
     }
 
     @Test
+    void makeRandomNumberTest(){
+        Car car = new Car();
+        assertThat(car.makeRandomNumber()).isGreaterThan(-1).isLessThan(10);
+    }
+
+    @Test
     void updateCarPositionTest(){
         Car car = new Car();
         int stopDistance = 0;
