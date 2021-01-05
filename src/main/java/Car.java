@@ -27,4 +27,8 @@ public class Car {
     private int generateRandomNumber(){
         return rand.nextInt(10);
     }
+
+    public void printPosition(){
+        System.out.println(name + " : " + "-".repeat(position));
+    }
 }
