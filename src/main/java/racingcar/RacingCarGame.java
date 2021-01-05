@@ -11,8 +11,8 @@ public class RacingCarGame {
 
     public void start() {
         scanName();
-        int actionNum = scanActionNum();
-        for (int i = 0; i < actionNum; i++) {
+        int racingNum = scanRacingNum();
+        for (int i = 0; i < racingNum; i++) {
             racingGame();
         }
     }
@@ -31,8 +31,10 @@ public class RacingCarGame {
         }
     }
 
-    private int scanActionNum() {
-        return 0;
+    private int scanRacingNum() {
+        System.out.println("시도할 회수는 몇회인가요?");
+
+        return sc.nextInt();
     }
 
     private void racingGame() {
