@@ -1,23 +1,23 @@
 package racingcar;
 
+import java.util.stream.IntStream;
+
 public class Car {
 
     private int position;
 
-    public Car(){
+    public Car() {
         this.position = 0;
     }
 
     public int getPosition(){
         return this.position;
     }
-    
-    public void goOrStop(int randomNumber) {
-        if(randomNumber > 9 || randomNumber < 0) throw new RuntimeException();
 
-        if (randomNumber < 4) {
-            return;
+    public void move(int value) {
+        if(value > 9 || value < 0) throw new RuntimeException();
+        if (value >= 4) {
+            this.position++;
         }
-        this.position++;
     }
 }

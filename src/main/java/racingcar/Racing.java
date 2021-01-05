@@ -5,6 +5,10 @@ import java.util.stream.Collectors;
 
 public class Racing {
 
+    public void startRacing() {
+
+    }
+
     public ArrayList<Integer> getWinner(int[] currentCarPositions) {
         int farthest = max(currentCarPositions);
         return getWinnerCarsIndex(farthest, currentCarPositions);
@@ -38,5 +42,9 @@ public class Racing {
             return b;
         }
         return a;
+    }
+
+    private int createNumber() {
+        return (int) (Math.random() * 10);
     }
 }
