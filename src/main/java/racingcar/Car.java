@@ -2,11 +2,9 @@ package racingcar;
 
 public class Car {
     private int position = 0;
-    public int getDistance(int randomNumber){
-        if(randomNumber<4){
-            return 0;
-        }
-        return 1;
+    private final int RANDOM_SCOPE = 10;
+    public int makeRandomNumber(){
+        return ((int)(Math.random() * 10000) % RANDOM_SCOPE);
     }
 
     public int getDistance(int distance){
