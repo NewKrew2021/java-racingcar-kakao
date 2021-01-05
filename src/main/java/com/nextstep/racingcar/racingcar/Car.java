@@ -6,6 +6,10 @@ public class Car {
   private int location;
 
   public Car(String carName, int location) {
+    if (isAboveFiveLetters(carName)) {
+      throw new RuntimeException("Car cannot handle a name larger than 5");
+    }
+
     this.name = carName;
     this.location = location;
   }
@@ -20,5 +24,9 @@ public class Car {
 
   public int getLocation() {
     return this.location;
+  }
+
+  private boolean isAboveFiveLetters(String name) {
+    return name.length() > 5;
   }
 }

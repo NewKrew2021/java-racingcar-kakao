@@ -1,8 +1,9 @@
 package com.nextstep.racingcar.racingcar;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
@@ -16,5 +17,12 @@ public class CarTest {
     car.move();
 
     assertThat(car.getLocation()).isEqualTo(currentLocation + ONE_UNIT);
+  }
+
+  @DisplayName("5글자를 초과하는 이름의 경우 Exception 발생")
+  @Test
+  void carCannotHandleLongName() {
+    assertThatExceptionOfType(RuntimeException.class)
+        .isThrownBy(() -> new Car("longname", 0));
   }
 }
