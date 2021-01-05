@@ -3,6 +3,7 @@ package carRace;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -20,6 +21,17 @@ public class Cars {
         for (int i = 0; i < carList.size(); i++) {
             carList.get(i).judgeAndGo(numbers.get(i));
         }
+    }
+
+    public List<Integer> getCarsRandomNumber(){
+        Random rd = new Random();
+        List<Integer> numbers = new ArrayList<>();
+
+        for(int i = 0; i < carList.size(); i++){
+            numbers.add(rd.nextInt(10));
+        }
+
+        return numbers;
     }
 
     public List<Car> getWinners(){
