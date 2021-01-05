@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class racingTest {
 
@@ -31,5 +34,75 @@ public class racingTest {
     public void longNameExceptionTest() {
         String userInput = "bmoadv,pobi,vavaa";
         assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> parser.parsing(userInput));
+    }
+
+    /*
+    * 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다.
+    * */
+    @Test
+    public void forwardTest() {
+        Car car = new Car("TestCar");
+        car.goForward(4);
+        Assertions.assertThat(car.getPosition()).isEqualTo(1);
+        car.goForward(3);
+        Assertions.assertThat(car.getPosition()).isEqualTo(1);
+        car.goForward(9);
+        Assertions.assertThat(car.getPosition()).isEqualTo(2);
+    }
+    
+    @Test
+    public void winnerTest(){
+        List<Car> cars =Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"), new Car("teo"));
+        cars.get(0).goForward(1);
+        cars.get(1).goForward(5);
+        cars.get(2).goForward(2);
+        cars.get(3).goForward(7);
+        cars.get(0).goForward(7);
+        cars.get(1).goForward(3);
+        cars.get(2).goForward(1);
+        cars.get(3).goForward(9);
+        cars.get(0).goForward(7);
+        cars.get(1).goForward(6);
+        cars.get(2).goForward(7);
+        cars.get(3).goForward(8);
+        //pobi: 0, 1,1 ->2
+        //crong: 1,0,1 ->2
+        //honux: 0,0,1 -> 1
+        //teo: 1, 1, 1-> 3
+        List<Car> winners=Arrays.asList(new Car("teo",3));
+        List<Car> rank=parser.getWinner(cars);
+        for(int i=0;i<winners.size();i++){
+            Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
+        }
+
+    }
+
+    @Test
+    public void multiWinnerTest(){
+        List<Car> cars =Arrays.asList(new Car("pobi"), new Car("crong"), new Car("honux"), new Car("teo"));
+        cars.get(0).goForward(4);
+        cars.get(1).goForward(5);
+        cars.get(2).goForward(2);
+        cars.get(3).goForward(7);
+        cars.get(0).goForward(7);
+        cars.get(1).goForward(3);
+        cars.get(2).goForward(1);
+        cars.get(3).goForward(9);
+        cars.get(0).goForward(7);
+        cars.get(1).goForward(6);
+        cars.get(2).goForward(7);
+        cars.get(3).goForward(8);
+        //pobi: 0, 1,1 ->2
+        //crong: 1,0,1 ->2
+        //honux: 0,0,1 -> 1
+        //teo: 1, 1, 1-> 3
+        List<Car> winners=Arrays.asList(new Car("pobi",3),new Car("teo",3));
+        List<Car> rank=parser.getWinner(cars);
+        for(int i=0;i<winners.size();i++){
+            Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
+        }
+
+
+
     }
 }
