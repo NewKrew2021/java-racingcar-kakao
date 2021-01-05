@@ -1,6 +1,7 @@
 package com.nextstep.racingcar;
 
 import com.nextstep.racingcar.domain.Car;
+import com.nextstep.racingcar.domain.InputCheck;
 import com.nextstep.racingcar.domain.Racingcar;
 import com.nextstep.racingcar.view.RacingcarView;
 import java.util.Arrays;
@@ -17,9 +18,16 @@ public class Application {
   }
 
   private static void createCars(Racingcar racingcar, RacingcarView racingcarView) {
-    String carNames = racingcarView.inputCarNames();
-    Arrays.stream(carNames.split(","))
-        .forEach(carName -> racingcar.addCar(new Car(carName)));
+    String[] carNames = racingcarView.inputCarNames().split(",");
+    for (String carName : carNames) {
+      createValidCar(racingcar, carName);
+    }
+  }
+
+  private static void createValidCar(Racingcar racingcar, String carName) {
+    if(InputCheck.checkName(carName)) {
+      racingcar.addCar(new Car(carName));
+    }
   }
 
   private static void runRacing(Racingcar racingcar, RacingcarView racingcarView) {
