@@ -66,11 +66,10 @@ public class RacingCarGame {
     }
 
     private int getMaxPosition() {
-        int mx = 0;
-        for (Car car : cars) {
-            mx = Math.max(mx, car.getPosition());
-        }
-        return mx;
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .getAsInt();
     }
 
     private void addName(Car car, int mx) {
