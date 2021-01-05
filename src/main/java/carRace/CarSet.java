@@ -23,7 +23,7 @@ public class CarSet {
         }
     }
 
-    public List<Integer> getCarsRandomNumber(){
+    public List<Integer> genRandomNumbers(){
         Random rd = new Random();
         List<Integer> numbers = new ArrayList<>();
 

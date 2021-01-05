@@ -11,7 +11,7 @@ public class GameController {
     private void race(CarSet candidates, int repeatNumber) {
         GameUI.printStartMessage();
         for (int i = 0; i < repeatNumber; i++) {
-            candidates.moveAllCars(candidates.getCarsRandomNumber());
+            candidates.moveAllCars(candidates.genRandomNumbers());
             GameUI.printAllCars(candidates);
         }
     }
