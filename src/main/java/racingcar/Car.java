@@ -1,8 +1,9 @@
 package racingcar;
 
 public class Car {
-    String name;
-    int location;
+    private static final int THRESHOLD = 4;
+    private final String name;
+    private int location;
 
     public Car(String name){
         this.name = name;
@@ -19,7 +20,7 @@ public class Car {
     }
 
     private boolean isMoveFoward(int number){
-        if(number>=4)
+        if(number>=THRESHOLD)
             return true;
         return false;
     }
@@ -30,5 +31,25 @@ public class Car {
             length += "-";
         }
         System.out.println(this.name + " : " + length);
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public boolean isMaxLocation(int maxLocation){
+        return this.location == maxLocation;
+    }
+
+    public int maxLocation(int otherloc){
+        if(this.location > otherloc)
+            return this.location;
+        return otherloc;
+    }
+
+    public boolean isLocated(int i) {
+        if(i == this.location)
+            return true;
+        return false;
     }
 }

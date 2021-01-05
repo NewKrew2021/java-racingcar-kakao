@@ -9,6 +9,8 @@ public class CarTest {
     public void testMove(){
         Car car = new Car("pobi");
         car.move(4);
-        assertThat(car.location).isEqualTo(1);
+        assertThat(car.isLocated(1)).isTrue();
+        car.move(3);
+        assertThat(car.isLocated(1)).isTrue();
     }
 }
