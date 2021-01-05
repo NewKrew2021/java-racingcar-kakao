@@ -20,6 +20,10 @@ public class Car implements Comparable<Car> {
         return position;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean equalPosition(Car car) {
         return this.position == car.position;
     }

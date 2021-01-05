@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+
 public class racingTest {
 
     private GameManager gameManager;
@@ -56,7 +58,7 @@ public class racingTest {
             cars.get(i % 4).goForward(fixedNumber[i % 4]);
         }
 
-        List<Car> winners = Arrays.asList(new Car("teo", 3));
+        List<Car> winners = Arrays.asList(new Car("teo"));
         List<Car> rank = gameManager.getWinner(cars);
         for (int i = 0; i < winners.size(); i++) {
             Assertions.assertThat(winners.get(i).equals(rank.get(i))).isEqualTo(true);
