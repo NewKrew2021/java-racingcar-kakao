@@ -10,7 +10,7 @@ public class CarTest {
 
   @Test
   void shouldMoveOneUnit() {
-    Car car = new Car("test");
+    Car car = new Car("test", 0);
     int currentLocation = car.getLocation();
 
     car.move();

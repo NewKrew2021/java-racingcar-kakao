@@ -5,9 +5,9 @@ public class Car {
   private String name;
   private int location;
 
-  public Car(String carName) {
+  public Car(String carName, int location) {
     this.name = carName;
-    this.location = 0;
+    this.location = location;
   }
 
   public void move() {

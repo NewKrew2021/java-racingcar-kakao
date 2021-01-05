@@ -11,52 +11,68 @@ import static org.assertj.core.api.Assertions.*;
 
 public class RacingcarTest {
 
-  private final int MOVE = 4;
   private final int REPEAT_COUNT = 3;
   private final int STOP = 0;
-  private final List<Car> CARS = Arrays.asList(
-      new Car("one"),
-      new Car("two"),
-      new Car("three"));
-  private final Racingcar RACINGCAR = new Racingcar(CARS, REPEAT_COUNT);
 
   @Test
   void oneCarWins() {
-    while (RACINGCAR.isInProgress()) {
-      RACINGCAR.simulate(Arrays.asList(STOP, STOP, MOVE));
-    }
+    List<Car> cars = Arrays.asList(
+        new Car("one", 0),
+        new Car("two", 0),
+        new Car("three", 2));
+    Racingcar racingcar = new Racingcar(cars, REPEAT_COUNT);
 
-    assertThat(RACINGCAR.getWinners()).isEqualTo(Arrays.asList("three"));
+    assertThat(racingcar.getWinners()).isEqualTo(Arrays.asList("three"));
   }
 
   @Test
   void twoCarWins() {
-    while (RACINGCAR.isInProgress()) {
-      RACINGCAR.simulate(Arrays.asList(STOP, MOVE, MOVE));
-    }
+    List<Car> cars = Arrays.asList(
+        new Car("one", 0),
+        new Car("two", 2),
+        new Car("three", 2));
+    Racingcar racingcar = new Racingcar(cars, REPEAT_COUNT);
 
-    assertThat(RACINGCAR.getWinners()).isEqualTo(Arrays.asList("two", "three"));
+    assertThat(racingcar.getWinners()).isEqualTo(Arrays.asList("two", "three"));
   }
 
   @ParameterizedTest
   @CsvSource({"2,true", "3,false"})
   void checkFinished(int simulateCount, boolean expected) {
+    List<Car> cars = Arrays.asList(
+        new Car("one", 0),
+        new Car("two", 0),
+        new Car("three", 0));
+    Racingcar racingcar = new Racingcar(cars, REPEAT_COUNT);
+
     for (int i = 0; i < simulateCount; i++) {
-      RACINGCAR.simulate(Arrays.asList(STOP, STOP, STOP));
+      racingcar.simulate(Arrays.asList(STOP, STOP, STOP));
     }
 
-    assertThat(RACINGCAR.isInProgress()).isEqualTo(expected);
+    assertThat(racingcar.isInProgress()).isEqualTo(expected);
   }
 
   @ParameterizedTest
   @ValueSource(ints = {0, 3})
-  void shouldMove(int value) {
-    assertThat(RACINGCAR.moveResult(value)).isEqualTo(CarResult.MOVE);
+  void shouldStop(int value) {
+    List<Car> cars = Arrays.asList(
+        new Car("one", 0),
+        new Car("two", 0),
+        new Car("three", 0));
+    Racingcar racingcar = new Racingcar(cars, REPEAT_COUNT);
+
+    assertThat(racingcar.moveResult(value)).isEqualTo(CarResult.STOP);
   }
 
   @ParameterizedTest
   @ValueSource(ints = {4, 9})
-  void shouldStop(int value) {
-    assertThat(RACINGCAR.moveResult(value)).isEqualTo(CarResult.STOP);
+  void shouldMove(int value) {
+    List<Car> cars = Arrays.asList(
+        new Car("one", 0),
+        new Car("two", 0),
+        new Car("three", 0));
+    Racingcar racingcar = new Racingcar(cars, REPEAT_COUNT);
+
+    assertThat(racingcar.moveResult(value)).isEqualTo(CarResult.MOVE);
   }
 }

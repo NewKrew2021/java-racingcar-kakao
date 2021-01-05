@@ -35,9 +35,9 @@ public class Simulator {
 
   private void createNewRacingcarBasedOnInputs() {
     List<Car> cars = new ArrayList<>();
-    
+
     for (String carName : carNames) {
-      cars.add(new Car(carName));
+      cars.add(new Car(carName, 0));
     }
 
     racingcar = new Racingcar(cars, repeatCount);
