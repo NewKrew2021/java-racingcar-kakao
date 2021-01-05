@@ -2,6 +2,10 @@ package racingcar;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
@@ -28,6 +32,13 @@ public class CarTest {
         int goDistance = 1;
         assertThat(car.updateCarPosition(stopDistance)).isEqualTo(0);
         assertThat(car.updateCarPosition(goDistance)).isEqualTo(1);
-
     }
+
+    @Test
+    void parseCarNameTest(){
+        String text = "hendo,brody,summer";
+        ArrayList<String> nameList = CarGame.parseCarName(text);
+        assertThat(nameList).contains("hendo").contains("brody").contains("summer");
+    }
+
 }
