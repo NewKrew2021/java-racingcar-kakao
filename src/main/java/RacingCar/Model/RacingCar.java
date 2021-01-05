@@ -22,6 +22,15 @@ public class RacingCar {
         return dist;
     }
 
+    public void printDist() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.name).append(" : ");
+        for (int i = 0; i < this.dist; i++) {
+            stringBuilder.append("-");
+        }
+        System.out.println(stringBuilder.toString());
+    }
+
     private boolean isMove(int value) {
         return value >= MIN_MOVABLE_NUMBER;
     }
@@ -29,4 +38,6 @@ public class RacingCar {
     public int getDist() {
         return this.dist;
     }
+
+
 }
