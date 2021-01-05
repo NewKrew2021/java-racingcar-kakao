@@ -6,12 +6,10 @@ public class RacingCar {
     private String name;
     private int dist;
 
-
     public RacingCar(String name) {
         this.name = name;
         this.dist = 0;
     }
-
 
     public String getName() {
         return name;
@@ -28,4 +26,7 @@ public class RacingCar {
         return value >= MIN_MOVABLE_NUMBER;
     }
 
+    public int getDist() {
+        return this.dist;
+    }
 }
