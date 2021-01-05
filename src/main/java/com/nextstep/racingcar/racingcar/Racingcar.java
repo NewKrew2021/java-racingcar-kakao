@@ -7,6 +7,8 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static com.nextstep.racingcar.utils.RandomDigitsGenerator.*;
+
 public class Racingcar {
 
   private List<Car> cars;
@@ -37,7 +39,7 @@ public class Racingcar {
   }
 
   public void simulate() {
-    List<Integer> randoms = getRandomDigitsForCars();
+    List<Integer> randoms = getNRandomDigitsForCars(cars.size());
     simulateOnce(randoms);
   }
 
@@ -59,14 +61,6 @@ public class Racingcar {
         .max(Comparator.comparing(Car::getLocation))
         .map(Car::getLocation)
         .orElse(0);
-  }
-
-  private List<Integer> getRandomDigitsForCars() {
-    return new Random()
-        .ints(cars.size())
-        .boxed()
-        .map(n -> n % 10)
-        .collect(Collectors.toList());
   }
 
   private void increaseCounter() {
