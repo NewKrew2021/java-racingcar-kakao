@@ -2,7 +2,7 @@ package com.nextstep.racingcar.utils;
 
 public class InputCheck {
 
-  public static boolean checkName(String input) {
+  public static boolean isValidName(String input) {
       if (!isAllowedInput(input)) {
           throw new RuntimeException();
       }

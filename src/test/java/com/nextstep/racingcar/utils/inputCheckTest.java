@@ -11,19 +11,15 @@ public class inputCheckTest {
   void invalidCarName() {
     assertThatExceptionOfType(RuntimeException.class).
         isThrownBy(
-            () -> {
-              InputCheck.checkName("longname");
-            });
+            () -> InputCheck.isValidName("longname"));
 
     assertThatExceptionOfType(RuntimeException.class).
         isThrownBy(
-            () -> {
-              InputCheck.checkName("na!me");
-            });
+            () -> InputCheck.isValidName("na!me"));
   }
 
   @Test
   void validCarName() {
-    assertThat(InputCheck.checkName("valid")).isTrue();
+    assertThat(InputCheck.isValidName("valid")).isTrue();
   }
 }
