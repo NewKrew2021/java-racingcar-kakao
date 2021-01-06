@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
-    String[] numbers;
+    private String[] numbers;
 
     @Test
     void splitAndSum_complexDelimeter() {
