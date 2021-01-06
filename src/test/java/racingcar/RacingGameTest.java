@@ -1,11 +1,9 @@
 package racingcar;
 
-import calculator.StringCalculator;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.RacingGame;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RacingGameTest {
 
@@ -16,14 +14,6 @@ public class RacingGameTest {
         assertThat(names).contains("pobi", "crong", "honux");
     }
 
-    @Test
-    public void testInputIsEmpty(){
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            String input = "";
-            String[] names = RacingGame.stringToNames(input);
-        });
-
-    }
 
     @Test
     public void testMakeCars(){
@@ -31,14 +21,6 @@ public class RacingGameTest {
         String[] names = RacingGame.stringToNames(input);
         RacingGame racing = new RacingGame(names);
         assertThat(racing.getCars()).extracting("name").contains("pobi", "crong");
-    }
-
-    @Test
-    public void testCheckNameLength(){
-        assertThatIllegalArgumentException().isThrownBy(() -> {
-            String input = "carname";
-            RacingGame.checkNameLength(input);
-        });
     }
 
     @Test

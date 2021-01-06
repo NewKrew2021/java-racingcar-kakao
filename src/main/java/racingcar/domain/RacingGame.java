@@ -1,15 +1,13 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 
 public class RacingGame {
-    private static final int MAX_NAME_LENGTH = 5;
     private Car[] cars;
 
     public RacingGame(String[] names){
         cars = new Car[names.length];
         for (int i = 0; i < names.length; i++) {
-            checkNameLength(names[i]);
             cars[i] = new Car(names[i]);
         }
     }
@@ -17,24 +15,12 @@ public class RacingGame {
     public RacingGame(String[] names, int[] locations) {
         cars = new Car[names.length];
         for (int i = 0; i < names.length; i++) {
-            checkNameLength(names[i]);
             cars[i] = new Car(names[i], locations[i]);
         }
     }
 
     public static String[] stringToNames(String input) {
-        if (isBlank(input))
-            throw new IllegalArgumentException("한대 이상의 자동차를 입력해주세요.");
         return input.split(",");
-    }
-
-    public static void checkNameLength(String name) {
-        if (name.length() > MAX_NAME_LENGTH)
-            throw new IllegalArgumentException("차 이름은 5자 이하여야 합니다.");
-    }
-
-    private static boolean isBlank(String input) {
-        return input.equals("") || input == null;
     }
 
     public void moveCars() {

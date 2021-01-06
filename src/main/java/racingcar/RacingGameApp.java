@@ -1,5 +1,7 @@
 package racingcar;
 
+import racingcar.domain.RacingGame;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
