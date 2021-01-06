@@ -11,6 +11,11 @@ public class Car {
     private static final int MIN_NAME_LENGTH = 5;
     private static final int MIN_FORWARD_RANDOM = 4;
 
+    public Car(String name, int location){
+        this(name);
+        this.location = location;
+    }
+
     public Car(String name){
         validateName(name);
         this.name = name;

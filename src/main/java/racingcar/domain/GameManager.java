@@ -44,10 +44,10 @@ public class GameManager {
     }
 
     private void endGame() {
-        Output.printWinner(getWinners());
+        Output.printWinner(getWinners(getCars()));
     }
 
-    private int getMaxLocation(){
+    public static int getMaxLocation(List<Car> cars){
         OptionalInt max = cars.stream().mapToInt(Car::getLocation).max();
         if(max.isPresent()){
             return max.getAsInt();
@@ -55,8 +55,8 @@ public class GameManager {
         throw new IllegalStateException(Text.ILLEGAL_STATE_NO_CAR);
     }
 
-    private List<String> getWinners(){
-        final int maxvalue = getMaxLocation();
+    public static List<String> getWinners(List<Car> cars){
+        final int maxvalue = getMaxLocation(cars);
         List<String> winners = new ArrayList<>();
         cars.stream()
                 .filter((car) -> car.getLocation() == maxvalue)
