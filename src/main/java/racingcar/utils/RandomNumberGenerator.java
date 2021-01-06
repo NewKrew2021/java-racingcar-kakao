@@ -1,6 +1,6 @@
 package racingcar.utils;
 
-import racingcar.io.Text;
+import racingcar.text.Text;
 
 public class RandomNumberGenerator {
     private static final int MAX = 10;

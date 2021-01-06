@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.io.Text;
+import racingcar.text.Text;
 
 import java.util.Objects;
 

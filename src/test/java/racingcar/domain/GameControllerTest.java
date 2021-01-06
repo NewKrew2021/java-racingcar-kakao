@@ -3,19 +3,20 @@ package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+import racingcar.controller.GameController;
 
 import java.util.*;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class GameManagerTest {
+public class GameControllerTest {
     private final List<Car> cars = new ArrayList<>();
-    private GameManager gameManager;
+    private GameController gameController;
 
     @BeforeEach
     void setupGameManager(){
-        gameManager = new GameManager();
-        gameManager.createCars(Arrays.asList("jayk", "jack"));
+        gameController = new GameController();
+        gameController.createCars(Arrays.asList("jayk", "jack"));
         cars.add(new Car("jayk", 10));
         cars.add(new Car("jack", 12));
         cars.add(new Car("john", 12));
@@ -23,7 +24,7 @@ public class GameManagerTest {
 
     @Test
     void setCars() {
-        List<Car> cars = gameManager.getCars();
+        List<Car> cars = gameController.getCars();
         assertThat(cars.size()).isEqualTo(2);
 
         List<Car> trueCars = Arrays.asList(new Car("jayk"), new Car("jack"));
@@ -34,29 +35,29 @@ public class GameManagerTest {
 
     @Test
     void getMaxLocation(){
-        assertThat(GameManager.getMaxLocation(cars)).isEqualTo(12);
+        assertThat(GameController.getMaxLocation(cars)).isEqualTo(12);
     }
 
     @Test
     void getWinner(){
-        assertThat(GameManager.getWinners(cars)).isEqualTo(Arrays.asList("jack", "john"));
+        assertThat(GameController.getWinners(cars)).isEqualTo(Arrays.asList("jack", "john"));
     }
 
     @Test
     void negativeGetMaxLocation(){
-        assertThat(GameManager.getMaxLocation(cars)).isNotEqualTo(10);
+        assertThat(GameController.getMaxLocation(cars)).isNotEqualTo(10);
     }
 
     @Test
     void negativeGetWinner(){
-        assertThat(GameManager.getWinners(cars)).isNotEqualTo(Arrays.asList("jack"));
+        assertThat(GameController.getWinners(cars)).isNotEqualTo(Arrays.asList("jack"));
     }
 
     @RepeatedTest(10)
     void simulation(){
-        gameManager.setGameTime(2);
-        gameManager.simulateGame();
-        List<Car> cars = gameManager.getCars();
+        gameController.setGameTime(2);
+        gameController.simulateGame();
+        List<Car> cars = gameController.getCars();
         for(Car car: cars){
             assertThat(car.getLocation()).isBetween(0, 2);
         }
@@ -64,9 +65,9 @@ public class GameManagerTest {
 
     @Test
     void noGameSimulation(){
-        gameManager.setGameTime(0);
-        gameManager.simulateGame();
-        List<Car> cars = gameManager.getCars();
+        gameController.setGameTime(0);
+        gameController.simulateGame();
+        List<Car> cars = gameController.getCars();
         for(Car car: cars){
             assertThat(car.getLocation()).isEqualTo(0);
         }

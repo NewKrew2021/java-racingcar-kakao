@@ -1,4 +1,4 @@
-package racingcar.io;
+package racingcar.text;
 
 public class Text {
     // Exception Messages

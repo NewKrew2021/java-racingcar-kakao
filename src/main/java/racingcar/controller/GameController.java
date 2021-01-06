@@ -1,19 +1,20 @@
-package racingcar.domain;
+package racingcar.controller;
 
+import racingcar.domain.Car;
 import racingcar.utils.RandomNumberGenerator;
-import racingcar.io.Input;
-import racingcar.io.Output;
-import racingcar.io.Text;
+import racingcar.view.Input;
+import racingcar.view.Output;
+import racingcar.text.Text;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class GameManager {
+public class GameController {
     private final RandomNumberGenerator randomNumberGenerator;
     private final List<Car> cars;
     private int gameTime;
 
-    public GameManager(){
+    public GameController(){
         this.randomNumberGenerator = new RandomNumberGenerator();
         this.cars = new ArrayList<>();
     }
