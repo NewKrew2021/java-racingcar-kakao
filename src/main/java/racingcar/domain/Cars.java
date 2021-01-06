@@ -1,8 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.exception.InvalidCarNameLengthException;
 
 public class Cars {
     private static final int MIN_MOVE_NUMBER = 4;
@@ -11,7 +10,6 @@ public class Cars {
 
     public void setCars(String carNames){
         String[] parsingCarNames = splitCarNames(carNames);
-        checkCarNames(parsingCarNames);
         addCarName(parsingCarNames);
     }
 
@@ -25,20 +23,6 @@ public class Cars {
         }
     }
 
-    private void checkCarNames(String[] carNames){
-        for (String carName : carNames) {
-            lengthCheck(carName);
-        }
-
-    }
-
-    private void lengthCheck(String carName) {
-        if (carName.length() > 5){
-            throw new InvalidCarNameLengthException("길이를 5이하로 설정해주세요");
-        }
-    }
-
-
     public List<Car> getCars(){
         return cars;
     }
@@ -49,10 +33,13 @@ public class Cars {
         }
     }
 
-    public void printRoundResult(){
-        cars.forEach(car -> {
-            car.printCarLocation();
-        });
+
+    public String getRoundResult(){
+        String roundReulst = "";
+        for(Car car:cars){
+            roundReulst += car.getCarLocations() + "\n";
+        }
+        return roundReulst;
     }
 
     private int checkMove(int number){

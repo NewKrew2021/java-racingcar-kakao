@@ -1,9 +1,10 @@
 package racingcar;
 
-public class CarGame {
+import racingcar.controller.GameManager;
+
+public class Main {
     public static void main(String[] args){
         GameManager newGame = new GameManager();
-
         newGame.start();
     }
 

@@ -1,6 +1,9 @@
-package racingcar;
+package racingcar.controller;
 
+import racingcar.domain.Cars;
 import racingcar.exception.InvalidRoundLengthException;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class GameManager {
     private int round;
@@ -8,11 +11,11 @@ public class GameManager {
 
 
     public void start() {
-        Output.printInputCars();
-        cars.setCars(Input.inputCarNames());
+        OutputView.printInputCars();
+        cars.setCars(InputView.inputCarNames());
 
-        Output.printInputRound();
-        setRound(Input.inputRound());
+        OutputView.printInputRound();
+        setRound(InputView.inputRound());
 
         startRound();
         result();
@@ -21,19 +24,14 @@ public class GameManager {
     private void startRound() {
         for (int i = 0; i < round; i++) {
             cars.move();
-            printRoundResult();
+            OutputView.print(cars.getRoundResult());
         }
     }
 
-
-
-    private void printRoundResult(){
-        cars.printRoundResult();
-        Output.printNewLine();
-    }
     public void setRound(int round) {
         roundLengthCheck(round);
         this.round = round;
+        OutputView.printRoundStart();
     }
 
     private void roundLengthCheck(int round) {
@@ -44,7 +42,7 @@ public class GameManager {
 
 
     public void result(){
-        Output.printWinner(cars.getWinner());
+        OutputView.printWinner(cars.getWinner());
     }
 
 

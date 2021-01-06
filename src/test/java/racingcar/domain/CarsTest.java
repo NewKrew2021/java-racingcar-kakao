@@ -1,12 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -29,7 +27,7 @@ class CarsTest {
     void moveTest(){
         cars.setCars("pobi,crong,honux");
         cars.move();
-        assertThat(cars.getCars()).extracting(Car::getLoccation).isSubsetOf(0,1);
+        assertThat(cars.getCars()).extracting(Car::getLocation).isSubsetOf(0,1);
     }
 
     @ParameterizedTest
@@ -40,7 +38,7 @@ class CarsTest {
         for (int i = 0; i < round; i++) {
             cars.move();
         }
-        assertThat(cars.getCars()).extracting(Car::getLoccation).hasSizeBetween(0,round);
+        assertThat(cars.getCars()).extracting(Car::getLocation).hasSizeBetween(0,round);
     }
 
 }

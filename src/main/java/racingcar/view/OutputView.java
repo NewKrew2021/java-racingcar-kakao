@@ -13,19 +13,17 @@ public class OutputView {
         System.out.println("시도할 횟수는 몇회인가요?");
     }
 
-    public static void printResult() {
-        System.out.println("실행 결과");
+    public static void printRoundStart() {
+        System.out.println("\n실행 결과");
     }
 
-    public static void printRoundResult(String name, int num) {
-        System.out.println(name + " : " + "-".repeat(num));
+    public static void print(String str){
+        System.out.println(str);
     }
 
-    public static void printNewLine() {
-        System.out.print("\n");
-    }
 
     public static void printWinner(String winner) {
         System.out.println(winner + "가 최종 우승했습니다.");
     }
+
 }

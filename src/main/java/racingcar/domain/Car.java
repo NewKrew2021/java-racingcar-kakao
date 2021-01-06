@@ -1,32 +1,33 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.view.OutputView;
 
 public class Car {
-    private String name;
-    private int location;
+    private Name name;
+    private Location location = new Location();
 
     public Car(String name){
-        this.name = name;
-        this.location = 0;
+        this.name = new Name(name);
     }
 
     public String getName(){
-        return this.name;
+        return this.name.toString();
     }
 
     public int getLocation(){
-        return this.location;
+        return this.location.getLocation();
     }
 
     public void move(int condition){
-        location += condition;
+        this.location.move(condition);
     }
 
-    public void printCarLocation(){
-        Output.printRoundResult(name, location);
+    public String getCarLocations() {
+        return name.toString() + " : " + "-".repeat(location.getLocation());
     }
 
     public String findWinner(int winnerLocation){
-        if(location == winnerLocation){
+        if(location.getLocation() == winnerLocation){
             return name + " ";
         }
         return "";
