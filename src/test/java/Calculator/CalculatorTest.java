@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CalculatorTest {
 
-    String[] result;
+    String[] numbers;
 
     @Test
     void splitAndSum_complexDelimeter() {
@@ -60,20 +60,20 @@ public class CalculatorTest {
 
     @Test
     void splitTest_comma() {
-        result = splitString("1,2,3", ",");
-        assertThat(result).containsExactly("1", "2", "3");
+        numbers = splitString("1,2,3", ",");
+        assertThat(numbers).containsExactly("1", "2", "3");
     }
 
     @Test
     void splitTest_colon() {
-        result = splitString("1:2:3", ":");
-        assertThat(result).containsExactly("1", "2", "3");
+        numbers = splitString("1:2:3", ":");
+        assertThat(numbers).containsExactly("1", "2", "3");
     }
 
     @Test
     void splitTest_complex() {
-        result = splitString("1:2,3", ",|:");
-        assertThat(result).containsExactly("1", "2", "3");
+        numbers = splitString("1:2,3", ",|:");
+        assertThat(numbers).containsExactly("1", "2", "3");
     }
 
 
