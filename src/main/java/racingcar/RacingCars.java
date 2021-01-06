@@ -38,10 +38,11 @@ public class RacingCars {
                         .orElse(0);
     }
 
-    public List<RacingCar> getWinners() {
+    public String getWinners() {
         return racingCars.stream()
                 .filter(racingCar -> racingCar.getDist() == getMaxDist())
-                .collect(Collectors.toList());
+                .map(racingCar -> racingCar.getName())
+                .collect(Collectors.joining(", "));
     }
 
     public List<RacingCar> getRacingCars() {

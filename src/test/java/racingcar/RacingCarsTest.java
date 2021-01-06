@@ -26,6 +26,6 @@ public class RacingCarsTest {
         List<RacingCar> cars = racingCars.getRacingCars();
         cars.get(1).move(7);
         cars.get(2).move(9);
-        assertThat(racingCars.getWinners()).extracting(RacingCar::getName).containsExactlyInAnyOrder("tars", "ocean");
+        assertThat(racingCars.getWinners()).isEqualTo("tars, ocean");
     }
 }

@@ -4,6 +4,7 @@ import racingcar.model.RacingCar;
 import racingcar.util.InputScanner;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Racing {
     private RacingCars racingCars;
@@ -34,14 +35,8 @@ public class Racing {
     }
 
     private void printFinalResult() {
-        List<RacingCar> winners = this.racingCars.getWinners();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (RacingCar winner : winners) {
-            stringBuilder.append(", ").append(winner.getName());
-        }
-        stringBuilder.append("가 최종 우승했습니다.");
-        stringBuilder.replace(0, 2, "");
-        System.out.println(stringBuilder.toString());
+        System.out.print(this.racingCars.getWinners());
+        System.out.println("가 최종 우승했습니다.");
     }
 
 }
