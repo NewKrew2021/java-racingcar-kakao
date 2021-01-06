@@ -5,7 +5,8 @@ import com.nextstep.racingcar.domain.Cars;
 
 public class RacingResultView {
 
-  private RacingResultView() {}
+  private RacingResultView() {
+  }
 
   public static void printRaceResultMessage() {
     System.out.println("경기 결과");
