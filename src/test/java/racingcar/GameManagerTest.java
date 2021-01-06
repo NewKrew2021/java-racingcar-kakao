@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class RacingTest {
+public class GameManagerTest {
 
     private GameManager gameManager;
 
