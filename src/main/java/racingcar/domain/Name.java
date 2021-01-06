@@ -7,12 +7,12 @@ import java.util.Objects;
 public class Name {
 
     private static final int NAME_MAX_LENGTH = 5;
-    private static final String LENGTH_OVER_ERROR_MESSAGE = "최대 길이를 초과한 이름입니다. 입력에서 제외합니다 : ";
-    private static final String EMPTY_NAME_ERROR_MESSAGE = "이름은 공백이 될 수 없습니다. 입력에서 제외합니다";
+    private static final String LENGTH_OVER_ERROR_MESSAGE = "이름은 " + NAME_MAX_LENGTH + " 글자를 초과할 수 없습니다.";
+    private static final String EMPTY_NAME_ERROR_MESSAGE = "이름은 공백이 될 수 없습니다.";
 
     private final String name;
 
-    public Name(String name) {
+    public Name(String name) throws InvalidCarNameException{
         if (StringUtils.isBlank(name)) {
             throw new InvalidCarNameException(EMPTY_NAME_ERROR_MESSAGE);
         }

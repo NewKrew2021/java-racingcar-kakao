@@ -7,7 +7,8 @@ public class InvalidPositionException extends RuntimeException{
         this.message = message;
     }
 
-    public void printErrorMessage() {
-        System.out.println(message);
+    @Override
+    public String toString() {
+        return message;
     }
 }

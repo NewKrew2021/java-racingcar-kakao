@@ -1,11 +1,8 @@
 package racingcar.domain;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import racingcar.domain.RacingGame;
 
 import java.util.Arrays;
 import java.util.List;
@@ -26,18 +23,17 @@ public class RacingGameTest {
     @Test
     void splitTest(){
         racingGame.racing();
-        List<CarInfo> carInfos = racingGame.getStatus();
+        List<CarInfo> carInfos = racingGame.getCarInfos();
         List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());
         assertThat(carNames).containsExactly("d","b","v");
     }
 
-    @Test
-    void splitUnderFiveTest(){
-        racingGame = new RacingGame("abcdef,a,,b");
-        racingGame.racing();
-        List<CarInfo> carInfos = racingGame.getStatus();
-        List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());
-        assertThat(carNames).containsExactly("a","b");
+    @ParameterizedTest
+    @ValueSource(strings = {"", "LONGCAR", "LONG,LONGC,LONGCA", "LONG,,LONG"})
+    void invalidCarNameTest(String carNames){
+        assertThatThrownBy(()->{
+            new RacingGame(carNames);
+        }).isInstanceOf(InvalidCarNameException.class);
     }
 
 }

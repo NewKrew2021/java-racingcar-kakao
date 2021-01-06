@@ -24,16 +24,10 @@ public class Cars {
     }
 
     private void addCar(String name) {
-        try {
-            cars.add(new Car(name));
-        } catch (InvalidCarNameException carNameInvalidException) {
-            carNameInvalidException.printErrorMessage(name);
-        } catch (InvalidPositionException invalidPositionException) {
-            invalidPositionException.printErrorMessage();
-        }
+         cars.add(new Car(name));
     }
 
-    public List<CarInfo> getStatus() {
+    public List<CarInfo> getCarInfos() {
         List<CarInfo> carInfos = new ArrayList<>();
         for (Car car : cars) {
             carInfos.add(car.getCarInfo());

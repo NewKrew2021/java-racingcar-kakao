@@ -40,7 +40,7 @@ public class RacingGameView {
 
     public void printResult(RacingGame racingGame) {
         List<String> winnerNames = racingGame.findWinners();
-        printStatus(racingGame.getStatus());
+        printStatus(racingGame.getCarInfos());
         System.out.println(String.join(",", winnerNames) + "가 최종 우승했습니다.");
     }
 }

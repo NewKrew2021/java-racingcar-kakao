@@ -12,7 +12,7 @@ public class Position {
         this(0);
     }
 
-    public Position(int position) {
+    public Position(int position) throws InvalidPositionException{
         if (position < 0) {
             throw new InvalidPositionException("Position은 음수가 될 수 없습니다.");
         }
