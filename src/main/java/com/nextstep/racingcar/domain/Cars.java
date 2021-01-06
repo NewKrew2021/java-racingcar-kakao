@@ -20,12 +20,11 @@ public class Cars {
     cars.forEach(car -> car.move(Utils.getRandomInt()));
   }
 
-  public List<String> getWinners() {
+  public List<Car> getWinners() {
     int farthestLocation = getFarthestLocation();
 
     return cars.stream()
         .filter(car -> isWinner(farthestLocation, car))
-        .map(Car::getName)
         .collect(Collectors.toList());
   }
 
