@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.util;
 
 import racingcar.util.InputValidChecker;
 import org.junit.jupiter.api.Test;

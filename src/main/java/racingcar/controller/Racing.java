@@ -1,10 +1,7 @@
-package racingcar;
+package racingcar.controller;
 
-import racingcar.model.RacingCar;
+import racingcar.domain.RacingCars;
 import racingcar.util.InputScanner;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class Racing {
     private RacingCars racingCars;
