@@ -1,6 +1,5 @@
 package carracing;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,22 +7,15 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
-    private Car car;
-
-    @BeforeEach
-    void setUp() {
-        car = new Car("car1");
-    }
-
     @Test
     void generateCar() {
+        Car car = new Car("car1");
         assertThat(car.getCarInfoString()).isEqualTo("car1 : ");
     }
 
     @Test
     void goTest() {
-        car.go();
-        car.go();
+        Car car = new Car("car1",2);
         assertThat(car.getCarInfoString()).isEqualTo("car1 : --");
     }
 
@@ -40,15 +32,14 @@ public class CarTest {
     @Test
     void isPositionEqualMaxMoveDistanceTest_equal(){
         int maxMoveDistance = 2;
-        car.go();
-        car.go();
+        Car car = new Car("car1",2);
         assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isTrue();
     }
 
     @Test
     void isPositionEqualMaxMoveDistanceTest_unequal(){
         int maxMoveDistance = 2;
-        car.go();
+        Car car = new Car("car1",1);
         assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isFalse();
     }
 }

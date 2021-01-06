@@ -1,18 +1,24 @@
 package carracing;
 
 public class Car {
+
     private String name;
     private int position;
+
     private final String POSITION_MARKER = "-";
     private final int MINIMUM_NAME_LENGTH = 1;
     private final int MAXIMUM_NAME_LENGTH = 5;
 
-    public Car(String name){
+    public Car(final String name){
+        this(name,0);
+    }
+
+    public Car(final String name, int position){
         if(!isValidNameFormat(name)){
             throw new IllegalArgumentException("차 이름의 글자 길이는 1~5자 사이입니다.");
         }
         this.name = name;
-        this.position = 0;
+        this.position = position;
     }
 
     private boolean isValidNameFormat(String name) {
