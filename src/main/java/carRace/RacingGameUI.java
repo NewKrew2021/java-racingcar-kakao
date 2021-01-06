@@ -7,12 +7,14 @@ import java.util.stream.Collectors;
 public class RacingGameUI {
     private static final int MAX_NAME_LENGTH = 5;
 
-    public static Cars getCarsFromUser() {
+    public static String[] getNamesFromUser() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         String input = scanner.next();
-        return validationAndConvert(split(input));
+        String[] names = split(input);
+        validationForAll(names);
+        return names;
     }
 
     public static int getNumOfRepeatFromUser() {
@@ -40,17 +42,12 @@ public class RacingGameUI {
         return userInput.split(",");
     }
 
-    private static Cars validationAndConvert(String[] names) {
-        validationForAll(names);
-        return Cars.fromNames(names);
-    }
-
-    private static void validationForAll(String[] names) {
+    public static void validationForAll(String[] names) {
         for (String name : names) {
             validationForEach(name);
         }
     }
-    private static void validationForEach(String name) {
+    public static void validationForEach(String name) {
         if(!isAlpha(name)) {
             throw new RuntimeException(String.format("차 이름은 알파벳이어야 합니다 - error name : \"%s\"", name));
         }

@@ -6,7 +6,7 @@ import java.util.List;
 public class RacingGame {
 
     public void run() {
-        Cars cars = RacingGameUI.getCarsFromUser();
+        Cars cars = Cars.fromNames(RacingGameUI.getNamesFromUser());
         race(RacingGameUI.getNumOfRepeatFromUser(), cars);
         RacingGameUI.printWinners(cars.getWinners());
     }
