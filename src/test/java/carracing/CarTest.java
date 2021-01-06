@@ -12,18 +12,16 @@ public class CarTest {
 
     @BeforeEach
     void setUp(){
-        car = new Car("car1");
+        car = new Car("car1", 2);
     }
 
     @Test
     void generateCar(){
-        assertThat(car.getCarInfoString()).isEqualTo("car1 : ");
+        assertThat(car.getName()).isEqualTo("car1");
     }
 
     @Test
-    void goTest(){
-        car.go();
-        car.go();
-        assertThat(car.getCarInfoString()).isEqualTo("car1 : --");
+    void positionTest(){
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 }

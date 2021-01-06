@@ -1,7 +1,6 @@
 package carracing.domain;
 
-import carracing.domain.Car;
-import carracing.ui.CarRacingProgramPhrase;
+import carracing.view.CarRacingProgramPhrase;
 
 import java.util.*;
 
@@ -62,7 +61,6 @@ public class CarRacingProgram {
         if(getRandomNumber() >= 4){
             maxMoveDistance = Math.max(maxMoveDistance, carList.get(index).go());
         }
-        System.out.println(carList.get(index).getCarInfoString());
     }
 
     public List<String> findRaceWinner(){
