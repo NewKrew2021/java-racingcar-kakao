@@ -1,8 +1,10 @@
+package Car;
+
 public class Car {
-    private static final int MOVE_THRESHOLD = 4;
+    private static final int MOVE_CONDITION_THRESHOLD = 4;
     private static final int MAX_NAME_LENGTH = 5;
 
-    private String name;
+    private final String name;
     private int position;
 
     public Car(String name) {
@@ -17,14 +19,9 @@ public class Car {
         }
     }
 
-    public void moveOrNot(int condition) {
-        if (condition >= MOVE_THRESHOLD) {
-            moveForwardOne();
-        }
-    }
-
-    private void moveForwardOne() {
-        this.position++;
+    public void move(boolean isMovable) {
+        if (isMovable)
+            this.position++;
     }
 
     public boolean isForwardThan(Car car) {
