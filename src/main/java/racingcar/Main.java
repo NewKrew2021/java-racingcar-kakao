@@ -1,6 +1,4 @@
-package racingCar;
-
-import java.util.Scanner;
+package racingcar;
 
 public class Main {
 
