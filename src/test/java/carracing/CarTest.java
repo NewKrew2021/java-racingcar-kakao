@@ -37,4 +37,18 @@ public class CarTest {
         assertThatThrownBy(() -> new Car("invalid")).isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void isPositionEqualMaxMoveDistanceTest_equal(){
+        int maxMoveDistance = 2;
+        car.go();
+        car.go();
+        assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isTrue();
+    }
+
+    @Test
+    void isPositionEqualMaxMoveDistanceTest_unequal(){
+        int maxMoveDistance = 2;
+        car.go();
+        assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isFalse();
+    }
 }

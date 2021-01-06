@@ -73,7 +73,7 @@ public class CarRacingProgram {
     }
 
     private void compareMaxMoveDistanceToCarMoveCount(List<String> winners, Car car){
-        if(car.getPosition() == maxMoveDistance){
+        if(car.isPositionEqualMaxMoveDistance(maxMoveDistance)){
             winners.add(car.getName());
         }
     }
