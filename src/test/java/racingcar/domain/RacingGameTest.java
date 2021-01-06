@@ -40,24 +40,4 @@ public class RacingGameTest {
         assertThat(carNames).containsExactly("a","b");
     }
 
-    @Test
-    void singleWinnerTest() {
-        Car car1 = new Car("yell", 1);
-        Car car2 = new Car("dino", 6);
-        Car car3 = new Car("pobi", 0);
-
-        racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
-        assertThat(racingGame.findWinners()).containsExactly("dino");
-    }
-
-    @Test
-    void multiWinnersTest(){
-        Car car1 = new Car("yell", 3);
-        Car car2 = new Car("dino", 1);
-        Car car3 = new Car("pobi", 3);
-
-        racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
-        assertThat(racingGame.findWinners()).containsExactly("yell", "pobi");
-    }
-
 }
