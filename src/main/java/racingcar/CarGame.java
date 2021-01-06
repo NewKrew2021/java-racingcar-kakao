@@ -5,47 +5,26 @@ import java.util.List;
 
 public class CarGame {
 
-    private final List<Car> carList;
+    private final CarGroup carGroup;
     private final int totalRound;
     private int currentRound = 0;
 
-    public CarGame(List<Car> carList, int totalRound) {
-        this.carList = carList;
+    public CarGame(List<String> carNames, int totalRound) {
+        this.carGroup = CarGroup.createCarGroupWithName(carNames);
         this.totalRound = totalRound;
     }
 
     public void playRound() {
-        currentRound++;
         updateCar();
+        currentRound++;
     }
 
     private void updateCar() {
-        for(Car car : carList){
-            car.updateCarPosition(car.getDistance(car.makeRandomNumber()));
-        }
+        carGroup.moveAll();
     }
 
-    public List<String> getWinner() {
-        int maxPosition = getMaxPosition();
-        List<String> winners = new ArrayList<>();
-        for(Car car : carList) {
-            addWinner(car.getNameIfMatched(maxPosition),winners);
-        }
-        return winners;
-    }
-
-    private void addWinner(String name, List<String> winners) {
-        if(!name.isEmpty()){
-            winners.add(name);
-        }
-    }
-
-    private int getMaxPosition() {
-        int maxPosition = 0;
-        for(Car car : carList) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
+    public List<String> getWinnerName() {
+        return carGroup.getWinnerName();
     }
 
     public boolean isFinished() {
@@ -53,6 +32,6 @@ public class CarGame {
     }
 
     public List<Car> getCarList() {
-        return carList;
+        return carGroup.getCarGroup();
     }
 }

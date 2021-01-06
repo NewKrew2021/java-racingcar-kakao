@@ -5,15 +5,10 @@ import java.util.List;
 
 public class CarMain {
     public static void main(String[] args) {
-        List<String> carNameList = CarView.parseCarName(CarView.writeCarName());
+        List<String> carNames = CarView.parseCarName(CarView.writeCarName());
+        int racingRound = CarView.writeRacingRound();
 
-        List<Car> carList = new ArrayList<>();
-
-        for(String carName : carNameList){
-            carList.add(new Car(carName, 0));
-        }
-
-        CarGame game = new CarGame(carList, CarView.writeRacingRound());
+        CarGame game = new CarGame(carNames, racingRound);
 
         CarView.printRoundStart();
 
@@ -22,6 +17,6 @@ public class CarMain {
             CarView.printRoundResult(game);
         }
 
-        CarView.printWinnerCar(game.getWinner());
+        CarView.printWinnerCar(game.getWinnerName());
     }
 }
