@@ -32,7 +32,7 @@ public class CarRacingProgram {
 
         System.out.println(CarRacingProgramPhrase.RESULT_PHRASE);
         for (int i = 0; i < totalMoveCount; i++) {
-            playOneCycle();
+            playOneCycleAndPrintCarPosition();
         }
 
         printRaceWinners(findRaceWinners());
@@ -45,18 +45,22 @@ public class CarRacingProgram {
         }
     }
 
-    private void playOneCycle(){
+    private void playOneCycleAndPrintCarPosition(){
         for (int i = 0; i < cars.size(); i++) {
-            checkMovingCondition(i);
+            checkMovingConditionAfterMoveCar(i);
+            System.out.println(cars.get(i).getCarInfoString());
         }
         System.out.println();
     }
 
-    private void checkMovingCondition(int index){
+    private void checkMovingConditionAfterMoveCar(int index){
         if(getRandomNumber() >= 4){
-            maxMoveDistance = Math.max(maxMoveDistance, cars.get(index).go());
+            maxMoveDistance = updateMaxMoveDistance(cars.get(index).go());
         }
-        System.out.println(cars.get(index).getCarInfoString());
+    }
+
+    private int updateMaxMoveDistance(int carPosition){
+        return Math.max(maxMoveDistance, carPosition);
     }
 
     private List<String> findRaceWinners(){
