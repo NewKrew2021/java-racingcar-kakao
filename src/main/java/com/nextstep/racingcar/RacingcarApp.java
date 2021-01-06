@@ -2,7 +2,7 @@ package com.nextstep.racingcar;
 
 import com.nextstep.racingcar.controller.RacingcarGame;
 
-public class Main {
+public class RacingcarApp {
 
   public static void main(String[] args) {
     RacingcarGame racingcarGame = new RacingcarGame();
