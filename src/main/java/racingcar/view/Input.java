@@ -15,7 +15,7 @@ public class Input {
         return getSplitName(scanner.nextLine());
     }
 
-    public static List<String> getSplitName(String input) {
+    static List<String> getSplitName(String input) {
         return Arrays.asList(input.split(","));
     }
 }
