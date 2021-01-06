@@ -1,8 +1,7 @@
 package racingcar.domain;
 
-import java.util.Comparator;
-
 public class CarInfo implements Comparable<CarInfo> {
+
     private final int position;
     private final String name;
 
@@ -33,4 +32,5 @@ public class CarInfo implements Comparable<CarInfo> {
     public int compareTo(CarInfo carInfo) {
         return this.position - carInfo.getPosition();
     }
+
 }

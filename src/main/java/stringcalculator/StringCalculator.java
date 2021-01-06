@@ -17,7 +17,7 @@ public class StringCalculator {
     }
 
     private String[] splitText(String text) {
-        String delimiter = ",|:";
+        String delimiter = DEFAULT_SPLIT_DELIMITER;
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
         if (m.find()) {
             String customDelimiter = m.group(1);

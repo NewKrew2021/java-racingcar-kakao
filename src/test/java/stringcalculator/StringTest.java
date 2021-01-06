@@ -67,4 +67,5 @@ public class StringTest {
         String s = ",";
         Assertions.assertThat(stringCalculator.calculate(s)).isEqualTo(0);
     }
+
 }

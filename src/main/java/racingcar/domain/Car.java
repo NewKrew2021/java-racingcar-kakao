@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.CarNameInvalidException;
 
 public class Car {
+
     private static final int MOVEMENT = 1;
     private static final int NAME_MAX_LENGTH = 5;
     private static final int SPEED = 4;

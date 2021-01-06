@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Winners {
+
     List<Car> cars;
 
     public Winners(List<Car> cars) {
@@ -24,4 +25,5 @@ public class Winners {
         }
         return winners;
     }
+
 }

@@ -22,4 +22,5 @@ public class RacingGameController {
         racingGame.racing();
         racingGameView.printStatus(racingGame.getStatus());
     }
+
 }

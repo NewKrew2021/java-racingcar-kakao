@@ -10,6 +10,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.CarNameInvalidException;
 
 public class CarTest {
+
     private Car car;
 
     @BeforeEach
