@@ -8,6 +8,8 @@ public class CarRacingProgram {
     private Scanner sc;
     private Random random;
 
+    private final int ABLE_MOVE_NUMBER = 4;
+
     public CarRacingProgram() {
         sc = new Scanner(System.in);
         random = new Random();
@@ -54,7 +56,7 @@ public class CarRacingProgram {
     }
 
     private void checkMovingConditionAfterMoveCar(Car car){
-        if(getRandomNumber() >= 4){
+        if(getRandomNumber() >= ABLE_MOVE_NUMBER){
             maxMoveDistance = updateMaxMoveDistance(car.go());
         }
     }
