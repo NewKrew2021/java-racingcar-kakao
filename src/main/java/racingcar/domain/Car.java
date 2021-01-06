@@ -6,11 +6,10 @@ public class Car {
     private final Name name;
 
     public Car(String name){
-        this.position = new Position();
-        this.name = new Name(name);
+        this(name, 0);
     }
 
-    Car(String name, int position) {
+    public Car(String name, int position) {
         this.name = new Name(name);
         this.position = new Position(position);
     }

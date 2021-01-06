@@ -21,7 +21,7 @@ public class CarInfo implements Comparable<CarInfo> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.name + " : ");
+        sb.append(name.getName() + " : ");
         for (int i = 0; i < position.getPosition(); i++) {
             sb.append("-");
         }
