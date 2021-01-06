@@ -16,6 +16,11 @@ public class GameUI {
     //이렇게 초기화 블럭을 사용하는게 괜찮은지 모르겠습니다.
     //아니면 controller에서 scanner객체를 생성시킨다음에
     //UI메소드들을 호출할때마다 인자로 넘겨줄까요?
+    
+    public static void main(String[] args) {
+        GameController game = new GameController();
+        game.run();
+    }
 
     public static CarSet getCarsFromUser() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
