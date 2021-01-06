@@ -1,3 +1,6 @@
+package Utils;
+
+import Utils.StringUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
