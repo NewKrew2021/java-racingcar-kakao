@@ -48,9 +48,7 @@ public class Car {
         return otherloc;
     }
 
-    public boolean isLocated(int i) {
-        if(i == this.location)
-            return true;
-        return false;
+    public int getLocation() {
+        return this.location;
     }
 }
