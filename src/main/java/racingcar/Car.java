@@ -4,11 +4,11 @@ public class Car {
 
     private final int RANDOM_SCOPE = 10;
 
-    private int position = 0;
-    private String name = "";
+    private int position;
+    private final CarName name;
 
     public Car(String name, int position) {
-        this.name = name;
+        this.name = new CarName(name);
         this.position = position;
     }
 
@@ -33,12 +33,12 @@ public class Car {
     }
 
     public String getName() {
-        return name;
+        return name.getCarName();
     }
 
     public String getNameIfMatched(int position) {
         if(this.position == position){
-            return this.name;
+            return this.name.getCarName();
         }
         return "";
     }

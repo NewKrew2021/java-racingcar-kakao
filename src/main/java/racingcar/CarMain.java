@@ -6,7 +6,6 @@ import java.util.List;
 public class CarMain {
     public static void main(String[] args) {
         List<String> carNameList = CarView.parseCarName(CarView.writeCarName());
-        CarView.validateCarName(carNameList);
 
         List<Car> carList = new ArrayList<>();
 
