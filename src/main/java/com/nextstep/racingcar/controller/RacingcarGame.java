@@ -2,16 +2,16 @@ package com.nextstep.racingcar.controller;
 
 import com.nextstep.racingcar.domain.Car;
 import com.nextstep.racingcar.domain.Racingcar;
-import com.nextstep.racingcar.view.OutputView;
-import com.nextstep.racingcar.view.InputView;
+import com.nextstep.racingcar.views.InputView;
+import com.nextstep.racingcar.views.OutputView;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class RacingcarGame {
 
-  private OutputView outputView;
   private InputView inputView;
+  private OutputView outputView;
   private Racingcar racingcar;
   private String[] carNames;
   private int repeatCount;
@@ -19,7 +19,7 @@ public class RacingcarGame {
   public void play() {
     initializeUI();
     getInputs();
-    createNewRacingcarBasedOnInputs();
+    createNewRacingcar();
 
     run();
 
@@ -32,21 +32,11 @@ public class RacingcarGame {
   }
 
   private void getInputs() {
-    getCarNames();
-    getRepeatCount();
-  }
-
-  private void getCarNames() {
-    outputView.printRequestCarNames();
     carNames = inputView.scanCarNames();
-  }
-
-  private void getRepeatCount() {
-    outputView.printRequestRepeatCount();
     repeatCount = inputView.scanRepeatCount();
   }
 
-  private void createNewRacingcarBasedOnInputs() {
+  private void createNewRacingcar() {
     List<Car> cars = Stream.of(carNames)
         .map(carName -> new Car(carName, 0))
         .collect(Collectors.toList());
@@ -57,13 +47,9 @@ public class RacingcarGame {
   private void run() {
     outputView.printResultGuide();
     while (racingcar.isInProgress()) {
-      runOneStep();
+      racingcar.simulate();
+      outputView.printSimulationResults(racingcar.getCars());
     }
-  }
-
-  private void runOneStep() {
-    racingcar.simulate();
-    outputView.printSimulationResults(racingcar.getCars());
   }
 
   private void outputWinners() {

@@ -1,4 +1,4 @@
-package com.nextstep.racingcar.view;
+package com.nextstep.racingcar.views;
 
 import com.nextstep.racingcar.utils.InputCheck;
 import java.util.InputMismatchException;
@@ -31,13 +31,17 @@ public class InputView {
   }
 
   private String[] carNames() {
-    String namesInput = SC.next();
+    String namesInput;
+
+    System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉽표(,)를 기준으로 구분).");
+    namesInput = SC.next();
     return namesInput.split(",");
   }
 
   private int repeatCount() {
     int count;
 
+    System.out.println("시도할 회수는 몇회인가요?");
     try {
       count = SC.nextInt();
     } catch (InputMismatchException e) {
