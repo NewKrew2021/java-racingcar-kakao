@@ -18,6 +18,12 @@ public class Cars {
         }
     }
 
+    public void printAll(){
+        for (Car car: this.cars) {
+            System.out.println(car.toString());
+        }
+    }
+
     public List<Car> getHeads(){
         Collections.sort(cars);
         int maxPosition = cars.get(0).getPosition();

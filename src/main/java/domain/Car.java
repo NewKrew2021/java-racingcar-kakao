@@ -26,6 +26,10 @@ public class Car implements Comparable<Car>{
         return this.position;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     public int move(MoveStrategy strategy){
         if(strategy.isMove())
             ++this.position;
@@ -47,5 +51,14 @@ public class Car implements Comparable<Car>{
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return position == car.position && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public String toString() {
+        String repeat = "";
+        for (int i = 0; i < this.position; i++) {
+            repeat += "-";
+        }
+        return this.name + " : " + repeat;
     }
 }
