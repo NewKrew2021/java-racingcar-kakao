@@ -8,35 +8,36 @@ import java.util.*;
 
 public class GameManager {
     private final List<Car> cars;
-    private int gameTime;
+    private final int gameTime;
 
-    GameManager(){
-        this.cars = new ArrayList<>();
+    public GameManager(){
+        this(new ArrayList<>(), 0);
     }
 
-    public void setGameTime(int gameTime){
+    public GameManager(List<String> carNames, int gameTime) {
         this.gameTime = gameTime;
+        this.cars = createCars(carNames);
     }
 
-    public void playGame(){
+    public void playGame() {
         Output.printResultStart();
         Output.printSimulationResult(cars);
         for(int i = 0; i < gameTime; ++i) {
-            simulateCars();
+            move();
             Output.printSimulationResult(cars);
         }
         Output.printWinner(getWinners());
     }
 
-    private int getMaxLocation(){
-        int max = -1;
+    private int getMaxLocation() {
+        int max = 0;
         for(Car car: cars){
-            max = Math.max(car.getLocation(), max);
+            max = Math.max(max, car.getLocation());
         }
         return max;
     }
 
-    private List<String> getWinners(){
+    private List<String> getWinners() {
         final int maxVal = getMaxLocation();
         List<String> winners = new ArrayList<>();
         cars.stream()
@@ -45,16 +46,18 @@ public class GameManager {
         return winners;
     }
 
-    private void simulateCars(){
+    private void move() {
         for(Car car: cars){
             car.tryForward(RandomNumber.getRandomNumber());
         }
     }
 
-    public void createCars(List<String> nameList) {
+    private List<Car> createCars(List<String> nameList) {
+        List<Car> cars = new ArrayList<>();
         for(String name: nameList) {
             cars.add(new Car(name));
         }
+        return cars;
     }
 
     public List<Car> getCars() {
