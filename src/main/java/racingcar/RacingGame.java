@@ -3,6 +3,8 @@ package racingcar;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static java.lang.Math.max;
+
 public class RacingGame {
     private Car[] cars;
 
@@ -22,13 +24,8 @@ public class RacingGame {
 
     public void moveCars() {
         for (Car car : cars) {
-            car.move(getRandomNo());
+            car.move(Utils.getRandomNo());
         }
-    }
-
-    public int getRandomNo() {
-        Random generator = new Random();
-        return generator.nextInt(10);
     }
 
     public String getCarsStatus() {
@@ -41,10 +38,7 @@ public class RacingGame {
 
     public ArrayList<String> getWinners() {
         ArrayList<String> winners = new ArrayList<>();
-        int maxLocation = 0;
-        for (Car car : cars) {
-            maxLocation = car.maxLocation(maxLocation);
-        }
+        int maxLocation = getMaxLocation();
 
         for (int i = 0; i < cars.length; i++) {
             addWinner(winners, i, maxLocation);
@@ -53,10 +47,22 @@ public class RacingGame {
         return winners;
     }
 
+    private int getMaxLocation() {
+        int maxLocation = 0;
+        for (Car car : cars) {
+            maxLocation = max(maxLocation, car.getLocation());
+        }
+        return maxLocation;
+    }
+
     private void addWinner(ArrayList<String> winners, int idx, int maxLocation) {
-        if (cars[idx].isMaxLocation(maxLocation)) {
+        if (isMaxLocation(cars[idx], maxLocation)) {
             winners.add(cars[idx].getName());
         }
+    }
+
+    private boolean isMaxLocation(Car car, int maxLocation) {
+        return car.getLocation() == maxLocation;
     }
 
     public Car[] getCars() {

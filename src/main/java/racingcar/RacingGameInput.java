@@ -42,7 +42,7 @@ public class RacingGameInput {
     }
 
     public static String[] stringToNames(String input) {
-        if (isBlank(input))
+        if (Utils.isBlank(input))
             throw new IllegalArgumentException("한대 이상의 자동차를 입력해주세요.");
         String[] names = input.split(",");
         for (String name : names) {
@@ -56,7 +56,4 @@ public class RacingGameInput {
             throw new IllegalArgumentException("차 이름은 5자 이하여야 합니다.");
     }
 
-    private static boolean isBlank(String input) {
-        return input == null || input.equals("");
-    }
 }

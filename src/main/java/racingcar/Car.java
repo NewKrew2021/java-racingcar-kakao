@@ -38,16 +38,6 @@ public class Car {
         return this.name;
     }
 
-    public boolean isMaxLocation(int maxLocation){
-        return this.location == maxLocation;
-    }
-
-    public int maxLocation(int otherloc){
-        if(this.location > otherloc)
-            return this.location;
-        return otherloc;
-    }
-
     public int getLocation() {
         return this.location;
     }
