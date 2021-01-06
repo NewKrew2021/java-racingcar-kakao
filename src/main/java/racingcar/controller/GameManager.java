@@ -35,18 +35,15 @@ public class GameManager {
     }
 
     private void roundLengthCheck(int round) {
-        if (round < 1){
+        if (round < 1) {
             throw new InvalidRoundLengthException("횟수를 1회 이상 입력해주세요.");
         }
     }
 
 
-    public void result(){
+    public void result() {
         OutputView.printWinner(cars.getWinner());
     }
-
-
-
 
 
 }

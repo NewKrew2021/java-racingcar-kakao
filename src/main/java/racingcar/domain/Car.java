@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.OutputView;
 
 public class Car {
     private Name name;

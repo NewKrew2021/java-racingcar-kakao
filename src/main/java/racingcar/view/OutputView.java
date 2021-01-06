@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.Location;
-import racingcar.domain.Name;
 
 public class OutputView {
 
