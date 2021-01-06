@@ -8,10 +8,15 @@ public class CarGame {
     private final int totalRound;
     private int currentRound = 0;
 
-    public CarGame(ArrayList<Car> carList, int totalRound) {
+    private CarGame(ArrayList<Car> carList, int totalRound) {
         this.carList = carList;
         this.totalRound = totalRound;
     }
+
+    public static CarGame of(ArrayList<Car> carList, int totalRound){
+        return new CarGame(carList,totalRound);
+    }
+
 
     public void playRound() {
         currentRound++;

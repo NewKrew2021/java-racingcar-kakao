@@ -10,10 +10,10 @@ public class CarMain {
         ArrayList<Car> carList = new ArrayList<>();
 
         for(String carName : carNameList){
-            carList.add(new Car(carName, 0));
+            carList.add(Car.of(carName,0));
         }
 
-        CarGame game = new CarGame(carList, CarView.writeRacingRound());
+        CarGame game = CarGame.of(carList, CarView.writeRacingRound());
 
         CarView.printRoundStart();
 

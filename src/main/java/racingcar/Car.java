@@ -9,9 +9,13 @@ public class Car {
     private int position = 0;
     private String name = "";
 
-    public Car(String name, int position) {
+    private Car(String name, int position) {
         this.name = name;
         this.position = position;
+    }
+
+    public static Car of(String name, int position){
+        return new Car(name,position);
     }
 
     public int makeRandomNumber(){

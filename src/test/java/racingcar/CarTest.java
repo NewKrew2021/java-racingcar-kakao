@@ -12,7 +12,7 @@ public class CarTest {
 
     @BeforeEach
     void initializeCar() {
-        this.car = new Car("", 0);
+        this.car = Car.of("", 0);
     }
 
     @Test
