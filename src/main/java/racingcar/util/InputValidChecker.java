@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class InputValidChecker {
 
+    private InputValidChecker() {
+        throw new IllegalStateException("Utility Class");
+    }
+
     public static boolean isValidNames(String input) {
         String[] names = input.split(",");
         return isNotConsecutiveComma(input) && isNameLengthValid(names) && isNotDuplicatedName(names);
@@ -12,9 +16,7 @@ public class InputValidChecker {
     public static boolean isValidRounds(String input) {
         try {
             Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            return false;
-        } catch (NullPointerException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             return false;
         }
         return true;
