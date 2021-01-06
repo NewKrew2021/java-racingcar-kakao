@@ -14,7 +14,7 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void setMaxPosition() {
+    private void setMaxPosition() {
         cars.forEach(car -> maxPosition = Math.max(car.getPosition(), maxPosition));
     }
 

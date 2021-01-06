@@ -30,7 +30,7 @@ public class RacingGame {
     }
 
     public void repeatRace() {
-        while (racing.isFinished()) {
+        while (racing.isNotFinished()) {
             racing.race();
             System.out.println(racing.getRaceString());
             racing.decreaseProgressNumber();

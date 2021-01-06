@@ -25,7 +25,7 @@ public class Racing {
         cars.race();
     }
 
-    public boolean isFinished() {
+    public boolean isNotFinished() {
         return progressNumber > 0;
     }
 
