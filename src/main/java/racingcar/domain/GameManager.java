@@ -19,21 +19,18 @@ public class GameManager {
     }
 
     public void playGame(){
-        setCars();
-        setGameTime();
+        Output.askCarsName();
+        createCars(Input.getNames());
+
+        Output.askGameTime();
+        setGameTime(Input.getGameTime());
+
         simulateGame();
         endGame();
     }
 
-    private void setCars() {
-        Output.askCarsName();
-        List<String> carsName = Input.getNames();
-        createCars(carsName);
-    }
-
-    private void setGameTime() {
-        Output.askGameTime();
-        gameTime = Input.getGameTime();
+    public void setGameTime(int gameTime) {
+        this.gameTime = gameTime;
     }
 
     public void simulateGame(){

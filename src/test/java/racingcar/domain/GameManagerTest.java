@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -8,8 +9,8 @@ import java.util.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GameManagerTest {
+    private final List<Car> cars = new ArrayList<>();
     private GameManager gameManager;
-    private List<Car> cars = new ArrayList<>();
 
     @BeforeEach
     void setupGameManager(){
@@ -49,5 +50,25 @@ public class GameManagerTest {
     @Test
     void negativeGetWinner(){
         assertThat(GameManager.getWinners(cars)).isNotEqualTo(Arrays.asList("jack"));
+    }
+
+    @RepeatedTest(10)
+    void simulation(){
+        gameManager.setGameTime(2);
+        gameManager.simulateGame();
+        List<Car> cars = gameManager.getCars();
+        for(Car car: cars){
+            assertThat(car.getLocation()).isBetween(0, 2);
+        }
+    }
+
+    @Test
+    void noGameSimulation(){
+        gameManager.setGameTime(0);
+        gameManager.simulateGame();
+        List<Car> cars = gameManager.getCars();
+        for(Car car: cars){
+            assertThat(car.getLocation()).isEqualTo(0);
+        }
     }
 }
