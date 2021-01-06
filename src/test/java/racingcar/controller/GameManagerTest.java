@@ -10,14 +10,22 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class GameManagerTest {
     @Test
-    void setCars() {
+    void emptyCarTest() {
         GameManager gameManager = new GameManager();
-        gameManager.createCars(Arrays.asList("jayk", "jack"));
+
+        assertThat(gameManager.getCars().size()).isEqualTo(0);
+    }
+
+    @Test
+    void setCars() {
+        GameManager gameManager = new GameManager(Arrays.asList("jayk","jack"),0);
         List<Car> cars = gameManager.getCars();
+
         assertThat(cars.size()).isEqualTo(2);
 
         List<Car> trueCars = Arrays.asList(new Car("jayk"), new Car("jack"));
         List<Car> falseCars = Arrays.asList(new Car("jak"), new Car("jack"));
+
         assertThat(cars.equals(trueCars)).isTrue();
         assertThat(cars.equals(falseCars)).isFalse();
     }
