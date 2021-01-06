@@ -1,4 +1,7 @@
-package carracing;
+package carracing.domain;
+
+import carracing.domain.Car;
+import carracing.ui.CarRacingProgramPhrase;
 
 import java.util.*;
 

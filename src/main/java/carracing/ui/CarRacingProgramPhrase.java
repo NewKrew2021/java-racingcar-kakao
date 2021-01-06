@@ -1,4 +1,4 @@
-package carracing;
+package carracing.ui;
 
 public class CarRacingProgramPhrase {
 
