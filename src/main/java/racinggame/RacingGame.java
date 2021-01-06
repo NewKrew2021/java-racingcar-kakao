@@ -12,23 +12,17 @@ public class RacingGame {
     public static UserInputValidator countInputValidator;
     static {
         inputManager = new InputManager();
-        countInputValidator = new UserInputValidator() {
-            @Override
-            public void validate(String str) throws Exception{
-                if(str == null)
-                    throw new Exception();
-                int num = Integer.parseInt(str);
-                if(num <= 0)
-                    throw new Exception();
-            }
+        countInputValidator = (String str) -> {
+            if(str == null)
+                throw new Exception();
+            int num = Integer.parseInt(str);
+            if(num <= 0)
+                throw new Exception();
         };
-        nameInputValidator = new UserInputValidator() {
-            @Override
-            public void validate(String stringFromUser) throws Exception{
-                String namesArray[] = stringFromUser.split(",");
-                for (int i = 0; i < namesArray.length; i++) {
-                    new Car(namesArray[i]);
-                }
+        nameInputValidator = (String stringFromUser)->{
+            String namesArray[] = stringFromUser.split(",");
+            for (int i = 0; i < namesArray.length; i++) {
+                new Car(namesArray[i]);
             }
         };
     }
