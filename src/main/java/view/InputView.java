@@ -1,23 +1,9 @@
 package view;
 
+import commons.*;
 import domain.RacingGame;
 
-import java.util.Arrays;
 import java.util.Scanner;
-
-final class LengthOfNameException extends Exception {
-    public LengthOfNameException() { super("이름은 최대 5자 이내로 작성하세요."); }
-}
-
-final class NumberOfNamesException extends Exception {
-    public NumberOfNamesException() {
-        super("이름은 최소 2개 이상 작성하세요.");
-    }
-}
-
-final class PostiveIntegerException extends Exception {
-    public PostiveIntegerException() { super("양의 정수를 작성하세요."); }
-}
 
 public final class InputView {
     private InputView() {}
@@ -45,10 +31,10 @@ public final class InputView {
             try {
                 finalRound = Integer.parseInt(new Scanner(System.in).nextLine());
                 if(finalRound < 0) {
-                    throw new PostiveIntegerException();
+                    throw new NegativeIntegerException();
                 }
                 break;
-            } catch (PostiveIntegerException e) {
+            } catch (NegativeIntegerException e) {
                 System.out.println(e.getMessage());
             } catch (Exception e) {
                 System.out.println("숫자를 작성하세요.");
@@ -65,8 +51,10 @@ public final class InputView {
             throw new NumberOfNamesException();
         }
 
-        if (!isValidLengthOfEachName(names)) {
-            throw new LengthOfNameException();
+        for(String name : names){
+            if(!isValidLengthOfName(name)){
+                throw new LengthOfNameException(name);
+            }
         }
 
         return names;
@@ -76,8 +64,7 @@ public final class InputView {
         return (names != null) && (names.length >= RacingGame.MIN_NUM_NAMES);
     }
 
-    private static boolean isValidLengthOfEachName(String[] names) {
-        return Arrays.stream(names)
-                .noneMatch(name -> name.isEmpty() || (name.length() > RacingGame.MAX_LEN_NAME));
+    private static boolean isValidLengthOfName(String name) {
+        return !name.isEmpty() && (name.length() <= RacingGame.MAX_LEN_NAME);
     }
 }
