@@ -17,7 +17,7 @@ public class Input {
     private static void validate(List<Integer> list) {
         list.forEach(v -> {
             if (v < 0) {
-                throw new RuntimeException("음수가 포함되었습니다.");
+                throw new IllegalArgumentException("음수가 포함되었습니다.");
             }
         });
     }

@@ -45,14 +45,14 @@ public class SplitTest {
     @Test
     public void runtimeExceptionTest() {
         Input input = new Input("-1:2:3");
-        assertThatExceptionOfType(RuntimeException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(input::split).withMessageMatching("음수가 포함되었습니다.");
     }
 
     @Test
     public void runtimeExceptionCustomSplitTest() {
         Input input = new Input("//;\n-1;2;3");
-        assertThatExceptionOfType(RuntimeException.class)
+        assertThatExceptionOfType(IllegalArgumentException.class)
                 .isThrownBy(input::split).withMessageMatching("음수가 포함되었습니다.");
     }
 }
