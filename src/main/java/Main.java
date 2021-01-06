@@ -1,6 +1,4 @@
-package controller;
-
-import view.RacingGame;
+import controller.RacingGame;
 
 public class Main {
 
