@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarViewTest {
 
@@ -16,13 +15,5 @@ public class CarViewTest {
         assertThat(nameList).contains("hendo").contains("brody").contains("summer");
     }
 
-    @Test
-    void validateCarNameTest(){
-        assertThatThrownBy(() -> {
-            String text = "hendooo,brody,summer";
-            ArrayList<String> nameList = CarView.parseCarName(text);
-            CarView.validateCarName(nameList);
-        });
-    }
 
 }

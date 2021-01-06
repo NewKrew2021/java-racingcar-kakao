@@ -7,22 +7,9 @@ import java.util.Scanner;
 
 public class CarView {
 
-    private static final int MAX_NAME_LENGTH =5;
 
-    public static ArrayList<String> parseCarName(String text){
+    public static ArrayList<String> parseCarName(String text) {
         return new ArrayList<String>(Arrays.asList(text.split(",")));
-    }
-
-    public static void validateCarName(ArrayList<String> nameList) throws IllegalStateException {
-        for (String name : nameList) {
-            lengthValidationTest(name);
-        }
-    }
-
-    private static void lengthValidationTest(String name){
-        if(name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalStateException();
-        }
     }
 
     public static String writeCarName() {
@@ -43,7 +30,7 @@ public class CarView {
     }
 
     public static void printRoundResult(CarGame game) {
-        for(Car car : game.getCarList()){
+        for (Car car : game.getCarList()) {
             System.out.println(car.getName() + " : " + String.join("", Collections.nCopies(car.getPosition(), "-")));
         }
         System.out.println();

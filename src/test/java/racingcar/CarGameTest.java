@@ -10,19 +10,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarGameTest {
 
     @Test
-    void playRoundTest(){
+    void playRoundTest() {
         ArrayList<Car> carList = new ArrayList<>(Arrays.asList(Car.of("hendo", 5), Car.of("brody", 3)));
         CarGame game = CarGame.of(carList, 3);
-        while(!game.isFinished()){
+        while (!game.isFinished()) {
             game.playRound();
         }
         assertThat(game.isFinished()).isEqualTo(true);
     }
 
     @Test
-    void getWinnerTest(){
+    void getWinnerTest() {
         ArrayList<Car> carList = new ArrayList<>(Arrays.asList(Car.of("hendo", 5), Car.of("brody", 3)));
-        CarGame game = CarGame.of(carList,3);
+        CarGame game = CarGame.of(carList, 3);
         assertThat(game.getWinner()).containsOnly("hendo");
     }
 
