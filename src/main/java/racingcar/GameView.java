@@ -5,11 +5,9 @@ import java.util.stream.Collectors;
 
 public class GameView {
 
-    public void roundResult(List<Car> cars) {
+    public void roundResult(Cars cars) {
 
-        for (Car car : cars) {
-            System.out.println(car.toString());
-        }
+        System.out.println(cars.toString());
         System.out.println();
     }
 
@@ -21,8 +19,8 @@ public class GameView {
     public String convertCarName(List<Car> winners) {
 
         return winners.stream()
-                      .map(Car::getName)
-                      .collect(Collectors.joining(", "));
+                .map(Car::getName)
+                .collect(Collectors.joining(", "));
     }
 
     public void print(String statement) {

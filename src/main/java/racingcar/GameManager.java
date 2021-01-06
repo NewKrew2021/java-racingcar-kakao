@@ -1,6 +1,9 @@
 package racingcar;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class GameManager {
@@ -15,10 +18,10 @@ public class GameManager {
         gameView.print("시도할 회수는 몇회인가요?");
         int round = sc.nextInt();
 
-        List<Car> cars = makeCarList(parsing(carString));
+        Cars cars = new Cars(makeCarList(parsing(carString)));
         executeRound(cars, round);
 
-        List<Car> winner = getWinners(cars);
+        List<Car> winner = cars.getWinners();
         gameView.gameResult(winner);
     }
 
@@ -40,30 +43,13 @@ public class GameManager {
         return cars;
     }
 
-    public void executeRound(List<Car> cars, Integer rounds) {
+    public void executeRound(Cars cars, Integer rounds) {
 
         for (int i = 0; i < rounds; i++) {
-            carMove(cars);
+            cars.moveCars();
             gameView.roundResult(cars);
         }
     }
 
-    public List<Car> getWinners(List<Car> cars) {
 
-        List<Car> winners = new ArrayList<Car>();
-        Collections.sort(cars);
-        Car firstPlaceCar = cars.get(0);
-        int index = 0;
-        while (firstPlaceCar.isEqualPosition(cars.get(index))) {
-            winners.add(cars.get(index++));
-        }
-        return winners;
-    }
-
-    private void carMove(List<Car> cars) {
-
-        for (Car car : cars) {
-            car.goForward(RandomUtil.getRandomValue());
-        }
-    }
 }
