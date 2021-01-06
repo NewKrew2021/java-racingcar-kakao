@@ -15,13 +15,4 @@ public class CarRacingProgramTest {
         carRacingProgram = new CarRacingProgram();
     }
 
-    @Test
-    void getRandomInstanceTest(){
-        assertThat(carRacingProgram.getRandomInstance()).isEqualTo(carRacingProgram.getRandomInstance());
-    }
-
-    @Test
-    void getRandomNumberTest(){
-        assertThat(carRacingProgram.getRandomNumber()).isBetween(0, 9);
-    }
 }

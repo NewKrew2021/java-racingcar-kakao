@@ -1,5 +1,6 @@
 package carracing.domain;
 
+import carracing.view.CarInfoPrint;
 import carracing.view.CarRacingInfoPrint;
 
 import java.util.*;
@@ -10,19 +11,10 @@ public class CarRacingProgram {
     private int maxMoveDistance;
 
     private final int CAR_MOVING_THRESHOLD = 4;
-
-    private Random random;
+    private final int CAR_CONDITION_BOUND = 10;
 
     public CarRacingProgram() {
         carList = new ArrayList<>();
-    }
-
-    public Random getRandomInstance() {
-        return random == null ? random = new Random() : random;
-    }
-
-    public int getRandomNumber() {
-        return getRandomInstance().nextInt(10);
     }
 
     public static List<Car> insertCarNamesToCarList() {
@@ -55,18 +47,14 @@ public class CarRacingProgram {
     public void playOneCycle(){
         carList.stream().forEach(item -> {
             checkMovingCondition(item);
+            CarInfoPrint.showCarInfo(item);
         });
 
-        /*
-        for (int i = 0; i < carList.size(); i++) {
-            checkMovingCondition(i);
-        }
-        */
         CarRacingInfoPrint.printBlankLine();
     }
 
     public void checkMovingCondition(Car car){
-        if(getRandomNumber() >= CAR_MOVING_THRESHOLD){
+        if(RandomNumber.getRandomNumber(CAR_CONDITION_BOUND) >= CAR_MOVING_THRESHOLD){
             maxMoveDistance = Math.max(maxMoveDistance, car.go());
         }
     }
