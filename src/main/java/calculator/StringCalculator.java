@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
     public static int sum(String text){
-        if(isaBoolean(text))
+        if(isNullOrEmpty(text))
             return 0;
         return sum(toInt(getSplit(text)));
     }
@@ -20,7 +20,7 @@ public class StringCalculator {
         return text.split(",|:");
     }
 
-    private static boolean isaBoolean(String text) {
+    private static boolean isNullOrEmpty(String text) {
         return text == null || text.isEmpty();
     }
 
