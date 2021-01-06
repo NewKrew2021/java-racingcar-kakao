@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class RacingCar {
 
     private final Name name;
@@ -28,4 +30,28 @@ public class RacingCar {
             this.distance.move();
         }
     }
+
+    public int getLargerDistance(int maxDistance) {
+        return this.distance.getLargerDistance(maxDistance);
+    }
+
+    public boolean isSameDistance(int maxDistance) {
+        return this.distance.isSameDistance(maxDistance);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return Objects.equals(name, racingCar.name) && Objects.equals(distance, racingCar.distance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, distance);
+    }
+
+
 }

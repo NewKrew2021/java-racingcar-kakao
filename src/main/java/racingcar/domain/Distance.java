@@ -12,9 +12,21 @@ public class Distance {
     }
 
     public Distance(int distance) {
-        if(distance < 0)
+        if (distance < 0)
             throw new IllegalArgumentException();
         this.distance = distance;
+    }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public int getLargerDistance(int maxDistance) {
+        return Math.max(maxDistance, this.distance);
+    }
+
+    public boolean isSameDistance(int distance) {
+        return this.distance == distance;
     }
 
 
