@@ -60,14 +60,14 @@ public class CarRacingProgram {
 
     private void playOneCycleAndPrintCarPosition(List<Car> cars){
         for (Car car : cars) {
-            checkMovingConditionAfterMoveCar(car);
+            checkMovingConditionAfterMoveCar(car, getRandomNumber());
             CarRacingProgramUI.printCarPosition(car);
         }
         CarRacingProgramUI.printBlankLine();
     }
 
-    private void checkMovingConditionAfterMoveCar(Car car){
-        if(getRandomNumber() >= ABLE_MOVE_NUMBER){
+    private void checkMovingConditionAfterMoveCar(Car car,int randomNumber){
+        if(randomNumber >= ABLE_MOVE_NUMBER){
             maxMoveDistance = updateMaxMoveDistance(car.go());
         }
     }
