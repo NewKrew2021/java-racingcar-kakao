@@ -29,14 +29,13 @@ public class Car {
     }
 
     public void move(int num) {
-        if (isMoveFoward(num))
+        if (isMoveFoward(num)) {
             this.location++;
+        }
     }
 
     private boolean isMoveFoward(int number) {
-        if (number >= THRESHOLD)
-            return true;
-        return false;
+        return number >= THRESHOLD;
     }
 
     public String getName() {
