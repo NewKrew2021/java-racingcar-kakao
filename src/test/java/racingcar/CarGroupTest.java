@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarGroupTest {
 
     @Test
-    @DisplayName("승리한 차 이름을 올바르게 구하는지 확인한다.")
+    @DisplayName("승리한 차 이름을 올바르게 하는지 확인한다.")
     void getWinnerTest(){
         Car hendoCar = new Car("hendo", 5);
         Car brodyCar = new Car("brody", 3);
