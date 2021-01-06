@@ -5,6 +5,9 @@ public class Car {
     private int distance;
 
     public Car(String name, int distance) {
+        if (name.length() > 5)
+            throw new InvalidCarNameException("이름은 5자 이하만 가능합니다.");
+
         this.name = name;
         this.distance = distance;
     }
@@ -13,16 +16,8 @@ public class Car {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getDistance() {
         return distance;
-    }
-
-    public void setDistance(int distance) {
-        this.distance = distance;
     }
 
     public void move(CarStatus status) {

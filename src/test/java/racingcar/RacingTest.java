@@ -7,14 +7,14 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 class RacingTest {
     private static Racing racing;
 
     @BeforeAll
     static void setUp() {
-        racing = new Racing();
-        racing.setCars("pobi,crong,honux");
+        racing = new Racing("pobi,crong,honux");
     }
 
     @Test
@@ -28,18 +28,17 @@ class RacingTest {
 
     @Test
     void nameLengthCheck() {
-        Racing case1 = new Racing();
-        case1.setCars("12345,1234,123");
-        assertThat(case1.isTooLong()).isFalse();
+        Throwable validCase = catchThrowable(() -> new Racing("12345,1234,123"));
+        assertThat(validCase).doesNotThrowAnyException();
 
-        Racing case2 = new Racing();
-        case2.setCars("123456,12345,1234");
-        assertThat(case2.isTooLong()).isTrue();
+        Throwable invalidCase = catchThrowable(() -> new Racing("123456,12345,1234"));
+        assertThat(invalidCase).isInstanceOf(InvalidCarNameException.class);
     }
 
     @Test
     void randomNumber() {
-        assertThat(RandomNumber.generate()).isBetween(0, 9);
+        RandomGenerator randomGenerator = new RandomGenerator();
+        assertThat(randomGenerator.generate(10)).allMatch(o1 -> o1 >= 0 && o1 < 10);
     }
 
     @Test
@@ -64,10 +63,10 @@ class RacingTest {
 
     @Test
     void winner() {
-        racing.getCars().get(0).move(CarStatus.Go);
+        racing.moveAll(Arrays.asList(4, 3, 3));
         assertThat(racing.getWinners()).hasSize(1).contains(racing.getCars().get(0));
 
-        racing.getCars().get(2).move(CarStatus.Go);
+        racing.moveAll(Arrays.asList(3, 3, 4));
         assertThat(racing.getWinners()).hasSize(2).doesNotContain(racing.getCars().get(1));
     }
 }
