@@ -10,84 +10,37 @@ import java.util.Random;
 
 public class Racing {
 
-    private List<Car> cars;
-
-    private final int MAX_CAR_NAME_LENGTH = 5;
+    private Cars cars;
+    private int tryNo;
 
     public void startRacing() {
+        createCars(splitNames(enterCarNames()));
 
-        List<String> names;
-        do{
-            names = splitNames(enterCarNames());
-        }while(!checkCarNames(names));
-
-        createCars(names);
-
-        int round = enterRound();
-
+        this.tryNo = enterRound();
         System.out.println("실행 결과");
 
-        IntStream.range(0, round).forEach(i -> {
-            racing();
-            printCurrentCarStatus();
+        IntStream.range(0, tryNo).forEach(i -> {
+            race(cars);
+            printCurrentCarStatus(cars);
             System.out.println();
         });
         printWinnerName();
     }
 
-    private void createCars(List<String> names) {
-        this.cars = new ArrayList<>();
+    private void race(Cars cars) {
+        cars.moveAll();
+    }
 
+    public void createCars(List<String> names) {
+        List<Car> cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new Car(name));
         }
+        this.cars = new Cars(cars);
     }
 
-    private List<String> splitNames(String str) {
+    public List<String> splitNames(String str) {
         return new ArrayList<>(Arrays.asList(str.split(",")));
-    }
-
-
-    public boolean checkCarNames(List<String> names) {
-        return names.stream().allMatch(name -> name.length() <= MAX_CAR_NAME_LENGTH);
-    }
-
-    private void racing() {
-        for (Car car : this.cars) {
-            car.move(getRandomInteger(0,9));
-        }
-    }
-
-    public ArrayList<Integer> getFinalCarPositions(List<Car> cars) {
-        ArrayList<Integer> positions = new ArrayList<>();
-        for (Car car : cars) {
-            positions.add(car.getPosition());
-        }
-        return positions;
-    }
-
-    public ArrayList<String> getWinnerName(List<Car> cars) {
-        int maxPosition = getMaxPosition(getFinalCarPositions(cars));
-
-        return cars
-                .stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.toCollection(ArrayList::new));
-    }
-
-
-    public int getMaxPosition(List<Integer> positions) {
-        return positions.stream()
-                .mapToInt(x -> x)
-                .max()
-                .orElseThrow(java.util.NoSuchElementException::new);
-
-    }
-
-    public int getRandomInteger(int minimumValue, int maximumValue){
-        Random random = new Random();
-        return random.nextInt(maximumValue - minimumValue + 1) + minimumValue;
     }
 
     private String enterCarNames() {
@@ -103,18 +56,19 @@ public class Racing {
     }
 
     private void printWinnerName() {
-        System.out.print(String.join(",", getWinnerName(this.cars)));
+        System.out.print(String.join(",", cars.getWinnerName()));
         System.out.println("가 최종 우승했습니다.");
     }
 
-    private void printCurrentCarStatus() {
-        for(Car car: this.cars){
-            System.out.print(car.getName()+" : ");
+    private void printCurrentCarStatus(Cars cars) {
+        for (Car car : this.cars.getCars()) {
+            System.out.print(car.getName() + " : ");
             printBars(car.getPosition());
         }
     }
-    private void printBars(int number){
-        IntStream.range(0, number).forEach(i ->{
+
+    private void printBars(int number) {
+        IntStream.range(0, number).forEach(i -> {
             System.out.print("-");
         });
         System.out.println();

@@ -1,30 +1,45 @@
 package racingcar;
 
-import java.util.stream.IntStream;
+import java.util.Objects;
 
 public class Car {
-    private int position;
-    private String name;
 
-    private final int MAX_RANDOM_VALUE = 9;
-    private final int MIN_RANDOM_VALUE = 0;
-    private final int THRESHOLD_RANDOM_VALUE = 4;
+    private final CarPosition position;
+    private final CarName name;
 
     public Car(String name) {
-        this.name = name;
-        this.position = 0;
+        this(name, 0);
+    }
+
+    public Car(String name, int position){
+        this.name = new CarName(name);
+        this.position = new CarPosition(position);
     }
 
     public String getName(){
-        return this.name;
+        return this.name.getName();
     }
 
     public int getPosition(){
-        return this.position;
+        return this.position.getPosition();
     }
 
-    public void move(int randomValue){
-        if (randomValue < THRESHOLD_RANDOM_VALUE) return;
-        this.position++;
+    public void move(RandomNumber randomNo){
+        if(randomNo.isMovableRandomNumber()){
+            this.position.forward();
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, name);
     }
 }

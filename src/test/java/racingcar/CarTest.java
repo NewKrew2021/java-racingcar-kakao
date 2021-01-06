@@ -8,25 +8,15 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
 
-    Car car;
-
-    @BeforeAll
-    public void setup(){
-        car = new Car("testCar");
-    }
 
     @Test
     public void moveTest(){
-        car.move(5);
+        Car car = new Car("name1");
+        car.move(new RandomNumber(4));
         assertThat(car.getPosition()).isEqualTo(1);
     }
 
-    @Test
-    public void validNumberTest() {
-        assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> {
-                    car.move(10);
-                }).withNoCause();
-    }
+
+
 
 }
