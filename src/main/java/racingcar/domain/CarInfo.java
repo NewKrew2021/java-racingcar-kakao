@@ -2,27 +2,27 @@ package racingcar.domain;
 
 public class CarInfo implements Comparable<CarInfo> {
 
-    private final int position;
-    private final String name;
+    private final Position position;
+    private final Name name;
 
     public CarInfo(String name, int position) {
-        this.position = position;
-        this.name = name;
+        this.position = new Position(position);
+        this.name = new Name(name);
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.name + " : ");
-        for (int i = 0; i < position; i++) {
+        for (int i = 0; i < position.getPosition(); i++) {
             sb.append("-");
         }
         return sb.toString();
@@ -30,7 +30,7 @@ public class CarInfo implements Comparable<CarInfo> {
 
     @Override
     public int compareTo(CarInfo carInfo) {
-        return this.position - carInfo.getPosition();
+        return position.getPosition() - carInfo.getPosition();
     }
 
 }

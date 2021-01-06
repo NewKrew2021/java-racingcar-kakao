@@ -43,11 +43,11 @@ public class RacingGameTest {
     @Test
     void singleWinnerTest() {
         Car car1 = new Car("yell", 1);
-        Car car2 = new Car("dino");
-        Car car3 = new Car("pobi");
+        Car car2 = new Car("dino", 6);
+        Car car3 = new Car("pobi", 0);
 
         racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
-        assertThat(racingGame.findWinners()).containsExactly("yell");
+        assertThat(racingGame.findWinners()).containsExactly("dino");
     }
 
     @Test

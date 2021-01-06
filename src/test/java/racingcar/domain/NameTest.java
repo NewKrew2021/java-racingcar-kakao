@@ -1,7 +1,7 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-import racingcar.CarNameInvalidException;
+import racingcar.exceptions.InvalidCarNameException;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -16,7 +16,7 @@ public class NameTest {
 
     @Test
     void blankTextTest() {
-        assertThatThrownBy(() ->{ new Name(""); }).isInstanceOf(CarNameInvalidException.class);
-        assertThatThrownBy(() ->{ new Name(null); }).isInstanceOf(CarNameInvalidException.class);
+        assertThatThrownBy(() ->{ new Name(""); }).isInstanceOf(InvalidCarNameException.class);
+        assertThatThrownBy(() ->{ new Name(null); }).isInstanceOf(InvalidCarNameException.class);
     }
 }

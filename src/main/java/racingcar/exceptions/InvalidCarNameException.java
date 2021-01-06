@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.exceptions;
 
-public class CarNameInvalidException extends RuntimeException {
+public class InvalidCarNameException extends RuntimeException {
     private final String message;
 
-    public CarNameInvalidException(String message) {
+    public InvalidCarNameException(String message) {
         this.message = message;
     }
 

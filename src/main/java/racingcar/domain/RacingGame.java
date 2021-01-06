@@ -1,11 +1,9 @@
 package racingcar.domain;
 
-import racingcar.CarNameInvalidException;
-import racingcar.domain.Car;
-import racingcar.domain.CarInfo;
+import racingcar.exceptions.InvalidCarNameException;
+import racingcar.exceptions.InvalidPositionException;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -34,8 +32,10 @@ public class RacingGame {
     private void addCar(String name) {
         try {
             cars.add(new Car(name));
-        } catch (CarNameInvalidException carNameInvalidException) {
+        } catch (InvalidCarNameException carNameInvalidException) {
             carNameInvalidException.printErrorMessage(name);
+        } catch (InvalidPositionException invalidPositionException) {
+            invalidPositionException.printErrorMessage();
         }
     }
 
@@ -45,7 +45,7 @@ public class RacingGame {
 
     public void racing() {
         for (Car car : cars) {
-            car.nextStep(generateRandomNumber());
+            car.move(generateRandomNumber());
         }
     }
 

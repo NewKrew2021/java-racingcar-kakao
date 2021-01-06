@@ -1,10 +1,8 @@
 package racingcar.utils;
 
 public class StringUtils {
-    private static final int NAME_MAX_LENGTH = 5;
-
-    public static boolean isNameOverMaxLength(String name) {
-        return name.length() > NAME_MAX_LENGTH;
+    public static boolean isNameOverMaxLength(String name, int maxLength) {
+        return name.length() > maxLength;
     }
 
     public static boolean isBlank(String name) {
