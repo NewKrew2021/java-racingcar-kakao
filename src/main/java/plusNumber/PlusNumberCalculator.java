@@ -15,7 +15,7 @@ public class PlusNumberCalculator {
 
     private void validateNumbers(String[] numbers) {
         if(!checkValidNumbers(numbers)){
-            throw new RuntimeException();
+            throw new InvalidNumberException();
         }
     }
 
