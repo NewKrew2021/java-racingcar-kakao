@@ -1,11 +1,12 @@
 package carRace;
 
 public class RandomStrategy implements MovingStrategy{
-    public static final int MAX_BOUND = 10;
+    private static final int MAX_BOUND = 10;
+    private static final int MOVE_BOUND = 4;
 
     @Override
     public boolean movable() {
-        return 4 <= getRandomNumber();
+        return MOVE_BOUND <= getRandomNumber();
     }
 
     public int getRandomNumber() {
