@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import com.sun.org.apache.bcel.internal.generic.ATHROW;
 import racingcar.domain.Cars;
 import racingcar.util.StringUtil;
 
@@ -15,8 +16,12 @@ public class InputView {
         return new Cars(names);
     }
 
-    public static int getTryNo() {
+    public static int getTryNo() throws Exception {
         System.out.println("시도할 회수는 몇회인가요?");
-        return sc.nextInt();
+        int tryNo = sc.nextInt();
+        if (tryNo <= 0) {
+            throw new IllegalArgumentException("시도 회수는 1이상이어야 합니다.");
+        }
+        return tryNo;
     }
 }

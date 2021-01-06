@@ -7,7 +7,7 @@ import racingcar.view.OutputView;
 
 public class RacingGameApp {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Cars cars = InputView.getCars();
         int tryNo = InputView.getTryNo();
