@@ -10,37 +10,25 @@ import java.util.stream.Collectors;
 
 public class Racing {
     private static final Random random = new Random();
+    private static final int NAME_LIMIT = 5;
 
-    private List<Car> cars;
+    private final List<Car> cars;
     private int progressNumber;
     private int maxPosition;
 
     public Racing(String carNames, int progressNumber) {
         this.progressNumber = progressNumber;
-        setCars(carNames);
-    }
-
-    private void setCars(String s) {
-        List<String> names = Arrays.asList(s.split(","));
-        if (!checkValidAllCarName(names)) {
-            throw new InvalidCarNameException();
-        }
-        this.cars = new ArrayList<>();
-        for (String name : names) {
-            this.cars.add(new Car(name));
-        }
-    }
-
-    private boolean checkValidAllCarName(List<String> nameArray) {
-        int invalidCnt = 0;
-        for (String name : nameArray) {
-            invalidCnt += checkValidCarName(name) ? 0 : 1;
-        }
-        return invalidCnt == 0;
+        this.cars = Arrays.stream(carNames.split(","))
+                .filter(this::checkValidCarName)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private boolean checkValidCarName(String carName) {
-        return carName.length() <= 5;
+        if (carName.length() > NAME_LIMIT) {
+            throw new InvalidCarNameException();
+        }
+        return carName.length() <= NAME_LIMIT;
     }
 
     public List<Car> getCars() {
