@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Cars {
 
-    private List<Car> cars;
+    private final List<Car> cars;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
@@ -40,5 +40,11 @@ public class Cars {
 
     private boolean isMaxLocation(Car car, int maxLocation) {
         return car.getLocation() == maxLocation;
+    }
+
+    public void moveCars(int randomNo) {
+        for (Car car : cars) {
+            car.move(randomNo);
+        }
     }
 }

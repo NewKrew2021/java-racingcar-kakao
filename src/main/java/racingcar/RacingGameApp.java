@@ -13,6 +13,9 @@ public class RacingGameApp {
 
         RacingGame racingGame = new RacingGame(carNames, tryNo);
 
+        while(!racingGame.isEnd()){
+            racingGame.race();
+        }
 
 //        ArrayList<String> winners = racing.getWinners();
 //        String result = String.join(", ", winners);
