@@ -1,6 +1,9 @@
 package carRace;
 
 public class Car implements Comparable<Car>{
+
+    private static final int LOWER_LIMIT_OF_MOVE = 4;
+
     private final String name;
     private int location;
 
@@ -24,7 +27,7 @@ public class Car implements Comparable<Car>{
     }
 
     private boolean judge(int randomNo) {
-        return 4 <= randomNo;
+        return LOWER_LIMIT_OF_MOVE <= randomNo;
     }
 
     private void go() {
