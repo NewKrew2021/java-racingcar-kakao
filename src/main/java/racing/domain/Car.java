@@ -3,7 +3,7 @@
  * Date     : 2021. 01. 05
  */
 
-package racing;
+package racing.domain;
 
 /*
  * Class    : Car

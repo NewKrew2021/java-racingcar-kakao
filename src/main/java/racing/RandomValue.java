@@ -6,17 +6,16 @@ package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /*
  * Class    : RandomValue
- * Version  : 1.0
+ * Version  : 1.1
  * author   : eli.nabro
  *
  * Random Value class
  */
 public class RandomValue {
-
-    private static final int RANDOM_DIGIT = 10000;
 
     public static List<Integer> makeRandomValues(final int randomValuesSize, final int stopValue) {
         List<Integer> randomValues;
@@ -30,9 +29,10 @@ public class RandomValue {
 
     private static List<Integer> getRandomValueArray(final int randomValuesSize) {
         List<Integer> randomValues = new ArrayList<>();
+        Random random = new Random();
 
         for (int i = 0; i < randomValuesSize; i++) {
-            randomValues.add((int) (Math.random() * RANDOM_DIGIT % 10));
+            randomValues.add(random.nextInt(10));
         }
 
         return randomValues;

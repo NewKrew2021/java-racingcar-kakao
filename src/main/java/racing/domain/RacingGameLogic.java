@@ -2,7 +2,9 @@
  * File     : RacingGameLogic.java
  * Date     : 2021. 01. 05
  */
-package racing;
+package racing.domain;
+
+import racing.RandomValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,6 @@ import java.util.stream.Collectors;
 public class RacingGameLogic {
 
     private static final String SEPARATOR_OF_INPUT_CAR_NAME = ",";
-    private static final int RANDOM_DIGIT = 10000;
     private static final String SEPARATOR_OF_WINNERS = ", ";
     private static final int STOP_VALUE = 3;
 

@@ -4,14 +4,25 @@
  */
 package racing;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import racing.domain.Car;
+
+/*
+ * Class    : CarTestClass
+ * Version  : 1.1
+ * author   : eli.nabro
+ *
+ * Car class for testing
+ */
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 public class CarTest {
 
-    @Test
-    void moveTest() {
-        Car car = new Car("pobi");
+    @ParameterizedTest
+    @ValueSource(strings = {"pobi"})
+    void moveTest(String input) {
+        Car car = new Car(input);
 
         car.move();
         assertThat(car.getPosition()).isEqualTo(1);
