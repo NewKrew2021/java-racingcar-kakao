@@ -1,4 +1,6 @@
-package racing;
+package controller;
+
+import domain.RacingGame;
 
 public class Main {
 

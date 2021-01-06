@@ -12,15 +12,15 @@ public class Racing {
     private static final Random random = new Random();
 
     private List<Car> cars;
-    int progressNumber;
-    int maxPosition;
+    private int progressNumber;
+    private int maxPosition;
 
     public Racing(String carNames, int progressNumber) {
         this.progressNumber = progressNumber;
         setCars(carNames);
     }
 
-    public void setCars(String s) {
+    private void setCars(String s) {
         List<String> names = Arrays.asList(s.split(","));
         if (!checkValidAllCarName(names)) {
             throw new InvalidCarNameException();

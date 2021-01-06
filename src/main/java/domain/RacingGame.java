@@ -1,4 +1,6 @@
-package racing;
+package domain;
+
+import racing.Racing;
 
 import java.util.Scanner;
 
