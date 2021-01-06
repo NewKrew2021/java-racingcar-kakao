@@ -35,7 +35,7 @@ public class Calculator {
     private static List<Integer> parse(String[] texts){
         List<Integer> result = new ArrayList<>();
         for (String text : texts) {
-            result.add(string2int(text));
+            result.add(stringToInt(text));
         }
 
         if (hasNegative(result)) {
@@ -44,7 +44,7 @@ public class Calculator {
         return result;
     }
 
-    private static int string2int(String text){
+    private static int stringToInt(String text){
         try {
             return Integer.parseInt(text);
         } catch (NumberFormatException e) {
