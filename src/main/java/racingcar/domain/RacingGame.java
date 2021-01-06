@@ -17,13 +17,15 @@ public class RacingGame {
     }
 
     public void racing() {
-        if(!isGameEnd()) {
+        if (!isGameEnd()) {
             cars.raceAll();
             gameStatus.playGame();
         }
     }
 
-    public boolean isGameEnd() { return gameStatus.isGameEnd(); }
+    public boolean isGameEnd() {
+        return gameStatus.isGameEnd();
+    }
 
     public List<CarInfo> getCarInfos() {
         return cars.getCarInfos();

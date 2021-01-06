@@ -5,7 +5,7 @@ public class Car {
     private Position position;
     private final Name name;
 
-    public Car(String name){
+    public Car(String name) {
         this(name, 0);
     }
 

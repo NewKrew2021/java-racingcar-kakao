@@ -12,14 +12,18 @@ public class Name {
 
     private final String name;
 
-    public Name(String name) throws InvalidCarNameException{
+    public Name(String name) throws InvalidCarNameException {
         if (StringUtils.isBlank(name)) {
             throw new InvalidCarNameException(EMPTY_NAME_ERROR_MESSAGE);
         }
-        if (StringUtils.isNameOverMaxLength(name, NAME_MAX_LENGTH)) {
+        if (isNameOverMaxLength(name, NAME_MAX_LENGTH)) {
             throw new InvalidCarNameException(LENGTH_OVER_ERROR_MESSAGE);
         }
         this.name = name;
+    }
+
+    public boolean isNameOverMaxLength(String name, int maxLength) {
+        return name.length() > maxLength;
     }
 
     public String getName() {

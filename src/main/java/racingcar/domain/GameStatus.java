@@ -8,8 +8,8 @@ public class GameStatus {
         this(0);
     }
 
-    public GameStatus(int gameCount) throws InvalidGameCountException{
-        if(gameCount < 0) {
+    public GameStatus(int gameCount) throws InvalidGameCountException {
+        if (gameCount < 0) {
             throw new InvalidGameCountException("게임 횟수는 음수가 될 수 없습니다.");
         }
         this.gameCount = gameCount;
@@ -20,7 +20,7 @@ public class GameStatus {
     }
 
     public void playGame() {
-        if(gameCount > 0) {
+        if (gameCount > 0) {
             gameCount--;
         }
     }

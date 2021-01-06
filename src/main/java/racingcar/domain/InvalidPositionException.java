@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-public class InvalidPositionException extends RuntimeException{
+public class InvalidPositionException extends RuntimeException {
     private final String message;
 
     public InvalidPositionException(String message) {
