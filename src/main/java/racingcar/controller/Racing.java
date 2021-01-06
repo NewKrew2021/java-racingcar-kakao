@@ -1,6 +1,8 @@
 package racingcar.controller;
 
+import racingcar.domain.CheckMovableByRandomNumber;
 import racingcar.domain.RacingCars;
+import racingcar.domain.RacingCarsFactory;
 import racingcar.util.InputScanner;
 
 public class Racing {
@@ -14,8 +16,7 @@ public class Racing {
     }
 
     private void getInput() {
-        this.racingCars = new RacingCars();
-        racingCars.makeRacingCarsByNames(InputScanner.inputName());
+        this.racingCars = RacingCarsFactory.from(InputScanner.inputName(), new CheckMovableByRandomNumber());
         this.round = InputScanner.inputRound();
     }
 

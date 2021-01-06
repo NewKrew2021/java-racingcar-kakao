@@ -3,9 +3,6 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class RacingCar {
-
-    private static final int MIN_MOVABLE_NUMBER = 4;
-
     private int dist;
 
     private final String name;
@@ -15,15 +12,11 @@ public class RacingCar {
         this.dist = 0;
     }
 
-    public int move(int value) {
-        if (isMove(value)) {
+    public int move(CheckMovable checkMovable) {
+        if (checkMovable.isMovable()) {
             return ++this.dist;
         }
         return this.dist;
-    }
-
-    private boolean isMove(int value) {
-        return value >= MIN_MOVABLE_NUMBER;
     }
 
     public void printDist() {
@@ -49,10 +42,5 @@ public class RacingCar {
         if (o == null || getClass() != o.getClass()) return false;
         RacingCar racingCar = (RacingCar) o;
         return dist == racingCar.dist && Objects.equals(name, racingCar.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(dist, name);
     }
 }

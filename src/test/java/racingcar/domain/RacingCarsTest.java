@@ -15,13 +15,12 @@ public class RacingCarsTest {
 
     @BeforeEach
     public void setUp() {
-        racingCars = new RacingCars();
-        racingCars.makeRacingCarsByNames("pobi,tars,ocean");
+        this.racingCars = RacingCarsFactory.from("pobi,tars,ocean", new CheckMovableByRandomNumber());
     }
 
     @Test
     public void makeRacingCarCheck() {
-        assertThat(new RacingCars().makeRacingCarsByNames("pobi,tars,ocean"))
+        assertThat(this.racingCars.getRacingCars())
                 .containsExactlyInAnyOrderElementsOf(Arrays.asList(new RacingCar("pobi"), new RacingCar("tars"), new RacingCar("ocean")));
     }
 
@@ -33,8 +32,8 @@ public class RacingCarsTest {
     @Test
     public void winnerCheck() {
         List<RacingCar> cars = racingCars.getRacingCars();
-        cars.get(1).move(7);
-        cars.get(2).move(9);
+        cars.get(1).move(() -> true);
+        cars.get(2).move(() -> true);
         assertThat(racingCars.getWinners()).isEqualTo("tars, ocean");
     }
 }

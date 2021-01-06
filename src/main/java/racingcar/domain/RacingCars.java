@@ -9,27 +9,18 @@ import java.util.stream.Collectors;
 public class RacingCars {
     private static final int DISTANCE_LIMIT = 10;
 
-    private final ArrayList<RacingCar> racingCars = new ArrayList<>();
+    private List<RacingCar> racingCars;
+    private final CheckMovable checkMovable;
 
-    public List<RacingCar> makeRacingCarsByNames(String names) {
-        setUpCarName(names.split(","));
-        return racingCars;
-    }
-
-    private void setUpCarName(String[] names) {
-        for (String name : names) {
-            racingCars.add(new RacingCar(name));
-        }
+    public RacingCars(List<RacingCar> racingCars, CheckMovable checkMovable) {
+        this.racingCars = racingCars;
+        this.checkMovable = checkMovable;
     }
 
     public void run() {
         for (RacingCar racingCar : racingCars) {
-            racingCar.move(makeRandomDist());
+            racingCar.move(checkMovable);
         }
-    }
-
-    private int makeRandomDist() {
-        return (int) (Math.random() * DISTANCE_LIMIT);
     }
 
     private int getMaxDist() {
