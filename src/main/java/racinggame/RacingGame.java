@@ -67,7 +67,7 @@ public class RacingGame {
         for (int i=0; i < heads.size()-1; i++) {
             headsStr += heads.get(i).getName() + ", ";
         }
-        headsStr += heads.get(heads.size()-1);
+        headsStr += heads.get(heads.size()-1).getName();
         System.out.println(headsStr + "가 최종 우승했습니다");
     }
 }
