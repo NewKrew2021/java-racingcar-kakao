@@ -1,14 +1,11 @@
 package com.nextstep.racingcar;
 
 import com.nextstep.racingcar.domain.Car;
-import com.nextstep.racingcar.domain.OutOfBoundNumberException;
+import com.nextstep.racingcar.domain.exceptions.OutOfBoundNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
@@ -23,49 +20,55 @@ public class CarTest {
   }
 
   @Test
-  void createNewCars() {
-    List<Car> cars = new ArrayList<Car>();
-    String[] carNames = new String[]{"name", "asd"};
-    for (String carName : carNames) {
-      cars.add(new Car(carName));
-    }
+  void validCarName() {
+    assertThat(new Car("valid").getName()).isEqualTo("valid");
+  }
 
-    for (int i = 0; i < carNames.length; i++) {
-      assertThat(cars.get(i).getName())
-          .isEqualTo(carNames[i]);
-    }
+  @Test
+  void invalidCarName() {
+    assertThatExceptionOfType(RuntimeException.class).
+        isThrownBy(
+            () -> {
+              new Car("longname");
+            });
+
+    assertThatExceptionOfType(RuntimeException.class).
+        isThrownBy(
+            () -> {
+              new Car("na!me");
+            });
   }
 
   @ParameterizedTest
   @ValueSource(ints = {4, 9})
-  void shouldAdvance(int number) {
-    boolean result = car.run(number); // MOVE, STOP
-    assertThat(result).isEqualTo(true);
+  void move(int number) {
+    car.move(number); // MOVE, STOP
+    assertThat(car.getLocation()).isEqualTo(1);
   }
 
   @ParameterizedTest
   @ValueSource(ints = {0, 3})
-  void shouldStop(int number) {
-    boolean result = car.run(number);
-    assertThat(result).isEqualTo(false);
+  void stop(int number) {
+    car.move(number);
+    assertThat(car.getLocation()).isEqualTo(0);
   }
 
   @ParameterizedTest
   @ValueSource(ints = {-1, 10})
-  void shouldException(int number) {
+  void exception(int number) {
     assertThatExceptionOfType(OutOfBoundNumberException.class).
         isThrownBy(
             () -> {
-              car.run(number);
+              car.move(number);
             });
   }
 
   @ParameterizedTest
   @ValueSource(ints = {5, 10})
   void carMoveNTimes(int N) {
-    car.run(3);
+    car.move(3);
     for (int i = 0; i < N; i++) {
-      car.run(4);
+      car.move(4);
     }
     assertThat(car.getLocation()).isEqualTo(N);
   }
