@@ -1,6 +1,6 @@
 package racingcar.view;
 
-import racingcar.domain.CarInfo;
+import racingcar.domain.Car;
 
 import java.util.List;
 
@@ -14,9 +14,9 @@ public class Circuit {
         System.out.println("시도할 회수는 몇회인가요?");
     }
 
-    public void printRaceStatus(List<CarInfo> carInfos) {
-        for (CarInfo carInfo : carInfos) {
-            System.out.println(carInfo);
+    public void printRaceStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(car);
         }
         System.out.println();
     }

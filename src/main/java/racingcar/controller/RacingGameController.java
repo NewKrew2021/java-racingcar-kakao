@@ -7,11 +7,12 @@ import java.util.Scanner;
 
 public class RacingGameController {
     private RacingGame racingGame;
-    private int time;
+    private int rapTime;
     private Circuit circuit;
 
     public void run() {
         circuit = new Circuit();
+
         opening();
         start();
         end();
@@ -22,11 +23,11 @@ public class RacingGameController {
         circuit.printRequestName();
         racingGame = new RacingGame(sc.nextLine());
         circuit.printRequestTime();
-        time = sc.nextInt();
+        rapTime = sc.nextInt();
     }
 
     public void start() {
-        for (int i = 0; i < time; i++) {
+        for (int i = 0; i < rapTime; i++) {
             racingGame.race();
             circuit.printRaceStatus(racingGame.getRaceStatus());
         }
