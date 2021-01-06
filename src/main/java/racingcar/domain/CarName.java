@@ -1,6 +1,4 @@
-package racingcar;
-
-import com.sun.tools.javac.util.StringUtils;
+package racingcar.domain;
 
 import java.util.Objects;
 

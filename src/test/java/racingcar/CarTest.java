@@ -1,10 +1,10 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.Car;
+import racingcar.domain.RandomNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
 

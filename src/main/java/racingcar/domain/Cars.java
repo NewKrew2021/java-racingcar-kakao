@@ -1,33 +1,31 @@
-package racingcar;
+package racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-    private final List<Car> cars;
+    private final List<Car> carsList;
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.carsList = cars;
     }
 
     public void moveAll() {
-        for(Car car: cars){
+        for(Car car: carsList){
             car.move(new RandomNumber());
         }
     }
 
-    public List<Car> getCars(){
-        return this.cars;
+    public List<Car> getCarsList(){
+        return this.carsList;
     }
 
     public List<Car> getWinner() {
         int maxPosition = getMaxPosition();
 
-        return cars
+        return carsList
                 .stream()
                 .filter(car -> car.getPosition() == maxPosition)
                 .collect(Collectors.toList());
@@ -41,7 +39,7 @@ public class Cars {
     }
 
     public int getMaxPosition() {
-        return cars.stream()
+        return carsList.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(java.util.NoSuchElementException::new);
@@ -52,11 +50,11 @@ public class Cars {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cars cars1 = (Cars) o;
-        return Objects.equals(cars, cars1.cars);
+        return Objects.equals(carsList, cars1.carsList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cars);
+        return Objects.hash(carsList);
     }
 }
