@@ -1,6 +1,6 @@
 package carracing.domain;
 
-import carracing.view.CarRacingProgramPhrase;
+import carracing.view.CarRacingInfoPrint;
 
 import java.util.*;
 
@@ -8,6 +8,8 @@ public class CarRacingProgram {
     private List<Car> carList;
     private int totalMoveCount;
     private int maxMoveDistance;
+
+    private final int CAR_MOVING_THRESHOLD = 4;
 
     private Random random;
 
@@ -34,32 +36,38 @@ public class CarRacingProgram {
     }
 
     public void race(){
-        System.out.println(CarRacingProgramPhrase.CAR_LIST_INPUT_PHRASE);
+        CarRacingInfoPrint.printCarListInputPhrase();
         carList = insertCarNamesToCarList();
 
-        System.out.println(CarRacingProgramPhrase.RACE_COUNT_PHRASE);
+        CarRacingInfoPrint.printRaceCountPhrase();
         totalMoveCount = RacingInfoScanner.insertRaceTryCount();
 
-        System.out.println(CarRacingProgramPhrase.RESULT_PHRASE);
+        CarRacingInfoPrint.printResultPhrase();
         for (int i = 0; i < totalMoveCount; i++) {
             playOneCycle();
         }
 
-        printRaceWinners(findRaceWinner());
+        CarRacingInfoPrint.printWinners(findRaceWinner());
     }
 
 
 
     public void playOneCycle(){
+        carList.stream().forEach(item -> {
+            checkMovingCondition(item);
+        });
+
+        /*
         for (int i = 0; i < carList.size(); i++) {
             checkMovingCondition(i);
         }
-        System.out.println();
+        */
+        CarRacingInfoPrint.printBlankLine();
     }
 
-    public void checkMovingCondition(int index){
-        if(getRandomNumber() >= 4){
-            maxMoveDistance = Math.max(maxMoveDistance, carList.get(index).go());
+    public void checkMovingCondition(Car car){
+        if(getRandomNumber() >= CAR_MOVING_THRESHOLD){
+            maxMoveDistance = Math.max(maxMoveDistance, car.go());
         }
     }
 
@@ -78,16 +86,5 @@ public class CarRacingProgram {
         }
     }
 
-    public void printRaceWinners(List<String> winnerList){
-        StringBuilder winnerBuilder = new StringBuilder();
 
-        for (int i = 0; i < winnerList.size()-1; i++) {
-            winnerBuilder.append(winnerList.get(i)+", ");
-        }
-        winnerBuilder.append(winnerList.get(winnerList.size()-1));
-
-        winnerBuilder.append(CarRacingProgramPhrase.WINNER_PHRASE);
-
-        System.out.println(winnerBuilder.toString());
-    }
 }
