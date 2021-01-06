@@ -3,25 +3,26 @@ package racingcar.domain;
 public class Car {
     private static final int SPEED = 4;
 
-    private int position;
-    private final String name;
+    private final Position position;
+    private final Name name;
 
     public Car(String name) {
-        this.name = name;
+        this.name = new Name(name);
+        this.position = new Position();
     }
 
     public void nextStep(int number) {
         if (isCarGo(number)) {
-            position++;
+            position.move();
         }
     }
 
     public int getPosition() {
-        return position;
+        return position.getPosition();
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public boolean isCarGo(int number) {
@@ -31,8 +32,8 @@ public class Car {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(this.name + " : ");
-        for (int i = 0; i < position; i++) {
+        sb.append(name.getName() + " : ");
+        for (int i = 0; i < position.getPosition(); i++) {
             sb.append("-");
         }
         return sb.toString();

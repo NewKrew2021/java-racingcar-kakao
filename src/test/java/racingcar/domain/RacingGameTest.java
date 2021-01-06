@@ -26,14 +26,6 @@ public class RacingGameTest {
         assertThat(carNames).containsExactly("dino", "yell", "pobi");
     }
 
-    @Test
-    void splitUnderFiveTest() {
-        racingGame = new RacingGame("dinobin,yell,pobi");
-        racingGame.race();
-        List<Car> carInfos = racingGame.getRaceStatus();
-        List<String> carNames = carInfos.stream().map(Car::getName).collect(Collectors.toList());
-        assertThat(carNames).containsExactly("yell", "pobi");
-    }
 
 
 }
