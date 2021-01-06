@@ -2,8 +2,8 @@ package racingcar;
 
 public class RandomMovingStrategy implements MovingStrategy {
 
-    private final int RANDOM_SCOPE = 10;
-    private final int MOVING_CRITERION = 3;
+    private static final int RANDOM_SCOPE = 10;
+    private static final int MOVING_CRITERION = 3;
 
     public int makeRandomNumber(){
         return ((int)(Math.random() * RANDOM_SCOPE));
