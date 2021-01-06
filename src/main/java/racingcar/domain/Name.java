@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import racingcar.exceptions.InvalidCarNameException;
 import racingcar.utils.StringUtils;
 
 import java.util.Objects;
@@ -14,10 +13,10 @@ public class Name {
     private final String name;
 
     public Name(String name) {
-        if(StringUtils.isBlank(name)) {
+        if (StringUtils.isBlank(name)) {
             throw new InvalidCarNameException(EMPTY_NAME_ERROR_MESSAGE);
         }
-        if(StringUtils.isNameOverMaxLength(name, NAME_MAX_LENGTH)) {
+        if (StringUtils.isNameOverMaxLength(name, NAME_MAX_LENGTH)) {
             throw new InvalidCarNameException(LENGTH_OVER_ERROR_MESSAGE);
         }
         this.name = name;

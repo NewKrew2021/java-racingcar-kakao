@@ -1,8 +1,5 @@
 package racingcar.domain;
 
-import racingcar.exceptions.InvalidCarNameException;
-import racingcar.exceptions.InvalidPositionException;
-
 import java.util.*;
 
 public class RacingGame {

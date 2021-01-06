@@ -1,4 +1,4 @@
-package racingcar.exceptions;
+package racingcar.domain;
 
 public class InvalidPositionException extends RuntimeException{
     private final String message;

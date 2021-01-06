@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.exceptions.InvalidPositionException;
-
 import java.util.Objects;
 
 public class Position {
@@ -15,14 +13,14 @@ public class Position {
     }
 
     public Position(int position) {
-        if(position < 0) {
+        if (position < 0) {
             throw new InvalidPositionException("Position은 음수가 될 수 없습니다.");
         }
         this.position = position;
     }
 
     public void nextStep(int currentSpeed) {
-        if(isCarGo(currentSpeed)) {
+        if (isCarGo(currentSpeed)) {
             position += MOVEMENT;
         }
     }
