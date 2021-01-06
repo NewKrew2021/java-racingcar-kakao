@@ -12,14 +12,11 @@ public class CarRacingProgram {
     public CarRacingProgram() {
         carList = new ArrayList<>();
         sc = new Scanner(System.in);
-    }
-
-    public Random getRandomInstance() {
-        return random == null ? random = new Random() : random;
+        random = new Random();
     }
 
     public int getRandomNumber() {
-        return getRandomInstance().nextInt(10);
+        return random.nextInt(10);
     }
 
     public void insertRaceTryCount() {
