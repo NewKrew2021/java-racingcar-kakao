@@ -9,9 +9,12 @@ public class GameController {
     }
 
     private void race(CarSet candidates, int repeatNumber) {
+
         GameUI.printStartMessage();
+        RandomGenerator randomGenerator = new RandomGenerator();
+
         for (int i = 0; i < repeatNumber; i++) {
-            candidates.moveAllCars(candidates.genRandomNumbers());
+            candidates.moveAllCars(randomGenerator.getIntegerList(candidates.size()));
             GameUI.printAllCars(candidates);
         }
     }

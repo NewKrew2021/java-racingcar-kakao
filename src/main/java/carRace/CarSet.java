@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class CarSet {
 
-    private static final int BOUND_OF_RANDOM_NUMBER = 10;
     List<Car> carList;
 
     public CarSet(String[] names) {
@@ -24,23 +23,16 @@ public class CarSet {
         }
     }
 
-    public List<Integer> genRandomNumbers(){
-        Random rd = new Random();
-        List<Integer> numbers = new ArrayList<>();
-
-        for(int i = 0; i < carList.size(); i++){
-            numbers.add(rd.nextInt(BOUND_OF_RANDOM_NUMBER));
-        }
-
-        return numbers;
-    }
-
     public List<Car> getWinners(){
         Collections.sort(carList);
         Car maxCar = carList.get(0);
         return carList.stream()
                 .filter(car -> car.compareTo(maxCar) == 0)
                 .collect(Collectors.toList());
+    }
+
+    public int size(){
+        return carList.size();
     }
 
     public String toString(){
