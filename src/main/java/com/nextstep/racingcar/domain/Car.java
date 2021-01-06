@@ -1,14 +1,13 @@
 package com.nextstep.racingcar.domain;
 
-import com.nextstep.racingcar.domain.exceptions.InvalidNameFormatException;
 import com.nextstep.racingcar.domain.exceptions.OutOfBoundNumberException;
 
 public class Car {
 
   private static final int MOVE_NUMBER = 4;
 
-  private final String name;
-  private int location;
+  private final CarName name;
+  private final CarLocation location;
 
   public Car(String carName) {
     this(carName, 0);
@@ -16,15 +15,14 @@ public class Car {
 
   public Car(String carName, int location) {
     carName = carName.trim();
-    carNameFormatCheck(carName);
-    this.name = carName;
-    this.location = location;
+    this.name = new CarName(carName);
+    this.location = new CarLocation(location);
   }
 
   public void move(int randomNumber) {
     randomNumberCheck(randomNumber);
     if (carShouldMove(randomNumber)) {
-      this.location += 1;
+      this.location.move();
     }
   }
 
@@ -38,25 +36,15 @@ public class Car {
     return randomNumber >= MOVE_NUMBER;
   }
 
-  private void carNameFormatCheck(String carName) {
-    if (isNotAllowedName(carName)) {
-      throw new InvalidNameFormatException(carName);
-    }
-  }
-
-  private static boolean isNotAllowedName(String input) {
-    return !input.matches("[a-zA-Z]{1,5}");
-  }
-
   public int max(int highest) {
-    return Math.max(this.location, highest);
+    return Math.max(this.location.getLocation(), highest);
   }
 
   public String getName() {
-    return this.name;
+    return this.name.getName();
   }
 
   public int getLocation() {
-    return this.location;
+    return this.location.getLocation();
   }
 }
