@@ -42,7 +42,7 @@ public class RacingGameUI {
 
     private static Cars validationAndConvert(String[] names) {
         validationForAll(names);
-        return new Cars(names);
+        return Cars.fromNames(names);
     }
 
     private static void validationForAll(String[] names) {

@@ -9,11 +9,16 @@ public class Cars {
 
     List<Car> carList;
 
-    public Cars(String[] names) {
-        this.carList = new ArrayList<>();
+    private Cars(List<Car> carList) {
+        this.carList = carList;
+    }
+
+    public static Cars fromNames(String[] names) {
+        List<Car> newCars = new ArrayList<>();
         for (String name : names) {
-            carList.add(new Car(name));
+            newCars.add(new Car(name));
         }
+        return new Cars(newCars);
     }
 
     public void moveAllCars(List<Integer> numbers) {

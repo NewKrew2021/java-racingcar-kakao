@@ -22,7 +22,7 @@ public class CarsTest {
     @BeforeEach
     public void setUp() {
         String[] testNames = {"car1", "car2", "car3", "car4"};
-        testCars = new Cars(testNames);
+        testCars = Cars.fromNames(testNames);
         moveNumbers1 = Arrays.asList(MOVE, NOT_MOVE, MOVE, NOT_MOVE);
         moveNumbers2 = Arrays.asList(MOVE, NOT_MOVE, MOVE, MOVE);
     }
