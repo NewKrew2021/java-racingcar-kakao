@@ -1,6 +1,6 @@
 package racingcar;
 
-
+import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -9,10 +9,10 @@ public class RacingGameApp {
 
     public static void main(String[] args) {
 
-        String[] carNames = InputView.getCarNames();
+        Cars cars = InputView.getCars();
         int tryNo = InputView.getTryNo();
 
-        RacingGame racingGame = new RacingGame(carNames, tryNo);
+        RacingGame racingGame = new RacingGame(cars, tryNo);
 
         OutputView.printResultMessage();
         while(!racingGame.isEnd()){

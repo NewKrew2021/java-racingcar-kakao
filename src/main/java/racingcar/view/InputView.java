@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.domain.Cars;
 import racingcar.util.StringUtil;
 
 import java.util.Scanner;
@@ -8,9 +9,10 @@ public class InputView {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public static String[] getCarNames() {
+    public static Cars getCars() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        return StringUtil.splitComma(sc.next());
+        String[] names = StringUtil.splitComma(sc.nextLine());
+        return new Cars(names);
     }
 
     public static int getTryNo() {

@@ -7,8 +7,8 @@ public class RacingGame {
     private Cars cars;
     private int tryNo;
 
-    public RacingGame(String[] names, int tryNo) {
-        this.cars = new Cars(names);
+    public RacingGame(Cars cars, int tryNo) {
+        this.cars = cars;
         this.tryNo = tryNo;
     }
 
