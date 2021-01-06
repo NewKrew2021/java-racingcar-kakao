@@ -1,15 +1,16 @@
 /*
- * File     : RacingGame.java
+ * File     : RacingGameLogic.java
  * Date     : 2021. 01. 05
  */
 package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
  * Class    : RacingGameLogic
- * Version  : 1.1
+ * Version  : 1.2
  * author   : eli.nabro
  *
  * Racing game Logic class
@@ -37,13 +38,9 @@ public class RacingGameLogic {
     }
 
     public List<Integer> getCarsPosition() {
-        List<Integer> result = new ArrayList<>();
-
-        for (Car car : this.cars) {
-            result.add(car.getPosition());
-        }
-
-        return result;
+        return cars.stream()
+                .map(Car::getPosition)
+                .collect(Collectors.toList());
     }
 
     public boolean checkPosition(int numbers) {
@@ -57,18 +54,17 @@ public class RacingGameLogic {
     }
 
     public void race() {
+        List<Integer> randomValues = RandomValue.makeRandomValues(this.cars.size(), STOP_VALUE);
 
-        for( Car car: this.cars) {
-            car.move(decideGoOrStop());
+        for (int i = 0; i < this.cars.size(); i++) {
+            this.decideGoOrStop(this.cars.get(i), randomValues.get(i));
         }
     }
 
-    private boolean decideGoOrStop() {
-        return this.makeRandomValue() > STOP_VALUE;
-    }
-
-    private int makeRandomValue() {
-        return (int) (Math.random() * RANDOM_DIGIT % 10);
+    private void decideGoOrStop(Car car, int randomValue) {
+        if( randomValue > STOP_VALUE ) {
+            car.move();
+        }
     }
 
     public String whoAreWinner(int maxProgressNumber) {

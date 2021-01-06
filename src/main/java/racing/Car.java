@@ -29,10 +29,8 @@ public class Car {
         return this.position;
     }
 
-    public void move(boolean isMoved) {
-        if(isMoved){
-            this.position++;
-        }
+    public void move() {
+        this.position++;
     }
 
     @Override
