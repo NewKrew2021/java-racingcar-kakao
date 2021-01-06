@@ -20,19 +20,16 @@ public class Racing {
     }
 
     public void setCars(String s) {
-        List<String> nameArray = Arrays.asList(s.split(","));
-        if (!checkValidAllCarName(nameArray)) {
+        List<String> names = Arrays.asList(s.split(","));
+        if (!checkValidAllCarName(names)) {
             throw new InvalidCarNameException();
         }
         this.cars = new ArrayList<>();
-        for (String name : nameArray) {
+        for (String name : names) {
             this.cars.add(new Car(name));
         }
     }
 
-    /**
-     * 2depth 제약조건 때문에 어쩔수 없이 삼항연산자 사용합니다.
-     */
     private boolean checkValidAllCarName(List<String> nameArray) {
         int invalidCnt = 0;
         for (String name : nameArray) {
@@ -53,25 +50,18 @@ public class Racing {
         while (progressNumber > 0) {
             this.race();
             this.setMaxPosition();
-            this.racePrint();
+            this.getRaceString();
             progressNumber--;
         }
         return getPositions();
     }
 
-    private void setMaxPosition() {
+    public void setMaxPosition() {
         for (Car car : cars) {
             maxPosition = Math.max(car.getPosition(), maxPosition);
         }
     }
 
-    /**
-     * cars 리스트에서 index를 확인하여 해당 cars가 승자이면 승자의 이름을 콤마를 붙혀서 반환합니다.
-     * 승자가 아닐경우 공백이 출력됩니다.
-     *
-     * @param carIndex 확인할 cars의 index를 넣습니다.
-     * @return 승자의 이름, 혹은 공백을 반환합니다.
-     */
     private String getWinnerNameWithComma(int carIndex) {
         String s = "";
         if (cars.get(carIndex).getPosition() == this.maxPosition) {
@@ -81,20 +71,21 @@ public class Racing {
     }
 
     public String returnWinnerString() {
-        StringBuilder s = new StringBuilder();
+        String s = "";
         List<Integer> resultPosition = this.getPositions();
         for (int i = 0; i < resultPosition.size(); i++) {
-            s.append(this.getWinnerNameWithComma(i));
+            s += this.getWinnerNameWithComma(i);
         }
-        s = new StringBuilder(s.substring(0, s.length() - 2));
+        s = s.substring(0, s.length() - 2);
         return s + "가 최종 우승했습니다.";
     }
 
-    public void racePrint() {
+    public String getRaceString() {
+        String s = "";
         for (Car car : this.cars) {
-            System.out.println(car);
+            s += car + "\n";
         }
-        System.out.println();
+        return s;
     }
 
     public List<Integer> getPositions() {
@@ -105,7 +96,7 @@ public class Racing {
         return result;
     }
 
-    private void race() {
+    public void race() {
         for (Car car : this.cars) {
             car.move(car.goOrStop(makeRandomValue()));
         }
@@ -113,5 +104,13 @@ public class Racing {
 
     private int makeRandomValue() {
         return random.nextInt(10);
+    }
+
+    public boolean isFinished(){
+        return progressNumber > 0;
+    }
+
+    public void decreaseProgressNumber(){
+        progressNumber--;
     }
 }

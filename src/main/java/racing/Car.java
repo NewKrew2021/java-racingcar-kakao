@@ -31,9 +31,9 @@ public class Car {
 
     @Override
     public String toString() {
-        StringBuilder pos = new StringBuilder();
+        String pos = "";
         for(int i = 0; i < this.position; i++) {
-            pos.append("-");
+            pos += "-";
         }
         return this.name + " : " + pos;
     }

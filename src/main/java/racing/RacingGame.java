@@ -11,6 +11,12 @@ public class RacingGame {
     }
 
     public void run() {
+        this.beforeRace();
+        this.repeatRace();
+        this.afterRace();
+    }
+
+    public void beforeRace(){
         this.startMessagePrint();
         String carNames = sc.next();
 
@@ -19,7 +25,18 @@ public class RacingGame {
         this.racing = new Racing(carNames, progressNumber);
 
         System.out.println("\n실행 결과");
-        racing.repeatRacing();
+    }
+
+    public void repeatRace() {
+        while (racing.isFinished()) {
+            racing.race();
+            System.out.println(racing.getRaceString());
+            racing.decreaseProgressNumber();
+        }
+    }
+
+    public void afterRace(){
+        racing.setMaxPosition();
         this.printWinner();
     }
 
