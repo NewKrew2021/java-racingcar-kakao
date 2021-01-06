@@ -22,4 +22,11 @@ class CarTest {
             new Car("norma");
         });
     }
+    
+    @Test
+    public void moveTest(){
+        Car car = new Car("norma");
+        assertThat(car.move())
+                .isEqualTo(1);
+    }
 }
