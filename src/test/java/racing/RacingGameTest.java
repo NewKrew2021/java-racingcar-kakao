@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
-public class RacingUITest {
+public class RacingGameTest {
 
     @Test
     void playRacingGameTest() {
         final int NUMBERS = 5;
-        RacingUI racingGame = new RacingUI();
+        RacingGame racingGame = new RacingGame();
 
         racingGame.setCarsName("pobi,crong,honux");
         List<Integer> resultPosition = racingGame.playRacingGame(NUMBERS);
@@ -29,8 +29,8 @@ public class RacingUITest {
     @Test
     void runTest() {
         String input = "pobi,crong,honux\n" + "5\n";
-        RacingUI racingUI = new RacingUI(input);
-        racingUI.run();
+        RacingGame racingGame = new RacingGame(input);
+        racingGame.run();
     }
 
 }

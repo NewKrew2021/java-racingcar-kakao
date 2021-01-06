@@ -3,7 +3,7 @@ package racing;
 public class Main {
 
     public static void main(String[] args) {
-        RacingUI racingGame = new RacingUI();
+        RacingGame racingGame = new RacingGame();
         racingGame.run();
     }
 
