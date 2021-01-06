@@ -12,8 +12,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public Cars(String[] names){
-        cars = new ArrayList<>();
+    public Cars(String[] names) {
+        this.cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new Car(name));
         }
@@ -25,14 +25,14 @@ public class Cars {
 
     public List<Car> findWinners() {
         int maxLocation = getMaxLocation();
-        return cars.stream()
+        return this.cars.stream()
                 .filter(c -> isMaxLocation(c, maxLocation))
                 .collect(Collectors.toList());
 
     }
 
     private int getMaxLocation() {
-        return cars.stream()
+        return this.cars.stream()
                 .mapToInt(Car::getLocation)
                 .max()
                 .getAsInt();

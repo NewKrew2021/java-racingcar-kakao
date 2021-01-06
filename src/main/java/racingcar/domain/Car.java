@@ -28,7 +28,6 @@ public class Car {
         }
     }
 
-
     public void move(int num) {
         if (isMoveFoward(num))
             this.location++;
@@ -38,14 +37,6 @@ public class Car {
         if (number >= THRESHOLD)
             return true;
         return false;
-    }
-
-    public void printStatus() {
-        String length = "";
-        for (int i = 0; i < this.location; i++) {
-            length += "-";
-        }
-        System.out.println(this.name + " : " + length);
     }
 
     public String getName() {
