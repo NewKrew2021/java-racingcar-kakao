@@ -4,6 +4,7 @@ import racegame.util.RandomUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Cars {
 
@@ -16,13 +17,14 @@ public class Cars {
     public Winners getWinners() {
         int maxPosition = getMaxPosition();
         return new Winners(cars.stream()
-                .filter(e -> e.getPosition().getPosition() == maxPosition)
+                .filter(e -> e.isEqualPosition(maxPosition))
                 .collect(Collectors.toList()));
     }
 
     public Integer getMaxPosition() {
         return cars.stream()
-                .mapToInt(e -> e.getPosition().getPosition())
+                .map(Car::getPosition)
+                .mapToInt(Position::getPosition)
                 .max()
                 .getAsInt();
     }
@@ -32,7 +34,8 @@ public class Cars {
     }
 
     public String getAllCarState() {
-        return cars.stream().map(Car::toString)
+        return cars.stream()
+                .map(Car::toString)
                 .reduce("", (acc, cur) -> acc + cur + "\n");
     }
 

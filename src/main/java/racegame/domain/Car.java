@@ -28,6 +28,10 @@ public class Car implements Comparable<Car> {
         this.position = this.position.move(randomValue);
     }
 
+    public boolean isEqualPosition(int maxPosition) {
+        return this.position.equals(new Position(maxPosition));
+    }
+
     @Override
     public int compareTo(Car car) {
         return car.position.compareTo(this.position);

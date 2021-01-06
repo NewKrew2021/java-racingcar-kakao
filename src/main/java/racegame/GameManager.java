@@ -6,7 +6,7 @@ import racegame.domain.Winners;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.stream.IntStream;
 
 public class GameManager {
 
@@ -22,7 +22,7 @@ public class GameManager {
         int round = sc.nextInt();
 
         gameView.roundTitleView();
-        executeRound(cars, round);
+        runEachRound(cars, round);
 
         Winners winner = cars.getWinners();
         gameView.gameResultView(winner);
@@ -35,11 +35,14 @@ public class GameManager {
                 .collect(Collectors.toList()));
     }
 
-    public void executeRound(Cars cars, Integer rounds) {
-        for (int i = 0; i < rounds; i++) {
-            cars.allCarMoves();
-            gameView.roundResultView(cars);
-        }
+    public void runEachRound(Cars cars, Integer rounds) {
+        IntStream.range(0, rounds)
+                .forEach(round -> singleRoundJobs(cars));
+    }
+
+    public void singleRoundJobs(Cars cars) {
+        cars.allCarMoves();
+        gameView.roundResultView(cars);
     }
 
 }
