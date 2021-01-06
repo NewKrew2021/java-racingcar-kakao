@@ -22,4 +22,11 @@ public class InputValidCheckerTest {
         assertThat(InputValidChecker.isValidNames("aaa,aaa,bbb")).isFalse();
         assertThat(InputValidChecker.isValidNames("aaa,bbb,aaa")).isFalse();
     }
+
+    @Test
+    public void validRoundCheck() {
+        assertThat(InputValidChecker.isValidRounds("bb")).isFalse();
+        assertThat(InputValidChecker.isValidRounds("-1")).isFalse();
+        assertThat(InputValidChecker.isValidRounds("1")).isTrue();
+    }
 }
