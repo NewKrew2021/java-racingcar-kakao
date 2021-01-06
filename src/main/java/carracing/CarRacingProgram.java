@@ -82,7 +82,8 @@ public class CarRacingProgram {
         StringBuilder winnerBuilder = new StringBuilder();
 
         for (int i = 0; i < winners.size()-1; i++) {
-            winnerBuilder.append(winners.get(i)+", ");
+            winnerBuilder.append(winners.get(i));
+            winnerBuilder.append(", ");
         }
         winnerBuilder.append(winners.get(winners.size()-1));
 

@@ -31,7 +31,8 @@ public class Calculator {
         StringBuilder delimeterBuilder = new StringBuilder();
 
         for (int i = 0; i < src.length() - 1; i++) {
-            delimeterBuilder.append(src.charAt(i) + "|");
+            delimeterBuilder.append(src.charAt(i));
+            delimeterBuilder.append("|");
         }
 
         delimeterBuilder.append(src.charAt(src.length()-1));

@@ -17,7 +17,8 @@ public class Car {
     public String getCarInfoString(){
         StringBuilder positionBuilder = new StringBuilder();
 
-        positionBuilder.append(this.name + " : ");
+        positionBuilder.append(this.name);
+        positionBuilder.append(" : ");
 
         for (int i = 0; i < this.position; i++) {
             positionBuilder.append(POSITION_MARKER);
