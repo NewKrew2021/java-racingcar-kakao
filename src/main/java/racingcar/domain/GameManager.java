@@ -6,6 +6,7 @@ import racingcar.io.Output;
 import racingcar.io.Text;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GameManager {
     private final RandomNumberGenerator randomNumberGenerator;
@@ -57,11 +58,10 @@ public class GameManager {
 
     public static List<String> getWinners(List<Car> cars){
         final int maxvalue = getMaxLocation(cars);
-        List<String> winners = new ArrayList<>();
-        cars.stream()
-                .filter((car) -> car.getLocation() == maxvalue)
-                .forEach((car) -> winners.add(car.getName()));
-        return winners;
+        return cars.stream()
+                .filter(car -> car.isInLocation(maxvalue))
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 
     private void simulateCars(){

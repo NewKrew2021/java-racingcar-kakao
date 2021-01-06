@@ -45,6 +45,10 @@ public class Car {
         return location;
     }
 
+    public boolean isInLocation(int location){
+        return this.location == location;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
