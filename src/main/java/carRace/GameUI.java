@@ -47,15 +47,7 @@ public class GameUI {
     }
 
     private static boolean isValidForEach(String name){
-        return isAlphabetString(name) && isAllowedLength(name);
-    }
-
-    private static boolean isAlphabetString(String name) {
-        boolean valid = true;
-        for (char c : name.toCharArray()) {
-            valid &= Character.isAlphabetic(c);
-        }
-        return valid;
+        return StringUtil.isAlphabetString(name) && isAllowedLength(name);
     }
 
     private static boolean isAllowedLength(String name) {
