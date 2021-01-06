@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -28,7 +27,7 @@ public class Winners {
         for (Car winner : winners) {
             winnerString.append(winner.getName()).append(",");
         }
-        return winnerString.substring(0,winnerString.length() - 1);
+        return winnerString.substring(0, winnerString.length() - 1);
     }
 
     @Override

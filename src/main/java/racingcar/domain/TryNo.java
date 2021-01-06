@@ -3,8 +3,8 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class TryNo {
-    private final int END_NO = 0;
-    private final int STEP = 1;
+    private static final int END_NO = 0;
+    private static final int STEP = 1;
     private final int tryNo;
 
     public TryNo(int tryNo) {
