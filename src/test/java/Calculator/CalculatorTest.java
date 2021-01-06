@@ -16,11 +16,6 @@ public class CalculatorTest {
     }
 
     @Test
-    void splitAndSum_nullString() {
-        assertThat(Calculator.splitAndSum(null)).isEqualTo(0);
-    }
-
-    @Test
     void splitAndSum_emptyString() {
         assertThat(Calculator.splitAndSum("")).isEqualTo(0);
     }
