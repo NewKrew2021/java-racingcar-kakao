@@ -32,9 +32,9 @@ public class RacingGameApp {
             System.out.println();
         }
 
-        ArrayList<String> winners = racing.getWinners();
-        String result = String.join(", ", winners);
-        System.out.println(result + "가 최종 우승했습니다.");
+//        ArrayList<String> winners = racing.getWinners();
+//        String result = String.join(", ", winners);
+//        System.out.println(result + "가 최종 우승했습니다.");
 
     }
 

@@ -11,9 +11,14 @@ public class CarTest {
     public void testMove(){
         Car car = new Car("pobi");
         car.move(4);
-        assertThat(car.isLocated(1)).isTrue();
+        assertThat(car.getLocation()).isEqualTo(1);
+    }
+
+    @Test
+    public void tesStop(){
+        Car car = new Car("pobi");
         car.move(3);
-        assertThat(car.isLocated(1)).isTrue();
+        assertThat(car.getLocation()).isEqualTo(0);
     }
 
     @Test
