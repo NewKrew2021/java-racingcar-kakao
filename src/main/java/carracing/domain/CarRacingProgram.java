@@ -1,4 +1,6 @@
-package carracing;
+package carracing.domain;
+
+import carracing.utils.CarRacingProgramPhrases;
 
 import java.util.*;
 
@@ -26,13 +28,13 @@ public class CarRacingProgram {
     public void race(){
         List<Car> cars = new ArrayList<>();
 
-        System.out.println(CarRacingProgramPhrase.CAR_LIST_INPUT_PHRASE);
+        System.out.println(CarRacingProgramPhrases.CAR_LIST_INPUT_PHRASE);
         insertCarNamesToCars(cars);
 
-        System.out.println(CarRacingProgramPhrase.RACE_COUNT_PHRASE);
+        System.out.println(CarRacingProgramPhrases.RACE_COUNT_PHRASE);
         int round = insertRaceTryCount();
 
-        System.out.println(CarRacingProgramPhrase.RESULT_PHRASE);
+        System.out.println(CarRacingProgramPhrases.RESULT_PHRASE);
         for (int i = 0; i < round; i++) {
             playOneCycleAndPrintCarPosition(cars);
         }
@@ -89,7 +91,7 @@ public class CarRacingProgram {
         }
         winnerBuilder.append(winners.get(winners.size()-1));
 
-        winnerBuilder.append(CarRacingProgramPhrase.WINNER_PHRASE);
+        winnerBuilder.append(CarRacingProgramPhrases.WINNER_PHRASE);
 
         System.out.println(winnerBuilder.toString());
     }
