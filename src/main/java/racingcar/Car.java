@@ -2,8 +2,11 @@ package racingcar;
 
 public class Car {
 
+    private static final int RANDOM_SCOPE = 10;
+    private static final int STOP_RANDOM_NUMBER =4;
+    private static final int STOP_DISTANCE =0;
+    private static final int MOVE_DISTANCE =1;
     private int position = 0;
-    private final int RANDOM_SCOPE = 10;
     private String name = "";
 
     public Car(String name, int position) {
@@ -12,14 +15,14 @@ public class Car {
     }
 
     public int makeRandomNumber(){
-        return ((int)(Math.random() * RANDOM_SCOPE) % RANDOM_SCOPE);
+        return (int)(Math.random() * RANDOM_SCOPE);
     }
 
     public int getDistance(int distance){
-        if(distance<4){
-            return 0;
+        if(distance<STOP_RANDOM_NUMBER){
+            return STOP_DISTANCE;
         }
-        return 1;
+        return MOVE_DISTANCE;
     }
 
     public int updateCarPosition(int distance){

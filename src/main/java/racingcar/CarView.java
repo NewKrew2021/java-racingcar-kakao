@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class CarView {
 
+    private static final int MAX_NAME_LENGTH =5;
+
     public static ArrayList<String> parseCarName(String text){
         return new ArrayList<String>(Arrays.asList(text.split(",")));
     }
@@ -18,7 +20,7 @@ public class CarView {
     }
 
     private static void lengthValidationTest(String name){
-        if(name.length() > 5) {
+        if(name.length() > MAX_NAME_LENGTH) {
             throw new IllegalStateException();
         }
     }
