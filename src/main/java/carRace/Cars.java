@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-
     List<Car> carList;
 
     private Cars(List<Car> carList) {
@@ -21,10 +20,10 @@ public class Cars {
         return new Cars(newCars);
     }
 
-    public void moveAllCars(List<Integer> numbers) {
-        for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).judgeAndGo(numbers.get(i));
-        }
+    public void moveAllCars() {
+        carList.forEach(car -> {
+            car.go(new RandomStrategy());
+        });
     }
 
     public List<Car> getWinners() {

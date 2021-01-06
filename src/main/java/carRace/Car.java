@@ -17,18 +17,10 @@ public class Car implements Comparable<Car>{
         return otherCar.location - location;
     }
 
-    public void judgeAndGo(int randomNo) {
-        if (judge(randomNo)) {
-            go();
+    public void go(MovingStrategy strategy) {
+        if (strategy.movable()) {
+            location++;
         }
-    }
-
-    private boolean judge(int randomNo) {
-        return 4 <= randomNo;
-    }
-
-    private void go() {
-        location++;
     }
 
     public String toString() {
