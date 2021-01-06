@@ -1,19 +1,23 @@
 package carracing.domain;
 
-import carracing.utils.CarRacingProgramPhrases;
+import carracing.ui.CarRacingProgramUI;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 public class CarRacingProgram {
 
     private int maxMoveDistance;
-    private Scanner sc;
+    private Scanner scanner;
     private Random random;
 
     private final int ABLE_MOVE_NUMBER = 4;
+    private final String NAMES_DELIMETER = ",";
 
     public CarRacingProgram() {
-        sc = new Scanner(System.in);
+        scanner = new Scanner(System.in);
         random = new Random();
     }
 
@@ -21,40 +25,45 @@ public class CarRacingProgram {
         return random.nextInt(10);
     }
 
-    private int insertRaceTryCount() {
-        return sc.nextInt();
+    private int insertRound() {
+        return scanner.nextInt();
     }
 
     public void race(){
-        List<Car> cars = new ArrayList<>();
+        CarRacingProgramUI.printCarInputNamesPharse();
+        List<Car> cars = mapCarNamesToCars(insertCarNames());
 
-        System.out.println(CarRacingProgramPhrases.CAR_LIST_INPUT_PHRASE);
-        insertCarNamesToCars(cars);
+        CarRacingProgramUI.printRaceCountPhrase();
+        int round = insertRound();
 
-        System.out.println(CarRacingProgramPhrases.RACE_COUNT_PHRASE);
-        int round = insertRaceTryCount();
-
-        System.out.println(CarRacingProgramPhrases.RESULT_PHRASE);
+        CarRacingProgramUI.printResultPharse();
         for (int i = 0; i < round; i++) {
             playOneCycleAndPrintCarPosition(cars);
         }
 
-        printRaceWinners(findRaceWinners(cars));
+        CarRacingProgramUI.printWinnerPharse(findRaceWinners(cars));
     }
 
-    private void insertCarNamesToCars(List<Car> cars) throws RuntimeException {
-        String[] names = sc.nextLine().split(",");
+    private String[] insertCarNames(){
+        return scanner.nextLine().split(NAMES_DELIMETER);
+    }
+
+    private List<Car> mapCarNamesToCars(String[] names) throws RuntimeException {
+        List<Car> cars = new ArrayList<>();
+
         for (String name : names) {
             cars.add(new Car(name));
         }
+
+        return cars;
     }
 
     private void playOneCycleAndPrintCarPosition(List<Car> cars){
         for (Car car : cars) {
             checkMovingConditionAfterMoveCar(car);
-            System.out.println(car.getCarInfoString());
+            CarRacingProgramUI.printCarPosition(car);
         }
-        System.out.println();
+        CarRacingProgramUI.printBlankLine();
     }
 
     private void checkMovingConditionAfterMoveCar(Car car){
@@ -82,17 +91,4 @@ public class CarRacingProgram {
         }
     }
 
-    private void printRaceWinners(List<String> winners){
-        StringBuilder winnerBuilder = new StringBuilder();
-
-        for (int i = 0; i < winners.size()-1; i++) {
-            winnerBuilder.append(winners.get(i));
-            winnerBuilder.append(", ");
-        }
-        winnerBuilder.append(winners.get(winners.size()-1));
-
-        winnerBuilder.append(CarRacingProgramPhrases.WINNER_PHRASE);
-
-        System.out.println(winnerBuilder.toString());
-    }
 }
