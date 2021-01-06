@@ -1,30 +1,43 @@
 package com.nextstep.racingcar.domain;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
 
-  private List<Car> cars;
+  private final List<Car> cars;
 
-  public Cars() {
-    cars = new ArrayList<>();
+  public Cars(String carNames) {
+    this(Arrays.stream(carNames.split(","))
+        .map(Car::new)
+        .collect(Collectors.toList()));
   }
 
-  public void addCar(Car newCar) {
-    cars.add(newCar);
+  public Cars(List<Car> cars) {
+    this.cars = Collections.unmodifiableList(cars);
+    ;
   }
 
-  public void race() {
+  public CarsInfo race() {
     cars.forEach(car -> car.move(Utils.getRandomInt()));
+    return convertToInfo(cars);
   }
 
-  public List<Car> getWinners() {
+  private CarsInfo convertToInfo(List<Car> cars) {
+    return new CarsInfo(
+        cars.stream()
+            .map(car -> new CarInfo(car.getName(), car.getLocation()))
+            .collect(Collectors.toList()));
+  }
+
+  public List<String> getWinners() {
     int farthestLocation = getFarthestLocation();
 
     return cars.stream()
-        .filter(car -> isWinner(farthestLocation, car))
+        .filter(car -> farthestLocation == car.getLocation())
+        .map(Car::getName)
         .collect(Collectors.toList());
   }
 
@@ -35,13 +48,5 @@ public class Cars {
     }
 
     return farthestLocation;
-  }
-
-  private boolean isWinner(int farthestLocation, Car car) {
-    return farthestLocation == car.getLocation();
-  }
-
-  public List<Car> getCars() {
-    return cars;
   }
 }

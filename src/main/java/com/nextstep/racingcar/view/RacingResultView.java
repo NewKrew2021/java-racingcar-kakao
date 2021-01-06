@@ -3,7 +3,6 @@ package com.nextstep.racingcar.view;
 import com.nextstep.racingcar.domain.CarInfo;
 import com.nextstep.racingcar.domain.CarsInfo;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RacingResultView {
 
@@ -26,15 +25,7 @@ public class RacingResultView {
     System.out.println();
   }
 
-  public static void printWinners(CarsInfo carsInfo) {
-    String winners = String.join(", ", getCarNames(carsInfo));
-    System.out.println(winners + "가 최종 우승했습니다.");
-  }
-
-  private static List<String> getCarNames(CarsInfo carsInfo) {
-    return carsInfo.getCars()
-        .stream()
-        .map(CarInfo::getName)
-        .collect(Collectors.toList());
+  public static void printWinners(List<String> winners) {
+    System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
   }
 }

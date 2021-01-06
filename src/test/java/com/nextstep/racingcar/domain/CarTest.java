@@ -1,14 +1,14 @@
-package com.nextstep.racingcar;
+package com.nextstep.racingcar.domain;
 
-import com.nextstep.racingcar.domain.Car;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
+
+import com.nextstep.racingcar.domain.exceptions.InvalidNameFormatException;
 import com.nextstep.racingcar.domain.exceptions.OutOfBoundNumberException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 
 public class CarTest {
 
@@ -24,18 +24,13 @@ public class CarTest {
     assertThat(new Car("valid").getName()).isEqualTo("valid");
   }
 
-  @Test
-  void invalidCarName() {
-    assertThatExceptionOfType(RuntimeException.class).
+  @ParameterizedTest
+  @ValueSource(strings = {"longname", "na!me"})
+  void invalidCarName(String carName) {
+    assertThatExceptionOfType(InvalidNameFormatException.class).
         isThrownBy(
             () -> {
-              new Car("longname");
-            });
-
-    assertThatExceptionOfType(RuntimeException.class).
-        isThrownBy(
-            () -> {
-              new Car("na!me");
+              new Car(carName);
             });
   }
 
