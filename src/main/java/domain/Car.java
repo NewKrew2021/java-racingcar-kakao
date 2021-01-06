@@ -3,38 +3,34 @@ package domain;
 public class Car {
 
     private final int STOP_VALUE = 3;
-    private final String name;
-    private int position;
+    private final CarName name;
+    private final Position position;
 
     public Car(String name) {
-        this.name = name;
-        this.position = 0;
-    }
-
-    public String getName() {
-        return this.name;
+        this.name = new CarName(name);
+        this.position = new Position();
     }
 
     public boolean goOrStop(int i) {
         return i > STOP_VALUE;
     }
 
-    public int getPosition() {
-        return this.position;
+    public void move(boolean isMove) {
+        if (isMove) {
+            this.position.increase();
+        }
     }
 
-    public void move(boolean isMove) {
-        if(isMove){
-            this.position++;
-        }
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+    public String getName() {
+        return name.toString();
     }
 
     @Override
     public String toString() {
-        String pos = "";
-        for(int i = 0; i < this.position; i++) {
-            pos += "-";
-        }
-        return this.name + " : " + pos;
+        return this.name + " : " + this.position;
     }
 }

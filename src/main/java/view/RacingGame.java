@@ -38,7 +38,6 @@ public class RacingGame {
     }
 
     public void afterRace(){
-        racing.setMaxPosition();
         this.printWinner();
     }
 
@@ -51,6 +50,6 @@ public class RacingGame {
     }
 
     public void printWinner() {
-        System.out.print(racing.returnWinnerString());
+        System.out.print(racing.result());
     }
 }
