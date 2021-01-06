@@ -1,32 +1,43 @@
 package racingcar;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CarTest {
 
     Car car;
 
-    @BeforeAll
-    public void setup() {
-        car = new Car("testCar");
+    @BeforeEach
+    void setUp() {
+        car = new Car("mac", 4);
     }
 
     @Test
-    public void moveTest(){
-        car.move(5);
-        assertThat(car.getPosition()).isEqualTo(1);
+    public void create() {
+        assertThat(car).isEqualTo(new Car("mac", 4));
     }
 
     @Test
-    public void validNumberTest() {
-        assertThatExceptionOfType(RuntimeException.class)
-                .isThrownBy(() -> {
-                    car.move(10);
-                }).withNoCause();
+    public void name() {
+        assertThat(car.getName()).isEqualTo("mac");
+    }
+
+    @Test
+    public void position() {
+        assertThat(car.getPosition()).isEqualTo(4);
+    }
+
+    @Test
+    public void moveOnce() {
+        car.move(7);
+        assertThat(car.getPosition()).isEqualTo(5);
+    }
+
+    @Test
+    public void moveNone() {
+        car.move(2);
+        assertThat(car.getPosition()).isEqualTo(4);
     }
 }

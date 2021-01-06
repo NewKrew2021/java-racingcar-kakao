@@ -1,22 +1,17 @@
 package plusNumber;
 
-
-
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
 import static org.assertj.core.api.Assertions.*;
 
-public class PlusNumberCalTest {
+public class PlusNumberCalculationTest {
 
-    PlusNumberCal number;
+    PlusNumberCalculator number;
 
     @BeforeEach
     public void setup(){
-        this.number = new PlusNumberCal();
+        this.number = new PlusNumberCalculator();
     }
 
     @Test

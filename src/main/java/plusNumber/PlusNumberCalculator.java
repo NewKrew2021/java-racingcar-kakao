@@ -2,19 +2,21 @@ package plusNumber;
 
 import java.util.regex.*;
 
-public class PlusNumberCal {
+public class PlusNumberCalculator {
 
     public int calculate(String str) {
         if (isBlank(str)) {
             return 0;
         }
         String[] numbers = mySplit(str);
+        validateNumbers(numbers);
+        return sum(numbers);
+    }
 
+    private void validateNumbers(String[] numbers) {
         if(!checkValidNumbers(numbers)){
             throw new RuntimeException();
         }
-
-        return sum(numbers);
     }
 
     private int sum(String[] numbers) {
