@@ -4,12 +4,19 @@ public class Car {
     private int position;
 
     public Car(String name) {
-        this.name = name;
-        this.position = 0;
+        this(name, 0);
     }
 
-    public void go() {
-        this.position++;
+    public Car(String name, int position) {
+        if (isBlank(name) || name.length() > 5)
+            throw new IllegalArgumentException("자동차 이름은 1글자 이상 5글자 이하로 해주세요!");
+
+        this.name = name;
+        this.position = position;
+    }
+
+    private boolean isBlank(String name) {
+        return name == null || name.equals("") || name.equals(" ");
     }
 
     public int getPosition() {
@@ -20,18 +27,19 @@ public class Car {
         return this.name;
     }
 
-    public void run(int value) {
+    public void runWithCondition(int value) {
         if (value <= THRESHOLD) {
             return;
         }
-        go();
+        this.position++;
     }
 
-    public void print() {
-        System.out.print(this.name + " : ");
+    @Override
+    public String toString() {
+        StringBuilder print = new StringBuilder(name + " : ");
         for (int i = 0; i < this.position; ++i) {
-            System.out.print("-");
+            print.append("-");
         }
-        System.out.println();
+        return print.toString();
     }
 }

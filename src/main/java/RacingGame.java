@@ -7,40 +7,13 @@ import java.util.stream.Collectors;
 public class RacingGame {
     private final int FINAL_ROUND;
     private static final int MAX_LENGTH = 5;
-    private final List<Car> cars;
+    private final Cars cars;
     private int curRound;
 
-    public RacingGame(int finalRound, List<Car> cars) {
+    public RacingGame(int finalRound, Cars cars) {
         this.FINAL_ROUND = finalRound;
         this.cars = cars;
         this.curRound = 0;
-    }
-
-    private int getMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : cars) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
-    }
-
-    public List<Car> getWinners() {
-        int maxPosition = getMaxPosition();
-
-        return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList());
-    }
-
-    public void printWinners() {
-        List<Car> winners = getWinners();
-        String[] winnersName = new String[winners.size()];
-
-        for (int i = 0; i < winnersName.length; ++i) {
-            winnersName[i] = winners.get(i).getName();
-        }
-
-        System.out.println(String.join(", ", winnersName) + "가 최종 우승했습니다.");
     }
 
     public boolean isEnd() {
@@ -48,28 +21,19 @@ public class RacingGame {
     }
 
     public void playRound() {
-        MyRandom random = new MyRandom();
-        for (Car car : cars) {
-            car.run(random.nextInt());
-            car.print();
-        }
+        cars.play();
         curRound++;
     }
 
-    private static boolean isValidNames(String[] names) {
-        List<String> nameList = Arrays.asList(names);
-        return nameList.stream()
-                .noneMatch(name -> name.length() > MAX_LENGTH);
+    public Cars getWinners() {
+        return cars.getWinners();
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String[] carNames;
 
-        do {
-            System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-            carNames = sc.nextLine().split(",");
-        } while (!isValidNames(carNames));
+        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
+        String[] carNames = sc.nextLine().split(",");
 
         System.out.println("시도할 회수는 몇회인가요?");
         int roundNo = sc.nextInt();
@@ -79,7 +43,7 @@ public class RacingGame {
             cars.add(new Car(carName));
         }
 
-        RacingGame game = new RacingGame(roundNo, cars);
+        RacingGame game = new RacingGame(roundNo, new Cars(cars));
 
         System.out.println("실행 결과");
         while (!game.isEnd()) {
@@ -87,6 +51,6 @@ public class RacingGame {
             System.out.println();
         }
 
-        game.printWinners();
+        System.out.println(game.getWinners() + "가 최종 우승하셨습니다.");
     }
 }

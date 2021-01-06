@@ -2,11 +2,10 @@ import org.junit.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class MyRandomTest {
+public class CustomRandomTest {
     @Test
     public void isValidRange() {
-        MyRandom random = new MyRandom();
-        int num = random.nextInt();
+        int num = CustomRandom.nextInt();
         assertThat(0 <= num && num <= 9).isTrue();
     }
 }
