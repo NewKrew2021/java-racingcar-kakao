@@ -1,6 +1,5 @@
-package racingcar;
+package racingcar.utils;
 
-import racingcar.util.InputValidChecker;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
