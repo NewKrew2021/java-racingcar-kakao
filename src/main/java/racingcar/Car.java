@@ -25,12 +25,13 @@ public class Car {
         return false;
     }
 
-    public void printStatus(){
+    public String getStatus(){
         String length = "";
         for(int i = 0; i < this.location; i++){
             length += "-";
         }
-        System.out.println(this.name + " : " + length);
+
+        return this.name + " : " + length;
     }
 
     public String getName(){

@@ -23,10 +23,11 @@ public class RacingGameApp {
         int count = scan.nextInt();
 
         System.out.println("\n실행 결과");
-
+        String status;
         for(int i=0; i< count; i++){
             racing.moveCars();
-            racing.printCarsStatus();
+            status = racing.getCarsStatus();
+            System.out.println(status);
             System.out.println();
         }
 

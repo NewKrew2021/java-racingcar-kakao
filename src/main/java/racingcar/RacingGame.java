@@ -47,10 +47,12 @@ public class RacingGame {
         return (int) (Math.random() * 10);
     }
 
-    public void printCarsStatus() {
+    public String getCarsStatus() {
+        String carsStatus = "";
         for (Car car : cars) {
-            car.printStatus();
+            carsStatus += car.getStatus() + "\n";
         }
+        return carsStatus;
     }
 
     public ArrayList<String> getWinners() {
