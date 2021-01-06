@@ -19,11 +19,18 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @DisplayName("4칸 이상 시 전진 확인")
-    @ValueSource(ints = {4,5,6,7,8})
-    void nextStepTest(int number){
+    @DisplayName("move 동작 확인")
+    @ValueSource(ints = {1,2,3})
+    void moveTest(int number){
+        MovingStrategy trueStrategy = new MovingStrategy() {
+            @Override
+            public boolean isMovable() {
+                return true;
+            }
+        };
+
         for (int i = 0; i < number; i++) {
-            car.move(number);
+            car.move(trueStrategy);
         }
         assertThat(car.getCarInfo().getPosition()).isEqualTo(number);
     }

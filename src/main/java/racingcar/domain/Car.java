@@ -18,8 +18,10 @@ public class Car {
         return new CarInfo(name.getName(), position.getPosition());
     }
 
-    public void move(int currentSpeed) {
-        position.nextStep(currentSpeed);
+    public void move(MovingStrategy movingStrategy) {
+        if(movingStrategy.isMovable()) {
+            position.nextStep();
+        }
     }
 
 }

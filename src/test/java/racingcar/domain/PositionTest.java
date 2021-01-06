@@ -32,20 +32,8 @@ public class PositionTest {
     @Test
     void movePositionTest() {
         Position position = new Position();
-        position.nextStep(5);
+        position.nextStep();
         assertThat(position).isEqualTo(new Position(1));
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {-1,3})
-    void carGoFailTest(int number) {
-        org.junit.jupiter.api.Assertions.assertFalse(position.isCarGo(number));
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {4,9})
-    void carGoTrueTest(int number) {
-        org.junit.jupiter.api.Assertions.assertTrue(position.isCarGo(number));
     }
 
 }

@@ -5,7 +5,6 @@ import java.util.Objects;
 public class Position {
 
     private static final int MOVEMENT = 1;
-    private static final int SPEED = 4;
     private int position;
 
     public Position() {
@@ -19,18 +18,12 @@ public class Position {
         this.position = position;
     }
 
-    public void nextStep(int currentSpeed) {
-        if (isCarGo(currentSpeed)) {
-            position += MOVEMENT;
-        }
+    public void nextStep() {
+        position += MOVEMENT;
     }
 
     public int getPosition() {
         return position;
-    }
-
-    public boolean isCarGo(int currentSpeed) {
-        return currentSpeed >= SPEED;
     }
 
     @Override

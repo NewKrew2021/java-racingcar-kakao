@@ -9,10 +9,9 @@ import java.util.List;
 public class Cars {
 
     private static final String DEFAULT_SPLIT_DELIMITER = ",";
-    private static final int RANGE = 10;
 
     private List<Car> cars;
-    private Winners winners;
+    private WinnersFinder winnersFinder;
 
     public Cars(String inputCarNames) {
         List<String> names = splitName(inputCarNames);
@@ -20,7 +19,7 @@ public class Cars {
         for (String name : names) {
             addCar(name);
         }
-        winners = new Winners(cars);
+        winnersFinder = new WinnersFinder();
     }
 
     private void addCar(String name) {
@@ -37,12 +36,12 @@ public class Cars {
 
     public void raceAll() {
         for (Car car : cars) {
-            car.move(RandomUtils.generateRandomNumber(RANGE));
+            car.move(new RandomMovingStrategy());
         }
     }
 
     public List<String> findWinners() {
-        return winners.findWinners();
+        return winnersFinder.findWinners(getCarInfos());
     }
 
     private List<String> splitName(String str) {
