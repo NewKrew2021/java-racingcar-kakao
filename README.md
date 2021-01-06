@@ -7,3 +7,10 @@
 
 ## 온라인 코드 리뷰 과정
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
+
+## 구현 기능 목록
+1. 차 이름 string 을 가져와서 split 후 Car object 생성
+2. Random 값에 따라 Car의 go 또는 stop 판단
+3. Car 의 position 정의 및 판단.
+4. 최소 1대의 차가 N번 전진에 도달할 때 까지 모든 차를 random value에 따라 각각 go or stop
+5. UI 구현
