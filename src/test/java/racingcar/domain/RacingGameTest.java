@@ -33,7 +33,7 @@ public class RacingGameTest {
 
     @Test
     void splitUnderFiveTest(){
-        racingGame = new RacingGame("abcdef,a,b");
+        racingGame = new RacingGame("abcdef,a,,b");
         racingGame.racing();
         List<CarInfo> carInfos = racingGame.getStatus();
         List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());

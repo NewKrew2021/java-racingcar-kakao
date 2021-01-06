@@ -28,7 +28,7 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"LONGCA", "LONGCAR", "LONGCARNAME"})
+    @ValueSource(strings = {"LONGCA", "LONGCAR", "LONGCARNAME", ""})
     void invalidNameTest(String carName) {
         Assertions.assertThatExceptionOfType(CarNameInvalidException.class).
                 isThrownBy(() -> { new Car(carName); });
