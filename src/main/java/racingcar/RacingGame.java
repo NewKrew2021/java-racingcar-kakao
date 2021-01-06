@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RacingGame {
     private static final int MAX_NAME_LENGTH = 5;
@@ -44,7 +45,8 @@ public class RacingGame {
     }
 
     public int getRandomNo() {
-        return (int) (Math.random() * 10);
+        Random generator = new Random();
+        return generator.nextInt(10);
     }
 
     public String getCarsStatus() {
