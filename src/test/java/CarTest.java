@@ -1,3 +1,4 @@
+import domain.Car;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,7 +27,7 @@ class CarTest {
     @Test
     public void moveTest(){
         Car car = new Car("norma");
-        assertThat(car.move())
+        assertThat(car.move(()->true))
                 .isEqualTo(1);
     }
 }
