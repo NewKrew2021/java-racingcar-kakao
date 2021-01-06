@@ -11,8 +11,9 @@ public class RacingCars {
 
     private final ArrayList<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingCars(String input) {
-        setUpCarName(input.split(","));
+    public List<RacingCar> makeRacingCarsByNames(String names) {
+        setUpCarName(names.split(","));
+        return racingCars;
     }
 
     private void setUpCarName(String[] names) {

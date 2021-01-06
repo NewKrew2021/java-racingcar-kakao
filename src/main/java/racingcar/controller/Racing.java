@@ -14,7 +14,8 @@ public class Racing {
     }
 
     private void getInput() {
-        this.racingCars = new RacingCars(InputScanner.inputName());
+        this.racingCars = new RacingCars();
+        racingCars.makeRacingCarsByNames(InputScanner.inputName());
         this.round = InputScanner.inputRound();
     }
 

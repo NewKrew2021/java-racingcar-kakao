@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import java.util.Objects;
+
 public class RacingCar {
 
     private static final int MIN_MOVABLE_NUMBER = 4;
@@ -41,4 +43,16 @@ public class RacingCar {
         return this.dist;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RacingCar racingCar = (RacingCar) o;
+        return dist == racingCar.dist && Objects.equals(name, racingCar.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dist, name);
+    }
 }
