@@ -7,10 +7,17 @@ import java.util.stream.Collectors;
 
 public class GameUI {
     private static final int MAX_NAME_LENGTH = 5;
+    private static final Scanner scanner;
+
+    static{
+        scanner = new Scanner(System.in);
+    }
+    //...리뷰를 부탁드립니다.
+    //이렇게 초기화 블럭을 사용하는게 괜찮은지 모르겠습니다.
+    //아니면 controller에서 scanner객체를 생성시킨다음에
+    //UI메소드들을 호출할때마다 인자로 넘겨줄까요?
 
     public static CarSet getCarsFromUser() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)");
         String[] names = split(scanner.nextLine());
 
@@ -22,7 +29,6 @@ public class GameUI {
     }
 
     private static CarSet retryGetCarsFromUser(){
-        Scanner scanner = new Scanner(System.in);
         String[] names;
 
         do {
@@ -55,8 +61,6 @@ public class GameUI {
     }
 
     public static int getNumOfRepeatFromUser() {
-        Scanner scanner = new Scanner(System.in);
-
         System.out.println("시도할 회수는 몇회인가요?");
         return scanner.nextInt();
     }
