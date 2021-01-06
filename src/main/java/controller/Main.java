@@ -1,6 +1,6 @@
 package controller;
 
-import domain.RacingGame;
+import view.RacingGame;
 
 public class Main {
 

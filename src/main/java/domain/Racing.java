@@ -1,4 +1,4 @@
-package racing;
+package domain;
 
 import exception.InvalidCarNameException;
 
