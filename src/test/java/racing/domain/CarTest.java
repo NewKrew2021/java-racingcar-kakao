@@ -2,7 +2,7 @@
  * File     : CarTest.java
  * Date     : 2021. 01. 05
  */
-package racing;
+package racing.domain;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
