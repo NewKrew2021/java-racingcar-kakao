@@ -29,7 +29,7 @@ public class RacingGame {
         }
     }
 
-    public int getRandomNo() {
+    private int getRandomNo() {
         return (int) (Math.random() * 10);
     }
 
@@ -58,9 +58,4 @@ public class RacingGame {
             winners.add(cars[idx].getName());
         }
     }
-
-    public Car[] getCars() {
-        return this.cars;
-    }
-
 }
