@@ -3,20 +3,13 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Car {
-    private String name;
-    private int location = 0;
-    static final int MIN_NAME_LENGTH = 5;
     static final int MIN_FORWARD_RANDOM = 4;
+    static final int MOVE_FORWARD = 1;
+    private Name name;
+    private int location;
 
     public Car(String name) {
-        validateName(name);
-        this.name = name;
-    }
-
-    public static void validateName(String carName) {
-        if (carName.length() > MIN_NAME_LENGTH) {
-            throw new IllegalArgumentException("길이 5 초과");
-        }
+        this.name = new Name(name);
     }
 
     private boolean isForword(int randomNumber) {
@@ -25,12 +18,12 @@ public class Car {
 
     public void tryForward(int randomResult) {
         if(isForword(randomResult)) {
-            this.location += 1;
+            this.location += + MOVE_FORWARD;
         }
     }
 
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     public int getLocation() {
