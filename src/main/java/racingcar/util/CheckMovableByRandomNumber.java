@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.util;
 
 public class CheckMovableByRandomNumber implements CheckMovable {
     private static final int MIN_MOVABLE_NUMBER = 4;

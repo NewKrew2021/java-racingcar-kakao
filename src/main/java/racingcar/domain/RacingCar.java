@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.CheckMovable;
+
 import java.util.Objects;
 
 public class RacingCar {
@@ -17,15 +19,6 @@ public class RacingCar {
             return ++this.dist;
         }
         return this.dist;
-    }
-
-    public void printDist() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(this.name).append(" : ");
-        for (int i = 0; i < this.dist; i++) {
-            stringBuilder.append("-");
-        }
-        System.out.println(stringBuilder.toString());
     }
 
     public String getName() {

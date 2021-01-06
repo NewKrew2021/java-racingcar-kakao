@@ -1,41 +1,34 @@
 package racingcar.controller;
 
-import racingcar.domain.CheckMovableByRandomNumber;
+import racingcar.util.CheckMovableByRandomNumber;
 import racingcar.domain.RacingCars;
 import racingcar.domain.RacingCarsFactory;
-import racingcar.util.InputScanner;
+import racingcar.view.InputScanner;
+import racingcar.view.PrintRacing;
 
 public class Racing {
     private RacingCars racingCars;
     private int round;
 
-    public void play() {
-        getInput();
-        playAndShowRound();
-        printFinalResult();
+    public Racing(String carNames, int round) {
+        this.racingCars = RacingCarsFactory.from(carNames, new CheckMovableByRandomNumber());
+        this.round = round;
     }
 
-    private void getInput() {
-        this.racingCars = RacingCarsFactory.from(InputScanner.inputName(), new CheckMovableByRandomNumber());
-        this.round = InputScanner.inputRound();
+    public void play() {
+        playAndShowRound();
+        PrintRacing.printWinners(racingCars);
     }
 
     private void playAndShowRound() {
-        System.out.println("\n실행 결과");
+        PrintRacing.printResultSentence();
         for (int i = 0; i < this.round; i++) {
-            this.racingCars.run();
-            printRoundResult();
+            this.racingCars.playRound();
+            PrintRacing.printRoundResult(this.racingCars);
         }
     }
 
-    private void printRoundResult() {
-        this.racingCars.printRoundResult();
-        System.out.println();
+    public static void main(String[] args) {
+        new Racing(InputScanner.inputName(), InputScanner.inputRound()).play();
     }
-
-    private void printFinalResult() {
-        System.out.print(this.racingCars.getWinners());
-        System.out.println("가 최종 우승했습니다.");
-    }
-
 }

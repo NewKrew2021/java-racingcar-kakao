@@ -1,9 +1,9 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
-import racingcar.domain.RacingCar;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.RacingCars;
+import racingcar.util.CheckMovableByRandomNumber;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,17 +19,20 @@ public class RacingCarsTest {
     }
 
     @Test
+    @DisplayName("RacingCars 생성 테스트")
     public void makeRacingCarCheck() {
         assertThat(this.racingCars.getRacingCars())
                 .containsExactlyInAnyOrderElementsOf(Arrays.asList(new RacingCar("pobi"), new RacingCar("tars"), new RacingCar("ocean")));
     }
 
     @Test
+    @DisplayName("RacingCars 이름 셋팅 테스트")
     public void setUpRacingCarNameCheck() {
         assertThat(racingCars.getRacingCars()).extracting(RacingCar::getName).containsExactly("pobi", "tars", "ocean");
     }
 
     @Test
+    @DisplayName("우승자 선별 테스트")
     public void winnerCheck() {
         List<RacingCar> cars = racingCars.getRacingCars();
         cars.get(1).move(() -> true);

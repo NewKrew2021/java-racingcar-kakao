@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.util.CheckMovable;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +13,7 @@ public class RacingCarsFactory {
     }
 
     private static List<RacingCar> makeCarsFromName(String[] names) {
-        return Arrays.stream(names).map(name -> new RacingCar(name)).collect(Collectors.toList());
+        return Arrays.stream(names).map(RacingCar::new).collect(Collectors.toList());
     }
 
 }

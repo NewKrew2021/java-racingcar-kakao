@@ -4,12 +4,12 @@ import java.util.Arrays;
 
 public class InputValidChecker {
 
-    public static boolean isValidNames(String input) {
+    public static boolean validNames(String input) {
         String[] names = input.split(",");
         return isNameLengthValid(names) && isNotDuplicatedName(names);
     }
 
-    public static boolean isValidRounds(String input) {
+    public static boolean validRound(String input) {
         int round = 0;
         try {
             round = Integer.parseInt(input);

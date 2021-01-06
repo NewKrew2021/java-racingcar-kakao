@@ -1,6 +1,6 @@
 package racingcar.util;
 
-import racingcar.util.InputValidChecker;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
@@ -8,25 +8,29 @@ import static org.assertj.core.api.Assertions.*;
 public class InputValidCheckerTest {
 
     @Test
+    @DisplayName("유효한 이름 글자수 테스트")
     public void validNameLengthCheck() {
-        assertThat(InputValidChecker.isValidNames("aaaa")).isTrue();
+        assertThat(InputValidChecker.validNames("aaaa")).isTrue();
     }
 
     @Test
+    @DisplayName("유효하지 않은 이름 글자수 테스트")
     public void invalidNameLengthCheck() {
-        assertThat(InputValidChecker.isValidNames("aaaaaa")).isFalse();
+        assertThat(InputValidChecker.validNames("aaaaaa")).isFalse();
     }
 
     @Test
+    @DisplayName("중복된 이름 테스트")
     public void nameDuplicationCheck() {
-        assertThat(InputValidChecker.isValidNames("aaa,aaa,bbb")).isFalse();
-        assertThat(InputValidChecker.isValidNames("aaa,bbb,aaa")).isFalse();
+        assertThat(InputValidChecker.validNames("aaa,aaa,bbb")).isFalse();
+        assertThat(InputValidChecker.validNames("aaa,bbb,aaa")).isFalse();
     }
 
     @Test
+    @DisplayName("라운드 유효값 테스트")
     public void validRoundCheck() {
-        assertThat(InputValidChecker.isValidRounds("bb")).isFalse();
-        assertThat(InputValidChecker.isValidRounds("-1")).isFalse();
-        assertThat(InputValidChecker.isValidRounds("1")).isTrue();
+        assertThat(InputValidChecker.validRound("bb")).isFalse();
+        assertThat(InputValidChecker.validRound("-1")).isFalse();
+        assertThat(InputValidChecker.validRound("1")).isTrue();
     }
 }
