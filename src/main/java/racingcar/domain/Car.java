@@ -5,22 +5,22 @@ import racingcar.CarNameInvalidException;
 public class Car {
 
     private static final int MOVEMENT = 1;
-    private static final int NAME_MAX_LENGTH = 5;
     private static final int SPEED = 4;
-    private static final String ERROR_MESSAGE = "잘못된 형식의 이름입니다 : ";
 
     private int position;
-    private final String name;
+    private final Name name;
 
     public Car(String name){
-        if(!isValidName(name)) {
-            throw new CarNameInvalidException(ERROR_MESSAGE, name);
-        }
-        this.name = name;
+        this.name = new Name(name);
+    }
+
+    Car(String name, int position) {
+        this.name = new Name(name);
+        this.position = position;
     }
 
     public CarInfo getCarInfo() {
-        return new CarInfo(this.name, this.position);
+        return new CarInfo(this.name.getName(), this.position);
     }
 
     public void nextStep(int currentSpeed) {
@@ -31,10 +31,6 @@ public class Car {
 
     public boolean isCarGo(int currentSpeed) {
         return currentSpeed >= SPEED;
-    }
-
-    private boolean isValidName(String name) {
-        return name.length() <= NAME_MAX_LENGTH;
     }
 
 }

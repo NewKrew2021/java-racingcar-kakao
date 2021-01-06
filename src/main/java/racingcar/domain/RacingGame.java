@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import racingcar.CarNameInvalidException;
 import racingcar.domain.Car;
 import racingcar.domain.CarInfo;
 
@@ -25,24 +26,21 @@ public class RacingGame {
         winners = new Winners(cars);
     }
 
-    private List<String> splitName(String str) {
-        return Arrays.asList(str.split(DEFAULT_SPLIT_DELIMITER));
-    }
-
     public RacingGame(List<Car> cars) {
-        this.cars = new ArrayList<>();
-        for (Car car : cars) {
-            addCar(car);
-        }
+        this.cars = cars;
         winners = new Winners(cars);
     }
 
     private void addCar(String name) {
-        cars.add(new Car(name));
+        try {
+            cars.add(new Car(name));
+        } catch (CarNameInvalidException carNameInvalidException) {
+            carNameInvalidException.printErrorMessage(name);
+        }
     }
 
-    private void addCar(Car car) {
-        cars.add(car);
+    private List<String> splitName(String str) {
+        return Arrays.asList(str.split(DEFAULT_SPLIT_DELIMITER));
     }
 
     public void racing() {

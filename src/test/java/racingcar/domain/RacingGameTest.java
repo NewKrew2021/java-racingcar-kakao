@@ -32,26 +32,31 @@ public class RacingGameTest {
     }
 
     @Test
+    void splitUnderFiveTest(){
+        racingGame = new RacingGame("abcdef,a,b");
+        racingGame.racing();
+        List<CarInfo> carInfos = racingGame.getStatus();
+        List<String> carNames = carInfos.stream().map(CarInfo::getName).collect(Collectors.toList());
+        assertThat(carNames).containsExactly("a","b");
+    }
+
+    @Test
     void singleWinnerTest() {
-        Car car1 = new Car("yell");
+        Car car1 = new Car("yell", 1);
         Car car2 = new Car("dino");
         Car car3 = new Car("pobi");
 
-        car1.nextStep(SPEED);
         racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
-
         assertThat(racingGame.findWinners()).containsExactly("yell");
     }
 
     @Test
     void multiWinnersTest(){
-        Car car1 = new Car("yell");
-        Car car2 = new Car("dino");
-        Car car3 = new Car("pobi");
+        Car car1 = new Car("yell", 3);
+        Car car2 = new Car("dino", 1);
+        Car car3 = new Car("pobi", 3);
 
-        car1.nextStep(SPEED); car3.nextStep(SPEED);
         racingGame = new RacingGame(Arrays.asList(car1, car2, car3));
-
         assertThat(racingGame.findWinners()).containsExactly("yell", "pobi");
     }
 
