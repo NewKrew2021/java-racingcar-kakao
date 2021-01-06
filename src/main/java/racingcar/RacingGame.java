@@ -34,7 +34,7 @@ public class RacingGame {
     }
 
     private static boolean isBlank(String input) {
-        return input.equals("") || input == null;
+        return input == null || input.equals("");
     }
 
     public void moveCars() {
