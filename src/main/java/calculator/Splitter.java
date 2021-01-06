@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class Splitter implements AbstractSplitter {
     public List<Integer> split(Input input) {
-        if(input.isEmpty()){
+        if (input.isEmpty()) {
             return Arrays.asList(0);
         }
 

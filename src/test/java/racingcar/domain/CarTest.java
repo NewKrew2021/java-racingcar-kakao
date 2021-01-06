@@ -13,7 +13,7 @@ public class CarTest {
     private Car car;
 
     @BeforeEach
-    void createCar(){
+    void createCar() {
         car = new Car("dummy");
     }
 
@@ -25,9 +25,9 @@ public class CarTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"3,0","4,1"})
+    @CsvSource({"3,0", "4,1"})
     @DisplayName("3이하 정지, 4이상 전진 테스트")
-    void tryForwardTest(int randomResult, int nextLocation){
+    void tryForwardTest(int randomResult, int nextLocation) {
         car.tryForward(randomResult);
         assertThat(car.getLocation()).isEqualTo(nextLocation);
     }

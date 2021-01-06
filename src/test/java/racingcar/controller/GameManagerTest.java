@@ -18,7 +18,7 @@ public class GameManagerTest {
 
     @Test
     void setCars() {
-        GameManager gameManager = new GameManager(Arrays.asList("jayk","jack"),0);
+        GameManager gameManager = new GameManager(Arrays.asList("jayk", "jack"), 0);
         List<Car> cars = gameManager.getCars();
 
         assertThat(cars.size()).isEqualTo(2);

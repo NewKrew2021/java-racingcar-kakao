@@ -17,8 +17,8 @@ public class Car {
     }
 
     public void tryForward(int randomResult) {
-        if(isForword(randomResult)) {
-            this.location += + MOVE_FORWARD;
+        if (isForword(randomResult)) {
+            this.location += +MOVE_FORWARD;
         }
     }
 

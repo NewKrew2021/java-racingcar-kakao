@@ -10,7 +10,7 @@ public class GameManager {
     private final List<Car> cars;
     private final int gameTime;
 
-    public GameManager(){
+    public GameManager() {
         this(new ArrayList<>(), 0);
     }
 
@@ -22,7 +22,7 @@ public class GameManager {
     public void playGame() {
         Output.printResultStart();
         Output.printSimulationResult(cars);
-        for(int i = 0; i < gameTime; ++i) {
+        for (int i = 0; i < gameTime; ++i) {
             move();
             Output.printSimulationResult(cars);
         }
@@ -31,7 +31,7 @@ public class GameManager {
 
     private int getMaxLocation() {
         int max = 0;
-        for(Car car: cars){
+        for (Car car : cars) {
             max = Math.max(max, car.getLocation());
         }
         return max;
@@ -47,14 +47,14 @@ public class GameManager {
     }
 
     private void move() {
-        for(Car car: cars){
+        for (Car car : cars) {
             car.tryForward(RandomNumber.getRandomNumber());
         }
     }
 
     private List<Car> createCars(List<String> nameList) {
         List<Car> cars = new ArrayList<>();
-        for(String name: nameList) {
+        for (String name : nameList) {
             cars.add(new Car(name));
         }
         return cars;

@@ -6,7 +6,7 @@ public class Input {
     private final String userInput;
     private AbstractSplitter splitter;
 
-    Input(String userInput){
+    Input(String userInput) {
         this.userInput = userInput;
 
         splitter = new Splitter();
@@ -22,13 +22,13 @@ public class Input {
         });
     }
 
-    public List<Integer> split(){
+    public List<Integer> split() {
         List<Integer> list = splitter.split(this);
         validate(list);
         return list;
     }
 
-    public String getInput(){
+    public String getInput() {
         return userInput;
     }
 

@@ -7,11 +7,11 @@ import java.util.Scanner;
 public class Input {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static int getGameTime(){
+    public static int getGameTime() {
         return scanner.nextInt();
     }
 
-    public static List<String> getNames(){
+    public static List<String> getNames() {
         return getSplitName(scanner.nextLine());
     }
 
