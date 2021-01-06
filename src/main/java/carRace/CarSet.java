@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public class CarSet {
 
+    private static final int BOUND_OF_RANDOM_NUMBER = 10;
     List<Car> carList;
 
     public CarSet(String[] names) {
@@ -28,7 +29,7 @@ public class CarSet {
         List<Integer> numbers = new ArrayList<>();
 
         for(int i = 0; i < carList.size(); i++){
-            numbers.add(rd.nextInt(10));
+            numbers.add(rd.nextInt(BOUND_OF_RANDOM_NUMBER));
         }
 
         return numbers;
