@@ -30,10 +30,8 @@ public class CarRacingProgram {
     }
 
     public void race(){
-        CarRacingInfoPrint.printCarListInputPhrase();
         carList = insertCarNamesToCarList();
 
-        CarRacingInfoPrint.printRaceCountPhrase();
         totalMoveCount = RacingInfoScanner.insertRaceTryCount();
 
         CarRacingInfoPrint.printResultPhrase();
