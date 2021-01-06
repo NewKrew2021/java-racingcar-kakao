@@ -13,7 +13,7 @@ public class RacingGame {
     }
 
     public void race() {
-        this.cars.moveCars(getRandomNo());
+        this.cars.moveCars();
         this.tryNo--;
     }
 
@@ -27,10 +27,6 @@ public class RacingGame {
 
     public Cars getCars(){
         return this.cars;
-    }
-
-    private int getRandomNo() {
-        return (int) (Math.random() * 10);
     }
 
 }
