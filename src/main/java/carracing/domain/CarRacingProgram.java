@@ -8,12 +8,11 @@ public class CarRacingProgram {
     private List<Car> carList;
     private int totalMoveCount;
     private int maxMoveDistance;
-    private Scanner sc;
+
     private Random random;
 
     public CarRacingProgram() {
         carList = new ArrayList<>();
-        sc = new Scanner(System.in);
     }
 
     public Random getRandomInstance() {
@@ -24,16 +23,22 @@ public class CarRacingProgram {
         return getRandomInstance().nextInt(10);
     }
 
-    public void insertRaceTryCount() {
-        totalMoveCount = sc.nextInt();
+    public static List<Car> insertCarNamesToCarList() {
+        List<Car> carList = new ArrayList<>();
+        String[] input = RacingInfoScanner.insertCarNames().split(",");
+        for (int i = 0; i < input.length; i++) {
+            carList.add(new Car(input[i]));
+        }
+
+        return carList;
     }
 
     public void race(){
         System.out.println(CarRacingProgramPhrase.CAR_LIST_INPUT_PHRASE);
-        insertCarNamesToCarList();
+        carList = insertCarNamesToCarList();
 
         System.out.println(CarRacingProgramPhrase.RACE_COUNT_PHRASE);
-        insertRaceTryCount();
+        totalMoveCount = RacingInfoScanner.insertRaceTryCount();
 
         System.out.println(CarRacingProgramPhrase.RESULT_PHRASE);
         for (int i = 0; i < totalMoveCount; i++) {
@@ -43,12 +48,7 @@ public class CarRacingProgram {
         printRaceWinners(findRaceWinner());
     }
 
-    public void insertCarNamesToCarList() throws RuntimeException {
-        String[] input = sc.nextLine().split(",");
-        for (int i = 0; i < input.length; i++) {
-            carList.add(new Car(input[i]));
-        }
-    }
+
 
     public void playOneCycle(){
         for (int i = 0; i < carList.size(); i++) {
