@@ -15,7 +15,7 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(names, finalRound);
 
         int number = game.getRandomNumber();
-        assertThat((number >= RacingGame.MIN_RAND_NUMBER && number <= RacingGame.MAX_RAND_NUMBER)).isTrue();
+        assertThat(number).isBetween(RacingGame.MIN_RAND_NUMBER, RacingGame.MAX_RAND_NUMBER);
     }
 
     @Test
