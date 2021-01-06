@@ -6,5 +6,4 @@ public class Main {
         RacingGame racingGame = new RacingGame();
         racingGame.run();
     }
-
 }
