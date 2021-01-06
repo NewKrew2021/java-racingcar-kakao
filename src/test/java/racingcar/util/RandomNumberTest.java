@@ -1,6 +1,7 @@
-package racingcar;
+package racingcar.util;
 
 import org.junit.jupiter.api.RepeatedTest;
+import racingcar.util.RandomNumber;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

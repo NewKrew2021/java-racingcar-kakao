@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.controller.GameManager;
+import racingcar.view.Input;
+import racingcar.view.Output;
+
 import java.util.List;
 
 public class Main {

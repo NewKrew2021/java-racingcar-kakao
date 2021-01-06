@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.util;
 
 public class RandomNumber {
     static final int MAX = 10;

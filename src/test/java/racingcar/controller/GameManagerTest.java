@@ -1,6 +1,8 @@
-package racingcar;
+package racingcar.controller;
 
 import org.junit.jupiter.api.Test;
+import racingcar.controller.GameManager;
+import racingcar.domain.Car;
 
 import java.util.*;
 
