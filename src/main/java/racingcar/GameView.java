@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameView {
 
@@ -14,19 +15,14 @@ public class GameView {
 
     public void gameResult(List<Car> winners) {
 
-        for (int i = 0; i < winners.size(); i++) {
-            System.out.print(convertCarName(winners, i));
-        }
-        System.out.println("가 최종 우승했습니다.");
+        System.out.println(convertCarName(winners) + "가 최종 우승했습니다.");
     }
 
-    public String convertCarName(List<Car> winners, int index) {
+    public String convertCarName(List<Car> winners) {
 
-        String name = winners.get(index).getName();
-        if (index == winners.size() - 1) {
-            return name;
-        }
-        return name + ", ";
+        return winners.stream()
+                      .map(Car::getName)
+                      .collect(Collectors.joining(", "));
     }
 
     public void print(String statement) {
