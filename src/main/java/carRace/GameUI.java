@@ -16,7 +16,7 @@ public class GameUI {
     //이렇게 초기화 블럭을 사용하는게 괜찮은지 모르겠습니다.
     //아니면 controller에서 scanner객체를 생성시킨다음에
     //UI메소드들을 호출할때마다 인자로 넘겨줄까요?
-    
+
     public static void main(String[] args) {
         GameController game = new GameController();
         game.run();
@@ -75,12 +75,35 @@ public class GameUI {
     }
 
     public static void printAllCars(CarSet carSet) {
-        System.out.println(carSet);
+        CarDTOs informations = carSet.getCarInformations();
+
+        for(int i = 0; i < informations.size(); i++){
+            String name = informations.getNameOf(i);
+            int location = informations.getLocationOf(i);
+
+            String statusOfOneCar = stringBuildForOneCar(name, location);
+            System.out.println(statusOfOneCar);
+        }
+
+        System.out.println();
     }
 
-    public static void printWinners(List<Car> winners) {
-        List<String> winnerNames = winners.stream().map(Car::getName).collect(Collectors.toList());
-        System.out.print(String.join(", ", winnerNames));
-        System.out.println(" 가 최종 우승했습니다.");
+    private static String stringBuildForOneCar(String name, int location){
+        String builded = name + " : ";
+        for(int i = 0; i < location; i++){
+            builded += '-';
+        }
+        return builded;
+    }
+
+    public static void printWinners(Winners winners) {
+        List<String> names = winners.getWinnersNames();
+
+        String formattedNames = names.get(0);
+        for(int i = 1; i < names.size(); i++){
+            formattedNames += ", " + names.get(i);
+        }
+
+        System.out.println(formattedNames + " 가 최종 우승했습니다.");
     }
 }

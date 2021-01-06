@@ -7,21 +7,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CarTest {
 
     @Test
-    public void toStringTest(){
-        Car testCar = new Car("test");
-        testCar.judgeAndGo(5);
-        testCar.judgeAndGo(6);
-        testCar.judgeAndGo(1);
-        assertThat(testCar.toString()).isEqualTo("test : --");
+    public void getNameTest(){
+        Car car = new Car("holly");
+        assertThat(car.getName()).isEqualTo("holly");
     }
 
     @Test
-    public void compareToTest() {
-        Car testCar1 = new Car("test1");
-        Car testCar2 = new Car("test2");
-        testCar1.judgeAndGo(5);
-        testCar2.judgeAndGo(5);
-        testCar2.judgeAndGo(5);
-        assertThat(testCar1.compareTo(testCar2)).isGreaterThan(0);
+    public void getLocationTest(){
+        Car car = new Car("mother", 123);
+        assertThat(car.getLocation()).isEqualTo(123);
+    }
+
+    @Test
+    public void getDTOTest(){
+        Car car = new Car("jolly", 123);
+        assertThat(car.getDTO()).isEqualTo(
+                new CarDTO("jolly", 123)
+        );
+    }
+
+    @Test
+    public void judgeAndGo_Test1(){
+        Car car = new Car("mother");
+        car.judgeAndGo(3);
+        assertThat(car.getLocation()).isEqualTo(0);
+    }
+
+    @Test
+    public void judgeAndGo_Test2(){
+        Car car = new Car("mother");
+        car.judgeAndGo(4);
+        assertThat(car.getLocation()).isEqualTo(1);
     }
 }

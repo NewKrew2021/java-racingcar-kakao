@@ -3,6 +3,7 @@ package carRace;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,39 +11,51 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarSetTest {
 
-    private CarSet testCarSet;
+    CarSet testCars;
 
     @BeforeEach
-    public void setUp() {
-        String[] testNames = {"car1", "car2", "car3", "car4"};
-        testCarSet = new CarSet(testNames);
+    public void setUp(){
+        testCars = new CarSet(
+                Arrays.asList(
+                        new Car("test1", 6),
+                        new Car("test2", 2),
+                        new Car("test3", 4),
+                        new Car("test4", 5),
+                        new Car("test5", 10),
+                        new Car("test6", 10)
+                )
+        );
     }
 
     @Test
-    public void toStringTest() {
-        List<Integer> numbers = Arrays.asList(0, 3, 4, 9);
-        testCarSet.moveAllCars(numbers);
-        String expectedString = "car1 : \ncar2 : \ncar3 : -\ncar4 : -\n";
-        assertThat(testCarSet.toString()).isEqualTo(expectedString);
+    public void moveAllCarsTest(){
+        testCars.moveAllCars(Arrays.asList(1, 2, 3, 4, 5, 6));
+
+        CarDTOs realResult = testCars.getCarInformations();
+        CarDTOs expectedResult = new CarDTOs(
+                Arrays.asList(
+                        new CarDTO("test1", 6),
+                        new CarDTO("test2", 2),
+                        new CarDTO("test3", 4),
+                        new CarDTO("test4", 5 + 1),
+                        new CarDTO("test5", 10 + 1),
+                        new CarDTO("test6", 10 + 1)
+                )
+        );
+
+        assertThat(realResult).isEqualTo(expectedResult);
     }
 
     @Test
-    public void getWinners(){
-        /* phase 1 (0, 0, 1, 1)*/
-        List<Integer> numbers1 = Arrays.asList(0, 3, 4, 9);
-        testCarSet.moveAllCars(numbers1);
+    public void getWinnersTest(){
+        Winners realWinners = testCars.getWinners();
+        Winners expectedWinners = new Winners(
+                Arrays.asList(
+                        new Car("test5", 10),
+                        new Car("test6", 10)
+                )
+        );
 
-        /* phase 2 (0, 1, 1, 1)*/
-        List<Integer> numbers2 = Arrays.asList(0, 4, 3, 2);
-        testCarSet.moveAllCars(numbers2);
-
-        /* phase 3 (1, 1, 2, 2)*/
-        List<Integer> numbers3 = Arrays.asList(4, 3, 6, 9);
-        testCarSet.moveAllCars(numbers3);
-
-        List<Car> winners = testCarSet.getWinners();
-
-        String expectedString = "[car3 : --, car4 : --]";
-        assertThat(winners.toString()).isEqualTo(expectedString);
+        assertThat(realWinners).isEqualTo(expectedWinners);
     }
 }

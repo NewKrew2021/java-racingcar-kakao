@@ -1,6 +1,8 @@
 package carRace;
 
-public class Car implements Comparable<Car>{
+import java.util.Objects;
+
+public class Car{
 
     private static final int LOWER_LIMIT_OF_MOVE = 4;
 
@@ -11,13 +13,21 @@ public class Car implements Comparable<Car>{
         this.name = name;
     }
 
+    public Car(String name, int location){
+        this(name);
+        this.location = location;
+    }
+
     public String getName() {
         return name;
     }
 
-    @Override
-    public int compareTo(Car otherCar) {
-        return otherCar.location - location;
+    public int getLocation(){
+        return location;
+    }
+
+    public CarDTO getDTO(){
+        return new CarDTO(name, location);
     }
 
     public void judgeAndGo(int randomNo) {
@@ -34,11 +44,11 @@ public class Car implements Comparable<Car>{
         location++;
     }
 
-    public String toString(){
-        StringBuilder sb = new StringBuilder(name + " : ");
-        for(int i = 0; i < location; i++){
-            sb.append('-');
-        }
-        return sb.toString();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return location == car.location && Objects.equals(name, car.name);
     }
 }
