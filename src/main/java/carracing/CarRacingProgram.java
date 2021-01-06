@@ -3,14 +3,12 @@ package carracing;
 import java.util.*;
 
 public class CarRacingProgram {
-    private List<Car> cars;
-    private int totalMoveCount;
+
     private int maxMoveDistance;
     private Scanner sc;
     private Random random;
 
     public CarRacingProgram() {
-        cars = new ArrayList<>();
         sc = new Scanner(System.in);
         random = new Random();
     }
@@ -19,33 +17,35 @@ public class CarRacingProgram {
         return random.nextInt(10);
     }
 
-    private void insertRaceTryCount() {
-        totalMoveCount = sc.nextInt();
+    private int insertRaceTryCount() {
+        return sc.nextInt();
     }
 
     public void race(){
+        List<Car> cars = new ArrayList<>();
+
         System.out.println(CarRacingProgramPhrase.CAR_LIST_INPUT_PHRASE);
-        insertCarNamesToCars();
+        insertCarNamesToCars(cars);
 
         System.out.println(CarRacingProgramPhrase.RACE_COUNT_PHRASE);
-        insertRaceTryCount();
+        int round = insertRaceTryCount();
 
         System.out.println(CarRacingProgramPhrase.RESULT_PHRASE);
-        for (int i = 0; i < totalMoveCount; i++) {
-            playOneCycleAndPrintCarPosition();
+        for (int i = 0; i < round; i++) {
+            playOneCycleAndPrintCarPosition(cars);
         }
 
-        printRaceWinners(findRaceWinners());
+        printRaceWinners(findRaceWinners(cars));
     }
 
-    private void insertCarNamesToCars() throws RuntimeException {
+    private void insertCarNamesToCars(List<Car> cars) throws RuntimeException {
         String[] names = sc.nextLine().split(",");
         for (String name : names) {
             cars.add(new Car(name));
         }
     }
 
-    private void playOneCycleAndPrintCarPosition(){
+    private void playOneCycleAndPrintCarPosition(List<Car> cars){
         for (Car car : cars) {
             checkMovingConditionAfterMoveCar(car);
             System.out.println(car.getCarInfoString());
@@ -63,7 +63,7 @@ public class CarRacingProgram {
         return Math.max(maxMoveDistance, carPosition);
     }
 
-    private List<String> findRaceWinners(){
+    private List<String> findRaceWinners(List<Car> cars){
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
             compareMaxMoveDistanceToCarMoveCount(winners, car);
