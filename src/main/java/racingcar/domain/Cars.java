@@ -1,18 +1,19 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Racing {
-    private List<Car> cars;
+public class Cars {
+    private static final int INITIAL_DISTANCE = 0;
+    private final List<Car> cars;
 
-    public Racing(String input) {
+    public Cars(String input) {
         cars = new ArrayList<>();
-        String[] carName = input.split(",");
+        String[] names = input.split(",");
 
-        for (int i = 0; i < carName.length; i++) {
-            cars.add(new Car(carName[i], 0));
+        for (String name : names) {
+            cars.add(new Car(name, INITIAL_DISTANCE));
         }
     }
 
@@ -20,17 +21,9 @@ public class Racing {
         return cars;
     }
 
-    public CarStatus goStop(int number) {
-        if (number >= 4)
-            return CarStatus.Go;
-
-        return CarStatus.Stop;
-    }
-
-    public void moveAll(List<Integer> numbers) {
-        for (int i = 0; i < cars.size(); i++) {
-            CarStatus status = goStop(numbers.get(i));
-            cars.get(i).move(status);
+    public void moveAll(MovingStrategy movingStrategy) {
+        for (Car car : cars) {
+            car.move(movingStrategy);
         }
     }
 
