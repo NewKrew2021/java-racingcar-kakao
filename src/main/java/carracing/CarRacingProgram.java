@@ -19,7 +19,7 @@ public class CarRacingProgram {
         return random.nextInt(10);
     }
 
-    public void insertRaceTryCount() {
+    private void insertRaceTryCount() {
         totalMoveCount = sc.nextInt();
     }
 
@@ -38,28 +38,28 @@ public class CarRacingProgram {
         printRaceWinners(findRaceWinners());
     }
 
-    public void insertCarNamesToCars() throws RuntimeException {
+    private void insertCarNamesToCars() throws RuntimeException {
         String[] input = sc.nextLine().split(",");
         for (int i = 0; i < input.length; i++) {
             cars.add(new Car(input[i]));
         }
     }
 
-    public void playOneCycle(){
+    private void playOneCycle(){
         for (int i = 0; i < cars.size(); i++) {
             checkMovingCondition(i);
         }
         System.out.println();
     }
 
-    public void checkMovingCondition(int index){
+    private void checkMovingCondition(int index){
         if(getRandomNumber() >= 4){
             maxMoveDistance = Math.max(maxMoveDistance, cars.get(index).go());
         }
         System.out.println(cars.get(index).getCarInfoString());
     }
 
-    public List<String> findRaceWinners(){
+    private List<String> findRaceWinners(){
         List<String> winners = new ArrayList<>();
         for (int i = 0; i < cars.size(); i++) {
             compareMaxMoveDistanceToCarMoveCount(winners, i);
@@ -68,13 +68,13 @@ public class CarRacingProgram {
         return winners;
     }
 
-    public void compareMaxMoveDistanceToCarMoveCount(List<String> winners, int carIndex){
+    private void compareMaxMoveDistanceToCarMoveCount(List<String> winners, int carIndex){
         if(cars.get(carIndex).getPosition() == maxMoveDistance){
             winners.add(cars.get(carIndex).getName());
         }
     }
 
-    public void printRaceWinners(List<String> winners){
+    private void printRaceWinners(List<String> winners){
         StringBuilder winnerBuilder = new StringBuilder();
 
         for (int i = 0; i < winners.size()-1; i++) {
