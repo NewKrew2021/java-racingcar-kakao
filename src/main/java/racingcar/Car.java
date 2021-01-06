@@ -1,31 +1,35 @@
 package racingcar;
 
-import java.util.List;
-
 public class Car {
     private String name;
-    private int loccation;
+    private int location;
 
     public Car(String name){
         this.name = name;
-        this.loccation = 0;
+        this.location = 0;
     }
 
     public String getName(){
         return this.name;
     }
 
-    public int getLoccation(){
-        return this.loccation;
+    public int getLocation(){
+        return this.location;
     }
 
     public void move(int condition){
-        loccation += condition;
-        printLocation();
+        location += condition;
     }
 
-    private void printLocation(){
-        Output.printRoundResult(name, loccation);
+    public void printCarLocation(){
+        Output.printRoundResult(name, location);
+    }
+
+    public String findWinner(int winnerLocation){
+        if(location == winnerLocation){
+            return name + " ";
+        }
+        return "";
     }
 
 }

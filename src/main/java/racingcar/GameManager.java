@@ -1,6 +1,6 @@
 package racingcar;
 
-import java.util.OptionalInt;
+import racingcar.exception.InvalidRoundLengthException;
 
 public class GameManager {
     private int round;
@@ -21,9 +21,16 @@ public class GameManager {
     private void startRound() {
         for (int i = 0; i < round; i++) {
             cars.move();
+            printRoundResult();
         }
     }
 
+
+
+    private void printRoundResult(){
+        cars.printRoundResult();
+        Output.printNewLine();
+    }
     public void setRound(int round) {
         roundLengthCheck(round);
         this.round = round;
@@ -31,14 +38,16 @@ public class GameManager {
 
     private void roundLengthCheck(int round) {
         if (round < 1){
-            throw new RuntimeException("횟수를 1회 이상 입력해주세요.");
+            throw new InvalidRoundLengthException("횟수를 1회 이상 입력해주세요.");
         }
     }
 
 
     public void result(){
-        Output.printWinner(cars.checkWinner());
+        Output.printWinner(cars.getWinner());
     }
+
+
 
 
 
