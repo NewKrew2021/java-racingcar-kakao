@@ -57,7 +57,7 @@ public class CarTest {
         Car car1 = CarFixture.createCar("car1", 2);
         Car car2 = CarFixture.createCar("car2", 1);
 
-        assertThat(car1.isForwardThan(car2)).isTrue();
+        assertThat(car1.isLeading(car2)).isTrue();
     }
 
     @Test

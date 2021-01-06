@@ -28,7 +28,7 @@ public class Car {
         }
     }
 
-    public boolean isForwardThan(Car car) {
+    public boolean isLeading(Car car) {
         return position > car.position;
     }
 

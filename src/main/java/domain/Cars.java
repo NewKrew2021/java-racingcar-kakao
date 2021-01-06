@@ -30,20 +30,20 @@ public class Cars {
         return findSamePositionWith(findWinner());
     }
 
-    private List<Car> findSamePositionWith(Car winner) {
+    private List<Car> findSamePositionWith(Car car) {
         return cars.stream()
-                .filter(car -> car.isSamePositionWith(winner))
+                .filter(it -> it.isSamePositionWith(car))
                 .collect(Collectors.toList());
     }
 
     private Car findWinner() {
         Car winner = cars.get(FIRST_CAR_INDEX);
         return cars.stream()
-                .reduce(winner, this::findForwardingCar);
+                .reduce(winner, this::findLeadingCar);
     }
 
-    private Car findForwardingCar(Car car1, Car car2) {
-        if (car2.isForwardThan(car1)) {
+    private Car findLeadingCar(Car car1, Car car2) {
+        if (car2.isLeading(car1)) {
             return car2;
         }
         return car1;
