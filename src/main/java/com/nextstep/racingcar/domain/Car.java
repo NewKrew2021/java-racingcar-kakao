@@ -1,4 +1,4 @@
-package com.nextstep.racingcar.racingcar;
+package com.nextstep.racingcar.domain;
 
 public class Car {
 

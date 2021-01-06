@@ -1,10 +1,10 @@
-package com.nextstep.racingcar.ui;
+package com.nextstep.racingcar.view;
 
 import com.nextstep.racingcar.utils.InputCheck;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class UserInput {
+public class InputView {
 
   private final Scanner SC = new Scanner(System.in);
 

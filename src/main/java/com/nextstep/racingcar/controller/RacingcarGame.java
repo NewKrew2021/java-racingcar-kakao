@@ -1,15 +1,17 @@
-package com.nextstep.racingcar.racingcar;
+package com.nextstep.racingcar.controller;
 
-import com.nextstep.racingcar.ui.gameOutput;
-import com.nextstep.racingcar.ui.UserInput;
+import com.nextstep.racingcar.domain.Car;
+import com.nextstep.racingcar.domain.Racingcar;
+import com.nextstep.racingcar.view.OutputView;
+import com.nextstep.racingcar.view.InputView;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Simulator {
+public class RacingcarGame {
 
-  private gameOutput gameOutput;
-  private UserInput userInput;
+  private OutputView outputView;
+  private InputView inputView;
   private Racingcar racingcar;
   private String[] carNames;
   private int repeatCount;
@@ -25,8 +27,8 @@ public class Simulator {
   }
 
   private void initializeUI() {
-    userInput = new UserInput();
-    gameOutput = new gameOutput();
+    inputView = new InputView();
+    outputView = new OutputView();
   }
 
   private void getInputs() {
@@ -35,13 +37,13 @@ public class Simulator {
   }
 
   private void getCarNames() {
-    gameOutput.printRequestCarNames();
-    carNames = userInput.scanCarNames();
+    outputView.printRequestCarNames();
+    carNames = inputView.scanCarNames();
   }
 
   private void getRepeatCount() {
-    gameOutput.printRequestRepeatCount();
-    repeatCount = userInput.scanRepeatCount();
+    outputView.printRequestRepeatCount();
+    repeatCount = inputView.scanRepeatCount();
   }
 
   private void createNewRacingcarBasedOnInputs() {
@@ -53,7 +55,7 @@ public class Simulator {
   }
 
   private void run() {
-    gameOutput.printResultGuide();
+    outputView.printResultGuide();
     while (racingcar.isInProgress()) {
       runOneStep();
     }
@@ -61,10 +63,10 @@ public class Simulator {
 
   private void runOneStep() {
     racingcar.simulate();
-    gameOutput.printSimulationResults(racingcar.getCars());
+    outputView.printSimulationResults(racingcar.getCars());
   }
 
   private void outputWinners() {
-    gameOutput.printWinners(racingcar.getWinners());
+    outputView.printWinners(racingcar.getWinners());
   }
 }

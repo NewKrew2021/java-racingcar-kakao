@@ -1,11 +1,11 @@
-package com.nextstep.racingcar.ui;
+package com.nextstep.racingcar.view;
 
-import com.nextstep.racingcar.racingcar.Car;
+import com.nextstep.racingcar.domain.Car;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class gameOutput {
+public class OutputView {
 
   private final String CAR_UNIT_STEP_SYMBOL = "-";
 
