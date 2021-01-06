@@ -2,8 +2,9 @@ package racingcar;
 
 public class Car {
 
-    private int position = 0;
     private final int RANDOM_SCOPE = 10;
+
+    private int position = 0;
     private String name = "";
 
     public Car(String name, int position) {
@@ -12,7 +13,7 @@ public class Car {
     }
 
     public int makeRandomNumber(){
-        return ((int)(Math.random() * RANDOM_SCOPE) % RANDOM_SCOPE);
+        return ((int)(Math.random() * RANDOM_SCOPE));
     }
 
     public int getDistance(int distance){

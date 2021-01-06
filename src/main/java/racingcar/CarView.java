@@ -1,17 +1,14 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class CarView {
 
-    public static ArrayList<String> parseCarName(String text){
+    public static List<String> parseCarName(String text){
         return new ArrayList<String>(Arrays.asList(text.split(",")));
     }
 
-    public static void validateCarName(ArrayList<String> nameList) throws IllegalStateException {
+    public static void validateCarName(List<String> nameList) throws IllegalStateException {
         for (String name : nameList) {
             lengthValidationTest(name);
         }
@@ -47,7 +44,7 @@ public class CarView {
         System.out.println();
     }
 
-    public static void printWinnerCar(ArrayList<String> winners) {
+    public static void printWinnerCar(List<String> winners) {
         System.out.println(String.join(",", winners) + "가 최종 우승했습니다.");
     }
 
