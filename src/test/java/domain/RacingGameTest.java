@@ -1,12 +1,11 @@
 package domain;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class RacingGameTest {
     @Test
@@ -16,7 +15,7 @@ public class RacingGameTest {
         RacingGame game = new RacingGame(names, finalRound);
 
         int number = game.getRandomNumber();
-        assertThat((number >= RacingGame.MIN_RAND_NUMBER && number <= RacingGame.MAX_RAND_NUMBER), is(true));
+        assertThat((number >= RacingGame.MIN_RAND_NUMBER && number <= RacingGame.MAX_RAND_NUMBER)).isTrue();
     }
 
     @Test
@@ -27,10 +26,10 @@ public class RacingGameTest {
 
         game.playRound();
         game.playRound();
-        assertThat(game.isEnd(), is(false));
+        assertThat(game.isEnd()).isFalse();
 
         game.playRound();
-        assertThat(game.isEnd(), is(true));
+        assertThat(game.isEnd()).isTrue();
     }
 
     @Test
@@ -46,6 +45,6 @@ public class RacingGameTest {
             game.playRound();
         }
 
-        assertThat(game.getWinners(), is(Arrays.asList("crong", "honux")));
+        assertThat(game.getWinners()).isEqualTo(Arrays.asList("crong", "honux"));
     }
 }

@@ -1,26 +1,27 @@
 package view;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class InputViewTest {
     @Test
     public void parseNamesTest() throws Exception {
         String text = "pobi,crong,honux";
-        assertThat(InputView.parseNames(text), is(new String[]{"pobi", "crong", "honux"}));
+        assertThat(InputView.parseNames(text)).isEqualTo(new String[]{"pobi", "crong", "honux"});
     }
 
-    @Test(expected = LengthOfNameException.class)
-    public void lenNameTest() throws Exception {
+    @Test
+    public void lenNameTest() {
         String text = "alice,bob,charlie";
-        InputView.parseNames(text);
+        assertThatThrownBy(() -> InputView.parseNames(text))
+                .isInstanceOf(LengthOfNameException.class);
     }
 
-    @Test(expected = NumberOfNamesException.class)
-    public void numNamesTest() throws Exception {
+    @Test
+    public void numNamesTest() {
         String text = "alice";
-        InputView.parseNames(text);
+        assertThatThrownBy(() -> InputView.parseNames(text))
+                .isInstanceOf(NumberOfNamesException.class);
     }
 }

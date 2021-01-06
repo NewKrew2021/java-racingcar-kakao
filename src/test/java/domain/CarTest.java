@@ -1,9 +1,8 @@
 package domain;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
     private final Car car = new Car("vroom", 0);
@@ -13,9 +12,9 @@ public class CarTest {
         int number = RacingGame.MOVE_THRESHOLD;
 
         car.move(number);
-        assertThat(car.getPosition(), is(0));
+        assertThat(car.getPosition()).isEqualTo(0);
 
         car.move(number+1);
-        assertThat(car.getPosition(), is(1));
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 }
