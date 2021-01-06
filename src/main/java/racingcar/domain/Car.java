@@ -7,13 +7,14 @@ public class Car {
     private static final int MOVEMENT = 1;
     private static final int NAME_MAX_LENGTH = 5;
     private static final int SPEED = 4;
+    private static final String ERROR_MESSAGE = "잘못된 형식의 이름입니다 : ";
 
     private int position;
     private final String name;
 
     public Car(String name){
         if(!isValidName(name)) {
-            throw new CarNameInvalidException("잘못된 이름입니다.");
+            throw new CarNameInvalidException(ERROR_MESSAGE, name);
         }
         this.name = name;
     }
