@@ -29,9 +29,9 @@ public class Cars {
         }
     }
 
-    public void printPositions(){
+    public void printNameAndPositions(){
         for(Car car : cars){
-            car.printPosition();
+            car.printNameAndPosition();
         }
     }
 
