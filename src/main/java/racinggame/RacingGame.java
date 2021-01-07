@@ -4,7 +4,6 @@ import domain.Car;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class RacingGame {
     public static InputManager inputManager;
@@ -35,7 +34,7 @@ public class RacingGame {
     public void play() {
         Cars cars = new Cars(getCars());
         int tryCount = getCount();
-        printRacingGame(cars, tryCount);
+        moveCars(cars, tryCount);
         printHeads(cars);
     }
 
@@ -56,7 +55,7 @@ public class RacingGame {
         return Integer.parseInt(inputManager.getFromUser(COMMENT_HOWMANY_INPUT, countInputValidator));
     }
 
-    public void printRacingGame(Cars cars, int tryCount) {
+    public void moveCars(Cars cars, int tryCount) {
         System.out.println(COMMENT_RESULT);
         for (int i = 0; i < tryCount; i++) {
             cars.moveAll(RandomBasedMoveStrategy.getInstance());
