@@ -1,42 +1,50 @@
 package com.nextstep.racingcar.domain;
 
+import com.nextstep.racingcar.domain.exceptions.OutOfBoundNumberException;
+
 public class Car {
 
   private static final int MOVE_NUMBER = 4;
 
-  private final String name;
-  private int location;
+  private final CarName name;
+  private final CarLocation location;
 
   public Car(String carName) {
-    this.name = carName;
-    this.location = 0;
+    this(carName, 0);
   }
 
-  public CarResult run(int number) {
-    if (carShouldMove(number)) {
-      move();
-      return CarResult.MOVE;
+  public Car(String carName, int location) {
+    carName = carName.trim();
+    this.name = new CarName(carName);
+    this.location = new CarLocation(location);
+  }
+
+  public void move(int randomNumber) {
+    randomNumberCheck(randomNumber);
+    if (carShouldMove(randomNumber)) {
+      this.location.move();
     }
-    return CarResult.STOP;
   }
 
-  private void move() {
-    this.location += 1;
+  private void randomNumberCheck(int randomNumber) {
+    if (randomNumber < 0 || randomNumber > 9) {
+      throw new OutOfBoundNumberException("범위를 벗어난 숫자가 입력되었습니다.");
+    }
   }
 
-  private boolean carShouldMove(int number) {
-    return number >= MOVE_NUMBER;
+  private boolean carShouldMove(int randomNumber) {
+    return randomNumber >= MOVE_NUMBER;
+  }
+
+  public int max(int highest) {
+    return Math.max(this.location.getLocation(), highest);
   }
 
   public String getName() {
-    return this.name;
+    return this.name.getName();
   }
 
   public int getLocation() {
-    return this.location;
-  }
-
-  public String toString() {
-    return String.format("%s : %s\n", name, "-".repeat(location));
+    return this.location.getLocation();
   }
 }
