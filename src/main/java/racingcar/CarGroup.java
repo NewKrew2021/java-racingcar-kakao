@@ -8,7 +8,7 @@ public class CarGroup {
 
     private final List<Car> carGroup;
 
-    public static CarGroup createCarGroupWithName(List<String> names){
+    public static CarGroup createCarGroupWithName(List<String> names) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
             cars.add(new Car(name, 0));
@@ -21,14 +21,14 @@ public class CarGroup {
     }
 
     public void moveAll() {
-        for(Car car : carGroup){
+        for (Car car : carGroup) {
             car.move();
         }
     }
 
     private int getMaxPosition() {
         int maxPosition = 0;
-        for(Car car : carGroup) {
+        for (Car car : carGroup) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;

@@ -11,7 +11,7 @@ public class CarMain {
 
         CarOutputView.printRoundStart();
 
-        while(!game.isFinished()){
+        while (!game.isFinished()) {
             game.playRound();
             CarOutputView.printRoundResult(game);
         }

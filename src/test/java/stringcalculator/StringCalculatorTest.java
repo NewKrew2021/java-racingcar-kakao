@@ -38,7 +38,7 @@ public class StringCalculatorTest {
     @Test
     @DisplayName("음수가 들어오면 오류가 발생해야 한다.")
     void minusNumberTest() {
-        assertThatExceptionOfType(RuntimeException.class).isThrownBy(()->{
+        assertThatExceptionOfType(RuntimeException.class).isThrownBy(() -> {
             String data = "-1,2,3";
             StringCalculator.calculate(data);
         });

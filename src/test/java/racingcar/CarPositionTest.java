@@ -10,14 +10,14 @@ public class CarPositionTest {
 
     @Test
     @DisplayName("CarPosition 인스턴스를 생성하는 테스트")
-    void createTest(){
+    void createTest() {
         CarPosition carPosition = new CarPosition(0);
         assertThat(carPosition).isEqualTo(new CarPosition(0));
     }
 
     @Test
     @DisplayName("move 메서드로 이동하는지 확인하는 테스트")
-    void nameLengthTest(){
+    void nameLengthTest() {
         CarPosition carPosition = new CarPosition(0);
         carPosition.move(() -> true);
         carPosition.move(() -> true);

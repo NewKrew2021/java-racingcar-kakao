@@ -13,7 +13,7 @@ public class CarGroupTest {
 
     @Test
     @DisplayName("승리한 차 이름을 올바르게 하는지 확인한다.")
-    void getWinnerTest(){
+    void getWinnerTest() {
         Car hendoCar = new Car("hendo", 5);
         Car brodyCar = new Car("brody", 3);
         List<Car> carList = new ArrayList<Car>(Arrays.asList(hendoCar, brodyCar));

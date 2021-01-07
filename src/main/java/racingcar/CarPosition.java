@@ -11,7 +11,7 @@ public class CarPosition {
     }
 
     public int move(MovingStrategy strategy) {
-        if(strategy.isMoving()){
+        if (strategy.isMoving()) {
             carPosition += 1;
         }
         return carPosition;

@@ -15,18 +15,18 @@ public class CarName {
     }
 
     private void checkCarNameLength(String carName) {
-        if(carName.length() > MAX_LENGTH_OF_NAME){
+        if (carName.length() > MAX_LENGTH_OF_NAME) {
             throw new IllegalArgumentException(String.format("이름의 길이는 %d자 이하입니다.", MAX_LENGTH_OF_NAME));
         }
     }
 
     private void checkCarNameEmpty(String carName) {
-        if(carName.isEmpty()){
+        if (carName.isEmpty()) {
             throw new IllegalArgumentException("자동차의 이름 공백이어서는 안 됩니다.");
         }
     }
 
-    public String getCarName(){
+    public String getCarName() {
         return carName;
     }
 

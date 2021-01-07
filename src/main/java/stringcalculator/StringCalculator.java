@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
     static public int calculate(String data) throws RuntimeException {
-        if(isBlank(data)){
+        if (isBlank(data)) {
             return 0;
         }
         return sum(stringsToInts(extract(data).split(extractSeparator(data))));
@@ -28,9 +28,9 @@ public class StringCalculator {
         return data == null || data.isEmpty();
     }
 
-    static private int[] stringsToInts(String[] numbers){
+    static private int[] stringsToInts(String[] numbers) {
         int[] result = new int[numbers.length];
-        for(int i = 0 ; i < numbers.length ; ++i){
+        for (int i = 0; i < numbers.length; ++i) {
             result[i] = Integer.parseInt(numbers[i]);
             minusCheck(result[i]);
         }
@@ -38,12 +38,12 @@ public class StringCalculator {
     }
 
     private static void minusCheck(int number) {
-        if(number < 0){
+        if (number < 0) {
             throw new RuntimeException("음수가 입력되어서는 안됩니다.");
         }
     }
 
-    static private String addSeparator(String data){
+    static private String addSeparator(String data) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(data);
         if (m.find()) {
             return "|" + m.group(1);
@@ -51,7 +51,7 @@ public class StringCalculator {
         return "";
     }
 
-    static private String extract(String data){
+    static private String extract(String data) {
         Matcher m = Pattern.compile("//(.)\n(.*)").matcher(data);
         if (m.find()) {
             return m.group(2);

@@ -18,7 +18,7 @@ public class Car {
         return position.move(movingStrategy);
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position.getCarPosition();
     }
 

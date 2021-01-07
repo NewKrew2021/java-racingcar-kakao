@@ -11,7 +11,7 @@ public class CarOutputView {
     }
 
     public static void printRoundResult(CarGame game) {
-        for(Car car : game.getCarList()){
+        for (Car car : game.getCarList()) {
             System.out.println(car.getName() + " : " + String.join("", Collections.nCopies(car.getPosition(), "-")));
         }
         System.out.println();

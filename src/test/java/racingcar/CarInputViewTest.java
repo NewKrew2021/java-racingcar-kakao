@@ -13,7 +13,7 @@ public class CarInputViewTest {
 
     @Test
     @DisplayName("사용자의 입력된 텍스트를 올바르게 파싱하였는지 테스트한다.")
-    void parseCarNameTest(){
+    void parseCarNameTest() {
         String text = "hendo,brody,summer";
         List<String> nameList = CarInputView.parseCarName(text);
         assertAll(() -> assertThat(nameList).hasSize(3),
