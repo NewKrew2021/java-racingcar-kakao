@@ -18,4 +18,10 @@ public class PositionTest {
         position.goForward();
         assertThat(position.getPosition()).isEqualTo(2);
     }
+
+    @Test
+    public void getPositionValue() {
+        Position position = new Position(4);
+        assertThat(position.getPosition()).isEqualTo(4);
+    }
 }
