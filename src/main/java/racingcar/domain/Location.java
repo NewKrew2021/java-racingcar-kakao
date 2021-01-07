@@ -5,11 +5,11 @@ import java.util.Objects;
 public class Location {
     private int location;
 
-    public Location(){
+    public Location() {
         this(0);
     }
 
-    public Location(int location){
+    public Location(int location) {
         this.location = location;
     }
 
@@ -17,9 +17,10 @@ public class Location {
         return location;
     }
 
-    public void move(int condition){
+    public void move(int condition) {
         location += condition;
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

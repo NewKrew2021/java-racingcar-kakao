@@ -8,9 +8,9 @@ public class Name {
     private final int MAX_NAME_LENGTH = 5;
     private String name;
 
-    public Name(String name){
-        if (name.length() > MAX_NAME_LENGTH || name.isBlank()){
-            throw new InvalidCarNameLengthException("길이를 5이하로 설정해주세요");
+    public Name(String name) {
+        if (name.length() > MAX_NAME_LENGTH || name.isBlank()) {
+            throw new InvalidCarNameLengthException();
         }
         this.name = name;
     }

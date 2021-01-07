@@ -16,7 +16,7 @@ public class Round {
     }
 
     public void startRound(Cars cars) {
-        for (int i = 0; i < round; i++) {
+        for (int i = 0; i < this.round; i++) {
             cars.move();
             OutputView.print(cars.getRoundResult());
         }
