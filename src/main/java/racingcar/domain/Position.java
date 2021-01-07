@@ -6,11 +6,8 @@ public class Position {
 
     private int position;
 
-    public Position() {
-        this(1);
-    }
-
     public Position(int position) {
+        validatePositionValue(position);
         this.position = position;
     }
 
@@ -20,6 +17,12 @@ public class Position {
 
     public int getPosition() {
         return this.position;
+    }
+
+    private void validatePositionValue(int position) {
+        if (position < 0) {
+            throw new IllegalArgumentException("0 이상의 포지션만 가능합니다.");
+        }
     }
 
     @Override
