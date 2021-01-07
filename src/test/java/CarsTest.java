@@ -1,6 +1,6 @@
 import domain.Car;
 import org.junit.jupiter.api.Test;
-import racinggame.Cars;
+import domain.Cars;
 
 import java.util.Arrays;
 import java.util.List;

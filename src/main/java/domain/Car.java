@@ -1,6 +1,6 @@
 package domain;
 
-import racinggame.MoveStrategy;
+import move.MoveStrategy;
 
 import java.util.Objects;
 
