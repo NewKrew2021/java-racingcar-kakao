@@ -38,11 +38,15 @@ public class Car {
         return number >= THRESHOLD;
     }
 
-    public String getName() {
-        return this.name;
+    public int getLocation() {
+        return location;
     }
 
-    public int getLocation() {
-        return this.location;
+    public String getName() {
+        return name;
+    }
+
+    public CarInfo getInfo(){
+        return new CarInfo(this.name, this.location);
     }
 }

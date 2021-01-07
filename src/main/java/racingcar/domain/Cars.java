@@ -26,11 +26,12 @@ public class Cars {
         return this.cars;
     }
 
-    public List<Car> findWinners() {
+    public Winner findWinners() {
         int maxLocation = getMaxLocation();
-        return this.cars.stream()
+
+        return new Winner(this.cars.stream()
                 .filter(c -> isMaxLocation(c, maxLocation))
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
 
     }
 
@@ -54,4 +55,13 @@ public class Cars {
     private int getRandomNo() {
         return (int) (Math.random() * 10);
     }
+
+    public List<CarInfo> getCarsInfo(){
+        List<CarInfo> carsInfo = new ArrayList<>();
+        for (Car car : cars) {
+            carsInfo.add(car.getInfo());
+        }
+        return carsInfo;
+    }
+
 }

@@ -19,7 +19,7 @@ public class RacingGameApp {
         OutputView.printResultMessage();
         while (!racingGame.isEnd()) {
             racingGame.race();
-            OutputView.printCars(racingGame.getCars());
+            OutputView.printCars(racingGame.getCarsInfo());
         }
 
         OutputView.printWinners(racingGame.getWinners());

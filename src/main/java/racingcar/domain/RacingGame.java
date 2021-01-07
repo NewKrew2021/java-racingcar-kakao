@@ -20,12 +20,11 @@ public class RacingGame {
         return tryNo.isZero();
     }
 
-    public List<Car> getWinners() {
+    public Winner getWinners() {
         return this.cars.findWinners();
     }
 
-    public Cars getCars() {
-        return this.cars;
+    public List<CarInfo> getCarsInfo() {
+        return cars.getCarsInfo();
     }
-
 }
