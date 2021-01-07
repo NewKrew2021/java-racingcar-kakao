@@ -1,5 +1,7 @@
+import java.io.IOException;
+
 public class Game {
-    public void start(){
+    public void start() throws IOException {
         String names = IOUtils.getNames();
         int trial = IOUtils.getTrial();
 
