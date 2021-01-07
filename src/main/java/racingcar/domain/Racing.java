@@ -5,10 +5,10 @@ import java.util.*;
 public class Racing {
 
     private final Cars cars;
-    private Round round;
+    private final Round round;
 
     public Racing(String names, int round) {
-        this.cars = new Cars(registerCars(splitNames(names)));
+        this.cars = new Cars(splitNames(names));
         this.round = new Round(round);
     }
 
@@ -27,14 +27,6 @@ public class Racing {
 
     public List<String> getWinnerNames() {
         return cars.winnerNames();
-    }
-
-    private List<Car> registerCars(List<String> names) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
-        return cars;
     }
 
     private List<String> splitNames(String str) {

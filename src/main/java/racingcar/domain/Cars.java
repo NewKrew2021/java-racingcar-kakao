@@ -10,8 +10,8 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
-        this.cars = cars;
+    public Cars(List<String> names) {
+        this.cars = registerCars(names);
     }
 
     public List<Car> getCars() {
@@ -30,6 +30,14 @@ public class Cars {
             names.add(car.getName());
         }
         return names;
+    }
+
+    private List<Car> registerCars(List<String> names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+        return cars;
     }
 
     private int createRandomNumber() {
