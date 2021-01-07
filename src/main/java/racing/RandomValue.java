@@ -37,7 +37,7 @@ public class RandomValue {
 
     private static boolean checkIncludeTrue(final List<Boolean> randomValues) {
         return randomValues.stream()
-                .noneMatch(b -> b);
+                .noneMatch(b -> b == true);
     }
 
 }
