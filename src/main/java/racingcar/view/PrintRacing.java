@@ -1,7 +1,7 @@
 package racingcar.view;
 
 import racingcar.domain.RacingCar;
-import racingcar.domain.RacingCars;
+import racingcar.domain.RoundResult;
 
 public class PrintRacing {
 
@@ -9,22 +9,22 @@ public class PrintRacing {
         System.out.println("\n실행 결과");
     }
 
-    public static void printRoundResult(RacingCars racingCars) {
-        racingCars.getRacingCars().forEach(PrintRacing::printDist);
+    public static void printRoundResult(RoundResult roundResult) {
+        roundResult.getResult().forEach(PrintRacing::printDist);
         System.out.println();
     }
 
-    public static void printDist(RacingCar racingCar) {
+    public static void printDist(String name, int dist) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(racingCar.getName()).append(" : ");
-        for (int i = 0; i < racingCar.getDist(); i++) {
+        stringBuilder.append(name).append(" : ");
+        for (int i = 0; i < dist; i++) {
             stringBuilder.append("-");
         }
         System.out.println(stringBuilder.toString());
     }
 
-    public static void printWinners(RacingCars racingCars) {
-        System.out.print(String.join(", ", racingCars.getWinners()));
+    public static void printWinners(String[] winners) {
+        System.out.print(String.join(", ", winners));
         System.out.println("가 최종 우승했습니다.");
     }
 }

@@ -1,7 +1,7 @@
 package racingcar.util;
 
 public class CheckMovableByRandomNumber implements CheckMovable {
-    private static final int MIN_MOVABLE_NUMBER = 4;
+    protected static final int MIN_MOVABLE_NUMBER = 4;
     private static final int DISTANCE_LIMIT = 10;
 
     @Override
@@ -9,7 +9,7 @@ public class CheckMovableByRandomNumber implements CheckMovable {
         return makeRandomValue() >= MIN_MOVABLE_NUMBER;
     }
 
-    private int makeRandomValue() {
+    protected int makeRandomValue() {
         return (int) (Math.random() * DISTANCE_LIMIT);
     }
 }

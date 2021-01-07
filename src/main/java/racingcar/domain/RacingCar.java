@@ -36,4 +36,9 @@ public class RacingCar {
         RacingCar racingCar = (RacingCar) o;
         return dist == racingCar.dist && Objects.equals(name, racingCar.name);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dist, name);
+    }
 }

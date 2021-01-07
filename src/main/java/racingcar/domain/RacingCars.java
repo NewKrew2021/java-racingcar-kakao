@@ -2,7 +2,9 @@ package racingcar.domain;
 
 import racingcar.util.CheckMovable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class RacingCars {
     private final List<RacingCar> racingCars;
@@ -13,10 +15,12 @@ public class RacingCars {
         this.checkMovable = checkMovable;
     }
 
-    public void playRound() {
+    public RoundResult playRound() {
+        Map<String, Integer> result = new HashMap<>();
         for (RacingCar racingCar : racingCars) {
-            racingCar.move(checkMovable);
+            result.put(racingCar.getName(), racingCar.move(checkMovable));
         }
+        return new RoundResult(result);
     }
 
     public String[] getWinners() {

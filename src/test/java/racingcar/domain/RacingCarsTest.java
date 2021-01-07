@@ -3,7 +3,6 @@ package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.util.CheckMovableByRandomNumber;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +14,7 @@ public class RacingCarsTest {
 
     @BeforeEach
     public void setUp() {
-        this.racingCars = RacingCarsFactory.from("pobi,tars,ocean", new CheckMovableByRandomNumber());
+        this.racingCars = RacingCarsFactory.randomNumberCars("pobi,tars,ocean");
     }
 
     @Test
@@ -33,10 +32,27 @@ public class RacingCarsTest {
 
     @Test
     @DisplayName("우승자 선별 테스트")
-    public void winnerCheck() {
+    public void WinnerCheck() {
         List<RacingCar> cars = racingCars.getRacingCars();
-        cars.get(1).move(() -> true);
-        cars.get(2).move(() -> true);
-        assertThat(racingCars.getWinners()).isEqualTo("tars, ocean");
+        moveCar(cars.get(0), 9);
+        moveCar(cars.get(1), 3);
+        moveCar(cars.get(2), 5);
+        assertThat(racingCars.getWinners()).containsExactlyInAnyOrderElementsOf(Arrays.asList(new String[] {"pobi"}));
+    }
+
+    @Test
+    @DisplayName("우승자 여러 명 선별 테스트")
+    public void tieWinnerCheck() {
+        List<RacingCar> cars = racingCars.getRacingCars();
+        moveCar(cars.get(0), 5);
+        moveCar(cars.get(1), 9);
+        moveCar(cars.get(2), 9);
+        assertThat(racingCars.getWinners()).containsExactlyInAnyOrderElementsOf(Arrays.asList(new String[] {"tars", "ocean"}));
+    }
+
+    private void moveCar(RacingCar racingCar, int times) {
+        for (int i = 0; i < times; i++) {
+            racingCar.move(() -> true);
+        }
     }
 }
