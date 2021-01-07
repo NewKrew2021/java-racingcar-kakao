@@ -14,7 +14,7 @@ public class InputScanner {
     public static String scanName() {
         InputPrinter.inputNamePrint();
         String name = scan.nextLine();
-        if(!InputValidChecker.isValidNames(name)) {
+        if (!InputValidChecker.isValidNames(name)) {
             InputPrinter.illegalNamePrint();
             System.exit(0);
         }
@@ -24,7 +24,7 @@ public class InputScanner {
     public static int scanRound() {
         InputPrinter.inputRoundPrint();
         String round = scan.nextLine();
-        if(!InputValidChecker.isValidRounds(round)) {
+        if (!InputValidChecker.isValidRounds(round)) {
             InputPrinter.illegalRoundPrint();
             System.exit(0);
         }

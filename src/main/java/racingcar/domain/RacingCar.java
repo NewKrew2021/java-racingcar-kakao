@@ -12,7 +12,7 @@ public class RacingCar {
         this.distance = new Distance();
     }
 
-    public RacingCar(String name,int distance) {
+    public RacingCar(String name, int distance) {
         this.name = new Name(name);
         this.distance = new Distance(distance);
     }
@@ -52,6 +52,5 @@ public class RacingCar {
     public int hashCode() {
         return Objects.hash(name, distance);
     }
-
 
 }
