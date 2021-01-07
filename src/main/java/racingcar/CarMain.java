@@ -1,22 +1,21 @@
 package racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarMain {
     public static void main(String[] args) {
-        List<String> carNames = CarView.parseCarName(CarView.writeCarName());
-        int racingRound = CarView.writeRacingRound();
+        List<String> carNames = CarInputView.parseCarName(CarInputView.writeCarName());
+        int racingRound = CarInputView.writeRacingRound();
 
         CarGame game = new CarGame(carNames, racingRound);
 
-        CarView.printRoundStart();
+        CarOutputView.printRoundStart();
 
         while(!game.isFinished()){
             game.playRound();
-            CarView.printRoundResult(game);
+            CarOutputView.printRoundResult(game);
         }
 
-        CarView.printWinnerCar(game.getWinnerName());
+        CarOutputView.printWinnerCar(game.getWinnerName());
     }
 }
