@@ -1,6 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.RacingCar;
 import racingcar.domain.RoundResult;
 
 public class PrintRacing {

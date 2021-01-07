@@ -3,8 +3,10 @@ package racingcar.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.CheckMovable;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
@@ -28,6 +30,17 @@ public class RacingCarsTest {
     @DisplayName("RacingCars 이름 셋팅 테스트")
     public void setUpRacingCarNameCheck() {
         assertThat(racingCars.getRacingCars()).extracting(RacingCar::getName).containsExactly("pobi", "tars", "ocean");
+    }
+
+    @Test
+    @DisplayName("playRound 메소드 테스트")
+    public void playRoundTest() {
+        RacingCars racingCars =
+                new RacingCars(Arrays.asList(new RacingCar("pobi"), new RacingCar("tars"), new RacingCar("ocean")), () -> true);
+        RoundResult result = racingCars.playRound();
+        assertThat(result.getResult().get("pobi")).isEqualTo(1);
+        assertThat(result.getResult().get("tars")).isEqualTo(1);
+        assertThat(result.getResult().get("ocean")).isEqualTo(1);
     }
 
     @Test

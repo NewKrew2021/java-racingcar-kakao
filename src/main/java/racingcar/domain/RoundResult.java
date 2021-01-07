@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Collections;
 import java.util.Map;
 
 public class RoundResult {
@@ -10,7 +11,7 @@ public class RoundResult {
     }
 
     public Map<String, Integer> getResult() {
-        return this.result;
+        return Collections.unmodifiableMap(this.result);
     }
 
 }
