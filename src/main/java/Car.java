@@ -41,10 +41,6 @@ public class Car implements Comparable<Car> {
         return rand.nextInt(10);
     }
 
-    public void printName() {
-        IOUtils.print(name);
-    }
-
     public void printNameAndPosition() {
         IOUtils.println(name + " : " + "-".repeat(position));
     }

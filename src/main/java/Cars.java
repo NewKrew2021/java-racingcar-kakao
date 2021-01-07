@@ -42,13 +42,4 @@ public class Cars {
                 .filter(car -> car.isEqualPosition(headCar))
                 .collect(Collectors.toList());
     }
-
-    public void printHeads() {
-        List<Car> heads = getHeads();
-        for (int i = 0; i < heads.size() - 1; i++) {
-            heads.get(i).printName();
-            System.out.print(",");
-        }
-        cars.get(heads.size() - 1).printName();
-    }
 }
