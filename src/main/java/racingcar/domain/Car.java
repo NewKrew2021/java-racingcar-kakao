@@ -8,14 +8,17 @@ public class Car {
     private final String name;
     private int location;
 
-    public Car(String name) {
-        validate(name);
-
-        this.name = name;
+    public static Car from(String name) {
+        return new Car(name,0);
     }
 
-    public Car(String name, int location) {
-        this(name);
+    public static Car of(String name, int location) {
+        return new Car(name, location);
+    }
+
+    private Car(String name, int location) {
+        validate(name);
+        this.name = name;
         this.location = location;
     }
 

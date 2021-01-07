@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.util.StringUtil;
 
 import java.util.Arrays;
 
@@ -20,11 +21,11 @@ public class CarsTest {
     @DisplayName("location이 가장 큰 차가 우승한다. 우승자는 여러명일 수 있다.")
     public void testFindWinners(){
         Cars cars= new Cars(Arrays.asList(
-                new Car("pobi",5),
-                new Car("crong",3),
-                new Car("honux",5)
+                Car.of("pobi",5),
+                Car.of("crong",3),
+                Car.of("honux",5)
         ));
-
-        assertThat(cars.findWinners()).extracting("name").contains("pobi","honux");
+        String[] winners = StringUtil.splitComma(cars.findWinners().toString());
+        assertThat(winners).contains("pobi","honux");
     }
 }
