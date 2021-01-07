@@ -2,6 +2,8 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,15 +32,17 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(4);
     }
 
-    @Test
-    public void moveOnce() {
-        car.move(4);
+    @ParameterizedTest
+    @ValueSource(ints = {4, 5})
+    public void moveOnce(int value) {
+        car.move(value);
         assertThat(car.getPosition()).isEqualTo(5);
     }
 
-    @Test
-    public void moveNone() {
-        car.move(3);
+    @ParameterizedTest
+    @ValueSource(ints = {2, 3})
+    public void moveNone(int value) {
+        car.move(value);
         assertThat(car.getPosition()).isEqualTo(4);
     }
 }
