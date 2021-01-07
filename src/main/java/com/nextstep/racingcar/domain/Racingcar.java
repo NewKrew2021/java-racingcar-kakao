@@ -1,5 +1,7 @@
 package com.nextstep.racingcar.domain;
 
+import java.util.List;
+
 public class Racingcar {
     private Cars cars;
     private int repeatCount;
@@ -11,8 +13,12 @@ public class Racingcar {
         this.currentStep = 0;
     }
 
-    public Cars getCars() {
-        return cars;
+    public List<Car> getWinners() {
+        return cars.getWinners();
+    }
+
+    public List<Car> getCars() {
+        return cars.getCars();
     }
 
     public void simulate() {

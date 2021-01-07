@@ -6,6 +6,7 @@ import com.nextstep.racingcar.domain.Racingcar;
 import com.nextstep.racingcar.views.InputView;
 import com.nextstep.racingcar.views.OutputView;
 
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -53,7 +54,8 @@ public class RacingcarGame {
     }
 
     private void outputWinners() {
-        Cars winners = racingcar.getCars().getWinners();
+        List<Car> winners = racingcar.getWinners();
+
         gameOutput.printWinners(winners);
     }
 }

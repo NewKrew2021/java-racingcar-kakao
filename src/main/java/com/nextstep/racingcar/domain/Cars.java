@@ -10,7 +10,6 @@ import java.util.stream.IntStream;
 import static com.nextstep.racingcar.utils.RandomDigitsGenerator.getNRandomDigitsForCars;
 
 public class Cars {
-    private final String CAR_UNIT_STEP_SYMBOL = "-";
     private final List<Car> cars;
 
     public Cars() {
@@ -18,7 +17,11 @@ public class Cars {
     }
 
     public Cars(List<Car> cars) {
-        this.cars = cars;
+        this.cars = Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public int getNumberOfCars() {
@@ -34,38 +37,12 @@ public class Cars {
                 .forEach(Car::move);
     }
 
-    public Cars getWinners() {
+    public List<Car> getWinners() {
         int highest = getLocationOfHighestAdvancedCar();
 
-        return new Cars(cars.stream()
+        return cars.stream()
                 .filter(car -> car.getLocation() == highest)
-                .collect(Collectors.toList()));
-    }
-
-    public List<String> filterOnlyNames() {
-        return cars.stream()
-                .map(Car::getName)
                 .collect(Collectors.toList());
-    }
-
-    public String getNamesAppended() {
-        return cars.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
-    }
-
-    public String getCarsStatus() {
-        StringBuilder status = new StringBuilder();
-
-        for (Car car : cars) {
-            status.append(car.getName())
-                    .append(" : ")
-                    .append(String.join("",
-                            Collections.nCopies(car.getLocation(), CAR_UNIT_STEP_SYMBOL)))
-                    .append(System.lineSeparator());
-        }
-
-        return status.toString();
     }
 
     protected CarResult moveResult(int number) {

@@ -5,6 +5,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,10 +22,12 @@ public class RacingcarTest {
                 new Car("three", 2)));
         Racingcar racingcar = new Racingcar(cars, REPEAT_COUNT);
 
-        Cars winners = racingcar.getCars()
-                .getWinners();
+        List<String> winners = racingcar.getWinners()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
 
-        assertThat(winners.filterOnlyNames()).isEqualTo(Arrays.asList("three"));
+        assertThat(winners).isEqualTo(Collections.singletonList("three"));
     }
 
     @Test
@@ -33,10 +38,12 @@ public class RacingcarTest {
                 new Car("three", 2)));
         Racingcar racingcar = new Racingcar(cars, REPEAT_COUNT);
 
-        Cars winners = racingcar.getCars()
-                .getWinners();
+        List<String> winners = racingcar.getWinners()
+                .stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
 
-        assertThat(winners.filterOnlyNames()).isEqualTo(Arrays.asList("two", "three"));
+        assertThat(winners).isEqualTo(Arrays.asList("two", "three"));
     }
 
     @ParameterizedTest
