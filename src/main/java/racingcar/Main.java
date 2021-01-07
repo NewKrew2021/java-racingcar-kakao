@@ -1,6 +1,6 @@
-package racingCar;
+package racingcar;
 
-import java.util.Scanner;
+import racingcar.controller.GameManager;
 
 public class Main {
 

@@ -1,27 +1,26 @@
-package racingCar;
+package racingcar.domain;
 
 import java.util.Objects;
 
 public class Car implements Comparable<Car> {
 
-    private final String name;
-    private Integer position;
+    private final Name name;
+    private int position;
 
     public Car(String name) {
-
-        this.name = name;
+        this.name = new Name(name);
         this.position = 0;
     }
 
-    public Car(String name,int position) {
+    public Car(String name, int position) {
 
-        this.name = name;
+        this.name = new Name(name);
         this.position = position;
     }
 
-    public String getName(){
+    public String getName() {
 
-        return this.name;
+        return this.name.getName();
     }
 
     public void goForward(Integer value) {
@@ -34,18 +33,18 @@ public class Car implements Comparable<Car> {
         return position;
     }
 
-    public boolean isEqualPosition(Car car){
+    public boolean isEqualPosition(Car car) {
 
-        return this.position==car.position;
+        return this.position == car.position;
     }
 
     @Override
     public int compareTo(Car car) {
 
-        if(car.position>this.position){
+        if (car.position > this.position) {
             return 1;
         }
-        if(car.position==this.position){
+        if (car.position == this.position) {
             return 0;
         }
         return -1;
@@ -67,11 +66,11 @@ public class Car implements Comparable<Car> {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
 
-        String str =this.name+" : ";
-        for(int i=0;i<position;i++){
-            str+='-';
+        String str = this.name.toString() + " : ";
+        for (int i = 0; i < position; i++) {
+            str += '-';
         }
         return str;
     }
