@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class IOUtils {
     public static String getNames() throws IOException {
@@ -29,5 +32,12 @@ public class IOUtils {
 
     public static void println(String input) {
         System.out.println(input);
+    }
+
+    public static void printHeads(List<Car> heads){
+        String commaSeparatedHeads = heads.stream()
+                .map(car -> car.getName())
+                .collect(Collectors.joining(", "));
+        System.out.println(commaSeparatedHeads + "가 최종 우승했습니다.");
     }
 }

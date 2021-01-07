@@ -21,6 +21,10 @@ public class Car implements Comparable<Car> {
         rand = new Random();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean isEqualPosition(Car car){
         return car.position == position;
     }

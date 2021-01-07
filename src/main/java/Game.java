@@ -14,13 +14,12 @@ public class Game {
         for(int i = 0; i < trial; i++){
             System.out.println("실행결과");
             cars.moveAll();
-            cars.printPositions();
+            cars.printNameAndPositions();
             System.out.println("");
         }
     }
 
     private void printResult(Cars cars){
-        cars.printHeads();
-        System.out.println("가 최종 우승했습니다.");
+        IOUtils.printHeads(cars.getHeads());
     }
 }
