@@ -6,7 +6,7 @@ public class Car implements Comparable<Car> {
     private int position;
     private final Random rand;
 
-    public Car(String name, int position){
+    public Car(String name, int position) {
         this.name = name;
         this.position = position;
         rand = new Random();
@@ -29,11 +29,11 @@ public class Car implements Comparable<Car> {
     }
 
     public void printName(){
-        System.out.print(this.name);
+        IOUtils.print(name);
     }
 
-    public void printPosition(){
-        System.out.println(name + " : " + "-".repeat(position));
+    public void printNameAndPosition(){
+        IOUtils.println(name + " : " + "-".repeat(position));
     }
 
     @Override
