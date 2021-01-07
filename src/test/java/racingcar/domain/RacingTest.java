@@ -16,6 +16,6 @@ public class RacingTest {
     public void endRacing() {
         Racing racing = new Racing("mac,book,pro", 1);
         racing.race();
-        assertThat(racing.isEnd()).isTrue();
+        assertThat(racing.isFinish()).isTrue();
     }
 }

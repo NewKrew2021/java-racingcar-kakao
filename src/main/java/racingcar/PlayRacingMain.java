@@ -11,7 +11,7 @@ public class PlayRacingMain {
         Racing rc = new Racing(names, round);
 
         UserView.printProcessTitle();
-        while (!rc.isEnd()) {
+        while (!rc.isFinish()) {
             rc.race();
         }
 
