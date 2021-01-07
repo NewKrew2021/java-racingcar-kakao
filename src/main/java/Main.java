@@ -1,4 +1,4 @@
-package racing;
+import controller.RacingGame;
 
 public class Main {
 
@@ -6,5 +6,4 @@ public class Main {
         RacingGame racingGame = new RacingGame();
         racingGame.run();
     }
-
 }
