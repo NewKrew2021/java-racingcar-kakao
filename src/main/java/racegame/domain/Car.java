@@ -2,7 +2,7 @@ package racegame.domain;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car> {
+public class Car {
 
     private final Name name;
     private Position position;
@@ -30,11 +30,6 @@ public class Car implements Comparable<Car> {
 
     public boolean isEqualPosition(int maxPosition) {
         return this.position.equals(new Position(maxPosition));
-    }
-
-    @Override
-    public int compareTo(Car car) {
-        return car.position.compareTo(this.position);
     }
 
     @Override
