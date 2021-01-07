@@ -1,27 +1,25 @@
 package racingcar;
 
-import java.util.ArrayList;
+import racingcar.domain.CarGame;
+import racingcar.view.CarInputView;
+import racingcar.view.CarOutputView;
+
+import java.util.List;
 
 public class CarMain {
     public static void main(String[] args) {
-        ArrayList<String> carNameList = CarView.parseCarName(CarView.writeCarName());
-        CarView.validateCarName(carNameList);
+        List<String> carNames = CarInputView.parseCarName(CarInputView.writeCarName());
+        int racingRound = CarInputView.writeRacingRound();
 
-        ArrayList<Car> carList = new ArrayList<>();
+        CarGame game = new CarGame(carNames, racingRound);
 
-        for(String carName : carNameList){
-            carList.add(new Car(carName, 0));
-        }
+        CarOutputView.printRoundStart();
 
-        CarGame game = new CarGame(carList, CarView.writeRacingRound());
-
-        CarView.printRoundStart();
-
-        while(!game.isFinished()){
+        while (!game.isFinished()) {
             game.playRound();
-            CarView.printRoundResult(game);
+            CarOutputView.printRoundResult(game);
         }
 
-        CarView.printWinnerCar(game.getWinner());
+        CarOutputView.printWinnerCar(game.getWinnerName());
     }
 }
