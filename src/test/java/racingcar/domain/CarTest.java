@@ -1,9 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.concurrent.Callable;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -28,8 +26,4 @@ public class CarTest {
         assertThat(car.getStatus()).isEqualTo("pobi : ---");
     }
 
-    @Test
-    public void testMaxLocation(){
-        assertThat(car.maxLocation(2)).isEqualTo(3);
-    }
 }

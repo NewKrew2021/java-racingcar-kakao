@@ -1,5 +1,9 @@
 package racingcar;
 
+import racingcar.domain.RacingGame;
+import racingcar.view.RacingGameInput;
+import racingcar.view.RacingGameOutput;
+
 public class RacingGameApp {
     private static RacingGame racing;
 

@@ -1,7 +1,6 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import static java.lang.Math.max;
 

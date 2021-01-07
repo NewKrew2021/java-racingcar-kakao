@@ -1,9 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
-import calculator.StringCalculator;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.view.RacingGameInput;
 
 import static org.assertj.core.api.Assertions.*;
 
