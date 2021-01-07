@@ -1,6 +1,8 @@
-package racingcar.io;
+package racingcar.view;
 
 import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.text.Text;
 
 import java.util.List;
 
@@ -17,9 +19,9 @@ public class Output {
         System.out.println(Text.REQUEST_SIMULATION_TIME);
     }
 
-    public static void printSimulationResults(List<Car> cars){
+    public static void printSimulationResults(Cars cars) {
         System.out.println(Text.SIMULATION_RESULT);
-        for(Car car: cars){
+        for (Car car : cars.getCars()) {
             printCarLocation(car);
         }
         System.out.println();

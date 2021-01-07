@@ -8,9 +8,10 @@ import java.util.stream.Collectors;
 
 public class CustomSplitter implements Splitter {
     private static final String SPLIT_REGEX = "//(.)\\n(.*)";
+    private static final Pattern pattern = Pattern.compile(SPLIT_REGEX);
 
     public List<Integer> split(String userInput) throws NumberFormatException{
-        Matcher m = Pattern.compile(SPLIT_REGEX).matcher(userInput);
+        Matcher m = pattern.matcher(userInput);
         if (m.find()) {
             String customDelimiter = m.group(1);
             String[] tokens = m.group(2).split(customDelimiter);

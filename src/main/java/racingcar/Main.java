@@ -1,13 +1,13 @@
 package racingcar;
 
-import racingcar.domain.GameManager;
-import racingcar.io.Output;
+import racingcar.controller.GameController;
+import racingcar.view.Output;
 
 public class Main {
     public static void main(String[] args) {
-        GameManager gameManager = new GameManager();
+        GameController gameController = new GameController();
         try {
-            gameManager.playGame();
+            gameController.playGame();
         } catch(Exception e){
             Output.printError(e);
         }

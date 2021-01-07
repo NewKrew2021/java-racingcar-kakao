@@ -1,6 +1,6 @@
 package racingcar.domain;
 
-import racingcar.io.Text;
+import racingcar.text.Text;
 
 import java.util.Objects;
 
@@ -10,6 +10,11 @@ public class Car {
 
     private static final int MIN_NAME_LENGTH = 5;
     private static final int MIN_FORWARD_RANDOM = 4;
+
+    public Car(String name, int location){
+        this(name);
+        this.location = location;
+    }
 
     public Car(String name){
         validateName(name);
@@ -38,6 +43,10 @@ public class Car {
 
     public int getLocation() {
         return location;
+    }
+
+    public boolean isInLocation(int location){
+        return this.location == location;
     }
 
     @Override
