@@ -20,12 +20,5 @@ public class Car {
     public void move(int condition) {
         this.location.move(condition);
     }
-
-    public String findWinner(int winnerLocation) {
-        if (location.getLocation() == winnerLocation) {
-            return name + " ";
-        }
-        return "";
-    }
-
+    
 }
