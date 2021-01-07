@@ -8,14 +8,14 @@ public class Car implements Comparable<Car> {
     private final Random rand;
 
     public Car(String name) {
-        if(name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException();
+        if (name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException();
         this.name = name;
         this.position = 0;
         rand = new Random();
     }
 
     public Car(String name, int position) {
-        if(name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException();
+        if (name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException();
         this.name = name;
         this.position = position;
         rand = new Random();
@@ -25,34 +25,34 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
-    public boolean isEqualPosition(Car car){
+    public boolean isEqualPosition(Car car) {
         return car.position == position;
     }
 
-    public void move(){
+    public void move() {
         move(generateRandomNumber());
     }
 
-    public void move(int randomNumber){
-        if(randomNumber > MOVE_THRESHOLD) position++;
+    public void move(int randomNumber) {
+        if (randomNumber > MOVE_THRESHOLD) position++;
     }
 
-    private int generateRandomNumber(){
+    private int generateRandomNumber() {
         return rand.nextInt(10);
     }
 
-    public void printName(){
+    public void printName() {
         IOUtils.print(name);
     }
 
-    public void printNameAndPosition(){
+    public void printNameAndPosition() {
         IOUtils.println(name + " : " + "-".repeat(position));
     }
 
     @Override
     public int compareTo(Car o) {
-        if(o.position > position) return 1;
-        if(o.position < position) return -1;
+        if (o.position > position) return 1;
+        if (o.position < position) return -1;
         return 0;
     }
 }

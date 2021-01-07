@@ -34,7 +34,7 @@ public class IOUtils {
         System.out.println(input);
     }
 
-    public static void printHeads(List<Car> heads){
+    public static void printHeads(List<Car> heads) {
         String commaSeparatedHeads = heads.stream()
                 .map(car -> car.getName())
                 .collect(Collectors.joining(", "));

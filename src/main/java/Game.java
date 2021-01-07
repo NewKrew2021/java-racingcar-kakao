@@ -10,8 +10,8 @@ public class Game {
         printResult(cars);
     }
 
-    private void doTrial(Cars cars, int trial){
-        for(int i = 0; i < trial; i++){
+    private void doTrial(Cars cars, int trial) {
+        for (int i = 0; i < trial; i++) {
             System.out.println("실행결과");
             cars.moveAll();
             cars.printNameAndPositions();
@@ -19,7 +19,7 @@ public class Game {
         }
     }
 
-    private void printResult(Cars cars){
+    private void printResult(Cars cars) {
         IOUtils.printHeads(cars.getHeads());
     }
 }
