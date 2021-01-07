@@ -17,8 +17,8 @@ public class Location {
         return location;
     }
 
-    public void move(int condition) {
-        location += condition;
+    public void move(MoveStrategy moveStratege) {
+        if (moveStratege.move()) location++;
     }
 
     @Override
@@ -33,6 +33,5 @@ public class Location {
     public int hashCode() {
         return Objects.hash(location);
     }
-
-
+    
 }

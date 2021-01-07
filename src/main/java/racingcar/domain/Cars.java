@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int MIN_MOVE_NUMBER = 4;
 
     private List<Car> cars = new ArrayList<>();
 
@@ -15,7 +14,9 @@ public class Cars {
     }
 
     private String[] splitCarNames(String carNames) {
-        return carNames.replace(" ", "").split(",");
+        return carNames
+                .replace(" ", "")
+                .split(",");
     }
 
     private void addCarName(String[] carNames) {
@@ -30,7 +31,7 @@ public class Cars {
 
     public void move() {
         for (Car car : cars) {
-            car.move(checkMove(setRandomNumber()));
+            car.move(new RandomNumberMoveStrategy());
         }
     }
 
@@ -39,20 +40,10 @@ public class Cars {
         for (Car car : cars) {
             roundResult += car.getName()
                     + " : "
-                    + new String(new char[car.getLocation()]).replace("\0", "_") + "\n";
+                    + new String(new char[car.getLocation()]).replace("\0", "_")
+                    + "\n";
         }
         return roundResult;
-    }
-
-    private int checkMove(int number) {
-        if (number >= MIN_MOVE_NUMBER) {
-            return 1;
-        }
-        return 0;
-    }
-
-    private int setRandomNumber() {
-        return (int) (Math.random() * 10);
     }
 
     public String getWinner() {
@@ -68,7 +59,9 @@ public class Cars {
     }
 
     private int getWinnerLocation() {
-        return cars.stream().mapToInt(car -> car.getLocation()).max().orElse(0);
+        return cars.stream()
+                .mapToInt(car -> car.getLocation())
+                .max().orElse(0);
     }
-
+    
 }

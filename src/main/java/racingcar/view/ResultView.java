@@ -1,6 +1,5 @@
 package racingcar.view;
 
-
 public class ResultView {
 
     public static void printRoundStart() {

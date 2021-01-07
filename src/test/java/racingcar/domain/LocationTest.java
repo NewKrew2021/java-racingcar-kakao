@@ -8,7 +8,7 @@ public class LocationTest {
     @Test
     void moveLocationTest() {
         Location location = new Location();
-        location.move(2);
+        location.move(() -> true);
         assertThat(location).isEqualTo(new Location(2));
     }
 
@@ -17,4 +17,5 @@ public class LocationTest {
         Location location = new Location(1);
         assertThat(location).isEqualTo(new Location(1));
     }
+    
 }

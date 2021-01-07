@@ -19,8 +19,8 @@ public class Car {
         return location.getLocation();
     }
 
-    public void move(int condition) {
-        this.location.move(condition);
+    public void move(MoveStrategy moveStrategy) {
+        location.move(moveStrategy);
     }
 
     @Override
@@ -35,4 +35,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, location);
     }
+    
 }

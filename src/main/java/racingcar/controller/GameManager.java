@@ -20,4 +20,5 @@ public class GameManager {
     private static void result() {
         ResultView.printWinner(cars.getWinner());
     }
+    
 }

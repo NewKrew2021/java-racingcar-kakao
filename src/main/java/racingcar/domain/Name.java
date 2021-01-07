@@ -5,7 +5,7 @@ import racingcar.exception.InvalidCarNameLengthException;
 import java.util.Objects;
 
 public class Name {
-    private final int MAX_NAME_LENGTH = 5;
+    private static final int MAX_NAME_LENGTH = 5;
     private String name;
 
     public Name(String name) {
@@ -13,6 +13,11 @@ public class Name {
             throw new InvalidCarNameLengthException();
         }
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     @Override
@@ -27,9 +32,5 @@ public class Name {
     public int hashCode() {
         return Objects.hash(name);
     }
-
-    @Override
-    public String toString() {
-        return name;
-    }
+    
 }
