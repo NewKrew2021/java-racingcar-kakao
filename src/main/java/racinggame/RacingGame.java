@@ -1,6 +1,12 @@
 package racinggame;
 
 import domain.Car;
+import domain.Cars;
+import input.CountInputValidator;
+import input.InputManager;
+import input.NameInputValidator;
+import input.UserInputValidator;
+import move.RandomBasedMoveStrategy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -8,30 +14,13 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    public static InputManager inputManager;
-    public static UserInputValidator nameInputValidator;
-    public static UserInputValidator countInputValidator;
+    public InputManager inputManager = new InputManager();
+    public UserInputValidator nameInputValidator = new NameInputValidator();
+    public UserInputValidator countInputValidator = new CountInputValidator();
 
     static final String COMMENT_CAR_NAMES_INPUT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
     static final String COMMENT_HOWMANY_INPUT = "시도할 회수는 몇회인가요?";
     static final String COMMENT_RESULT = "실행 결과";
-
-    static {
-        inputManager = new InputManager();
-        countInputValidator = (String str) -> {
-            if (str == null)
-                throw new Exception();
-            int num = Integer.parseInt(str);
-            if (num <= 0)
-                throw new Exception();
-        };
-        nameInputValidator = (String stringFromUser) -> {
-            String namesArray[] = stringFromUser.split(",");
-            for (int i = 0; i < namesArray.length; i++) {
-                new Car(namesArray[i]);
-            }
-        };
-    }
 
     public void play() {
         Cars cars = new Cars(getCarsFromUser());
