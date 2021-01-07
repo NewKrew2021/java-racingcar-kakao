@@ -11,6 +11,10 @@ public class RacingGame {
     public static UserInputValidator nameInputValidator;
     public static UserInputValidator countInputValidator;
 
+    static final String COMMENT_CAR_NAMES_INPUT = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).";
+    static final String COMMENT_HOWMANY_INPUT = "시도할 회수는 몇회인가요?";
+    static final String COMMENT_RESULT = "실행 결과";
+
     static {
         inputManager = new InputManager();
         countInputValidator = (String str) -> {
@@ -37,7 +41,7 @@ public class RacingGame {
 
     public List<Car> getCars() {
         String[] names = inputManager.getFromUser(
-                "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).",
+                COMMENT_CAR_NAMES_INPUT,
                 nameInputValidator
         ).split(",");
 
@@ -49,13 +53,13 @@ public class RacingGame {
     }
 
     public int getCount() {
-        return Integer.parseInt(inputManager.getFromUser("시도할 회수는 몇회인가요?", countInputValidator));
+        return Integer.parseInt(inputManager.getFromUser(COMMENT_HOWMANY_INPUT, countInputValidator));
     }
 
     public void printRacingGame(Cars cars, int tryCount) {
-        System.out.println("실행 결과");
+        System.out.println(COMMENT_RESULT);
         for (int i = 0; i < tryCount; i++) {
-            cars.moveAll(new RandomBasedMoveStrategy());
+            cars.moveAll(RandomBasedMoveStrategy.getInstance());
             cars.printAll();
             System.out.println();
         }
