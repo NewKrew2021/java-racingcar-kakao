@@ -8,66 +8,64 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public void setCars(String carNames){
+    public void setCars(String carNames) {
         String[] parsingCarNames = splitCarNames(carNames);
         addCarName(parsingCarNames);
     }
 
-    private String[] splitCarNames(String carNames){
+    private String[] splitCarNames(String carNames) {
         return carNames.replace(" ", "").split(",");
     }
 
     private void addCarName(String[] carNames) {
-        for(String carName: carNames){
+        for (String carName : carNames) {
             cars.add(new Car(carName));
         }
     }
 
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return cars;
     }
 
-    public void move(){
-        for(Car car:cars){
+    public void move() {
+        for (Car car : cars) {
             car.move(checkMove(setRandomNumber()));
         }
     }
 
-
-    public String getRoundResult(){
+    public String getRoundResult() {
         String roundReulst = "";
-        for(Car car:cars){
-            roundReulst += car.getCarLocations() + "\n";
+        for (Car car : cars) {
+            roundReulst += car.getName() + " : " + new String(new char[car.getLocation()]).replace("", "_") + "\n";
         }
         return roundReulst;
     }
 
-    private int checkMove(int number){
-        if (number >= MIN_MOVE_NUMBER){
+    private int checkMove(int number) {
+        if (number >= MIN_MOVE_NUMBER) {
             return 1;
         }
         return 0;
-
     }
 
-    private int setRandomNumber(){
-        return (int)(Math.random()*10);
+    private int setRandomNumber() {
+        return (int) (Math.random() * 10);
     }
 
-    public String getWinner(){
+    public String getWinner() {
         int winnerLocation = getWinnerLocation();
         return getWinnerNames(winnerLocation);
     }
 
     private String getWinnerNames(int winnerLocation) {
         String winner = "";
-        for(Car car:cars){
+        for (Car car : cars) {
             winner += car.findWinner(winnerLocation);
         }
         return winner;
     }
 
-    private int getWinnerLocation(){
+    private int getWinnerLocation() {
         return cars.stream().mapToInt(car -> car.getLocation()).max().orElse(0);
     }
 
