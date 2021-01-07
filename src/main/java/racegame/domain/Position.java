@@ -20,8 +20,8 @@ public class Position implements Comparable<Position> {
         return position;
     }
 
-    public Position move(int randomNo) {
-        if (randomNo > CANNOT_MOVE) {
+    public Position move(int value) {
+        if (value > CANNOT_MOVE) {
             return new Position(this.position + 1);
         }
         return this;

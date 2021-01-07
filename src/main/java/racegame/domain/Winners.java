@@ -16,7 +16,6 @@ public class Winners {
     public String toString() {
         return winners.stream()
                 .map(Car::getName)
-                .map(Name::getName)
                 .collect(Collectors.joining(", "));
     }
 

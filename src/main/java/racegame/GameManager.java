@@ -10,39 +10,38 @@ import java.util.stream.IntStream;
 
 public class GameManager {
 
-    private final GameView gameView = new GameView();
-    private final Scanner sc = new Scanner(System.in);
-
     public void startGame() {
-        gameView.gameStartMessageView();
+        final Scanner sc = new Scanner(System.in);
+
+        GameView.gameStartMessageView();
         String carString = sc.nextLine();
         Cars cars = makeCars(carString);
 
-        gameView.gameRoundMessage();
+        GameView.gameRoundMessage();
         int round = sc.nextInt();
 
-        gameView.roundTitleView();
+        GameView.roundTitleView();
         runEachRound(cars, round);
 
         Winners winner = cars.getWinners();
-        gameView.gameResultView(winner);
+        GameView.gameResultView(winner);
     }
 
-    public Cars makeCars(String userInput) {
+    private Cars makeCars(String userInput) {
         return new Cars(Arrays.stream(userInput.split(","))
                 .map(String::trim)
                 .map(Car::new)
                 .collect(Collectors.toList()));
     }
 
-    public void runEachRound(Cars cars, Integer rounds) {
+    private void runEachRound(Cars cars, Integer rounds) {
         IntStream.range(0, rounds)
                 .forEach(round -> singleRoundJobs(cars));
     }
 
-    public void singleRoundJobs(Cars cars) {
+    private void singleRoundJobs(Cars cars) {
         cars.allCarMoves();
-        gameView.roundResultView(cars);
+        GameView.roundResultView(cars);
     }
 
 }

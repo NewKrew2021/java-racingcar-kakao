@@ -16,16 +16,16 @@ public class Car implements Comparable<Car> {
         this.position = new Position(position);
     }
 
-    public Position getPosition() {
-        return position;
+    public Integer getPosition() {
+        return position.getPosition();
     }
 
-    public Name getName() {
-        return name;
+    public String getName() {
+        return name.getName();
     }
 
-    public void move(Integer randomValue) {
-        this.position = this.position.move(randomValue);
+    public void move(Integer value) {
+        this.position = this.position.move(value);
     }
 
     public boolean isEqualPosition(int maxPosition) {

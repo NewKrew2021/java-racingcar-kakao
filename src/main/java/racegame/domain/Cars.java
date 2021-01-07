@@ -23,8 +23,7 @@ public class Cars {
 
     public Integer getMaxPosition() {
         return cars.stream()
-                .map(Car::getPosition)
-                .mapToInt(Position::getPosition)
+                .mapToInt(Car::getPosition)
                 .max()
                 .getAsInt();
     }
