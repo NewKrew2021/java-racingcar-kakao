@@ -15,9 +15,6 @@ public class RandomMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean isMoving() {
-        if(exceedMovingCriterion(makeRandomNumber())){
-            return false;
-        }
-        return true;
+        return exceedMovingCriterion(makeRandomNumber());
     }
 }
