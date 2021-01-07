@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Position;
 import racingcar.exception.InvalidPositionValueException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

@@ -12,7 +12,7 @@ public class Car {
     private final Position position;
 
     public Car(String name) {
-        this(name, 1);
+        this(name, 0);
     }
 
     public Car(String name, int position) {
