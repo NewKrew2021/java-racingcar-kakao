@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RacingGame {
-    public static final int MIN_NUM_NAMES = 2;
+    public static final int MIN_NUM_CARS = 2;
     public static final int MAX_LEN_NAME = 5;
     static final int MAX_RAND_NUMBER = 9;
     static final int MIN_RAND_NUMBER = 0;

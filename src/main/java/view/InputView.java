@@ -61,7 +61,7 @@ public final class InputView {
     }
 
     private static boolean isValidNumberOfNames(String[] names) {
-        return (names != null) && (names.length >= RacingGame.MIN_NUM_NAMES);
+        return (names != null) && (names.length >= RacingGame.MIN_NUM_CARS);
     }
 
     private static boolean isValidLengthOfName(String name) {
