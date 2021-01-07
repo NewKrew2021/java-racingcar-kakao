@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -8,30 +9,25 @@ public class Cars {
     private static final Random random = new Random();
 
     private final List<Car> cars;
-    private int maxPosition;
 
     public Cars(List<Car> cars) {
         this.cars = cars;
     }
 
-    private void setMaxPosition() {
-        cars.forEach(car -> maxPosition = Math.max(car.getPosition(), maxPosition));
-    }
-
-    private String getWinnerNameWithComma(Car car) {
-        String s = "";
-        if (car.getPosition() == this.maxPosition) {
-            s += car.getName() + ", ";
-        }
-        return s;
+    private int getMaxPosition() {
+        return Collections.max(
+                cars.stream()
+                        .map(Car::getPosition)
+                        .collect(Collectors.toList()));
     }
 
     public String returnWinnerString() {
-        setMaxPosition();
-        String s = cars.stream()
-                .map(this::getWinnerNameWithComma)
-                .reduce("", (total, value) -> total + value);
-        return s.substring(0, s.length() - 2) + "가 최종 우승했습니다.";
+        int maxPosition = getMaxPosition();
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxPosition)
+                .map(Car::getName)
+                .collect(Collectors.joining(","))
+                + "가 최종 우승했습니다.";
     }
 
     public void race() {

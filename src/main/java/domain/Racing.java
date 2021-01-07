@@ -18,7 +18,7 @@ public class Racing {
     }
 
     public String getRaceString() {
-        return cars.toString();
+        return cars.toString() + "\n";
     }
 
     public void race() {
