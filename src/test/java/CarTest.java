@@ -6,28 +6,28 @@ import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 class CarTest {
     @Test
-    public void nameTest(){
-        assertThatThrownBy(()->{
+    public void nameTest() {
+        assertThatThrownBy(() -> {
             new Car("123456");
         }).isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(()->{
+        assertThatThrownBy(() -> {
             new Car(null);
         }).isInstanceOf(IllegalArgumentException.class);
 
-        assertThatThrownBy(()->{
+        assertThatThrownBy(() -> {
             new Car("");
         }).isInstanceOf(IllegalArgumentException.class);
 
-        assertDoesNotThrow(()->{
+        assertDoesNotThrow(() -> {
             new Car("norma");
         });
     }
-    
+
     @Test
-    public void moveTest(){
+    public void moveTest() {
         Car car = new Car("norma");
-        assertThat(car.move(()->true))
+        assertThat(car.move(() -> true))
                 .isEqualTo(1);
     }
 }

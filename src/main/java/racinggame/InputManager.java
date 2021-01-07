@@ -4,16 +4,18 @@ import java.util.Scanner;
 
 public class InputManager {
     private static Scanner scanner;
-    static{
+
+    static {
         scanner = new Scanner(System.in);
     }
-    public String getFromUser(String comment, UserInputValidator validator){
+
+    public String getFromUser(String comment, UserInputValidator validator) {
         System.out.println(comment);
         String fromUser = scanner.next();
-        try{
+        try {
             validator.validate(fromUser);
             return fromUser;
-        } catch(Exception e){
+        } catch (Exception e) {
             return getFromUser(comment, validator);
         }
     }
