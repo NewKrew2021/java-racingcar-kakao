@@ -2,11 +2,13 @@ import java.util.Random;
 
 public class Car implements Comparable<Car> {
     private static final int MOVE_THRESHOLD = 4;
+    public static final int MAX_NAME_LENGTH = 5;
     private final String name;
     private int position;
     private final Random rand;
 
     public Car(String name, int position) {
+        if(name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException();
         this.name = name;
         this.position = position;
         rand = new Random();

@@ -18,4 +18,11 @@ public class CarTest {
         car1.move(5);
         assertTrue(car1.isEqualPosition(car2));
     }
+
+    @Test
+    public void testValidName(){
+        assertThatThrownBy(() -> {
+           Car car = new Car("name66", 0);
+        });
+    }
 }
