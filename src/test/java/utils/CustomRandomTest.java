@@ -1,10 +1,13 @@
-import org.junit.Test;
+package utils;
+
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class CustomRandomTest {
+
     @Test
-    public void isValidRange() {
+    void isValidRange() {
         int num = CustomRandom.nextInt();
         assertThat(0 <= num && num <= 9).isTrue();
     }

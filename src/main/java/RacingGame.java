@@ -1,23 +1,32 @@
+import domain.Car;
+import domain.Cars;
+import view.InputView;
+import view.OutputView;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class RacingGame {
-    private final int FINAL_ROUND;
-    private static final int MAX_LENGTH = 5;
+    private final int finalRound;
     private final Cars cars;
     private int curRound;
 
-    public RacingGame(int finalRound, Cars cars) {
-        this.FINAL_ROUND = finalRound;
-        this.cars = cars;
+    public RacingGame(int finalRound, String carNames) {
+        this.finalRound = finalRound;
+        this.cars = mapCars(carNames);
         this.curRound = 0;
     }
 
+    private Cars mapCars(String carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames.split(",")) {
+            cars.add(new Car(carName));
+        }
+        return new Cars(cars);
+    }
+
     public boolean isEnd() {
-        return curRound == FINAL_ROUND;
+        return curRound == finalRound;
     }
 
     public void playRound() {
@@ -25,32 +34,25 @@ public class RacingGame {
         curRound++;
     }
 
-    public Cars getWinners() {
+    public List<String> getWinners() {
         return cars.getWinners();
     }
 
+    protected List<Car> getCars() {
+        return cars.getCars();
+    }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        String carNames = InputView.getCarNames();
+        int roundNo = InputView.getRoundNo();
+        RacingGame game = new RacingGame(roundNo, carNames);
 
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-        String[] carNames = sc.nextLine().split(",");
-
-        System.out.println("시도할 회수는 몇회인가요?");
-        int roundNo = sc.nextInt();
-
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-
-        RacingGame game = new RacingGame(roundNo, new Cars(cars));
-
-        System.out.println("실행 결과");
+        OutputView.printExecResultSentence();
         while (!game.isEnd()) {
             game.playRound();
-            System.out.println();
+            OutputView.printCars(game.getCars());
         }
-
-        System.out.println(game.getWinners() + "가 최종 우승하셨습니다.");
+        OutputView.printWinners(game.getWinners());
     }
+
 }

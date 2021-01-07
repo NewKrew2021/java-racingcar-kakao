@@ -1,4 +1,7 @@
-import java.util.Collections;
+package domain;
+
+import utils.CustomRandom;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,26 +20,21 @@ public class Cars {
         return maxPosition;
     }
 
-    public Cars getWinners() {
+    public List<String> getWinners() {
         int maxPosition = getMaxPosition();
-        return new Cars(cars.stream()
+        return cars.stream()
                 .filter(car -> car.getPosition() == maxPosition)
-                .collect(Collectors.toList()));
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 
     public void play() {
         for (Car car : cars) {
             car.runWithCondition(CustomRandom.nextInt());
-            System.out.println(car);
         }
-    }
-
-    @Override
-    public String toString() {
-        String[] names = new String[cars.size()];
-        for (int i = 0; i < names.length; ++i) {
-            names[i] = cars.get(i).getName();
-        }
-        return String.join(", ", names);
     }
 }
