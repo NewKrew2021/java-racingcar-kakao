@@ -68,7 +68,7 @@ public class Car implements Comparable<Car> {
     @Override
     public String toString() {
 
-        String str = this.name + " : ";
+        String str = this.name.toString() + " : ";
         for (int i = 0; i < position; i++) {
             str += '-';
         }
