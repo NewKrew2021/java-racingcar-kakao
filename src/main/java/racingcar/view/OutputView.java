@@ -4,15 +4,10 @@ import racingcar.domain.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class OutputView {
-    public static void printGetName() {
-        System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
-    }
-
-    public static void printGetTime() {
-        System.out.println("시도할 회수는 몇회인가요?");
-    }
+    private static final char DISTANCE_SYMBOL = '-';
 
     public static void printResult() {
         System.out.println("\n실행 결과");
@@ -20,8 +15,10 @@ public class OutputView {
 
     public static void printDistance(List<Car> cars) {
         for (Car car : cars) {
-            String distance = new String(new char[car.getDistance()]).replace("\0", "-");
-            System.out.println(car.getName() + " : " + distance);
+            System.out.print(car.getName() + " : ");
+            IntStream.range(0, car.getDistance())
+                    .forEach(t -> System.out.print(DISTANCE_SYMBOL));
+            System.out.println();
         }
 
         System.out.println();

@@ -6,13 +6,7 @@ import racingcar.view.OutputView;
 
 public class Main {
     public static void main(String[] args) {
-        OutputView.printGetName();
-        String names = InputView.getNames();
-
-        OutputView.printGetTime();
-        int time = InputView.getTime();
-
-        RacingGame racingGame = new RacingGame(names, time);
+        RacingGame racingGame = new RacingGame(InputView.getNames(), InputView.getTime());
         OutputView.printResult();
 
         while (!racingGame.isEnd()) {

@@ -3,14 +3,14 @@ package racingcar.domain;
 import java.util.Random;
 
 public class RandomMovingStrategy implements MovingStrategy {
-    public static final int FORWARD = 4;
+    private static final int MAX_BOUND = 10;
 
     @Override
-    public boolean movable() {
-        return getRandomNumber() >= FORWARD;
+    public int moveNumber() {
+        return getRandomNumber();
     }
 
     public int getRandomNumber() {
-        return new Random().nextInt(10);
+        return new Random().nextInt(MAX_BOUND);
     }
 }

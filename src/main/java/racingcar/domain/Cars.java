@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int INITIAL_DISTANCE = 0;
     private final List<Car> cars;
 
     public Cars(String input) {
@@ -13,7 +12,7 @@ public class Cars {
         String[] names = input.split(",");
 
         for (String name : names) {
-            cars.add(new Car(name, INITIAL_DISTANCE));
+            cars.add(new Car(name));
         }
     }
 
@@ -23,7 +22,7 @@ public class Cars {
 
     public void moveAll(MovingStrategy movingStrategy) {
         for (Car car : cars) {
-            car.move(movingStrategy);
+            car.move(movingStrategy.moveNumber());
         }
     }
 
@@ -31,7 +30,7 @@ public class Cars {
         int maxDistance = getMaxDistance();
 
         return cars.stream()
-                .filter(o1 -> o1.getDistance() == maxDistance)
+                .filter(car -> car.hasSameDistance(maxDistance))
                 .collect(Collectors.toList());
     }
 
