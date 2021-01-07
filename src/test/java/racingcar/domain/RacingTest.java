@@ -1,10 +1,7 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
+import racingcar.domain.Racing;
 
 import static org.assertj.core.api.Assertions.*;
 

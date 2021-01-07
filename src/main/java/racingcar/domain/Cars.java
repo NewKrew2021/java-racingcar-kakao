@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.view.CarsStatusView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +18,10 @@ public class Cars {
 
     public void printCurrentStatus() {
         for (Car car: this.cars) {
-            System.out.printf("%-4s : ", car.getName());
-            printStatusBar(car.getPosition());
+            CarsStatusView.printCarName(car.getName());
+            CarsStatusView.printStatusBar(car.getPosition());
         }
-        System.out.println();
-    }
-
-    private void printStatusBar(int number) {
-        for (int i = 0; i < number; i++) {
-            System.out.print("-");
-        }
-        System.out.println();
+        CarsStatusView.newLine();
     }
 
     public void moveOneRepeat() {
@@ -35,17 +30,17 @@ public class Cars {
         }
     }
 
-    private int createRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(9);
-    }
-
     public List<String> winnerNames() {
         List<String> names = new ArrayList<>();
         for (Car car: whoWinners()) {
             names.add(car.getName());
         }
         return names;
+    }
+
+    private int createRandomNumber() {
+        Random random = new Random();
+        return random.nextInt(9);
     }
 
     private List<Car> whoWinners() {

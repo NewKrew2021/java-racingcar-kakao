@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.*;
 
@@ -12,6 +12,18 @@ public class Racing {
         this.round = round;
     }
 
+    public void race() {
+        cars.printCurrentStatus();
+        for (int i = 0; i < round; i++) {
+            cars.moveOneRepeat();
+            cars.printCurrentStatus();
+        }
+    }
+
+    public List<String> getWinnerNames() {
+        return cars.winnerNames();
+    }
+
     private List<Car> registerCars(List<String> names) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
@@ -22,20 +34,6 @@ public class Racing {
 
     private List<String> splitNames(String str) {
         return new ArrayList<>(Arrays.asList(str.split(",")));
-    }
-
-    public void race() {
-        cars.printCurrentStatus();
-        for (int i = 0; i < round; i++) {
-            cars.moveOneRepeat();
-            cars.printCurrentStatus();
-        }
-        printWinnerName(cars.winnerNames());
-    }
-
-    private void printWinnerName(List<String> names) {
-        System.out.print(String.join(",", names));
-        System.out.println("가 최종 우승했습니다.");
     }
 
     @Override

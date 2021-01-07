@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
@@ -21,10 +21,6 @@ public class Car {
         this.position = new Position(position);
     }
 
-    private boolean isValidNameLength(String name) {
-        return name.length() <= MAX_CAR_NAME_LENGTH;
-    }
-
     public String getName() {
         return this.name;
     }
@@ -37,6 +33,10 @@ public class Car {
         if (value >= 4) {
             position.goForward();
         }
+    }
+
+    private boolean isValidNameLength(String name) {
+        return name.length() <= MAX_CAR_NAME_LENGTH;
     }
 
     @Override

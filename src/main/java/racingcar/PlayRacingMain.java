@@ -1,15 +1,18 @@
 package racingcar;
 
+import racingcar.domain.Racing;
+import racingcar.view.UserView;
+
 public class PlayRacingMain {
 
-    private static final UserInput printer = new UserInput();
-
     public static void main(String[] args){
-        String names = printer.enterCarNames();
-        int round = printer.enterRound();
+        String names = UserView.enterCarNames();
+        int round = UserView.enterRound();
         Racing rc = new Racing(names, round);
 
-        System.out.println("실행 결과");
+        UserView.printProcessTitle();
         rc.race();
+
+        UserView.printWinnerName(rc.getWinnerNames());
     }
 }
