@@ -21,15 +21,15 @@ public class Cars {
                 .collect(Collectors.toList()));
     }
 
-    public Integer getMaxPosition() {
+    private Integer getMaxPosition() {
         return cars.stream()
                 .mapToInt(Car::getPosition)
                 .max()
                 .getAsInt();
     }
 
-    public void allCarMoves() {
-        cars.forEach(e -> e.move(RandomUtil.getRandomValue()));
+    public void allCarMoves(int value) {
+        cars.forEach(e -> e.move(value));
     }
 
     public String getAllCarState() {

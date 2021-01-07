@@ -3,6 +3,7 @@ package racegame.controller;
 import racegame.domain.Car;
 import racegame.domain.Cars;
 import racegame.domain.Winners;
+import racegame.util.RandomUtil;
 import racegame.view.GameView;
 
 import java.util.*;
@@ -41,7 +42,7 @@ public class GameContoller {
     }
 
     private void singleRoundJobs(Cars cars) {
-        cars.allCarMoves();
+        cars.allCarMoves(RandomUtil.getRandomValue());
         GameView.roundResultView(cars);
     }
 
