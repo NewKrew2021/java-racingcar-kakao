@@ -2,7 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Cars;
 import racingcar.exception.InvalidRoundLengthException;
-import racingcar.view.OutputView;
+import racingcar.view.ResultView;
 
 public class Round {
     private int round;
@@ -12,13 +12,13 @@ public class Round {
             throw new InvalidRoundLengthException();
         }
         this.round = round;
-        OutputView.printRoundStart();
+        ResultView.printRoundStart();
     }
 
     public void startRound(Cars cars) {
         for (int i = 0; i < this.round; i++) {
             cars.move();
-            OutputView.print(cars.getRoundResult());
+            ResultView.print(cars.getRoundResult());
         }
     }
 }

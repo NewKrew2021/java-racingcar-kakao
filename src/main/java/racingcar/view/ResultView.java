@@ -1,7 +1,7 @@
 package racingcar.view;
 
 
-public class OutputView {
+public class ResultView {
 
     public static void printRoundStart() {
         System.out.println("\n실행 결과");

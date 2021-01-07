@@ -1,18 +1,19 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class LocationTest {
     @Test
-    void moveLocationTest(){
+    void moveLocationTest() {
         Location location = new Location();
         location.move(2);
-        assertThat(location.getLocation()).isEqualTo(new Location(2).getLocation());
+        assertThat(location).isEqualTo(new Location(2));
     }
 
     @Test
-    void createLocationTest(){
+    void createLocationTest() {
         Location location = new Location(1);
         assertThat(location).isEqualTo(new Location(1));
     }

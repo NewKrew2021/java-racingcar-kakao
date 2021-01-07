@@ -2,14 +2,14 @@ package racingcar.controller;
 
 import racingcar.domain.Cars;
 import racingcar.view.InputView;
-import racingcar.view.OutputView;
+import racingcar.view.ResultView;
 
 public class GameManager {
     private static Round round;
-    private static Cars cars = new Cars();
+    private static Cars cars;
 
     public static void main(String[] argv) {
-        cars.setCars(InputView.inputCarNames());
+        cars = new Cars(InputView.inputCarNames());
 
         round = new Round(InputView.inputRound());
         round.startRound(cars);
@@ -18,6 +18,6 @@ public class GameManager {
     }
 
     private static void result() {
-        OutputView.printWinner(cars.getWinner());
+        ResultView.printWinner(cars.getWinner());
     }
 }
