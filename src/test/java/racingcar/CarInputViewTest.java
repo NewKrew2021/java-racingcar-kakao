@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CarInputViewTest {
 
@@ -14,7 +16,10 @@ public class CarInputViewTest {
     void parseCarNameTest(){
         String text = "hendo,brody,summer";
         List<String> nameList = CarInputView.parseCarName(text);
-        assertThat(nameList).contains("hendo").contains("brody").contains("summer");
+        assertAll(() -> assertThat(nameList).hasSize(3),
+                () -> assertTrue(nameList.contains("hendo")),
+                () -> assertTrue(nameList.contains("brody")),
+                () -> assertTrue(nameList.contains("summer")));
     }
 
 }
