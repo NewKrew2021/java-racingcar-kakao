@@ -1,6 +1,4 @@
-package racingcar;
-
-import java.util.Optional;
+package racingcar.domain;
 
 public class Car {
 
