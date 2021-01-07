@@ -10,6 +10,7 @@ public class CarTest {
         Car car2 = new Car("snow", 1);
         assertTrue(car1.isEqualPosition(car2));
     }
+
     @Test
     public void testMove() {
         Car car1 = new Car("jon", 4);
