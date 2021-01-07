@@ -13,6 +13,7 @@ public class PlayRacingMain {
         UserView.printProcessTitle();
         while (!rc.isFinish()) {
             rc.race();
+            UserView.printProcessStatus(rc.getCarsMidTermStatus());
         }
 
         UserView.printWinnerName(rc.getWinnerNames());

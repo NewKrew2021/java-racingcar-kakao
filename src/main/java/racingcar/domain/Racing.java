@@ -19,7 +19,10 @@ public class Racing {
     public void race() {
         round.spendOneRound();
         cars.moveOneRepeat();
-        cars.printCurrentStatus();
+    }
+
+    public List<Car> getCarsMidTermStatus() {
+        return cars.getCars();
     }
 
     public List<String> getWinnerNames() {

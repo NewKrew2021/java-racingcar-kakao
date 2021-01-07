@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.CarsStatusView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -16,12 +14,8 @@ public class Cars {
         this.cars = cars;
     }
 
-    public void printCurrentStatus() {
-        for (Car car: this.cars) {
-            CarsStatusView.printCarName(car.getName());
-            CarsStatusView.printStatusBar(car.getPosition());
-        }
-        CarsStatusView.newLine();
+    public List<Car> getCars() {
+        return this.cars;
     }
 
     public void moveOneRepeat() {

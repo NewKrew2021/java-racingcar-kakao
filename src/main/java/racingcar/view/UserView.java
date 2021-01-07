@@ -1,5 +1,7 @@
 package racingcar.view;
 
+import racingcar.domain.Car;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,8 +23,31 @@ public class UserView {
         System.out.println("실행 결과");
     }
 
+    public static void printProcessStatus(List<Car> cars) {
+        for (Car car : cars) {
+            printCarName(car.getName());
+            printStatusBar(car.getPosition());
+        }
+        newLine();
+    }
+
     public static void printWinnerName(List<String> names) {
         System.out.print(String.join(",", names));
         System.out.println("가 최종 우승했습니다.");
+    }
+
+    private static void printCarName(String name) {
+        System.out.printf("%-4s : ", name);
+    }
+
+    private static void printStatusBar(int number) {
+        for (int i = 0; i < number; i++) {
+            System.out.print("-");
+        }
+        newLine();
+    }
+
+    private static void newLine() {
+        System.out.println();
     }
 }
