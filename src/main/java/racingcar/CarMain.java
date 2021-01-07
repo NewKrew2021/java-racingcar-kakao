@@ -1,21 +1,13 @@
 package racingcar;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class CarMain {
     public static void main(String[] args) {
-        ArrayList<String> carNameList = CarView.parseCarName(CarView.writeCarName());
-
-        ArrayList<Car> carList = new ArrayList<>();
-
-        for (String carName : carNameList) {
-            carList.add(Car.of(carName, 0));
-        }
-
-        CarGame game = CarGame.of(carList, CarView.writeRacingRound());
+        List<String> carNames = CarView.parseCarName(CarView.writeCarName());
+        CarGame game = CarGame.of(new Cars(carNames), CarView.writeRacingRound());
 
         CarView.printRoundStart();
-
         while (!game.isFinished()) {
             game.playRound();
             CarView.printRoundResult(game);

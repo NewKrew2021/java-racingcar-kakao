@@ -1,15 +1,12 @@
 package racingcar;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 public class CarView {
 
 
-    public static ArrayList<String> parseCarName(String text) {
-        return new ArrayList<String>(Arrays.asList(text.split(",")));
+    public static List<String> parseCarName(String text) {
+        return new ArrayList<>(Arrays.asList(text.split(",")));
     }
 
     public static String writeCarName() {
@@ -30,7 +27,7 @@ public class CarView {
     }
 
     public static void printRoundResult(CarGame game) {
-        for (Car car : game.getCarList()) {
+        for (Car car : game.getCars()) {
             System.out.println(car.getName() + " : " + String.join("", Collections.nCopies(car.getPosition(), "-")));
         }
         System.out.println();

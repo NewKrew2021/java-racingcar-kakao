@@ -1,20 +1,21 @@
 package racingcar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CarGame {
 
-    private final ArrayList<Car> carList;
+    private final Cars cars;
     private final int totalRound;
     private int currentRound = 0;
 
-    private CarGame(ArrayList<Car> carList, int totalRound) {
-        this.carList = carList;
+    private CarGame(Cars cars, int totalRound) {
+        this.cars = cars;
         this.totalRound = totalRound;
     }
 
-    public static CarGame of(ArrayList<Car> carList, int totalRound) {
-        return new CarGame(carList, totalRound);
+    public static CarGame of(Cars cars, int totalRound) {
+        return new CarGame(cars, totalRound);
     }
 
     public void playRound() {
@@ -24,7 +25,7 @@ public class CarGame {
 
     private void updateCar() {
         RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
-        for (Car car : carList) {
+        for (Car car : Cars.getCars()) {
             car.moveCarPosition(randomMovingStrategy);
         }
     }
@@ -32,7 +33,7 @@ public class CarGame {
     public ArrayList<String> getWinner() {
         int maxPosition = getMaxPosition();
         ArrayList<String> winners = new ArrayList<>();
-        for (Car car : carList) {
+        for (Car car : Cars.getCars()) {
             addWinner(getNameIfMatched(car, maxPosition), winners);
         }
         return winners;
@@ -53,7 +54,7 @@ public class CarGame {
 
     private int getMaxPosition() {
         int maxPosition = 0;
-        for (Car car : carList) {
+        for (Car car : Cars.getCars()) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
         return maxPosition;
@@ -63,7 +64,7 @@ public class CarGame {
         return totalRound == currentRound;
     }
 
-    public ArrayList<Car> getCarList() {
-        return carList;
+    public List<Car> getCars() {
+        return Cars.getCars();
     }
 }
