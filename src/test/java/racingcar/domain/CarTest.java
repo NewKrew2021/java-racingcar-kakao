@@ -5,8 +5,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.domain.Car;
+import racingcar.exception.InvalidNameLengthException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarTest {
 
@@ -20,6 +22,13 @@ public class CarTest {
     @Test
     public void create() {
         assertThat(car).isEqualTo(new Car("mac", 4));
+    }
+
+    @Test
+    public void validateName() {
+        assertThatThrownBy(() -> {
+            new Car("youandme");
+        }).isInstanceOf(InvalidNameLengthException.class);
     }
 
     @Test

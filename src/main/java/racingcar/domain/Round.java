@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.InvalidRoundValueException;
+
 import java.util.Objects;
 
 public class Round {
@@ -21,7 +23,7 @@ public class Round {
 
     private void validateRoundValue(int round) {
         if (round < 0) {
-            throw new IllegalArgumentException("0 이상의 라운드를 입력하세요.");
+            throw new InvalidRoundValueException("0 이상의 라운드를 입력하세요.");
         }
     }
 

@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Position;
+import racingcar.exception.InvalidPositionValueException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -17,7 +18,7 @@ public class PositionTest {
     public void validatePosition() {
         assertThatThrownBy(() -> {
             new Position(-1);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(InvalidPositionValueException.class);
     }
 
     @Test

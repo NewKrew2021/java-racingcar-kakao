@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
+import racingcar.exception.InvalidRoundValueException;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -17,7 +18,7 @@ public class RoundTest {
     public void validateRound() {
         assertThatThrownBy(() -> {
             new Round(-1);
-        }).isInstanceOf(IllegalArgumentException.class);
+        }).isInstanceOf(InvalidRoundValueException.class);
     }
 
     @Test

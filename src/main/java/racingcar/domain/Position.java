@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.InvalidPositionValueException;
+
 import java.util.Objects;
 
 public class Position {
@@ -21,7 +23,7 @@ public class Position {
 
     private void validatePositionValue(int position) {
         if (position < 0) {
-            throw new IllegalArgumentException("0 이상의 포지션만 가능합니다.");
+            throw new InvalidPositionValueException("0 이상의 포지션만 가능합니다.");
         }
     }
 

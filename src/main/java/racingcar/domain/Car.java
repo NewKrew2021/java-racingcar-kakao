@@ -1,5 +1,7 @@
 package racingcar.domain;
 
+import racingcar.exception.InvalidNameLengthException;
+
 import java.util.Objects;
 
 public class Car {
@@ -14,9 +16,7 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        if (!isValidNameLength(name)) {
-            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
-        }
+        validateNameLength(name);
         this.name = name;
         this.position = new Position(position);
     }
@@ -35,8 +35,10 @@ public class Car {
         }
     }
 
-    private boolean isValidNameLength(String name) {
-        return name.length() <= MAX_CAR_NAME_LENGTH;
+    private void validateNameLength(String name) {
+        if (name.length() > MAX_CAR_NAME_LENGTH) {
+            throw new InvalidNameLengthException("이름은 5자 이하만 가능합니다.");
+        }
     }
 
     @Override
