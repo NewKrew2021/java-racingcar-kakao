@@ -2,8 +2,10 @@ package racinggame;
 
 import domain.Car;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     public static InputManager inputManager;
@@ -32,35 +34,37 @@ public class RacingGame {
     }
 
     public void play() {
-        Cars cars = new Cars(getCars());
-        int tryCount = getCount();
-        moveCars(cars, tryCount);
+        Cars cars = new Cars(getCarsFromUser());
+        int tryCount = getCountFromUser();
+        Consumer<Cars> printCars = (Cars cs) -> {
+            cs.printAll();
+            System.out.println();
+        };
+        moveCars(cars, tryCount, printCars);
         printHeads(cars);
     }
 
-    public List<Car> getCars() {
-        String[] names = inputManager.getFromUser(
+    public List<Car> getCarsFromUser() {
+        List<Car> carsFromUser = Arrays.asList(inputManager.getFromUser(
                 COMMENT_CAR_NAMES_INPUT,
                 nameInputValidator
-        ).split(",");
-
-        List<Car> carlist = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            carlist.add(new Car(names[i]));
-        }
-        return carlist;
+        )
+                .split(","))
+                .stream()
+                .map((String carName) -> new Car(carName))
+                .collect(Collectors.toList());
+        return carsFromUser;
     }
 
-    public int getCount() {
+    public int getCountFromUser() {
         return Integer.parseInt(inputManager.getFromUser(COMMENT_HOWMANY_INPUT, countInputValidator));
     }
 
-    public void moveCars(Cars cars, int tryCount) {
+    public void moveCars(Cars cars, int tryCount, Consumer<Cars> afterMove) {
         System.out.println(COMMENT_RESULT);
         for (int i = 0; i < tryCount; i++) {
             cars.moveAll(RandomBasedMoveStrategy.getInstance());
-            cars.printAll();
-            System.out.println();
+            afterMove.accept(cars);
         }
     }
 
