@@ -10,7 +10,6 @@ public class RacingGameLogic {
 
     private static final String SEPARATOR_OF_INPUT_CAR_NAME = ",";
     private static final String SEPARATOR_OF_WINNERS = ", ";
-    private static final int STOP_VALUE = 3;
 
     private List<Car> cars;
     private int maxProgressNumber;
@@ -30,6 +29,10 @@ public class RacingGameLogic {
         return this.cars;
     }
 
+    public int getCarsSize() {
+        return this.cars.size();
+    }
+
     public List<Integer> getCarsPosition() {
         return cars.stream()
                 .map(Car::getPosition)
@@ -46,16 +49,14 @@ public class RacingGameLogic {
         return maxPosition < this.maxProgressNumber;
     }
 
-    public void race() {
-        List<Integer> randomValues = RandomValue.makeRandomValues(this.cars.size(), STOP_VALUE);
-
+    public void race(List<Boolean> randomValues) {
         for (int i = 0; i < this.cars.size(); i++) {
             this.decideGoOrStop(this.cars.get(i), randomValues.get(i));
         }
     }
 
-    private void decideGoOrStop(Car car, int randomValue) {
-        if( randomValue > STOP_VALUE ) {
+    private void decideGoOrStop(Car car, Boolean randomValue) {
+        if( randomValue ) {
             car.move();
         }
     }

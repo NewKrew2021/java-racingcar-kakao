@@ -17,8 +17,9 @@ public class RacingGameMain {
         RacingGameLogic racingGameLogic = new RacingGameLogic(carNames,numberOfTrials);
 
         RacingOutputUI.printPreRacingResult();
+
         while (racingGameLogic.checkPosition()) {
-            racingGameLogic.race();
+            racingGameLogic.race(RandomValue.makeRandomValues(racingGameLogic.getCarsSize()));
             RacingOutputUI.racePrint(racingGameLogic.getCars());
         }
         RacingOutputUI.printWinner(racingGameLogic.whoAreWinner());

@@ -2,31 +2,31 @@ package racing;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
 public class RandomValueTest {
 
     @Test
     void RepeatMakeRandomValuesTest() {
-        final int randomValuesSize = 3;
-        final int stopValue = 4;
+        final int randomValuesSize = 10;
         final int trial = 100;
 
         for(int i = 0; i < trial; i++) {
-            this.makeRandomValuesTest(randomValuesSize, stopValue);
+            this.makeRandomValuesTest(randomValuesSize);
         }
     }
 
-    private void makeRandomValuesTest(final int randomValuesSize, final int stopValue) {
-        int maxRandomValue = 0;
-        List<Integer> randomValues =  RandomValue.makeRandomValues(randomValuesSize, stopValue);
+    private void makeRandomValuesTest(final int randomValuesSize) {
+        List<Boolean> randomValues =  RandomValue.makeRandomValues(randomValuesSize);
 
-        for( int randomValue : randomValues) {
-            assertThat(randomValue).isBetween(0, 9);
-            maxRandomValue = Math.max(maxRandomValue, randomValue);
-        }
-
-        assertThat(maxRandomValue).isBetween(stopValue,9);
+        assertThat(randomValues.size()).isEqualTo(randomValuesSize);
+        assertThat(randomValues.stream()
+                .filter(b->b.equals(true))
+                .count()
+        ).isGreaterThan(0);
     }
 
 }
