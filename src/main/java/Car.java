@@ -8,10 +8,7 @@ public class Car implements Comparable<Car> {
     private final Random rand;
 
     public Car(String name) {
-        if (name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException();
-        this.name = name;
-        this.position = 0;
-        rand = new Random();
+        this(name, 0);
     }
 
     public Car(String name, int position) {
