@@ -32,13 +32,13 @@ public class CarTest {
 
     @Test
     public void moveOnce() {
-        car.move(7);
+        car.move(4);
         assertThat(car.getPosition()).isEqualTo(5);
     }
 
     @Test
     public void moveNone() {
-        car.move(2);
+        car.move(3);
         assertThat(car.getPosition()).isEqualTo(4);
     }
 }
