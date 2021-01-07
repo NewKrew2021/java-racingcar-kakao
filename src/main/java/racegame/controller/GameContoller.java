@@ -42,7 +42,7 @@ public class GameContoller {
     }
 
     private void singleRoundJobs(Cars cars) {
-        cars.allCarMoves(RandomUtil.getRandomValue());
+        cars.allCarMoves();
         GameView.roundResultView(cars);
     }
 

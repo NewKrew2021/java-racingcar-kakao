@@ -28,8 +28,8 @@ public class Cars {
                 .getAsInt();
     }
 
-    public void allCarMoves(int value) {
-        cars.forEach(e -> e.move(value));
+    public void allCarMoves() {
+        cars.forEach(e -> e.move(RandomUtil.getRandomValue()));
     }
 
     public String getAllCarState() {
