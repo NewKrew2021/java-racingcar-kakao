@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 public class Car {
-    private static final int FORWARD = 4;
     private final Name name;
     private int distance;
 
@@ -26,8 +25,7 @@ public class Car {
         return this.distance == distance;
     }
 
-    public void move(int moveNumber) {
-        if (moveNumber >= FORWARD)
-            this.distance++;
+    public void move() {
+        this.distance++;
     }
 }

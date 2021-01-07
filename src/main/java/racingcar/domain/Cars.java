@@ -21,9 +21,9 @@ public class Cars {
     }
 
     public void moveAll(MovingStrategy movingStrategy) {
-        for (Car car : cars) {
-            car.move(movingStrategy.moveNumber());
-        }
+        cars.stream()
+                .filter(t -> movingStrategy.movable())
+                .forEach(Car::move);
     }
 
     public List<Car> getWinners() {

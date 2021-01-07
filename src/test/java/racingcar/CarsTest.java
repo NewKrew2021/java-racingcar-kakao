@@ -31,14 +31,14 @@ class CarsTest {
     @Test
     @DisplayName("전체 이동 테스트: moveAll을 실행했을 때 올바른 이동이 수행되는지 테스트")
     void moveAll() {
-        cars.moveAll(() -> 4);
+        cars.moveAll(() -> true);
         assertThat(cars.getCars()).allMatch(car -> car.getDistance() == 1);
     }
 
     @Test
     @DisplayName("우승자 테스트: 우승자를 제대로 판별하는지 테스트")
     void winners() {
-        cars.getCars().get(0).move(4);
+        cars.getCars().get(0).move();
         assertThat(cars.getWinners()).hasSize(1).contains(cars.getCars().get(0));
     }
 }
