@@ -1,29 +1,35 @@
 package racingcar.domain;
 
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static java.lang.Math.max;
 
 public class RacingGame {
-    private Car[] cars;
+    public static final int UPPER_BOUND = 10;
+    private final List<Car> cars;
 
     public RacingGame(String[] names){
-        cars = new Car[names.length];
+        Car[] cars = new Car[names.length];
         for (int i = 0; i < names.length; i++) {
             cars[i] = new Car(names[i]);
         }
+        this.cars = Arrays.asList(cars);
     }
 
     public RacingGame(String[] names, int[] locations) {
-        cars = new Car[names.length];
+        Car[] cars = new Car[names.length];
         for (int i = 0; i < names.length; i++) {
             cars[i] = new Car(names[i], locations[i]);
         }
+        this.cars = Arrays.asList(cars);
     }
 
     public void moveCars() {
         for (Car car : cars) {
-            car.move(Utils.getRandomNo());
+            car.move(Utils.getRandomNo(UPPER_BOUND));
         }
     }
 
@@ -39,7 +45,7 @@ public class RacingGame {
         ArrayList<String> winners = new ArrayList<>();
         int maxLocation = getMaxLocation();
 
-        for (int i = 0; i < cars.length; i++) {
+        for (int i = 0; i < cars.size(); i++) {
             addWinner(winners, i, maxLocation);
         }
 
@@ -55,8 +61,8 @@ public class RacingGame {
     }
 
     private void addWinner(ArrayList<String> winners, int idx, int maxLocation) {
-        if (isMaxLocation(cars[idx], maxLocation)) {
-            winners.add(cars[idx].getName());
+        if (isMaxLocation(cars.get(idx), maxLocation)) {
+            winners.add(cars.get(idx).getName());
         }
     }
 
@@ -64,7 +70,7 @@ public class RacingGame {
         return car.getLocation() == maxLocation;
     }
 
-    public Car[] getCars() {
+    public List<Car> getCars() {
         return this.cars;
     }
 
