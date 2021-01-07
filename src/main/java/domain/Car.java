@@ -4,43 +4,44 @@ import racinggame.MoveStrategy;
 
 import java.util.Objects;
 
-public class Car implements Comparable<Car>{
+public class Car implements Comparable<Car> {
 
     private final String name;
     private int position = 0;
 
-    public Car(String name){
-        if(name == null ||
+    public Car(String name) {
+        if (name == null ||
                 name.length() > 5 ||
-                name.equals(""))
+                name.equals("")) {
             throw new IllegalArgumentException();
+        }
         this.name = name;
     }
 
-    public Car(String name, int position){
+    public Car(String name, int position) {
         this(name);
         this.position = position;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return this.position;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public int move(MoveStrategy strategy){
-        if(strategy.isMove())
+    public int move(MoveStrategy strategy) {
+        if (strategy.isMove())
             ++this.position;
         return this.position;
     }
 
     @Override
     public int compareTo(Car o) {
-        if(this.position > o.position)
+        if (this.position > o.position)
             return -1;
-        if(this.position < o.position)
+        if (this.position < o.position)
             return 1;
         return 0;
     }
