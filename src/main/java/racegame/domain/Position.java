@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 public class Position implements Comparable<Position> {
 
-    public static final int CANNOT_MOVE = 4;
+    public static final int CANNOT_MOVE = 3;
     private final int position;
 
     public Position(int position) {
