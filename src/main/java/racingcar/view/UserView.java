@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.domain.Car;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,7 +35,7 @@ public class UserView {
             printCarName(car.getName());
             printStatusBar(car.getPosition());
         }
-        newLine();
+        System.out.println();
     }
 
     public static void printWinnerName(List<String> names) {
@@ -47,13 +48,6 @@ public class UserView {
     }
 
     private static void printStatusBar(int number) {
-        for (int i = 0; i < number; i++) {
-            System.out.print(STATUS_BAR_STYLE);
-        }
-        newLine();
-    }
-
-    private static void newLine() {
-        System.out.println();
+        System.out.println(String.join("", Collections.nCopies(number, STATUS_BAR_STYLE)));
     }
 }
