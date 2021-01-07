@@ -1,17 +1,18 @@
-package racegame;
+package racegame.controller;
 
 import racegame.domain.Car;
 import racegame.domain.Cars;
 import racegame.domain.Winners;
+import racegame.view.GameView;
 
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class GameManager {
+public class GameContoller {
 
     public void startGame() {
-        final Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
         GameView.gameStartMessageView();
         String carString = sc.nextLine();

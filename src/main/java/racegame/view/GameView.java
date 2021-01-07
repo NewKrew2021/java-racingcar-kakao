@@ -1,4 +1,4 @@
-package racegame;
+package racegame.view;
 
 import racegame.domain.Cars;
 import racegame.domain.Winners;

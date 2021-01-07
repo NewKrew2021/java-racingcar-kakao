@@ -1,9 +1,11 @@
 package racegame;
 
+import racegame.controller.GameContoller;
+
 public class Main {
 
     public static void main(String[] args) {
-        GameManager gameManager = new GameManager();
+        GameContoller gameManager = new GameContoller();
         gameManager.startGame();
     }
 
