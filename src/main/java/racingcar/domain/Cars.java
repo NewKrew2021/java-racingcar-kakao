@@ -11,24 +11,15 @@ public class Cars {
     private static final int RANGE = 10;
 
     public Cars(String namesText) {
-        cars = new LinkedList<>();
-        List<String> names = splitName(namesText);
-        for (String name : names) {
-            addCar(name);
-        }
+        cars = splitName(namesText).stream().map(Car::new).collect(Collectors.toList());
     }
 
     private List<String> splitName(String namesText) {
         return Arrays.asList(namesText.split(SPLIT_DELIMITER));
     }
 
-    private void addCar(String name) {
-        cars.add(new Car(name));
-    }
-
-
     public List<Car> getCars() {
-        return cars;
+        return Collections.unmodifiableList(cars);
     }
 
     public List<String> getRaceWinners() {
@@ -43,14 +34,16 @@ public class Cars {
 
     private List<Car> getWinners(int maxPosition) {
         return cars.stream()
-                .filter(car -> car.getPosition() == maxPosition)
+                .filter(car -> car.equalsPosition(maxPosition))
                 .collect(Collectors.toList());
     }
 
     private int getMaxPosition() {
-        return cars.stream()
-                .max(Comparator.comparing(Car::getPosition))
-                .get().getPosition();
+        int max = 0;
+        for (Car car : cars) {
+            max = car.getMax(max);
+        }
+        return max;
     }
 
     public void moveAll() {

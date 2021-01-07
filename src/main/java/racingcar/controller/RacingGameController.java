@@ -1,40 +1,36 @@
 package racingcar.controller;
 
-import racingcar.view.Circuit;
+import racingcar.domain.RapTime;
+import racingcar.view.RaceReporter;
 import racingcar.domain.RacingGame;
 
 import java.util.Scanner;
 
 public class RacingGameController {
     private RacingGame racingGame;
-    private int rapTime;
-    private Circuit circuit;
-
-    public void run() {
-        circuit = new Circuit();
-
-        opening();
-        start();
-        end();
+    private RapTime rapTime;
+    private RaceReporter raceReporter;
+    private Scanner sc;
+    public RacingGameController(){
+        raceReporter = new RaceReporter();
+        sc = new Scanner(System.in);
     }
 
     public void opening() {
-        Scanner sc = new Scanner(System.in);
-        circuit.printRequestName();
+        raceReporter.printRequestName();
         racingGame = new RacingGame(sc.nextLine());
-        circuit.printRequestTime();
-        rapTime = sc.nextInt();
+        raceReporter.printRequestTime();
+        rapTime = new RapTime(sc.nextInt());
     }
 
     public void start() {
-        for (int i = 0; i < rapTime; i++) {
-            racingGame.race();
-            circuit.printRaceStatus(racingGame.getRaceStatus());
+        while (!rapTime.isEnd()) {
+            racingGame.race(rapTime);
+            raceReporter.printRaceStatus(racingGame.getRaceStatus());
         }
     }
 
     public void end() {
-        circuit.printEnd(racingGame.getRaceWinners());
-        circuit.printRaceStatus(racingGame.getRaceStatus());
+        raceReporter.printEnd(racingGame.getRaceWinners());
     }
 }

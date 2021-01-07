@@ -11,7 +11,8 @@ public class RacingGame {
         cars = new Cars(namesText);
     }
 
-    public void race() {
+    public void race(RapTime rapTime) {
+        rapTime.downTime();
         cars.moveAll();
     }
 

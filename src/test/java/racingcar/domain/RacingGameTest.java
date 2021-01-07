@@ -20,7 +20,8 @@ public class RacingGameTest {
 
     @Test
     void splitTest() {
-        racingGame.race();
+        RapTime rapTime = new RapTime(5);
+        racingGame.race(rapTime);
         List<Car> carInfos = racingGame.getRaceStatus();
         List<String> carNames = carInfos.stream().map(Car::getName).collect(Collectors.toList());
         assertThat(carNames).containsExactly("dino", "yell", "pobi");

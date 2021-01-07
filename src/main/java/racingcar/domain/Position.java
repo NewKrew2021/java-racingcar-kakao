@@ -39,4 +39,11 @@ public class Position {
     }
 
 
+    public boolean equalsPosition(int position) {
+        return this.position == position;
+    }
+
+    public int getMax(int max) {
+        return Math.max(this.position, max);
+    }
 }

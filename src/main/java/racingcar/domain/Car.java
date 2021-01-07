@@ -2,6 +2,8 @@ package racingcar.domain;
 
 public class Car {
     private static final int SPEED = 4;
+    public static final String HYPHEN = "-";
+    public static final String ANNOUNCE_COLON = " : ";
 
     private final Position position;
     private final Name name;
@@ -32,10 +34,18 @@ public class Car {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(name.getName() + " : ");
+        sb.append(name.getName() + ANNOUNCE_COLON);
         for (int i = 0; i < position.getPosition(); i++) {
-            sb.append("-");
+            sb.append(HYPHEN);
         }
         return sb.toString();
+    }
+
+    public boolean equalsPosition(int maxPosition) {
+        return position.equalsPosition(maxPosition);
+    }
+
+    public int getMax(int max) {
+        return position.getMax(max);
     }
 }
