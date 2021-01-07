@@ -5,19 +5,21 @@ import java.util.*;
 public class Racing {
 
     private final Cars cars;
-    private final int round;
+    private int round;
 
     public Racing(String names, int round) {
         this.cars = new Cars(registerCars(splitNames(names)));
         this.round = round;
     }
 
+    public boolean isEnd() {
+        return round == 0;
+    }
+
     public void race() {
+        spendOneRound();
+        cars.moveOneRepeat();
         cars.printCurrentStatus();
-        for (int i = 0; i < round; i++) {
-            cars.moveOneRepeat();
-            cars.printCurrentStatus();
-        }
     }
 
     public List<String> getWinnerNames() {
@@ -34,6 +36,10 @@ public class Racing {
 
     private List<String> splitNames(String str) {
         return new ArrayList<>(Arrays.asList(str.split(",")));
+    }
+
+    private void spendOneRound() {
+        this.round--;
     }
 
     @Override

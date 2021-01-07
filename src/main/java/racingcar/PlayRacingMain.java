@@ -11,7 +11,9 @@ public class PlayRacingMain {
         Racing rc = new Racing(names, round);
 
         UserView.printProcessTitle();
-        rc.race();
+        while (!rc.isEnd()) {
+            rc.race();
+        }
 
         UserView.printWinnerName(rc.getWinnerNames());
     }

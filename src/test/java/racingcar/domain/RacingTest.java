@@ -1,7 +1,6 @@
 package racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Racing;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -11,5 +10,12 @@ public class RacingTest {
     public void create() {
         assertThat(new Racing("mac,book,pro", 5))
                 .isEqualTo(new Racing("mac,book,pro", 5));
+    }
+
+    @Test
+    public void endRacing() {
+        Racing racing = new Racing("mac,book,pro", 1);
+        racing.race();
+        assertThat(racing.isEnd()).isTrue();
     }
 }
