@@ -78,7 +78,7 @@ public class RacingGame {
 
     private void validateCar(Car car){
         if(!isValidCar(car)){
-            String message = String.format("자동차의 이름은 최대 %d자 이내로 작성하세요.", MAX_LEN_NAME);
+            String message = String.format("%s: 자동차의 이름은 최대 %d자 이내로 작성하세요.",car.getName(), MAX_LEN_NAME);
             throw new IllegalArgumentException(message);
         }
     }

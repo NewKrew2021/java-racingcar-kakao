@@ -31,7 +31,7 @@ public class RacingGameTest {
 
         assertThatThrownBy(() -> new RacingGame(names, finalRound))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(String.format("자동차의 이름은 최대 %d자 이내로 작성하세요.", RacingGame.MAX_LEN_NAME));
+                .hasMessage(String.format("charlie: 자동차의 이름은 최대 %d자 이내로 작성하세요.", RacingGame.MAX_LEN_NAME));
     }
 
     @Test
