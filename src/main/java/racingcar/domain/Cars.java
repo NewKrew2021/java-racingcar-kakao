@@ -9,7 +9,7 @@ public class Cars {
 
     private List<Car> cars = new ArrayList<>();
 
-    public void setCars(String carNames) {
+    public Cars(String carNames) {
         String[] parsingCarNames = splitCarNames(carNames);
         addCarName(parsingCarNames);
     }
