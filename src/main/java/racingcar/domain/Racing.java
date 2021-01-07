@@ -18,7 +18,7 @@ public class Racing {
 
     public void race() {
         round.spendOneRound();
-        cars.moveOneRepeat();
+        cars.moveOneRepeat(new RandomConditionValueStrategy());
     }
 
     public List<Car> getCarsMidTermStatus() {

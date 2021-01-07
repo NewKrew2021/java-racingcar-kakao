@@ -3,7 +3,6 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -18,9 +17,9 @@ public class Cars {
         return this.cars;
     }
 
-    public void moveOneRepeat() {
+    public void moveOneRepeat(ConditionValueStrategy conditionValueStrategy) {
         for (Car car: this.cars) {
-            car.move(createRandomNumber());
+            car.move(conditionValueStrategy.getValue());
         }
     }
 
@@ -38,11 +37,6 @@ public class Cars {
             cars.add(new Car(name));
         }
         return cars;
-    }
-
-    private int createRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(9);
     }
 
     private List<Car> whoWinners() {
