@@ -1,15 +1,13 @@
 package carRace;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
     List<Car> carList;
 
-    private Cars(List<Car> carList) {
-        this.carList = carList;
+    public Cars(List<Car> carList) {
+        this.carList = Collections.unmodifiableList(carList);
     }
 
     public static Cars fromNames(String[] names) {
