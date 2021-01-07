@@ -1,19 +1,20 @@
 package racingcar;
 
-import racingcar.domain.Cars;
 import racingcar.domain.RacingGame;
 import racingcar.domain.TryNo;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
+import java.util.List;
+
 public class RacingGameApp {
 
     public static void main(String[] args) {
 
-        Cars cars = InputView.getCars();
+        List<String> carNames = InputView.getCarNames();
         TryNo tryNo = InputView.getTryNo();
 
-        RacingGame racingGame = new RacingGame(cars, tryNo);
+        RacingGame racingGame = new RacingGame(carNames, tryNo);
 
         OutputView.printResultMessage();
         while (!racingGame.isEnd()) {

@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
 
 import java.util.Arrays;
 
@@ -14,10 +12,7 @@ public class CarsTest {
     @Test
     @DisplayName("Cars 객체 생성 테스트")
     public void testCreateCars(){
-        Cars cars = new Cars(Arrays.asList(
-                new Car("pobi"),
-                new Car("crong")
-        ));
+        Cars cars = Cars.of(Arrays.asList("pobi","crong"));
         assertThat(cars.getCars()).extracting("name").contains("pobi", "crong");
 
     }

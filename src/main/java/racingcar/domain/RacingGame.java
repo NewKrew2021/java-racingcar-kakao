@@ -6,8 +6,8 @@ public class RacingGame {
     private Cars cars;
     private TryNo tryNo;
 
-    public RacingGame(Cars cars, TryNo tryNo) {
-        this.cars = cars;
+    public RacingGame(List<String> names, TryNo tryNo) {
+        this.cars = Cars.of(names);
         this.tryNo = tryNo;
     }
 
