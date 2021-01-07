@@ -33,8 +33,8 @@ public class Car implements Comparable<Car> {
         move(generateRandomNumber());
     }
 
-    public void move(int randomNumber) {
-        if (randomNumber > MOVE_THRESHOLD) position++;
+    public void move(int number) {
+        if (number > MOVE_THRESHOLD) position++;
     }
 
     private int generateRandomNumber() {
