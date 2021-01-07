@@ -14,16 +14,4 @@ public class CarsTest {
         String[] testNames = {"car1", "car2", "car3", "car4"};
         testCars = Cars.fromNames(testNames);
     }
-
-//     TODO getWinners와 toString의 결합도 줄이기
-//    @Test
-//    public void getWinners() {
-//        testCars.moveAllCars(moveNumbers1);
-//        testCars.moveAllCars(moveNumbers2);
-//
-//        List<Car> winners = testCars.getWinners();
-//
-//        String expected = "[car1 : --, car3 : --]";
-//        assertThat(winners.toString()).isEqualTo(expected);
-//    }
 }

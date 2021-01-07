@@ -2,6 +2,12 @@ package carRace;
 
 public class RacingGame {
 
+    MovingStrategy strategy;
+
+    public RacingGame(MovingStrategy strategy) {
+        this.strategy = strategy;
+    }
+
     public void run() {
         Cars cars = Cars.fromNames(RacingGameUI.getNamesFromUser());
         race(RacingGameUI.getNumOfRepeatFromUser(), cars);
@@ -11,10 +17,8 @@ public class RacingGame {
     private void race(int n, Cars cars) {
         RacingGameUI.printStartMessage();
         for (int i = 0; i < n; i++) {
-            cars.moveAllCars();
+            cars.moveAllCars(new RandomStrategy());
             RacingGameUI.printAllCars(cars);
         }
     }
-
-
 }

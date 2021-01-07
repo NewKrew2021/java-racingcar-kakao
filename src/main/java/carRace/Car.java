@@ -14,7 +14,7 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car otherCar) {
-        return otherCar.location - location;
+        return location - otherCar.location;
     }
 
     public void go(MovingStrategy strategy) {

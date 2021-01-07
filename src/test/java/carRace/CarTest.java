@@ -21,6 +21,6 @@ public class CarTest {
         testCar1.go(() -> true);
         testCar2.go(() -> true);
         testCar2.go(() -> true);
-        assertThat(testCar1.compareTo(testCar2)).isGreaterThan(0);
+        assertThat(testCar1.compareTo(testCar2)).isLessThan(0);
     }
 }

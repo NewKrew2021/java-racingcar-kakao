@@ -20,15 +20,14 @@ public class Cars {
         return new Cars(newCars);
     }
 
-    public void moveAllCars() {
+    public void moveAllCars(MovingStrategy strategy) {
         carList.forEach(car -> {
-            car.go(new RandomStrategy());
+            car.go(strategy);
         });
     }
 
     public List<Car> getWinners() {
-        Collections.sort(carList);
-        Car maxCar = carList.get(0);
+        Car maxCar = Collections.max(carList);
         return carList.stream()
                 .filter(car -> car.compareTo(maxCar) == 0)
                 .collect(Collectors.toList());
@@ -40,9 +39,5 @@ public class Cars {
             sb.append(car).append("\n");
         }
         return sb.toString();
-    }
-
-    public int getNumOfCars() {
-        return carList.size();
     }
 }
