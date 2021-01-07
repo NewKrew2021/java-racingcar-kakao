@@ -29,4 +29,19 @@ public class DistanceTest {
         distance.move();
         assertThat(distance).isEqualTo(new Distance(4));
     }
+
+    @Test
+    public void largerDistanceTest() {
+        Distance distance = new Distance(3);
+        assertThat(distance.getLargerDistance(4)).isEqualTo(4);
+        assertThat(distance.getLargerDistance(2)).isEqualTo(3);
+    }
+
+    @Test
+    public void sameDistanceTest() {
+        Distance distance = new Distance(4);
+        assertThat(distance.isSameDistance(4)).isTrue();
+        assertThat(distance.isSameDistance(3)).isFalse();
+    }
+
 }
