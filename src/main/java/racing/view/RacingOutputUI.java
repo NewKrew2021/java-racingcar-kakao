@@ -1,20 +1,9 @@
-/*
- * File     : RacingOutputUI.java
- * Date     : 2021. 01. 05
- */
 package racing.view;
 
 import racing.domain.Car;
 
 import java.util.List;
 
-/*
- * Class    : RacingOutputUI
- * Version  : 1.0
- * author   : eli.nabro
- *
- * Racing game Output UI class
- */
 public class RacingOutputUI {
 
     private static final String PRINT_PRE_RACING_RESULT = "\n실행 결과";

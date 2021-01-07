@@ -1,20 +1,9 @@
-/*
- * File     : RacingGameMain.java
- * Date     : 2021. 01. 06
- */
 package racing;
 
 import racing.domain.RacingGameLogic;
 import racing.view.RacingInputUI;
 import racing.view.RacingOutputUI;
 
-/*
- * Class    : RacingGameMain
- * Version  : 1.3
- * author   : eli.nabro
- *
- * Racing game main class
- */
 public class RacingGameMain {
 
     public static void main(String[] args) {
@@ -23,15 +12,16 @@ public class RacingGameMain {
     }
 
     public void run() {
-        RacingGameLogic racingGameLogic = new RacingGameLogic(RacingInputUI.inputCarNames());
-        int noTrials = RacingInputUI.inputNumberOfTrials();
+        int numberOfTrials = RacingInputUI.inputNumberOfTrials();
+        String carNames = RacingInputUI.inputCarNames();
+        RacingGameLogic racingGameLogic = new RacingGameLogic(carNames,numberOfTrials);
 
         RacingOutputUI.printPreRacingResult();
-        while (racingGameLogic.checkPosition(noTrials)) {
+        while (racingGameLogic.checkPosition()) {
             racingGameLogic.race();
             RacingOutputUI.racePrint(racingGameLogic.getCars());
         }
-        RacingOutputUI.printWinner(racingGameLogic.whoAreWinner(noTrials));
+        RacingOutputUI.printWinner(racingGameLogic.whoAreWinner());
     }
 
 }

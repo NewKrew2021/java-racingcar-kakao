@@ -1,20 +1,9 @@
-/*
- * File     : RandomValueTest.java
- * Date     : 2021. 01. 05
- */
 package racing;
 
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.*;
 
-/*
- * Class    : RandomValueTest
- * Version  : 1.1
- * author   : eli.nabro
- *
- * Random value class for testing
- */
 public class RandomValueTest {
 
     @Test

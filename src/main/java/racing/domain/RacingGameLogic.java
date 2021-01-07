@@ -1,7 +1,3 @@
-/*
- * File     : RacingGameLogic.java
- * Date     : 2021. 01. 05
- */
 package racing.domain;
 
 import racing.RandomValue;
@@ -10,13 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/*
- * Class    : RacingGameLogic
- * Version  : 1.2
- * author   : eli.nabro
- *
- * Racing game Logic class
- */
 public class RacingGameLogic {
 
     private static final String SEPARATOR_OF_INPUT_CAR_NAME = ",";
@@ -24,14 +13,17 @@ public class RacingGameLogic {
     private static final int STOP_VALUE = 3;
 
     private List<Car> cars;
+    private int maxProgressNumber;
 
-    public RacingGameLogic(String carsName) {
+    public RacingGameLogic(String carsName, int numberOfTrials) {
         String[] nameArray = carsName.split(SEPARATOR_OF_INPUT_CAR_NAME);
 
         this.cars = new ArrayList<>();
         for (String name : nameArray) {
             this.cars.add(new Car(name));
         }
+
+        this.maxProgressNumber = numberOfTrials;
     }
 
     public List<Car> getCars() {
@@ -44,14 +36,14 @@ public class RacingGameLogic {
                 .collect(Collectors.toList());
     }
 
-    public boolean checkPosition(int numbers) {
+    public boolean checkPosition() {
         int maxPosition = 0;
 
         for (Car car : this.cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
         }
 
-        return maxPosition < numbers;
+        return maxPosition < this.maxProgressNumber;
     }
 
     public void race() {
@@ -68,7 +60,7 @@ public class RacingGameLogic {
         }
     }
 
-    public String whoAreWinner(int maxProgressNumber) {
+    public String whoAreWinner() {
         StringBuilder winners = new StringBuilder();
         List<Integer> resultPosition = this.getCarsPosition();
 
