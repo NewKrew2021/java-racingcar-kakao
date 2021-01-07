@@ -30,7 +30,7 @@ public class RacingGameController {
             int getIterationNumber = racingGameView.getIterNo();
             racingGame = new RacingGame(inputCarNames, getIterationNumber);
         } catch (InvalidCarNameException | InvalidGameCountException runtimeException) {
-            logger.error(runtimeException.toString());
+            logger.error(runtimeException.getMessage(), runtimeException);
             return false;
         }
         return true;
