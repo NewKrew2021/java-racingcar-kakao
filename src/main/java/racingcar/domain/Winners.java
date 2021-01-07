@@ -1,14 +1,18 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Winners {
+
     private List<RacingCar> winners;
 
-    public Winners(List<RacingCar> winners){
+    public Winners(List<RacingCar> winners) {
         this.winners = winners;
+    }
+
+    public List<RacingCar> getWinners() {
+        return winners;
     }
 
     @Override
