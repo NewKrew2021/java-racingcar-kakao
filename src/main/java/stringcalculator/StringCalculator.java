@@ -39,7 +39,7 @@ public class StringCalculator {
 
     private static void minusCheck(int number) {
         if(number < 0){
-            throw new RuntimeException();
+            throw new RuntimeException("음수가 입력되어서는 안됩니다.");
         }
     }
 
