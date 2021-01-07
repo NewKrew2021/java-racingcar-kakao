@@ -6,11 +6,10 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameManager {
-    private int round;
-    private Cars cars = new Cars();
+    private static int round;
+    private static Cars cars = new Cars();
 
-
-    public void start() {
+    public static void main(String[] argv) {
         OutputView.printInputCars();
         cars.setCars(InputView.inputCarNames());
 
@@ -21,27 +20,27 @@ public class GameManager {
         result();
     }
 
-    private void startRound() {
+    private static void startRound() {
         for (int i = 0; i < round; i++) {
             cars.move();
             OutputView.print(cars.getRoundResult());
         }
     }
 
-    public void setRound(int round) {
+    public static void setRound(int round) {
         roundLengthCheck(round);
-        this.round = round;
+        GameManager.round = round;
         OutputView.printRoundStart();
     }
 
-    private void roundLengthCheck(int round) {
+    private static void roundLengthCheck(int round) {
         if (round < 1) {
             throw new InvalidRoundLengthException("횟수를 1회 이상 입력해주세요.");
         }
     }
 
 
-    public void result() {
+    private static void result() {
         OutputView.printWinner(cars.getWinner());
     }
 
