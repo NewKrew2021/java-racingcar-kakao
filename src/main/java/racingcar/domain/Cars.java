@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.util.RandomUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,14 +20,14 @@ public class Cars {
         }
     }
 
-    public List<Car> getWinners() {
+    public List<String> getWinners() {
 
-        List<Car> winners = new ArrayList<Car>();
+        List<String> winners = new ArrayList<>();
         Collections.sort(cars);
         Car firstPlaceCar = cars.get(0);
         int index = 0;
-        while (firstPlaceCar.isEqualPosition(cars.get(index))) {
-            winners.add(cars.get(index++));
+        while (index < cars.size() && firstPlaceCar.isEqualPosition(cars.get(index))) {
+            winners.add(cars.get(index++).getName().toString());
         }
         return winners;
     }
