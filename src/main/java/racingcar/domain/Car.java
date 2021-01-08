@@ -8,7 +8,7 @@ public class Car {
     private final Position position;
 
     public Car(String name) {
-        this(name, 0);
+        this(name, Position.MIN_POSITION_VALUE);
     }
 
     public Car(String name, int position) {

@@ -6,6 +6,8 @@ import java.util.Objects;
 
 public class Position {
 
+    public static final int MIN_POSITION_VALUE = 0;
+
     private int position;
 
     public Position(int position) {
@@ -22,7 +24,7 @@ public class Position {
     }
 
     private void validatePositionValue(int position) {
-        if (position < 0) {
+        if (position < MIN_POSITION_VALUE) {
             throw new InvalidPositionValueException("0 이상의 포지션만 가능합니다.");
         }
     }
