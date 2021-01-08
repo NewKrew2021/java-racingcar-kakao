@@ -17,7 +17,7 @@ public class Cars {
         return this.cars;
     }
 
-    public void moveOneRepeat(ConditionValueStrategy conditionValueStrategy) {
+    public void move(ConditionValueStrategy conditionValueStrategy) {
         for (Car car: this.cars) {
             car.move(conditionValueStrategy.getValue());
         }

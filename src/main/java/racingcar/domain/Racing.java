@@ -16,9 +16,9 @@ public class Racing {
         return round.isEndRound();
     }
 
-    public void race() {
+    public void race(ConditionValueStrategy conditionValueStrategy) {
         round.spendOneRound();
-        cars.moveOneRepeat(new RandomConditionValueStrategy());
+        cars.move(conditionValueStrategy);
     }
 
     public List<Car> getCarsMidTermStatus() {
@@ -38,7 +38,7 @@ public class Racing {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Racing racing = (Racing) o;
-        return round == racing.round && Objects.equals(cars, racing.cars);
+        return Objects.equals(cars, racing.cars) && Objects.equals(round, racing.round);
     }
 
     @Override

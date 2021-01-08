@@ -1,6 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Racing;
+import racingcar.domain.RandomConditionValueStrategy;
 import racingcar.view.UserView;
 
 public class PlayRacingMain {
@@ -10,9 +11,10 @@ public class PlayRacingMain {
         int round = UserView.enterRound();
         Racing rc = new Racing(names, round);
 
+        RandomConditionValueStrategy randomStrategy = new RandomConditionValueStrategy();
         UserView.printProcessTitle();
         while (!rc.isFinish()) {
-            rc.race();
+            rc.race(randomStrategy);
             UserView.printProcessStatus(rc.getCarsMidTermStatus());
         }
 
