@@ -2,13 +2,18 @@ package domain;
 
 import utils.CustomRandom;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
     private final List<Car> cars;
 
-    public Cars(List<Car> cars) {
+    public Cars(String carNames) {
+        List<Car> cars = new ArrayList<>();
+        for (String carName : carNames.split(",")) {
+            cars.add(new Car(carName));
+        }
         this.cars = cars;
     }
 

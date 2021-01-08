@@ -13,16 +13,8 @@ public class RacingGame {
 
     public RacingGame(int finalRound, String carNames) {
         this.finalRound = finalRound;
-        this.cars = mapCars(carNames);
+        this.cars = new Cars(carNames);
         this.curRound = 0;
-    }
-
-    private Cars mapCars(String carNames) {
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames.split(",")) {
-            cars.add(new Car(carName));
-        }
-        return new Cars(cars);
     }
 
     public boolean isEnd() {
