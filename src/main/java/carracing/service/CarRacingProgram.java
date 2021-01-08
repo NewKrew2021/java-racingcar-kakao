@@ -7,9 +7,10 @@ import carracing.view.CarRacingInfoPrint;
 import carracing.view.RacingInfoScanner;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CarRacingProgram {
-    private List<Car> carList = new ArrayList<>();
+    private List<Car> carList;
     private int totalMoveCount;
     private int maxMoveDistance;
 
@@ -18,19 +19,19 @@ public class CarRacingProgram {
     private final String CAR_NAME_IDENTIFY_SYMBOL = ",";
 
     private List<Car> insertCarNamesToCarList() {
-        List<Car> carList = new ArrayList<>();
         List<String> input = splitCarNames(RacingInfoScanner.insertCarNames());
-        for (int i = 0; i < input.size(); i++) {
-            carList.add(new Car(input.get(i)));
-        }
 
-        return carList;
+        return input.stream().map(Car::new).collect(Collectors.toList());
+    }
+
+    private int insertTotalMoveCount(){
+        return RacingInfoScanner.insertRaceTryCount();
     }
 
     public void race(){
         carList = insertCarNamesToCarList();
 
-        totalMoveCount = RacingInfoScanner.insertRaceTryCount();
+        totalMoveCount = insertTotalMoveCount();
 
         CarRacingInfoPrint.printResultPhrase();
         for (int i = 0; i < totalMoveCount; i++) {
@@ -40,10 +41,8 @@ public class CarRacingProgram {
         CarRacingInfoPrint.printWinners(findRaceWinner());
     }
 
-
-
     public void playOneCycle(){
-        carList.stream().forEach(item -> {
+        carList.forEach(item -> {
             checkMovingCondition(item);
             CarInfoPrint.showCarInfo(item);
         });
@@ -73,9 +72,7 @@ public class CarRacingProgram {
     }
 
     public List<String> splitCarNames(String carNames){
-        List<String> resultCarNames = Arrays.asList(carNames.split(CAR_NAME_IDENTIFY_SYMBOL));
-
-        return resultCarNames;
+        return Arrays.asList(carNames.split(CAR_NAME_IDENTIFY_SYMBOL));
     }
 
 }
