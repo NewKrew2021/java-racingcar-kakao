@@ -12,7 +12,7 @@ public class RacingGameMain {
 
     public static void main(String[] args) {
         RacingGameInput gameInput = new RacingGameInput();
-        String[] names = gameInput.carNameInput();
+        List<String> names = gameInput.carNameInput();
         RacingGame racing = new RacingGame(names);
         int count = gameInput.countInput();
 

@@ -2,6 +2,8 @@ package racingcar.view;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
@@ -11,7 +13,7 @@ public class RacingGameInputTest {
     @Test
     public void testStringToNames(){
         String input = "pobi,crong,honux";
-        String[] names = game.stringToNames(input);
+        List<String> names = game.stringToNames(input);
         assertThat(names).contains("pobi", "crong", "honux");
     }
 

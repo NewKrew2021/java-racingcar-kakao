@@ -13,7 +13,7 @@ public class CarsTest {
     @Test
     public void testCreateCars(){
         String input = "pobi,crong";
-        String[] names = RacingGameInput.stringToNames(input);
+        List<String> names = RacingGameInput.stringToNames(input);
         List<Car> cars = new ArrayList<>();
         for (String name: names) {
             cars.add(new Car(name));

@@ -2,26 +2,24 @@ package racingcar.domain;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static java.lang.Math.max;
 
 public class RacingGame {
     private final Cars cars;
 
-    public RacingGame(String[] names){
+    public RacingGame(List<String> names) {
         List<Car> cars = new ArrayList<>();
-        for (String name: names) {
+        for (String name : names) {
             cars.add(new Car(name));
         }
         this.cars = new Cars(cars);
     }
 
-    public RacingGame(String[] names, int[] locations) {
+    public RacingGame(List<String> names, List<Integer> locations) {
         List<Car> cars = new ArrayList<>();
-        for (int i = 0; i < names.length; i++) {
-            cars.add(new Car(names[i], locations[i]));
+        for (int i = 0; i < names.size(); i++) {
+            cars.add(new Car(names.get(i), locations.get((i))));
         }
         this.cars = new Cars(cars);
     }

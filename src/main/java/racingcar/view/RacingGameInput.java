@@ -2,6 +2,9 @@ package racingcar.view;
 
 import racingcar.domain.Utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class RacingGameInput {
@@ -13,9 +16,9 @@ public class RacingGameInput {
         scan = new Scanner(System.in);
     }
 
-    public String[] carNameInput(){
+    public List<String> carNameInput(){
         errorFlag = false;
-        String[] names;
+        List<String> names = new ArrayList<>();
         do {
             System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
             String input = scan.nextLine();
@@ -30,9 +33,9 @@ public class RacingGameInput {
         return count;
     }
 
-    private String[] getNames(String input) {
+    private List<String> getNames(String input) {
         try {
-            String[] names = stringToNames(input);
+            List<String> names = stringToNames(input);
             errorFlag = false;
             return names;
 
@@ -43,10 +46,10 @@ public class RacingGameInput {
         }
     }
 
-    public static String[] stringToNames(String input) {
+    public static List<String> stringToNames(String input) {
         if (Utils.isBlank(input))
             throw new IllegalArgumentException("한대 이상의 자동차를 입력해주세요.");
-        String[] names = input.split(",");
+        List<String> names = Arrays.asList(input.split(","));
         for (String name : names) {
             checkNameLength(name);
         }
