@@ -12,11 +12,11 @@ public class Name {
     }
 
     Name(String name) {
-        isNameEmptyOrLenghOver5(name);
+        checkValidName(name);
         this.name = name;
     }
 
-    private void isNameEmptyOrLenghOver5(String name) {
+    private void checkValidName(String name) {
         if (isNameEmpty(name)) {
             throw new IllegalArgumentException("이름의 길이가 0이하입니다.");
         }

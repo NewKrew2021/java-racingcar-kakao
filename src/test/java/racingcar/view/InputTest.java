@@ -10,7 +10,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class InputTest {
     @Test
     void carNameSplitTest() {
-        assertThat(Input.getSplitName("jack,jayk")).asList().containsAll(Arrays.asList("jack", "jayk"));
+        assertThat(Input.getSplitName("jack,jayk")).asList().containsExactly("jack", "jayk");
     }
 
 }

@@ -1,38 +1,45 @@
 package racingcar.controller;
 
 import racingcar.domain.Car;
+import racingcar.domain.GameTime;
 import racingcar.util.RandomNumber;
+import racingcar.view.Input;
 import racingcar.view.Output;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class GameManager {
-    private final List<Car> cars;
-    private final int gameTime;
-
-    public GameManager() {
-        this(new ArrayList<>(), 0);
-    }
-
-    public GameManager(List<String> carNames, int gameTime) {
-        this.gameTime = gameTime;
-        this.cars = createCars(carNames);
-    }
+    private List<Car> cars;
+    private GameTime gameTime;
 
     public void playGame() {
+        carInput();
+        gameTimeInput();
         Output.printResultStart();
         Output.printSimulationResult(cars);
-        for (int i = 0; i < gameTime; ++i) {
+        while (!gameTime.isEnd()) {
+            gameTime.process();
             move();
             Output.printSimulationResult(cars);
         }
         Output.printWinner(getWinners());
     }
 
+    private void carInput() {
+        Output.askCarsName();
+        cars = createCars(Input.getNames());
+    }
+
+    private void gameTimeInput() {
+        Output.askGameTime();
+        gameTime = new GameTime(Input.getGameTime());
+    }
+
     private int getMaxLocation() {
         int max = 0;
         for (Car car : cars) {
-            max = Math.max(max, car.getLocation());
+            max = car.maxLocation(max);
         }
         return max;
     }
@@ -41,26 +48,20 @@ public class GameManager {
         final int maxVal = getMaxLocation();
         List<String> winners = new ArrayList<>();
         cars.stream()
-                .filter((car) -> car.getLocation() == maxVal)
+                .filter((car) -> car.isEqualLocation(maxVal))
                 .forEach((car) -> winners.add(car.getName()));
         return winners;
     }
 
     private void move() {
-        for (Car car : cars) {
-            car.tryForward(RandomNumber.getRandomNumber());
-        }
+        cars.stream().forEach(car -> car.tryForward(RandomNumber.getRandomNumber()));
     }
 
     private List<Car> createCars(List<String> nameList) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : nameList) {
-            cars.add(new Car(name));
-        }
-        return cars;
+        return nameList.stream().map(Car::new).collect(Collectors.toList());
     }
 
-    public List<Car> getCars() {
-        return cars;
+    List<Car> getCars() {
+        return Collections.unmodifiableList(cars);
     }
 }

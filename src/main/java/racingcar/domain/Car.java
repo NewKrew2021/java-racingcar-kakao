@@ -3,12 +3,16 @@ package racingcar.domain;
 import java.util.Objects;
 
 public class Car {
-    static final int MIN_FORWARD_RANDOM = 4;
-    static final int MOVE_FORWARD = 1;
+    private static final int MIN_FORWARD_RANDOM = 4;
     private Name name;
-    private int location;
+    private final Location location;
+
+    public Car() {
+        location = new Location(0);
+    }
 
     public Car(String name) {
+        this();
         this.name = new Name(name);
     }
 
@@ -18,16 +22,24 @@ public class Car {
 
     public void tryForward(int randomResult) {
         if (isForword(randomResult)) {
-            this.location += +MOVE_FORWARD;
+            location.move();
         }
+    }
+
+    public boolean isEqualLocation(int location) {
+        return this.location.same(location);
+    }
+
+    public int getLocation() {
+        return location.getLocation();
     }
 
     public String getName() {
         return name.getName();
     }
 
-    public int getLocation() {
-        return location;
+    public int maxLocation(int location) {
+        return this.location.max(location);
     }
 
     @Override
@@ -35,7 +47,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return location == car.location && Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) && Objects.equals(location, car.location);
     }
 
     @Override
