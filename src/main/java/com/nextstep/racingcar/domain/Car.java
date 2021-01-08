@@ -27,20 +27,20 @@ public class Car {
         return this.location;
     }
 
-    private boolean isAboveFiveLetters(String name) {
-        return name.length() > 5;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return name.equals(car.name);
+        Car that = (Car) o;
+        return name.equals(that.name) && location == that.location;
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(name, location);
+    }
+
+    private boolean isAboveFiveLetters(String name) {
+        return name.length() > 5;
     }
 }

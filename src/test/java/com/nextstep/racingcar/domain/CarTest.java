@@ -26,6 +26,21 @@ public class CarTest {
         assertThat(car.getName()).isEqualTo("hello");
     }
 
+    @Test
+    void areEqualInHashCode() {
+        Car car = new Car("hi", 0);
+
+        assertThat(car.hashCode())
+                .isEqualTo(new Car("hi", 0).hashCode());
+    }
+
+    @Test
+    void areNotEqualInHashCode() {
+        Car car = new Car("hello", 0);
+
+        assertThat(car.hashCode()).isNotEqualTo(new Car("hi", 0).hashCode());
+    }
+
     @DisplayName("이름과 위치가 같은 차면 같은 객체로 취급")
     @Test
     void testEquals() {

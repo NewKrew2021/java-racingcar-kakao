@@ -1,10 +1,8 @@
 package com.nextstep.racingcar.views;
 
-import com.nextstep.racingcar.domain.Car;
+import com.nextstep.racingcar.domain.Cars;
 
 import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class OutputView {
     private final String CAR_UNIT_STEP_SYMBOL = "-";
@@ -13,25 +11,32 @@ public class OutputView {
         System.out.println("실행 결과");
     }
 
-    public void printSimulationResults(List<Car> cars) {
+    public void printSimulationResults(Cars cars) {
         StringBuilder message = new StringBuilder();
 
-        for (Car car : cars) {
-            message.append(car.getName())
-                    .append(" : ")
-                    .append(String.join("",
-                            Collections.nCopies(car.getLocation(), CAR_UNIT_STEP_SYMBOL)))
-                    .append(System.lineSeparator());
-        }
+        cars.delegate(car -> message.append(car.getName())
+                .append(" : ")
+                .append(String.join("",
+                        Collections.nCopies(car.getLocation(), CAR_UNIT_STEP_SYMBOL)))
+                .append(System.lineSeparator()));
 
         System.out.println(message);
     }
 
-    public void printWinners(List<Car> winners) {
-        String winnersAppendedByComma = winners.stream()
-                .map(Car::getName)
-                .collect(Collectors.joining(", "));
+    public void printWinners(Cars winners) {
+        StringBuilder winnersAppendedByComma = new StringBuilder();
 
-        System.out.printf("%s가 최종 우승했습니다.\n", winnersAppendedByComma);
+        winners.delegate(winner -> {
+            if (winnersAppendedByComma.length() > 0) {
+                winnersAppendedByComma.append(", ")
+                        .append(winner.getName());
+
+                return;
+            }
+
+            winnersAppendedByComma.append(winner.getName());
+        });
+
+        System.out.printf("%s가 최종 우승했습니다.\n", winnersAppendedByComma.toString());
     }
 }

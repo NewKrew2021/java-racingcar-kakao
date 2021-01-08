@@ -1,7 +1,6 @@
 package com.nextstep.racingcar.domain;
 
-import com.nextstep.racingcar.utils.RandomDigitsGenerator;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Racingcar {
@@ -15,18 +14,25 @@ public class Racingcar {
         this.currentStep = 0;
     }
 
-    public List<Car> getWinners() {
-        return cars.getWinners();
+    public Cars getCars() {
+        return cars;
     }
 
-    public List<Car> getCars() {
-        return cars.getCars();
+    public Cars getWinners() {
+        int highest = cars.getLocationOfHighestAdvancedCar();
+        List<Car> winners = new ArrayList<>();
+
+        cars.delegate(car -> {
+            if (car.getLocation() == highest) {
+                winners.add(car);
+            }
+        });
+
+        return new Cars(winners);
     }
 
-    public void simulate() {
-        List<Integer> randomDigits = RandomDigitsGenerator.getNRandomDigits(cars.getNumberOfCars());
-
-        cars.move(randomDigits);
+    public void simulate(MovingStrategy strategy) {
+        cars.move(strategy);
         increaseStep();
     }
 

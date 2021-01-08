@@ -1,13 +1,14 @@
 package com.nextstep.racingcar.domain;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CarsTest {
     private final int MOVE = 9;
@@ -15,15 +16,14 @@ public class CarsTest {
 
     @Test
     void successfullyCreated() {
-        Cars cars = new Cars(
-                Arrays.asList(
-                        new Car("ian", 0),
-                        new Car("good", 0),
-                        new Car("valid", 0)
-                )
-        );
+        List<Car> testingCars = Arrays.asList(
+                new Car("ian", 0),
+                new Car("good", 0),
+                new Car("valid", 0));
 
-        assertThat(cars.getNumberOfCars()).isEqualTo(3);
+        Cars cars = new Cars(testingCars);
+
+        assertThat(cars).isEqualTo(new Cars(testingCars));
     }
 
     @Test
@@ -31,72 +31,48 @@ public class CarsTest {
         assertThatThrownBy(() -> new Cars(
                 Arrays.asList(
                         new Car("dup", 0),
-                        new Car("dup", 0)
-                )
-        )).isInstanceOf(IllegalArgumentException.class);
+                        new Car("dup", 0))))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    void ianAndGoodShouldMove() {
+    void areEqualInHashCode() {
+        List<Car> car = Collections.singletonList(new Car("hi", 0));
+        Cars cars = new Cars(car);
+
+        assertThat(cars.hashCode())
+                .isEqualTo(new Cars(car).hashCode());
+    }
+
+    @Test
+    void allShouldMove() {
         Cars cars = new Cars(
                 Arrays.asList(
                         new Car("ian", 0),
                         new Car("good", 0),
-                        new Car("valid", 0)
-                )
-        );
+                        new Car("valid", 0)));
 
-        cars.move(Arrays.asList(MOVE, MOVE, STOP));
+        cars.move(() -> true);
 
-        assertThat(cars.getCars()).isEqualTo(
-                Arrays.asList(
+        assertThat(cars).isEqualTo(
+                new Cars(Arrays.asList(
                         new Car("ian", 1),
                         new Car("good", 1),
-                        new Car("valid", 0)
-                )
-        );
+                        new Car("valid", 1))));
     }
 
     @Test
-    void oneWinner() {
+    void testDelegation() {
         Cars cars = new Cars(
                 Arrays.asList(
-                        new Car("losea", 0),
-                        new Car("loseb", 0),
-                        new Car("win", 5)
-                )
-        );
+                        new Car("ian", 0),
+                        new Car("good", 0),
+                        new Car("valid", 0)));
 
-        assertThat(cars.getWinners())
-                .isEqualTo(Collections.singletonList(new Car("win", 5)));
-    }
+        List<String> names = new ArrayList<>();
+        cars.delegate(car -> names.add(car.getName()));
 
-    @Test
-    void twoWinners() {
-        Cars cars = new Cars(
-                Arrays.asList(
-                        new Car("losea", 0),
-                        new Car("wina", 5),
-                        new Car("winb", 5)
-                )
-        );
-
-        assertThat(cars.getWinners())
-                .isEqualTo(Arrays.asList(new Car("wina", 5), new Car("winb", 5)));
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {0, 3})
-    void shouldStop(int value) {
-        Cars cars = new Cars();
-        assertThat(cars.moveResult(value)).isEqualTo(CarResult.STOP);
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {4, 9})
-    void shouldMove(int value) {
-        Cars cars = new Cars();
-        assertThat(cars.moveResult(value)).isEqualTo(CarResult.MOVE);
+        assertThat(names).contains("ian", "good", "valid");
     }
 
     @Test
@@ -105,9 +81,7 @@ public class CarsTest {
                 Arrays.asList(
                         new Car("ian", 0),
                         new Car("good", 3),
-                        new Car("valid", 5)
-                )
-        );
+                        new Car("valid", 5)));
 
         assertThat(cars.getLocationOfHighestAdvancedCar()).isEqualTo(5);
     }
@@ -118,9 +92,7 @@ public class CarsTest {
                 Arrays.asList(
                         new Car("ian", 0),
                         new Car("good", 5),
-                        new Car("valid", 5)
-                )
-        );
+                        new Car("valid", 5)));
 
         assertThat(cars.getLocationOfHighestAdvancedCar()).isEqualTo(5);
     }

@@ -1,11 +1,7 @@
 package com.nextstep.racingcar.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.*;
+import java.util.function.Consumer;
 
 public class Cars {
     private final List<Car> cars;
@@ -23,34 +19,29 @@ public class Cars {
         this.cars = Collections.unmodifiableList(cars);
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public void delegate(Consumer<Car> consumer) {
+        cars.forEach(consumer);
     }
 
-    public int getNumberOfCars() {
-        return cars.size();
+    public void move(MovingStrategy strategy) {
+        cars.forEach(car -> {
+            if (strategy.isMove()) {
+                car.move();
+            }
+        });
     }
 
-    public void move(List<Integer> numbersToCheckMovement) {
-        IntStream.range(0, cars.size())
-                .filter(i -> moveResult(numbersToCheckMovement.get(i)) == CarResult.MOVE)
-                .mapToObj(cars::get)
-                .forEach(Car::move);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars that = (Cars) o;
+        return Objects.equals(cars, that.cars);
     }
 
-    public List<Car> getWinners() {
-        int highest = getLocationOfHighestAdvancedCar();
-
-        return cars.stream()
-                .filter(car -> car.getLocation() == highest)
-                .collect(Collectors.toList());
-    }
-
-    protected CarResult moveResult(int number) {
-        if (isCarAdvance(number)) {
-            return CarResult.MOVE;
-        }
-        return CarResult.STOP;
+    @Override
+    public int hashCode() {
+        return Objects.hash(cars);
     }
 
     protected int getLocationOfHighestAdvancedCar() {
@@ -66,9 +57,5 @@ public class Cars {
         return cars.stream()
                 .distinct()
                 .count() != originalCarNum;
-    }
-
-    private boolean isCarAdvance(int number) {
-        return number >= 4;
     }
 }

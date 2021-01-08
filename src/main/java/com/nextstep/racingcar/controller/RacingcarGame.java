@@ -3,10 +3,10 @@ package com.nextstep.racingcar.controller;
 import com.nextstep.racingcar.domain.Car;
 import com.nextstep.racingcar.domain.Cars;
 import com.nextstep.racingcar.domain.Racingcar;
+import com.nextstep.racingcar.domain.RandomMovingStrategy;
 import com.nextstep.racingcar.views.InputView;
 import com.nextstep.racingcar.views.OutputView;
 
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -48,14 +48,12 @@ public class RacingcarGame {
     private void run() {
         gameOutput.printResultGuide();
         while (racingcar.isInProgress()) {
-            racingcar.simulate();
+            racingcar.simulate(new RandomMovingStrategy());
             gameOutput.printSimulationResults(racingcar.getCars());
         }
     }
 
     private void outputWinners() {
-        List<Car> winners = racingcar.getWinners();
-
-        gameOutput.printWinners(winners);
+        gameOutput.printWinners(racingcar.getWinners());
     }
 }
