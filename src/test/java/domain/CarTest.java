@@ -3,6 +3,8 @@ package domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -29,22 +31,9 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(0);
     }
 
-    @Test
-    void invalidName() {
-        assertThatThrownBy(() -> {
-            new Car("jayden");
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        assertThatThrownBy(() -> {
-            new Car("");
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        assertThatThrownBy(() -> {
-            new Car(null);
-        }).isInstanceOf(IllegalArgumentException.class);
-
-        assertThatThrownBy(() -> {
-            new Car(" ");
-        }).isInstanceOf(IllegalArgumentException.class);
+    @ParameterizedTest
+    @ValueSource(strings = { "jayden", "", " " })
+    void invalidName(String argument) {
+        assertThatThrownBy(() -> new Car(argument)).isInstanceOf(IllegalArgumentException.class);
     }
 }
