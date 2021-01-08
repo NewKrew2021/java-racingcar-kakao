@@ -12,7 +12,9 @@ public class Car implements Comparable<Car> {
     }
 
     public Car(String name, int position) {
-        if (name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException();
+        if (name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException();
+        }
         this.name = name;
         this.position = position;
         rand = new Random();
