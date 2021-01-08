@@ -31,7 +31,8 @@ public class Calculator {
         StringBuilder delimeterBuilder = new StringBuilder();
 
         for (int i = 0; i < src.length() - 1; i++) {
-            delimeterBuilder.append(src.charAt(i) + "|");
+            delimeterBuilder.append(src.charAt(i));
+            delimeterBuilder.append("|");
         }
 
         delimeterBuilder.append(src.charAt(src.length()-1));
@@ -42,15 +43,15 @@ public class Calculator {
         return src.substring(src.indexOf("\\n") + 2);
     }
 
-    private static int[] toInts(String[] array) throws NegativeNumberInputException {
-        int[] numArr = new int[array.length];
+    private static int[] toInts(String[] inputs) throws NegativeNumberInputException {
+        int[] numbers = new int[inputs.length];
 
-        for (int i = 0; i < numArr.length; i++) {
-            numArr[i] = Integer.parseInt(array[i]);
-            isNegativeNumber(numArr[i]);
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Integer.parseInt(inputs[i]);
+            isNegativeNumber(numbers[i]);
         }
 
-        return numArr;
+        return numbers;
     }
 
     private static void isNegativeNumber(int number) throws NegativeNumberInputException {
@@ -59,9 +60,9 @@ public class Calculator {
         }
     }
 
-    private static int sum(int[] array) {
+    private static int sum(int[] numbers) {
         int sum = 0;
-        for (Integer number : array) {
+        for (Integer number : numbers) {
             sum += number;
         }
 
