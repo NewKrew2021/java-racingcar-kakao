@@ -18,30 +18,29 @@ public class CarRacingProgram {
     private final int CAR_CONDITION_BOUND = 10;
     private final String CAR_NAME_IDENTIFY_SYMBOL = ",";
 
-    private List<Car> insertCarNamesToCarList() {
-        List<String> input = splitCarNames(RacingInfoScanner.insertCarNames());
+    public CarRacingProgram(String carNames, int totalMoveCount){
+        this.carList = insertCarNamesToCarList(carNames);
+        this.totalMoveCount = totalMoveCount;
+    }
+
+    private List<Car> insertCarNamesToCarList(String carNames) {
+        List<String> input = splitCarNames(carNames);
 
         return input.stream().map(Car::new).collect(Collectors.toList());
     }
 
-    private int insertTotalMoveCount(){
-        return RacingInfoScanner.insertRaceTryCount();
-    }
-
-    public void race(){
-        carList = insertCarNamesToCarList();
-
-        totalMoveCount = insertTotalMoveCount();
-
+    public boolean race(){
         CarRacingInfoPrint.printResultPhrase();
         for (int i = 0; i < totalMoveCount; i++) {
             playOneCycle();
         }
 
         CarRacingInfoPrint.printWinners(findRaceWinner());
+
+        return true;
     }
 
-    public void playOneCycle(){
+    private void playOneCycle(){
         carList.forEach(item -> {
             checkMovingCondition(item);
             CarInfoPrint.showCarInfo(item);
@@ -58,16 +57,14 @@ public class CarRacingProgram {
 
     public List<String> findRaceWinner(){
         List<String> winnerList = new ArrayList<>();
-        for (int i = 0; i < carList.size(); i++) {
-            compareMaxMoveDistanceToCarMoveCount(winnerList, i);
-        }
+        carList.forEach(car -> compareMaxMoveDistanceToCarMoveCount(winnerList, car));
 
         return winnerList;
     }
 
-    private void compareMaxMoveDistanceToCarMoveCount(List<String> winnerList, int carIndex){
-        if(carList.get(carIndex).getPosition() == maxMoveDistance){
-            winnerList.add(carList.get(carIndex).getName());
+    private void compareMaxMoveDistanceToCarMoveCount(List<String> winnerList, Car car){
+        if(car.getPosition() == maxMoveDistance){
+            winnerList.add(car.getName());
         }
     }
 
