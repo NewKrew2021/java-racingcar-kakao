@@ -19,6 +19,21 @@ public class CarTest {
         assertThat(car.getLocation()).isEqualTo(currentLocation + ONE_UNIT);
     }
 
+    @Test
+    void carHasCorrectName() {
+        Car car = new Car("hello", 0);
+
+        assertThat(car.getName()).isEqualTo("hello");
+    }
+
+    @DisplayName("이름과 위치가 같은 차면 같은 객체로 취급")
+    @Test
+    void testEquals() {
+        Car car = new Car("equal", 5);
+
+        assertThat(car).isEqualTo(new Car("equal", 5));
+    }
+
     @DisplayName("5글자를 초과하는 이름의 경우 Exception 발생")
     @Test
     void carCannotHandleLongName() {

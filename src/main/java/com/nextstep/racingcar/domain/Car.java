@@ -36,7 +36,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return location == car.location && name.equals(car.name);
+        return name.equals(car.name);
     }
 
     @Override
