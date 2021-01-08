@@ -13,7 +13,6 @@ public class CarRacingProgram {
     private int totalMoveCount;
     private int maxMoveDistance;
 
-    private final int CAR_NAME_LENGTH_THRESHOLD = 5;
     private final int CAR_MOVING_THRESHOLD = 4;
     private final int CAR_CONDITION_BOUND = 10;
     private final String CAR_NAME_IDENTIFY_SYMBOL = ",";
@@ -76,27 +75,7 @@ public class CarRacingProgram {
     public List<String> splitCarNames(String carNames){
         List<String> resultCarNames = Arrays.asList(carNames.split(CAR_NAME_IDENTIFY_SYMBOL));
 
-        resultCarNames.stream().forEach(item ->{
-            checkCarNameLength(item);
-            isNotBlank(item);
-        });
-
         return resultCarNames;
     }
-
-    private boolean checkCarNameLength(String carName){
-        if(carName.length() <= CAR_NAME_LENGTH_THRESHOLD)
-            return true;
-
-        throw new RuntimeException("이름의 길이가 " + CAR_NAME_LENGTH_THRESHOLD + "를 넘습니다.");
-    }
-
-    private boolean isNotBlank(String carName){
-        if(!carName.isEmpty() || carName != null)
-            return true;
-
-        throw new RuntimeException("비어있거나 null인 문자열입니다.");
-    }
-
 
 }

@@ -1,5 +1,6 @@
 package carracing;
 
+import carracing.domain.Car;
 import carracing.service.CarRacingProgram;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,13 +21,6 @@ public class CarRacingProgramTest {
     void splitCarNamesNullTest(){
         assertThatThrownBy(() ->{
             carRacingProgram.splitCarNames(null);
-        }).isInstanceOf(RuntimeException.class);
-    }
-
-    @Test
-    void splitCarNamesLengthTest(){
-        assertThatThrownBy(() ->{
-            carRacingProgram.splitCarNames("car1,car2car3");
         }).isInstanceOf(RuntimeException.class);
     }
 }
