@@ -1,9 +1,5 @@
-import domain.Car;
-import domain.Cars;
-import view.InputView;
-import view.OutputView;
+package domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
@@ -30,21 +26,7 @@ public class RacingGame {
         return cars.getWinners();
     }
 
-    protected List<Car> getCars() {
+    public List<Car> getCars() {
         return cars.getCars();
     }
-
-    public static void main(String[] args) {
-        String carNames = InputView.getCarNames();
-        int roundNo = InputView.getRoundNo();
-        RacingGame game = new RacingGame(roundNo, carNames);
-
-        OutputView.printExecResultSentence();
-        while (!game.isEnd()) {
-            game.playRound();
-            OutputView.printCars(game.getCars());
-        }
-        OutputView.printWinners(game.getWinners());
-    }
-
 }
