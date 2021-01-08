@@ -9,7 +9,7 @@ import racingcar.view.CarOutput;
 
 public class CarMain {
     public static void main(String[] args) {
-        CarGame game = CarGame.of(new Cars(CarInput.writeCarName()), CarInput.writeRacingRound());
+        CarGame game = CarGame.of(CarInput.writeCarName(), CarInput.writeRacingRound());
         MovingStrategy movingStrategy = new RandomMovingStrategy();
 
         CarOutput.printRoundStart();

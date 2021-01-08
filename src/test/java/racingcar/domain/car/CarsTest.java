@@ -2,8 +2,6 @@ package racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.car.Car;
-import racingcar.domain.car.Cars;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,21 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
 
-    @DisplayName("차량의 이름들 주어지면, 그것을 통해 차량으로 구성된 리스트를 구성한다.")
+    @DisplayName("현재 차량들의 상태가 주어졌을 때, 가장 앞에있는 차의 이름를 반환한다.")
     @Test
-    public void create() {
+    public void getFarthestCarNamesTest() {
         //given
-        List<String> carNames = new ArrayList<>();
-        carNames.add("hendo");
-        carNames.add("brody");
-        carNames.add("corby");
-        Cars cars = new Cars(carNames);
-
+        Cars testCars = new Cars(new ArrayList<>(Arrays.asList(Car.of("hendo", 10),
+                Car.of("brody", 33), Car.of("corby", 12))));
         //when
-        List<Car> expected = new ArrayList<>(Arrays.asList(Car.of("hendo", 0),
-                Car.of("brody", 0), Car.of("corby", 0)));
+        List<String> winCars = testCars.getFarthestCarNames();
         //then
-        assertThat(cars.getCars()).isEqualTo(expected);
+        assertThat(winCars).containsExactly("brody");
     }
 
 }

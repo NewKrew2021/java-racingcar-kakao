@@ -6,17 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cars {
-    private List<Car> cars;
-    private Position maxCarPosition;
-    public Cars() {
-        cars = new ArrayList<>();
-    }
 
-    public Cars(List<String> carNames) {
-        cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(Car.of(carName, 0));
-        }
+    private final List<Car> cars;
+    private Position maxCarPosition;
+
+    public Cars(List<Car> cars) {
+        this.cars = cars;
     }
 
     public void moveCars(MovingStrategy movingStrategy) {
@@ -25,7 +20,7 @@ public class Cars {
         }
     }
 
-    public List<String> getFarthestCarNames(){
+    public List<String> getFarthestCarNames() {
         calculateMaxCarPosition();
         List<String> winners = new ArrayList<>();
         for (Car car : cars) {
@@ -34,7 +29,7 @@ public class Cars {
         return winners;
     }
 
-    private void calculateMaxCarPosition(){
+    private void calculateMaxCarPosition() {
         int maxPosition = 0;
         for (Car car : cars) {
             maxPosition = Math.max(maxPosition, car.getPosition());
@@ -43,7 +38,7 @@ public class Cars {
     }
 
     private void addIfPositionEqual(List<String> winners, Car car) {
-        if(car.getPosition() == maxCarPosition.getPosition()) {
+        if (car.getPosition() == maxCarPosition.getPosition()) {
             winners.add(car.getName());
         }
     }
