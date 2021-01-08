@@ -75,15 +75,12 @@ public class CarRacingProgram {
     private List<String> findRaceWinners(List<Car> cars) {
         List<String> winners = new ArrayList<>();
 
-        cars.stream().forEach(car -> compareMaxMoveDistanceToCarMoveCount(winners, car));
+        cars.stream().forEach(car -> {
+            if (car.isCarPositionEqualToIndex(maxMoveDistance)) {
+                winners.add(car.getName());
+            }
+        });
 
         return winners;
     }
-
-    private void compareMaxMoveDistanceToCarMoveCount(List<String> winners, Car car) {
-        if (car.isCarPositionEqualToIndex(maxMoveDistance)) {
-            winners.add(car.getName());
-        }
-    }
-
 }
