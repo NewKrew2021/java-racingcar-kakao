@@ -1,14 +1,10 @@
 package racingcar.domain;
 
-import racingcar.exception.InvalidNameLengthException;
-
 import java.util.Objects;
 
 public class Car {
 
-    private static final int MAX_CAR_NAME_LENGTH = 5;
-
-    private final String name;
+    private final Name name;
     private final Position position;
 
     public Car(String name) {
@@ -16,13 +12,12 @@ public class Car {
     }
 
     public Car(String name, int position) {
-        validateNameLength(name);
-        this.name = name;
+        this.name = new Name(name);
         this.position = new Position(position);
     }
 
     public String getName() {
-        return this.name;
+        return name.getName();
     }
 
     public int getPosition() {
@@ -32,12 +27,6 @@ public class Car {
     public void move(int value) {
         if (value >= 4) {
             position.goForward();
-        }
-    }
-
-    private void validateNameLength(String name) {
-        if (name.length() > MAX_CAR_NAME_LENGTH) {
-            throw new InvalidNameLengthException("이름은 5자 이하만 가능합니다.");
         }
     }
 
