@@ -2,10 +2,7 @@ package carracing.domain;
 
 import carracing.ui.CarRacingProgramUI;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class CarRacingProgram {
 
@@ -51,18 +48,17 @@ public class CarRacingProgram {
     private List<Car> mapCarNamesToCars(String[] names) throws RuntimeException {
         List<Car> cars = new ArrayList<>();
 
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
+        Arrays.stream(names).forEach(name -> cars.add(new Car(name)));
 
         return cars;
     }
 
     private void playOneCycleAndPrintCarPosition(List<Car> cars){
-        for (Car car : cars) {
+        cars.stream().forEach(car -> {
             checkMovingConditionAfterMoveCar(car, getRandomNumber());
             CarRacingProgramUI.printCarPosition(car);
-        }
+        });
+
         CarRacingProgramUI.printBlankLine();
     }
 
@@ -78,9 +74,8 @@ public class CarRacingProgram {
 
     private List<String> findRaceWinners(List<Car> cars){
         List<String> winners = new ArrayList<>();
-        for (Car car : cars) {
-            compareMaxMoveDistanceToCarMoveCount(winners, car);
-        }
+
+        cars.stream().forEach(car -> compareMaxMoveDistanceToCarMoveCount(winners, car));
 
         return winners;
     }
