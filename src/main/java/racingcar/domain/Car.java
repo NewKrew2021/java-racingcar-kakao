@@ -1,11 +1,11 @@
 package racingcar.domain;
 
-import java.util.Objects;
-
 public class Car {
 
     private final CarPosition position;
     private final CarName name;
+
+    private static final int THRESHOLD_FORWARD_VALUE = 4;
 
     public Car(String name) {
         this(name, 0);
@@ -24,22 +24,13 @@ public class Car {
         return this.position.getPosition();
     }
 
-    public void move(RandomNumber randomNo){
-        if(randomNo.isMovableRandomNumber()){
+    public void move(int value){
+        if(isMovableValue(value)){
             this.position.forward();
         }
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Car car = (Car) o;
-        return Objects.equals(position, car.position) && Objects.equals(name, car.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(position, name);
+    private boolean isMovableValue(int value) {
+        return value >= THRESHOLD_FORWARD_VALUE;
     }
 }

@@ -1,7 +1,8 @@
 package racingcar.domain;
 
+import racingcar.utils.RandomNumberForRacing;
+
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -14,7 +15,7 @@ public class Cars {
 
     public void moveAll() {
         for(Car car: carsList){
-            car.move(new RandomNumber());
+            car.move(RandomNumberForRacing.getRandomNumberForRacing());
         }
     }
 
@@ -43,18 +44,5 @@ public class Cars {
                 .mapToInt(Car::getPosition)
                 .max()
                 .orElseThrow(java.util.NoSuchElementException::new);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Cars cars1 = (Cars) o;
-        return Objects.equals(carsList, cars1.carsList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(carsList);
     }
 }

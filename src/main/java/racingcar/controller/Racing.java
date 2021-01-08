@@ -1,7 +1,10 @@
-package racingcar.domain;
+package racingcar.controller;
+
+import racingcar.domain.Car;
+import racingcar.domain.Cars;
+import racingcar.domain.TryNumber;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 public class Racing {
 
@@ -38,16 +41,4 @@ public class Racing {
         return tryNumber.isLeftTryNumber();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Racing racing = (Racing) o;
-        return Objects.equals(cars, racing.cars) && Objects.equals(tryNumber, racing.tryNumber);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cars, tryNumber);
-    }
 }

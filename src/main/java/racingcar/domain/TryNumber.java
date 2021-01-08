@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import java.util.Objects;
-
 public class TryNumber{
     private int tryNumber;
 
@@ -17,23 +15,13 @@ public class TryNumber{
     }
 
     public void useTryNumber() {
+        if(!isLeftTryNumber()){
+            throw new RuntimeException("더 이상 시도 횟수가 없어서 시도 하실 수 없습니다.");
+        }
         this.tryNumber -= 1;
     }
 
     public boolean isLeftTryNumber() {
         return tryNumber > 0;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TryNumber tryNumber1 = (TryNumber) o;
-        return tryNumber == tryNumber1.tryNumber;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(tryNumber);
     }
 }

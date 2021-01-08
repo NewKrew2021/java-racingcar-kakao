@@ -1,8 +1,8 @@
-package racingcar.view;
+package racingcar;
 
-import racingcar.domain.Racing;
-import racingcar.utils.InputView;
-import racingcar.utils.OutputView;
+import racingcar.controller.Racing;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingMain {
     public static void main(String[] args){
