@@ -6,7 +6,7 @@ public class Car {
     private final int MINIMUM_NAME_LENGTH = 1;
     private final int MAXIMUM_NAME_LENGTH = 5;
 
-    private String name;
+    private final String name;
     private int position;
 
     public Car(final String name) {
