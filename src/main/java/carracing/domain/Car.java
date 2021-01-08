@@ -21,8 +21,8 @@ public class Car {
         this.position = position;
     }
 
-    private boolean isValidNameFormat(String name) {
-        return MINIMUM_NAME_LENGTH <= name.length() && name.length() <= MAXIMUM_NAME_LENGTH;
+    public boolean isValidNameFormat(String name) {
+        return name != null && MINIMUM_NAME_LENGTH <= name.length() && name.length() <= MAXIMUM_NAME_LENGTH;
     }
 
     public int go() {

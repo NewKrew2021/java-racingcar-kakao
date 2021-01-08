@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 import carracing.domain.Car;
 import org.junit.jupiter.api.Test;
@@ -21,13 +21,10 @@ public class CarTest {
     }
 
     @Test
-    void makeNameTest_fail_length0() {
+    void isValidNameFormat() {
+        assertThatThrownBy(() -> new Car(null)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Car("")).isInstanceOf(IllegalArgumentException.class);
-    }
-
-    @Test
-    void makeNameTest_fail_length7() {
-        assertThatThrownBy(() -> new Car("invalid")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car("length7")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -43,4 +40,5 @@ public class CarTest {
         Car car = new Car("car1", 1);
         assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isFalse();
     }
+
 }
