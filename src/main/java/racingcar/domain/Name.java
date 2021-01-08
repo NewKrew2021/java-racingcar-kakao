@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Name {
@@ -7,11 +8,18 @@ public class Name {
     private final String name;
 
     public Name(String name) {
+        if(isNameLengthInValid(name)) {
+            throw new IllegalStateException();
+        }
         this.name = name;
     }
 
     public String getName() {
         return name;
+    }
+
+    private boolean isNameLengthInValid(String name) {
+        return name.length() > 5 || name.length() < 1;
     }
 
     @Override
