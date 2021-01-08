@@ -1,4 +1,4 @@
-package carracing;
+package carracing.service;
 
 import carracing.domain.Car;
 import carracing.service.CarRacingProgram;

@@ -1,4 +1,4 @@
-package carracing;
+package carracing.domain;
 
 import carracing.domain.Car;
 import org.junit.jupiter.api.BeforeEach;

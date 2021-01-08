@@ -1,4 +1,4 @@
-package carracing;
+package carracing.utility;
 
 import carracing.utility.RandomNumber;
 import org.junit.jupiter.api.Test;
