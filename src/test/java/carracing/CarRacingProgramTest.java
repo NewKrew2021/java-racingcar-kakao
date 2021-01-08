@@ -11,12 +11,12 @@ public class CarRacingProgramTest {
     private CarRacingProgram carRacingProgram;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         carRacingProgram = new CarRacingProgram();
     }
 
     @Test
-    void getRandomNumberTest(){
+    void getRandomNumberTest() {
         assertThat(carRacingProgram.getRandomNumber()).isBetween(0, 9);
     }
 }

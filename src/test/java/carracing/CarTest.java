@@ -16,7 +16,7 @@ public class CarTest {
 
     @Test
     void goTest() {
-        Car car = new Car("car1",2);
+        Car car = new Car("car1", 2);
         assertThat(car.getCarInfoString()).isEqualTo("car1 : --");
     }
 
@@ -31,16 +31,16 @@ public class CarTest {
     }
 
     @Test
-    void isPositionEqualMaxMoveDistanceTest_equal(){
+    void isPositionEqualMaxMoveDistanceTest_equal() {
         int maxMoveDistance = 2;
-        Car car = new Car("car1",2);
+        Car car = new Car("car1", 2);
         assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isTrue();
     }
 
     @Test
-    void isPositionEqualMaxMoveDistanceTest_unequal(){
+    void isPositionEqualMaxMoveDistanceTest_unequal() {
         int maxMoveDistance = 2;
-        Car car = new Car("car1",1);
+        Car car = new Car("car1", 1);
         assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isFalse();
     }
 }
