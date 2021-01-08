@@ -1,5 +1,10 @@
+import model.Cars;
+import view.IOUtils;
+
+import java.io.IOException;
+
 public class Game {
-    public void start(){
+    public void start() throws IOException {
         String names = IOUtils.getNames();
         int trial = IOUtils.getTrial();
 
@@ -8,17 +13,20 @@ public class Game {
         printResult(cars);
     }
 
-    private void doTrial(Cars cars, int trial){
-        for(int i = 0; i < trial; i++){
+    private void doTrial(Cars cars, int trial) {
+        for (int i = 0; i < trial; i++) {
             System.out.println("실행결과");
             cars.moveAll();
-            cars.printPositions();
-            System.out.println("");
+            printCurrentStates(cars);
+            System.out.println();
         }
     }
 
-    private void printResult(Cars cars){
-        cars.printHeads();
-        System.out.println("가 최종 우승했습니다.");
+    private void printCurrentStates(Cars cars){
+        IOUtils.printNameAndPositions(cars);
+    }
+
+    private void printResult(Cars cars) {
+        IOUtils.printHeads(cars.getHeads());
     }
 }
