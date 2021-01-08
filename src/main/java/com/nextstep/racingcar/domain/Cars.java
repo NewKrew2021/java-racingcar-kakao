@@ -15,6 +15,11 @@ public class Cars {
     }
 
     public Cars(List<Car> cars) {
+        if (hasDuplicatedCar(cars)) {
+            String message = "There can be no cars with same name";
+            throw new IllegalArgumentException(message);
+        }
+
         this.cars = Collections.unmodifiableList(cars);
     }
 
@@ -53,6 +58,14 @@ public class Cars {
                 .max(Comparator.comparing(Car::getLocation))
                 .map(Car::getLocation)
                 .orElse(0);
+    }
+
+    private boolean hasDuplicatedCar(List<Car> cars) {
+        int originalCarNum = cars.size();
+
+        return cars.stream()
+                .distinct()
+                .count() != originalCarNum;
     }
 
     private boolean isCarAdvance(int number) {

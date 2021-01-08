@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.Arrays;
 import java.util.Collections;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class CarsTest {
     private final int MOVE = 9;
@@ -24,6 +24,16 @@ public class CarsTest {
         );
 
         assertThat(cars.getNumberOfCars()).isEqualTo(3);
+    }
+
+    @Test
+    void carsWithSameNameShouldThrowError() {
+        assertThatThrownBy(() -> new Cars(
+                Arrays.asList(
+                        new Car("dup", 0),
+                        new Car("dup", 0)
+                )
+        )).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
