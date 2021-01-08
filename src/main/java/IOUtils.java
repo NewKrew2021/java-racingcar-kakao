@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class IOUtils {
@@ -24,14 +23,6 @@ public class IOUtils {
         } catch (IOException e) {
             throw e;
         }
-    }
-
-    public static void print(String input) {
-        System.out.print(input);
-    }
-
-    public static void println(String input) {
-        System.out.println(input);
     }
 
     public static void printNameAndPosition(Car car){
