@@ -32,6 +32,6 @@ public class OutputView {
                 .map(Car::getName)
                 .collect(Collectors.joining(", "));
 
-        System.out.println(String.format("%s가 최종 우승했습니다.", winnersAppendedByComma));
+        System.out.printf("%s가 최종 우승했습니다.\n", winnersAppendedByComma);
     }
 }

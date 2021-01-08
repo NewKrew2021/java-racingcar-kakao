@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 public class RandomDigitsGenerator {
-    public static List<Integer> getNRandomDigitsForCars(int n) {
+    public static List<Integer> getNRandomDigits(int n) {
         return new Random()
                 .ints(n)
                 .boxed()

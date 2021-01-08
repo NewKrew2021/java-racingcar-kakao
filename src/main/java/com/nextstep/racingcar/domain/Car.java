@@ -1,5 +1,7 @@
 package com.nextstep.racingcar.domain;
 
+import java.util.Objects;
+
 public class Car {
     private String name;
     private int location;
@@ -27,5 +29,18 @@ public class Car {
 
     private boolean isAboveFiveLetters(String name) {
         return name.length() > 5;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return location == car.location && name.equals(car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, location);
     }
 }

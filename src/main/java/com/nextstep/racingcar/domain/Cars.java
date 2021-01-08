@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.nextstep.racingcar.utils.RandomDigitsGenerator.getNRandomDigitsForCars;
-
 public class Cars {
     private final List<Car> cars;
 
@@ -28,11 +26,9 @@ public class Cars {
         return cars.size();
     }
 
-    public void move() {
-        List<Integer> randoms = getNRandomDigitsForCars(getNumberOfCars());
-
+    public void move(List<Integer> numbersToCheckMovement) {
         IntStream.range(0, cars.size())
-                .filter(i -> moveResult(randoms.get(i)) == CarResult.MOVE)
+                .filter(i -> moveResult(numbersToCheckMovement.get(i)) == CarResult.MOVE)
                 .mapToObj(cars::get)
                 .forEach(Car::move);
     }
@@ -52,14 +48,14 @@ public class Cars {
         return CarResult.STOP;
     }
 
-    private boolean isCarAdvance(int number) {
-        return number >= 4;
-    }
-
-    private int getLocationOfHighestAdvancedCar() {
+    protected int getLocationOfHighestAdvancedCar() {
         return cars.stream()
                 .max(Comparator.comparing(Car::getLocation))
                 .map(Car::getLocation)
                 .orElse(0);
+    }
+
+    private boolean isCarAdvance(int number) {
+        return number >= 4;
     }
 }

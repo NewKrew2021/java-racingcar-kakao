@@ -1,5 +1,7 @@
 package com.nextstep.racingcar.domain;
 
+import com.nextstep.racingcar.utils.RandomDigitsGenerator;
+
 import java.util.List;
 
 public class Racingcar {
@@ -22,7 +24,9 @@ public class Racingcar {
     }
 
     public void simulate() {
-        cars.move();
+        List<Integer> randomDigits = RandomDigitsGenerator.getNRandomDigits(cars.getNumberOfCars());
+
+        cars.move(randomDigits);
         increaseStep();
     }
 
