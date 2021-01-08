@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Cars {
 
@@ -34,34 +33,5 @@ public class Cars {
             car.move(new RandomNumberMoveStrategy());
         }
     }
-
-    public String getRoundResult() {
-        String roundResult = "";
-        for (Car car : cars) {
-            roundResult += car.getName()
-                    + " : "
-                    + new String(new char[car.getLocation()]).replace("\0", "_")
-                    + "\n";
-        }
-        return roundResult;
-    }
-
-    public String getWinner() {
-        int winnerLocation = getWinnerLocation();
-        return getWinnerNames(winnerLocation);
-    }
-
-    private String getWinnerNames(int winnerLocation) {
-        return cars.stream()
-                .filter(car -> car.getLocation() == winnerLocation)
-                .map(Car::getName)
-                .collect(Collectors.joining(" "));
-    }
-
-    private int getWinnerLocation() {
-        return cars.stream()
-                .mapToInt(car -> car.getLocation())
-                .max().orElse(0);
-    }
-
+    
 }
