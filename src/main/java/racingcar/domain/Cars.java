@@ -28,10 +28,10 @@ public class Cars {
         return cars;
     }
 
-    public void move() {
+    public void move(RandomNumberMoveStrategy moveStrategy) {
         for (Car car : cars) {
-            car.move(new RandomNumberMoveStrategy());
+            car.move(moveStrategy);
         }
     }
-    
+
 }

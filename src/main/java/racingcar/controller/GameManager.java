@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.RandomNumberMoveStrategy;
 import racingcar.domain.Round;
 import racingcar.view.InputView;
 import racingcar.view.ResultView;
@@ -23,7 +24,7 @@ public class GameManager {
         ResultView.printRoundStart();
 
         for (int i = 0; i < round.getRound(); i++) {
-            cars.move();
+            cars.move(new RandomNumberMoveStrategy());
             ResultView.print(roundResult());
         }
     }

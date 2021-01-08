@@ -24,7 +24,7 @@ class CarsTest {
     @Test
     @DisplayName("1회 자동차 이동 확인")
     void moveTest() {
-        cars.move();
+        cars.move(new RandomNumberMoveStrategy());
         assertThat(cars.getCars()).extracting(Car::getLocation).isSubsetOf(0, 1);
     }
 
@@ -33,9 +33,9 @@ class CarsTest {
     @DisplayName("Round에 따른 자동차 이동 확인")
     void roundMoveTest(int round) {
         for (int i = 0; i < round; i++) {
-            cars.move();
+            cars.move(new RandomNumberMoveStrategy());
         }
         assertThat(cars.getCars()).extracting(Car::getLocation).hasSizeBetween(0, round);
     }
-    
+
 }
