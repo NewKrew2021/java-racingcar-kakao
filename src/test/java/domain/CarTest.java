@@ -36,4 +36,9 @@ public class CarTest {
     void invalidName(String argument) {
         assertThatThrownBy(() -> new Car(argument)).isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void nullName() {
+        assertThatThrownBy(() -> new Car(null)).isInstanceOf(IllegalArgumentException.class);
+    }
 }
