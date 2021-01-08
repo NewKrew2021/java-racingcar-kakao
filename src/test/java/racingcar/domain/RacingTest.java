@@ -18,5 +18,4 @@ public class RacingTest {
         racing.play();
         assertThat(racing.isRoundRemain()).isFalse();
     }
-
 }

@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import racingcar.view.ResultPrinter;
-
 import java.util.Objects;
 
 public class Racing {
@@ -22,7 +20,7 @@ public class Racing {
         return roundNumber.isRoundRemain();
     }
 
-    public Winners getWinners() {
+    public RacingCars getWinners() {
         return racingCars.getWinners();
     }
 

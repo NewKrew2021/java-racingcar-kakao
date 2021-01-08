@@ -20,5 +20,4 @@ public class RacingCarTest {
         racingCar.tryMove(() -> false);
         assertThat(racingCar.getDistance()).isEqualTo(new Distance(0));
     }
-
 }

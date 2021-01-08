@@ -5,7 +5,7 @@ import java.util.Objects;
 public class RacingCar {
 
     private final Name name;
-    private Distance distance;
+    private final Distance distance;
 
     public RacingCar(String name) {
         this.name = new Name(name);

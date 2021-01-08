@@ -1,6 +1,5 @@
 package racingcar.domain;
 
-import java.util.Arrays;
 import java.util.Objects;
 
 public class Name {

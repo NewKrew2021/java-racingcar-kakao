@@ -21,8 +21,8 @@ public class RacingCars {
         return racingCars;
     }
 
-    public Winners getWinners() {
-        return new Winners(racingCars.stream().filter(racingCar -> racingCar.isSameDistance(getMaxDist())).collect(Collectors.toList()));
+    public RacingCars getWinners() {
+        return new RacingCars(racingCars.stream().filter(racingCar -> racingCar.isSameDistance(getMaxDist())).collect(Collectors.toList()));
     }
 
     public void runRound() {

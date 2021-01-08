@@ -2,7 +2,6 @@ package racingcar.view;
 
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingCars;
-import racingcar.domain.Winners;
 
 import java.util.ArrayList;
 
@@ -21,9 +20,9 @@ public class ResultPrinter {
         System.out.println();
     }
 
-    public static void printFinalResult(Winners winners) {
-        ArrayList winnerNames = new ArrayList<>();
-        for (RacingCar winner : winners.getWinners()) {
+    public static void printFinalResult(RacingCars winners) {
+        ArrayList<String> winnerNames = new ArrayList<>();
+        for (RacingCar winner : winners.getRacingCars()) {
             winnerNames.add(winner.getName().getName());
         }
         System.out.print(String.join(", ", winnerNames));

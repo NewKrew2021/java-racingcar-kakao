@@ -18,9 +18,15 @@ public class RacingCarsTest {
     }
 
     @Test
+    public void setUpRacingCarWithList() {
+        racingCars = new RacingCars(Arrays.asList(new RacingCar("ocean"),new RacingCar("pobi")));
+        assertThat(racingCars).isEqualTo(new RacingCars(Arrays.asList(new RacingCar("ocean"),new RacingCar("pobi"))));
+    }
+
+    @Test
     public void winnerCheck() {
         List<RacingCar> racingCarList = Arrays.asList(new RacingCar("win1", 3), new RacingCar("win2", 3), new RacingCar("lose", 2));
         racingCars = new RacingCars(racingCarList);
-        assertThat(racingCars.getWinners()).isEqualTo(new Winners(Arrays.asList(new RacingCar("win1", 3), new RacingCar("win2", 3))));
+        assertThat(racingCars.getWinners()).isEqualTo(new RacingCars(Arrays.asList(new RacingCar("win1", 3), new RacingCar("win2", 3))));
     }
 }
