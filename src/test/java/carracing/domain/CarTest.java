@@ -23,11 +23,18 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("차의 이름 설정에 대한 유효성 테스트")
-    void isValidNameFormat() {
+    @DisplayName("차의 이름 설정에 대한 유효성 테스트 (성공) - 길이 1, 길이 5")
+    void isValidNameFormat1() {
+        assertThat(new Car("a")).isInstanceOf(Car.class);
+        assertThat(new Car("abcde")).isInstanceOf(Car.class);
+    }
+
+    @Test
+    @DisplayName("차의 이름 설정에 대한 유효성 테스트 (exception 발생) - null, 길이 0, 길이 6")
+    void isValidNameFormat2() {
         assertThatThrownBy(() -> new Car(null)).isInstanceOf(IllegalArgumentException.class);
         assertThatThrownBy(() -> new Car("")).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> new Car("length7")).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> new Car("length")).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
