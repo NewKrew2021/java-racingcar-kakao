@@ -1,9 +1,12 @@
-package racingcar;
+package racingcar.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,15 +21,12 @@ public class CarsTest {
         carNames.add("hendo");
         carNames.add("brody");
         carNames.add("corby");
+        Cars cars = new Cars(carNames);
 
         //when
-        Cars cars = new Cars(carNames);
+        List<Car> expected = new ArrayList<>(Arrays.asList(Car.of("hendo", 0),
+                Car.of("brody", 0), Car.of("corby", 0)));
         //then
-        List<Car> expected = new ArrayList<>();
-        expected.add(Car.of("hendo", 0));
-        expected.add(Car.of("brody", 0));
-        expected.add(Car.of("corby", 0));
-
         assertThat(cars.getCars()).isEqualTo(expected);
     }
 

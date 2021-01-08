@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.game;
 
 public class RandomMovingStrategy implements MovingStrategy {
     private static final int RANDOM_SCOPE = 10;

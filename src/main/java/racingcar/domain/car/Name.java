@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.domain.car;
 
 import java.util.Objects;
 
@@ -38,7 +38,7 @@ public class Name {
         }
 
         for (int i = 0; i < strLen; i++) {
-            if ((Character.isWhitespace(str.charAt(i)) == false)) {
+            if ((!Character.isWhitespace(str.charAt(i)))) {
                 return false;
             }
         }

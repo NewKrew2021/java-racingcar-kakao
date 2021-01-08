@@ -1,13 +1,9 @@
-package racingcar;
+package racingcar.domain.car;
 
 import java.util.Objects;
 
 public class Position {
     private final int position;
-
-    public Position() {
-        this.position = 0;
-    }
 
     public Position(int position) {
         if (position < 0) {

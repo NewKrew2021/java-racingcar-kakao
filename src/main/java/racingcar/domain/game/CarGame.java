@@ -1,4 +1,7 @@
-package racingcar;
+package racingcar.domain.game;
+
+import racingcar.domain.car.Car;
+import racingcar.domain.car.Cars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,34 +9,26 @@ import java.util.List;
 public class CarGame {
 
     private final Cars cars;
-    private final int totalRound;
-    private int currentRound = 0;
+    private Round round;
 
     private CarGame(Cars cars, int totalRound) {
         this.cars = cars;
-        this.totalRound = totalRound;
+        this.round = new Round(totalRound);
     }
 
     public static CarGame of(Cars cars, int totalRound) {
         return new CarGame(cars, totalRound);
     }
 
-    public void playRound() {
-        currentRound++;
-        updateCar();
-    }
-
-    private void updateCar() {
-        RandomMovingStrategy randomMovingStrategy = new RandomMovingStrategy();
-        for (Car car : Cars.getCars()) {
-            car.moveCarPosition(randomMovingStrategy);
-        }
+    public void playRound(MovingStrategy movingStrategy) {
+        round.playCurrentRound();
+        cars.moveCars(movingStrategy);
     }
 
     public ArrayList<String> getWinner() {
-        int maxPosition = getMaxPosition();
+        int maxPosition = cars.maxCarPosition();
         ArrayList<String> winners = new ArrayList<>();
-        for (Car car : Cars.getCars()) {
+        for (Car car : cars.getCars()) {
             addWinner(getNameIfMatched(car, maxPosition), winners);
         }
         return winners;
@@ -52,19 +47,11 @@ public class CarGame {
         }
     }
 
-    private int getMaxPosition() {
-        int maxPosition = 0;
-        for (Car car : Cars.getCars()) {
-            maxPosition = Math.max(maxPosition, car.getPosition());
-        }
-        return maxPosition;
-    }
-
     public boolean isFinished() {
-        return totalRound == currentRound;
+        return round.isRoundFinished();
     }
 
     public List<Car> getCars() {
-        return Cars.getCars();
+        return cars.getCars();
     }
 }
