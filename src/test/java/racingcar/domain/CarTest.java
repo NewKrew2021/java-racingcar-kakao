@@ -10,12 +10,12 @@ public class CarTest {
 
     @BeforeEach
     void setInit() {
-        car = new Car("kuri");
+        car = new Car("kuri", 0);
     }
 
     @Test
     void createCarTest() {
-        assertThat(car).isEqualTo(new Car("kuri"));
+        assertThat(car).isEqualTo(new Car("kuri", 0));
     }
 
     @Test

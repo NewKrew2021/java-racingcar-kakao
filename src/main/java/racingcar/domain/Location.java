@@ -5,11 +5,10 @@ import java.util.Objects;
 public class Location {
     private int location;
 
-    public Location() {
-        this(0);
-    }
-
     public Location(int location) {
+        if (location < 0) {
+            location = 0;
+        }
         this.location = location;
     }
 
@@ -33,5 +32,5 @@ public class Location {
     public int hashCode() {
         return Objects.hash(location);
     }
-    
+
 }

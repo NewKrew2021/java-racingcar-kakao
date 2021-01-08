@@ -21,7 +21,7 @@ public class Cars {
 
     private void addCarName(String[] carNames) {
         for (String carName : carNames) {
-            cars.add(new Car(carName));
+            cars.add(new Car(carName, 0));
         }
     }
 
@@ -63,5 +63,5 @@ public class Cars {
                 .mapToInt(car -> car.getLocation())
                 .max().orElse(0);
     }
-    
+
 }

@@ -5,10 +5,11 @@ import java.util.Objects;
 
 public class Car {
     private Name name;
-    private Location location = new Location();
+    private Location location;
 
-    public Car(String name) {
+    public Car(String name, int location) {
         this.name = new Name(name);
+        this.location = new Location(location);
     }
 
     public String getName() {
@@ -35,5 +36,5 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, location);
     }
-    
+
 }
