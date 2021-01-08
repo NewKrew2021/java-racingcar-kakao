@@ -8,70 +8,33 @@ import java.util.List;
 import static java.lang.Math.max;
 
 public class RacingGame {
-    public static final int UPPER_BOUND = 10;
-    private final List<Car> cars;
+    private final Cars cars;
 
     public RacingGame(String[] names){
-        Car[] cars = new Car[names.length];
-        for (int i = 0; i < names.length; i++) {
-            cars[i] = new Car(names[i]);
+        List<Car> cars = new ArrayList<>();
+        for (String name: names) {
+            cars.add(new Car(name));
         }
-        this.cars = Arrays.asList(cars);
+        this.cars = new Cars(cars);
     }
 
     public RacingGame(String[] names, int[] locations) {
-        Car[] cars = new Car[names.length];
+        List<Car> cars = new ArrayList<>();
         for (int i = 0; i < names.length; i++) {
-            cars[i] = new Car(names[i], locations[i]);
+            cars.add(new Car(names[i], locations[i]));
         }
-        this.cars = Arrays.asList(cars);
+        this.cars = new Cars(cars);
     }
 
-    public void moveCars() {
-        for (Car car : cars) {
-            car.move(Utils.getRandomNo(UPPER_BOUND));
-        }
-    }
-
-    public String getCarsStatus() {
-        String carsStatus = "";
-        for (Car car : cars) {
-            carsStatus += car.getStatus() + "\n";
-        }
-        return carsStatus;
+    public String race() {
+        cars.moveCars();
+        return cars.getCarsStatus();
     }
 
     public ArrayList<String> getWinners() {
-        ArrayList<String> winners = new ArrayList<>();
-        int maxLocation = getMaxLocation();
-
-        for (int i = 0; i < cars.size(); i++) {
-            addWinner(winners, i, maxLocation);
-        }
-
+        int maxLocation = cars.getMaxLocation();
+        ArrayList<String> winners = cars.getCarNamesLocatedIn(maxLocation);
         return winners;
-    }
-
-    private int getMaxLocation() {
-        int maxLocation = 0;
-        for (Car car : cars) {
-            maxLocation = max(maxLocation, car.getLocation());
-        }
-        return maxLocation;
-    }
-
-    private void addWinner(ArrayList<String> winners, int idx, int maxLocation) {
-        if (isMaxLocation(cars.get(idx), maxLocation)) {
-            winners.add(cars.get(idx).getName());
-        }
-    }
-
-    private boolean isMaxLocation(Car car, int maxLocation) {
-        return car.getLocation() == maxLocation;
-    }
-
-    public List<Car> getCars() {
-        return this.cars;
     }
 
 }
