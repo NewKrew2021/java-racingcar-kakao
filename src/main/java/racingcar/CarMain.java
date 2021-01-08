@@ -18,6 +18,6 @@ public class CarMain {
             CarOutput.printRoundResult(game);
         }
 
-        CarOutput.printWinnerCar(game.getWinner());
+        CarOutput.printWinnerCar(game.getGameWinners());
     }
 }
