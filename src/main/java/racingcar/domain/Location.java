@@ -16,8 +16,8 @@ public class Location {
         return location;
     }
 
-    public void move(MoveStrategy moveStratege) {
-        if (moveStratege.move()) location++;
+    public void move(MoveStrategy moveStrategy) {
+        if (moveStrategy.move()) location++;
     }
 
     @Override
