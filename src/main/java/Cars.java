@@ -9,7 +9,7 @@ public class Cars {
     public Cars(String carNames) {
         String[] names = carNames.split(",");
         for (String name : names) {
-            cars.add(new Car(name, 0));
+            cars.add(new Car(name));
         }
     }
 
