@@ -1,51 +1,46 @@
 package carracing.domain;
 
-import carracing.ui.CarRacingProgramUI;
+import carracing.ui.ProgramInputView;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class CarRacingProgram {
 
     private final int ABLE_MOVE_NUMBER = 4;
-    private final String NAMES_DELIMETER = ",";
 
     private int maxMoveDistance;
-    private Scanner scanner;
     private Random random;
+    private int roundCount;
+    private List<Car> cars;
 
     public CarRacingProgram() {
-        scanner = new Scanner(System.in);
         random = new Random();
+    }
+
+    public CarRacingProgram(String[] names, int roundCount) {
+        this();
+        cars = mapCarNamesToCars(names);
+        this.roundCount = roundCount;
     }
 
     public int getRandomNumber() {
         return random.nextInt(10);
     }
 
-    private int insertRound() {
-        return scanner.nextInt();
-    }
+    public List<String> race() {
+        ProgramInputView.printResultPharse();
 
-    public void race() {
-        CarRacingProgramUI.printCarInputNamesPharse();
-        List<Car> cars = mapCarNamesToCars(insertCarNames());
-
-        CarRacingProgramUI.printRaceCountPhrase();
-        int round = insertRound();
-
-        CarRacingProgramUI.printResultPharse();
-        for (int i = 0; i < round; i++) {
+        for (int round = 0; round < roundCount; round++) {
             playOneCycleAndPrintCarPosition(cars);
         }
 
-        CarRacingProgramUI.printWinnerPharse(findRaceWinners(cars));
+        return findRaceWinners(cars);
     }
 
-    private String[] insertCarNames() {
-        return scanner.nextLine().split(NAMES_DELIMETER);
-    }
-
-    private List<Car> mapCarNamesToCars(String[] names) throws RuntimeException {
+    public List<Car> mapCarNamesToCars(String[] names) throws RuntimeException {
         List<Car> cars = new ArrayList<>();
 
         Arrays.stream(names).forEach(name -> cars.add(new Car(name)));
@@ -56,10 +51,10 @@ public class CarRacingProgram {
     private void playOneCycleAndPrintCarPosition(List<Car> cars) {
         cars.stream().forEach(car -> {
             checkMovingConditionAfterMoveCar(car, getRandomNumber());
-            CarRacingProgramUI.printCarPosition(car);
+            ProgramInputView.printCarPosition(car);
         });
 
-        CarRacingProgramUI.printBlankLine();
+        ProgramInputView.printBlankLine();
     }
 
     private void checkMovingConditionAfterMoveCar(Car car, int randomNumber) {

@@ -1,4 +1,4 @@
-package carracing.controller;
+package carracing.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
