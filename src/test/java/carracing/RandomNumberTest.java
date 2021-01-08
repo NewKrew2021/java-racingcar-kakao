@@ -1,6 +1,6 @@
 package carracing;
 
-import carracing.domain.RandomNumber;
+import carracing.utility.RandomNumber;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

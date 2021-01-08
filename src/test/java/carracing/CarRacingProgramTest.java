@@ -1,6 +1,6 @@
 package carracing;
 
-import carracing.domain.CarRacingProgram;
+import carracing.service.CarRacingProgram;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

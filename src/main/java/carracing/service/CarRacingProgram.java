@@ -1,12 +1,15 @@
-package carracing.domain;
+package carracing.service;
 
+import carracing.domain.Car;
+import carracing.utility.RandomNumber;
 import carracing.view.CarInfoPrint;
 import carracing.view.CarRacingInfoPrint;
+import carracing.view.RacingInfoScanner;
 
 import java.util.*;
 
 public class CarRacingProgram {
-    private List<Car> carList;
+    private List<Car> carList = new ArrayList<>();
     private int totalMoveCount;
     private int maxMoveDistance;
 
@@ -15,11 +18,7 @@ public class CarRacingProgram {
     private final int CAR_CONDITION_BOUND = 10;
     private final String CAR_NAME_IDENTIFY_SYMBOL = ",";
 
-    public CarRacingProgram() {
-        carList = new ArrayList<>();
-    }
-
-    public List<Car> insertCarNamesToCarList() {
+    private List<Car> insertCarNamesToCarList() {
         List<Car> carList = new ArrayList<>();
         List<String> input = splitCarNames(RacingInfoScanner.insertCarNames());
         for (int i = 0; i < input.size(); i++) {
