@@ -19,6 +19,10 @@ public class Cars {
         }
     }
 
+    public List<Car> getCars() {
+        return cars;
+    }
+
     public int getCount() {
         return cars.size();
     }
@@ -26,12 +30,6 @@ public class Cars {
     public void moveAll() {
         for (Car car : cars) {
             car.move();
-        }
-    }
-
-    public void printNameAndPositions() {
-        for (Car car : cars) {
-            car.printNameAndPosition();
         }
     }
 

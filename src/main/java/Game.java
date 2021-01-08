@@ -14,9 +14,13 @@ public class Game {
         for (int i = 0; i < trial; i++) {
             System.out.println("실행결과");
             cars.moveAll();
-            cars.printNameAndPositions();
-            System.out.println("");
+            printCurrentStates(cars);
+            System.out.println();
         }
+    }
+
+    private void printCurrentStates(Cars cars){
+        IOUtils.printNameAndPositions(cars);
     }
 
     private void printResult(Cars cars) {

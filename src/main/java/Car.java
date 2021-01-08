@@ -24,6 +24,10 @@ public class Car implements Comparable<Car> {
         return name;
     }
 
+    public int getPosition() {
+        return position;
+    }
+
     public boolean isEqualPosition(Car car) {
         return car.position == position;
     }
@@ -38,10 +42,6 @@ public class Car implements Comparable<Car> {
 
     private int generateRandomNumber() {
         return rand.nextInt(10);
-    }
-
-    public void printNameAndPosition() {
-        IOUtils.println(name + " : " + "-".repeat(position));
     }
 
     @Override

@@ -34,6 +34,16 @@ public class IOUtils {
         System.out.println(input);
     }
 
+    public static void printNameAndPosition(Car car){
+        System.out.println(car.getName() + " : " + "-".repeat(car.getPosition()));
+    }
+
+    public static void printNameAndPositions(Cars cars){
+        for(Car car : cars.getCars()){
+            printNameAndPosition(car);
+        }
+    }
+
     public static void printHeads(List<Car> heads) {
         String commaSeparatedHeads = heads.stream()
                 .map(car -> car.getName())
