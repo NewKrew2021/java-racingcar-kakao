@@ -1,3 +1,5 @@
+import model.Car;
+import model.Cars;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

@@ -1,3 +1,8 @@
+package view;
+
+import model.Car;
+import model.Cars;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
