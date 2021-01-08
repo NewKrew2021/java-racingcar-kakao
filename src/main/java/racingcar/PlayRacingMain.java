@@ -2,22 +2,23 @@ package racingcar;
 
 import racingcar.domain.Racing;
 import racingcar.domain.RandomConditionValueStrategy;
-import racingcar.view.UserView;
+import racingcar.view.UserInputView;
+import racingcar.view.UserOutputView;
 
 public class PlayRacingMain {
 
     public static void main(String[] args){
-        String names = UserView.enterCarNames();
-        int round = UserView.enterRound();
+        String names = UserInputView.enterCarNames();
+        int round = UserInputView.enterRound();
         Racing rc = new Racing(names, round);
 
         RandomConditionValueStrategy randomStrategy = new RandomConditionValueStrategy();
-        UserView.printProcessTitle();
+        UserOutputView.printProcessTitle();
         while (!rc.isFinish()) {
             rc.race(randomStrategy);
-            UserView.printProcessStatus(rc.getCarsMidTermStatus());
+            UserOutputView.printProcessStatus(rc.getCarsMidTermStatus());
         }
 
-        UserView.printWinnerName(rc.getWinnerNames());
+        UserOutputView.printWinnerName(rc.getWinnerNames());
     }
 }
