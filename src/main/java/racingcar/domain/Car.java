@@ -11,21 +11,21 @@ public class Car {
         this(name, 0);
     }
 
-    public Car(String name, int position){
+    public Car(String name, int position) {
         this.name = new CarName(name);
         this.position = new CarPosition(position);
     }
 
-    public String getName(){
+    public String getName() {
         return this.name.getName();
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return this.position.getPosition();
     }
 
-    public void move(int value){
-        if(isMovableValue(value)){
+    public void move(int value) {
+        if (isMovableValue(value)) {
             this.position.forward();
         }
     }

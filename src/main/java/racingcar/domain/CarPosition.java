@@ -9,17 +9,17 @@ public class CarPosition {
     }
 
     public CarPosition(int position) {
-        if(isNegativeValue(position)){
+        if (isNegativeValue(position)) {
             throw new IllegalArgumentException("position 이 음수가 될 수 없습니다");
         }
         this.position = position;
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return this.position;
     }
 
-    public boolean isNegativeValue(int value){
+    public boolean isNegativeValue(int value) {
         return value < 0;
     }
 

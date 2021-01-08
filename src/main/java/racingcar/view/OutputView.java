@@ -1,8 +1,8 @@
 package racingcar.view;
 
-import racingcar.domain.Car;
 import racingcar.controller.Racing;
 
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class OutputView {
@@ -13,10 +13,11 @@ public class OutputView {
     }
 
     public static void printCurrentCarStatus(Racing rc) {
-        for (Car car : rc.getCars().getCarsList()) {
-            System.out.print(car.getName() + " : ");
-            printBars(car.getPosition());
-        }
+        Map<String, Integer> carsInfo = rc.getCarsInfo();
+        carsInfo.forEach((key, value) -> {
+            System.out.print(key + " : ");
+            printBars(value);
+        });
         System.out.println();
     }
 
