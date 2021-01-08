@@ -46,7 +46,7 @@ public class Car {
         return this.name;
     }
 
-    public boolean isPositionEqualMaxMoveDistance(int maxMoveDistance) {
-        return this.position == maxMoveDistance;
+    public boolean isCarPositionEqualToIndex(int index) {
+        return this.position == index;
     }
 }

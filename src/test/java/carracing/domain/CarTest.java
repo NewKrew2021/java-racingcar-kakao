@@ -1,6 +1,5 @@
 package carracing.domain;
 
-import carracing.domain.Car;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -31,14 +30,14 @@ public class CarTest {
     void isPositionEqualMaxMoveDistanceTest_equal() {
         int maxMoveDistance = 2;
         Car car = new Car("car1", 2);
-        assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isTrue();
+        assertThat(car.isCarPositionEqualToIndex(maxMoveDistance)).isTrue();
     }
 
     @Test
     void isPositionEqualMaxMoveDistanceTest_unequal() {
         int maxMoveDistance = 2;
         Car car = new Car("car1", 1);
-        assertThat(car.isPositionEqualMaxMoveDistance(maxMoveDistance)).isFalse();
+        assertThat(car.isCarPositionEqualToIndex(maxMoveDistance)).isFalse();
     }
 
 }
