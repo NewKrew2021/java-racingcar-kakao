@@ -32,7 +32,7 @@ public class CarsTest {
 
     @Test
     public void moveAllCarsTest(){
-        testCars.moveAllCars(Arrays.asList(1, 2, 3, 4, 5, 6));
+        testCars.moveAllCarsAccordingTo(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         CarDTOs realResult = testCars.getCarInformations();
         CarDTOs expectedResult = new CarDTOs(
