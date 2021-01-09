@@ -2,8 +2,6 @@ package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.exception.InvalidNameLengthException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -51,18 +49,4 @@ public class CarTest {
         car.move(false);
         assertThat(car.getPosition()).isEqualTo(4);
     }
-//
-//    @ParameterizedTest
-//    @ValueSource(ints = {4, 5})
-//    public void moveOnce(int value) {
-//        car.move(true);
-//        assertThat(car.getPosition()).isEqualTo(5);
-//    }
-//
-//    @ParameterizedTest
-//    @ValueSource(ints = {2, 3})
-//    public void moveNone(int value) {
-//        car.move(false);
-//        assertThat(car.getPosition()).isEqualTo(4);
-//    }
 }
