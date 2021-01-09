@@ -1,9 +1,9 @@
-package racingcar;
+package racingcar.util;
 
 public class RandomNumber {
     static final int MAX = 10;
 
     public static int getRandomNumber() {
-        return (int)(Math.random() * MAX);
+        return (int) (Math.random() * MAX);
     }
 }

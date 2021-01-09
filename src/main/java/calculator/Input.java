@@ -6,7 +6,7 @@ public class Input {
     private final String userInput;
     private AbstractSplitter splitter;
 
-    Input(String userInput){
+    Input(String userInput) {
         this.userInput = userInput;
 
         splitter = new Splitter();
@@ -17,18 +17,18 @@ public class Input {
     private static void validate(List<Integer> list) {
         list.forEach(v -> {
             if (v < 0) {
-                throw new RuntimeException("음수가 포함되었습니다.");
+                throw new IllegalArgumentException("음수가 포함되었습니다.");
             }
         });
     }
 
-    public List<Integer> split(){
+    public List<Integer> split() {
         List<Integer> list = splitter.split(this);
         validate(list);
         return list;
     }
 
-    public String getInput(){
+    public String getInput() {
         return userInput;
     }
 
