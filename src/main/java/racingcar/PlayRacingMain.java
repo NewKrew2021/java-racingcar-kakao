@@ -1,7 +1,7 @@
 package racingcar;
 
 import racingcar.domain.Racing;
-import racingcar.domain.RandomConditionValueStrategy;
+import racingcar.domain.RandomMoveDecisionStrategy;
 import racingcar.view.UserInputView;
 import racingcar.view.UserOutputView;
 
@@ -12,7 +12,7 @@ public class PlayRacingMain {
         int round = UserInputView.enterRound();
         Racing rc = new Racing(names, round);
 
-        RandomConditionValueStrategy randomStrategy = new RandomConditionValueStrategy();
+        RandomMoveDecisionStrategy randomStrategy = new RandomMoveDecisionStrategy();
         UserOutputView.printProcessTitle();
         while (!rc.isFinish()) {
             rc.race(randomStrategy);

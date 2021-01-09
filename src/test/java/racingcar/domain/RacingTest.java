@@ -15,7 +15,7 @@ public class RacingTest {
     @Test
     public void endRacing() {
         Racing racing = new Racing("mac,book,pro", 1);
-        racing.race(new RandomConditionValueStrategy());
+        racing.race(new RandomMoveDecisionStrategy());
         assertThat(racing.isFinish()).isTrue();
     }
 }

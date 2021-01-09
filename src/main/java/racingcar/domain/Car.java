@@ -24,8 +24,8 @@ public class Car {
         return position.getPosition();
     }
 
-    public void move(int value) {
-        if (value >= 4) {
+    public void move(boolean canMove) {
+        if (canMove) {
             position.goForward();
         }
     }

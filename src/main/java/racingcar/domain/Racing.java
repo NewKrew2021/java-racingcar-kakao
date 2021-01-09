@@ -16,9 +16,9 @@ public class Racing {
         return round.isEndRound();
     }
 
-    public void race(ConditionValueStrategy conditionValueStrategy) {
+    public void race(MoveDecisionStrategy moveDecisionStrategy) {
         round.spendOneRound();
-        cars.move(conditionValueStrategy);
+        cars.move(moveDecisionStrategy);
     }
 
     public List<Car> getCarsMidTermStatus() {

@@ -40,17 +40,29 @@ public class CarTest {
         assertThat(car.getPosition()).isEqualTo(4);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5})
-    public void moveOnce(int value) {
-        car.move(value);
+    @Test
+    public void moveOnce() {
+        car.move(true);
         assertThat(car.getPosition()).isEqualTo(5);
     }
 
-    @ParameterizedTest
-    @ValueSource(ints = {2, 3})
-    public void moveNone(int value) {
-        car.move(value);
+    @Test
+    public void moveNone() {
+        car.move(false);
         assertThat(car.getPosition()).isEqualTo(4);
     }
+//
+//    @ParameterizedTest
+//    @ValueSource(ints = {4, 5})
+//    public void moveOnce(int value) {
+//        car.move(true);
+//        assertThat(car.getPosition()).isEqualTo(5);
+//    }
+//
+//    @ParameterizedTest
+//    @ValueSource(ints = {2, 3})
+//    public void moveNone(int value) {
+//        car.move(false);
+//        assertThat(car.getPosition()).isEqualTo(4);
+//    }
 }
