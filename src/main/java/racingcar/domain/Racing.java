@@ -30,7 +30,7 @@ public class Racing {
     }
 
     public List<String> getWinnerNames() {
-        return cars.winnerNames();
+        return cars.getWinnerNames();
     }
 
     @Override

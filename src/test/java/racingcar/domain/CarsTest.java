@@ -46,6 +46,6 @@ public class CarsTest {
     public void winnersName() {
         cars.getCars().get(0).move(true);
         cars.getCars().get(2).move(true);
-        assertThat(cars.winnerNames()).isEqualTo(Arrays.asList("mac", "pro"));
+        assertThat(cars.getWinnerNames()).isEqualTo(Arrays.asList("mac", "pro"));
     }
 }
