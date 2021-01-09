@@ -24,13 +24,27 @@
 *Model*
 > **Car** : 자동차에 대한 클래스. 자동차 정보와 자동차 한개의 움직임에 대한 메소드
 > 
-> **CarSet** : 자동차집합에 대한 클래스. 요구되는 기능들은 대부분 자동차집합을 조작함으로써 일어난다.
+> **Cars** : 자동차집합에 대한 클래스. 요구되는 기능들은 대부분 자동차집합을 조작함으로써 일어난다.
+> 
+> **Winners** : 게임결과 우승한 자동차를 담고 있는 클래스
 
 *View*
-> **GameUI** : ui를 구성하는데 필요한 메서드들을 모아놓은 클래스
+> **Input** : 사용자 입력에 관한 메서드 제공
+> 
+> **Output** : 사용자 출력에 관한 메서드 제공
 
 *Controller*
-> **GameController** : 게임의 전체적인 로직을 컨트롤한다.
+> **GameController** : view와 domain을 은닉하고 사용자에게 필요한 기능을 제공
 
-*test*
-> **console** : 말 그대로 콘솔이다. 레이싱 게임을 시작하는 역할을 한다. (Main 메소드 존재)
+*dtos*
+> **CarDTO** : Car 클래스에 대한 정보를 전달하기 위한 dto
+> 
+> **CarDTOs** : CarDTO 리스트를 담고 있는 클래스
+
+*utils*
+> **RandomGenerator** : 랜덤생성기능을 담당
+> 
+> **StringUtil** : string관련 util
+
+*Validations*
+> **InputChecker** : 사용자 입력에 대해 유효성을 검사하는 역할을 담당
