@@ -1,14 +1,18 @@
-package carRace;
+package carRace.controller;
+
+import carRace.view.GameUI;
+import carRace.utils.RandomGenerator;
+import carRace.domain.Cars;
 
 public class GameController {
 
     public void run(){
-        CarSet candidates = GameUI.getCarsFromUser();
+        Cars candidates = GameUI.getCarsFromUser();
         race(candidates, GameUI.getNumOfRepeatFromUser());
         GameUI.printWinners(candidates.getWinners());
     }
 
-    private void race(CarSet candidates, int repeatNumber) {
+    private void race(Cars candidates, int repeatNumber) {
 
         GameUI.printStartMessage();
         RandomGenerator randomGenerator = new RandomGenerator();

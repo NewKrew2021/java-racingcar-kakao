@@ -1,5 +1,7 @@
-package carRace;
+package carRace.dtos;
 
+import carRace.dtos.CarDTO;
+import carRace.dtos.CarDTOs;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,7 @@
-package carRace;
+package carRace.domain;
 
+import carRace.domain.Car;
+import carRace.domain.Winners;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

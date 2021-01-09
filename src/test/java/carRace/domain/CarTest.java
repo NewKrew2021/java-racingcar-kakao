@@ -1,5 +1,7 @@
-package carRace;
+package carRace.domain;
 
+import carRace.domain.Car;
+import carRace.dtos.CarDTO;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

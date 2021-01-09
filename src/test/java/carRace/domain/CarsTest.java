@@ -1,21 +1,24 @@
-package carRace;
+package carRace.domain;
 
+import carRace.domain.Car;
+import carRace.domain.Cars;
+import carRace.domain.Winners;
+import carRace.dtos.CarDTO;
+import carRace.dtos.CarDTOs;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarSetTest {
+public class CarsTest {
 
-    CarSet testCars;
+    Cars testCars;
 
     @BeforeEach
     public void setUp(){
-        testCars = new CarSet(
+        testCars = new Cars(
                 Arrays.asList(
                         new Car("test1", 6),
                         new Car("test2", 2),

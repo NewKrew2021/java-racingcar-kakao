@@ -1,4 +1,6 @@
-package carRace;
+package carRace.domain;
+
+import carRace.dtos.CarDTO;
 
 import java.util.Objects;
 

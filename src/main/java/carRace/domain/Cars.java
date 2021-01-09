@@ -1,26 +1,27 @@
-package carRace;
+package carRace.domain;
+
+import carRace.dtos.CarDTO;
+import carRace.dtos.CarDTOs;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 
 import static java.lang.Math.max;
 
-public class CarSet {
+public class Cars {
 
     private static final int MINIMUM_LOCATION = 0; //TODO Loation 부분을 클래스로 새로 만든후, MINIMUM LOCATION을 반환하도록 해보자.
     private final List<Car> carList;
 
-    public CarSet(String[] names) {
+    public Cars(String[] names) {
         this.carList = new ArrayList<>();
         for (String name : names) {
             carList.add(new Car(name));
         }
     }
 
-    public CarSet(List<Car> cars){
+    public Cars(List<Car> cars){
         carList = cars;
     }
 

@@ -1,4 +1,4 @@
-package carRace;
+package carRace.utils;
 
 import java.util.ArrayList;
 import java.util.List;

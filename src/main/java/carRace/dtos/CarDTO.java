@@ -1,4 +1,4 @@
-package carRace;
+package carRace.dtos;
 
 import java.util.Objects;
 
