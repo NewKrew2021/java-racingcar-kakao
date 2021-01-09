@@ -21,13 +21,14 @@ public class Cars {
         }
     }
 
+    /* 이 생성자는 테스트 할때만 사용해야 합니다. */
     public Cars(List<Car> cars){
         carList = cars;
     }
 
-    public void moveAllCars(List<Integer> numbers){
+    public void moveAllCarsAccordingTo(List<Integer> movingNumbers){
         for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).judgeAndGo(numbers.get(i));
+            carList.get(i).judgeAndGo(movingNumbers.get(i));
         }
     }
 

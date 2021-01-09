@@ -4,6 +4,8 @@ import carRace.view.GameUI;
 import carRace.utils.RandomGenerator;
 import carRace.domain.Cars;
 
+import java.util.List;
+
 public class GameController {
 
     public void run(){
@@ -18,7 +20,8 @@ public class GameController {
         RandomGenerator randomGenerator = new RandomGenerator();
 
         for (int i = 0; i < repeatNumber; i++) {
-            candidates.moveAllCars(randomGenerator.getIntegerList(candidates.size()));
+            List<Integer> movingNumbers = randomGenerator.getIntegerList(candidates.size());
+            candidates.moveAllCarsAccordingTo(movingNumbers);
             GameUI.printAllCars(candidates);
         }
     }
