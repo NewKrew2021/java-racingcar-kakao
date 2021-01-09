@@ -33,16 +33,22 @@ public class Cars {
     }
 
     public Winners getWinners(){
-        int maxLocation = MINIMUM_LOCATION;
-        for (Car car : carList) {
-            maxLocation = max(maxLocation, car.getLocation()) ;
-        }
+        int maxLocation = getMaxLocationInCars();
 
-        int finalMaxLocation = maxLocation;
         List<Car> cars = carList.stream()
-                .filter(car -> car.getLocation() == finalMaxLocation)
+                .filter(car -> car.getLocation() == maxLocation)
                 .collect(Collectors.toList());
         return new Winners(cars);
+    }
+
+    private int getMaxLocationInCars(){
+        int maxLocation = MINIMUM_LOCATION;
+
+        for(Car car : carList){
+            maxLocation = Math.max(maxLocation, car.getLocation());
+        }
+
+        return maxLocation;
     }
 
     public int size(){
