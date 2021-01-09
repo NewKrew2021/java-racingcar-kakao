@@ -12,6 +12,10 @@ public class Racing {
         this.round = new Round(round);
     }
 
+    private List<String> splitNames(String str) {
+        return new ArrayList<>(Arrays.asList(str.split(",")));
+    }
+
     public boolean isFinish() {
         return round.isEndRound();
     }
@@ -27,10 +31,6 @@ public class Racing {
 
     public List<String> getWinnerNames() {
         return cars.winnerNames();
-    }
-
-    private List<String> splitNames(String str) {
-        return new ArrayList<>(Arrays.asList(str.split(",")));
     }
 
     @Override

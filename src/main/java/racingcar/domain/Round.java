@@ -16,18 +16,18 @@ public class Round {
         this.round = round;
     }
 
+    private void validateRoundValue(int round) {
+        if (round < MIN_ROUND_VALUE) {
+            throw new InvalidRoundValueException(ROUND_EXCEPTION_MESSAGE);
+        }
+    }
+
     public void spendOneRound() {
         this.round--;
     }
 
     public boolean isEndRound() {
         return this.round == 0;
-    }
-
-    private void validateRoundValue(int round) {
-        if (round < MIN_ROUND_VALUE) {
-            throw new InvalidRoundValueException(ROUND_EXCEPTION_MESSAGE);
-        }
     }
 
     @Override

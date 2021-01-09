@@ -13,6 +13,14 @@ public class Cars {
         this.cars = registerCars(names);
     }
 
+    private List<Car> registerCars(List<String> names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(new Car(name));
+        }
+        return cars;
+    }
+
     public List<Car> getCars() {
         return this.cars;
     }
@@ -31,13 +39,6 @@ public class Cars {
         return names;
     }
 
-    private List<Car> registerCars(List<String> names) {
-        List<Car> cars = new ArrayList<>();
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
-        return cars;
-    }
 
     private List<Car> whoWinners() {
         List<Car> winnerCars = new ArrayList<>();

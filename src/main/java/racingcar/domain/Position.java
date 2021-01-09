@@ -16,18 +16,18 @@ public class Position {
         this.position = position;
     }
 
+    private void validatePositionValue(int position) {
+        if (position < MIN_POSITION_VALUE) {
+            throw new InvalidPositionValueException(POSITION_EXCEPTION_MESSAGE);
+        }
+    }
+
     public void goForward() {
         this.position++;
     }
 
     public int getPosition() {
         return this.position;
-    }
-
-    private void validatePositionValue(int position) {
-        if (position < MIN_POSITION_VALUE) {
-            throw new InvalidPositionValueException(POSITION_EXCEPTION_MESSAGE);
-        }
     }
 
     @Override

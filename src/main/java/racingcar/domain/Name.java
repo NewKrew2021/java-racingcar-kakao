@@ -16,14 +16,14 @@ public class Name {
         this.name = name;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     private void validateNameLength(String name) {
         if (name.length() > MAX_CAR_NAME_LENGTH) {
             throw new InvalidNameLengthException(NAME_LENGTH_EXCEPTION_MESSAGE);
         }
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     @Override
