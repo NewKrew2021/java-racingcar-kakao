@@ -1,7 +1,6 @@
 package carRace.domain;
 
 import carRace.dtos.CarDTO;
-import java.util.Objects;
 
 public class Car{
     private final String name;
@@ -32,12 +31,5 @@ public class Car{
         if (strategy.movable()) {
             location++;
         }
-    }
-
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Car)) return false;
-        Car car = (Car) o;
-        return location == car.location && Objects.equals(name, car.name);
     }
 }

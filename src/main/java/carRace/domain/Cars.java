@@ -48,10 +48,6 @@ public class Cars {
         return maxLocation;
     }
 
-    public int size() {
-        return carList.size();
-    }
-
     public CarDTOs getCarInformations() {
         List<CarDTO> informations = new ArrayList<>();
         for(Car car : carList){
