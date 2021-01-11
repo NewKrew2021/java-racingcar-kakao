@@ -6,10 +6,14 @@ public class Position {
     private final int position;
 
     public Position(int position) {
+        validation(position);
+        this.position = position;
+    }
+
+    private void validation(int position) {
         if (position < 0) {
             throw new IllegalStateException("시작 위치는 0 이상이여야합니다.");
         }
-        this.position = position;
     }
 
     public Position move() {

@@ -6,13 +6,10 @@ public class RandomMovingStrategy implements MovingStrategy {
 
     @Override
     public boolean moveable() {
-        if (makeRandomNumber() < STOP_RANDOM_NUMBER) {
-            return false;
-        }
-        return true;
+        return makeRandomNumber() >= STOP_RANDOM_NUMBER;
     }
 
-    private int makeRandomNumber() {
+    protected int makeRandomNumber() {
         return (int) (Math.random() * RANDOM_SCOPE);
     }
 }
