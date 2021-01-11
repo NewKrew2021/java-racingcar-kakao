@@ -3,21 +3,17 @@ package carRace;
 public class RacingGame {
 
     private final MovingStrategy strategy;
+    private final Cars cars;
 
-    public RacingGame(MovingStrategy strategy) {
-        this.strategy = strategy;
+    public RacingGame(Cars cars) {
+        this.strategy = new RandomStrategy();
+        this.cars = cars;
     }
 
-    public void run() {
-        Cars cars = Cars.fromNames(RacingGameUI.getNamesFromUser());
-        race(RacingGameUI.getNumOfRepeatFromUser(), cars);
-        RacingGameUI.printWinners(cars.getWinners());
-    }
-
-    private void race(int n, Cars cars) {
+    public void race(int n) {
         RacingGameUI.printStartMessage();
         for (int i = 0; i < n; i++) {
-            cars.moveAllCars(new RandomStrategy());
+            cars.moveAllCars(strategy);
             RacingGameUI.printAllCars(cars);
         }
     }
