@@ -10,11 +10,6 @@ public class Car{
         this.name = name;
     }
 
-    public Car(String name, int location) {
-        this(name);
-        this.location = location;
-    }
-
     public String getName() {
         return name;
     }
