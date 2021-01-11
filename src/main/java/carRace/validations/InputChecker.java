@@ -2,16 +2,21 @@ package carRace.validations;
 
 import carRace.utils.StringUtil;
 
+import java.util.Arrays;
+
 public class InputChecker {
     private static final int MAX_NAME_LENGTH = 5;
 
     public static boolean isValid(String[] names) {
-        boolean valid = true;
-
-        for (String name : names) {
-            valid &= isValidForEach(name);
+        if(isEmptyNames(names)){
+            return false;
         }
-        return valid;
+
+        return Arrays.stream(names).allMatch(InputChecker::isValidForEach);
+    }
+
+    private static boolean isEmptyNames(String[] names){
+        return names == null || 0 == names.length;
     }
 
     private static boolean isValidForEach(String name) {
