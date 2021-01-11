@@ -1,6 +1,6 @@
-package carRace;
+package carRace.strategy;
 
-public class RandomStrategy implements MovingStrategy{
+public class RandomStrategy implements MovingStrategy {
     private static final int MAX_BOUND = 10;
     private static final int MOVE_BOUND = 4;
 

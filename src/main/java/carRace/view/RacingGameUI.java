@@ -1,4 +1,7 @@
-package carRace;
+package carRace.view;
+
+import carRace.domain.Car;
+import carRace.domain.Cars;
 
 import java.util.List;
 import java.util.Scanner;

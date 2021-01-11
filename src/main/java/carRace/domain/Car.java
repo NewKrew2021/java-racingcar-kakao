@@ -1,4 +1,6 @@
-package carRace;
+package carRace.domain;
+
+import carRace.strategy.MovingStrategy;
 
 public class Car implements Comparable<Car>{
     private final Name name;

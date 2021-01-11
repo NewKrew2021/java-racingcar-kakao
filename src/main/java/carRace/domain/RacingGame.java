@@ -1,4 +1,8 @@
-package carRace;
+package carRace.domain;
+
+import carRace.strategy.MovingStrategy;
+import carRace.strategy.RandomStrategy;
+import carRace.view.RacingGameUI;
 
 public class RacingGame {
 

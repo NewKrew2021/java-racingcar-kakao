@@ -1,4 +1,6 @@
-package carRace;
+package carRace.domain;
+
+import carRace.strategy.MovingStrategy;
 
 import java.util.*;
 import java.util.stream.Collectors;
