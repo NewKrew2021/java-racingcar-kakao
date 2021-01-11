@@ -2,8 +2,6 @@ package carRace.validations;
 
 import carRace.utils.StringUtil;
 
-import java.util.List;
-
 public class InputChecker {
     private static final int MAX_NAME_LENGTH = 5;
 
