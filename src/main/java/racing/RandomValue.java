@@ -1,51 +1,43 @@
-/*
- * File     : RandomValue.java
- * Date     : 2021. 01. 06
- */
 package racing;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
-/*
- * Class    : RandomValue
- * Version  : 1.0
- * author   : eli.nabro
- *
- * Random Value class
- */
+
 public class RandomValue {
 
-    private static final int RANDOM_DIGIT = 10000;
+    private static final int STOP_VALUE = 3;
+    static Random random = new Random();
 
-    public static List<Integer> makeRandomValues(final int randomValuesSize, final int stopValue) {
-        List<Integer> randomValues;
+    public static List<Boolean> makeRandomValues(final int randomValuesSize) {
+        List<Boolean> randomValues;
 
         do {
-            randomValues = RandomValue.getRandomValueArray(randomValuesSize);
-        } while(RandomValue.getRandomValueMax(randomValues) < stopValue);
+            randomValues = makeRandomValueArray(randomValuesSize);
+        } while(checkIncludeTrue(randomValues));
 
         return randomValues;
     }
 
-    private static List<Integer> getRandomValueArray(final int randomValuesSize) {
-        List<Integer> randomValues = new ArrayList<>();
+    private static List<Boolean> makeRandomValueArray(final int randomValuesSize) {
+        List<Boolean> randomValues = new ArrayList<>();
 
         for (int i = 0; i < randomValuesSize; i++) {
-            randomValues.add((int) (Math.random() * RANDOM_DIGIT % 10));
+            randomValues.add( makeRandomValue() );
         }
 
         return randomValues;
     }
 
-    private static int getRandomValueMax(final List<Integer> randomValues) {
-        int maxVaule = 0;
+    private static boolean makeRandomValue() {
+        return random.nextInt(10) > STOP_VALUE;
+    }
 
-        for( Integer randomValue : randomValues ) {
-            maxVaule = Math.max( randomValue, maxVaule );
-        }
-
-        return maxVaule;
+    private static boolean checkIncludeTrue(final List<Boolean> randomValues) {
+        return randomValues.stream()
+                .noneMatch(b -> b == true);
     }
 
 }

@@ -1,17 +1,5 @@
-/*
- * File     : Car.java
- * Date     : 2021. 01. 05
- */
+package racing.domain;
 
-package racing;
-
-/*
- * Class    : Car
- * Version  : 1.1
- * author   : eli.nabro
- *
- * Car property class
- */
 public class Car {
 
     private String name;
@@ -19,6 +7,10 @@ public class Car {
 
     public Car(String name) {
         this.name = name;
+    }
+    public Car(String name, int position) {
+        this.name = name;
+        this.position = position;
     }
 
     public String getName() {
