@@ -1,6 +1,7 @@
 package carRace;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -38,11 +39,13 @@ public class CarsTest {
     }
 
     @Test
+    @DisplayName("가장 많은 거리를 이동한 우승자를 구한다.")
     public void getWinnersTest() {
         assertThat(testCars.getWinners()).containsExactly(testCar1, testCar4);
     }
 
     @Test
+    @DisplayName("차들의 이름과 위치를 문자열로 반환한다.")
     public void toStringTest() {
         String expected = "car1 : --\n" +
                 "car2 : -\n" +

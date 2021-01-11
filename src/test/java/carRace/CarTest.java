@@ -1,6 +1,6 @@
 package carRace;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -12,22 +12,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarTest {
 
-    Car testCar;
-
-    @BeforeEach
-    public void setUp() {
-        testCar = new Car("test");
-        testCar.go(() -> true);
-    }
-
     @Test
+    @DisplayName("차가 한 칸 이동한다.")
     public void goTest() {
+        Car testCar = new Car("test");
+        testCar.go(() -> true);
         assertThat(testCar.toString()).isEqualTo("test : -");
     }
 
     @ParameterizedTest
     @MethodSource("provideCar")
+    @DisplayName("차 위치를 기준으로 차를 비교한다.")
     public void compareToTest(Car otherCar, int expected) {
+        Car testCar = new Car("test");
+        testCar.go(() -> true);
         assertThat(testCar.compareTo(otherCar)).isEqualTo(expected);
     }
 
