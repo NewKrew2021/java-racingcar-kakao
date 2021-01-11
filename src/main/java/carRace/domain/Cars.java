@@ -5,7 +5,6 @@ import carRace.dtos.CarDTOs;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -52,5 +51,13 @@ public class Cars {
             informations.add(car.getDTO());
         }
         return new CarDTOs(informations);
+    }
+
+    public List<CarDTO> getCarInformationsAsList(){ //TODO: if it is not chosen, it has to be removed.
+        List<CarDTO> informations = new ArrayList<>();
+        for(Car car : carList){
+            informations.add(car.getDTO());
+        }
+        return informations;
     }
 }

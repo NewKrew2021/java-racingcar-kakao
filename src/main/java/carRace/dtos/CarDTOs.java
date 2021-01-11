@@ -15,11 +15,11 @@ public class CarDTOs {
     }
 
     public String getNameOf(int index) {
-        return dtos.get(index).name;
+        return dtos.get(index).getName();
     }
 
     public int getLocationOf(int index) {
-        return dtos.get(index).location;
+        return dtos.get(index).getLocation();
     }
 
     @Override

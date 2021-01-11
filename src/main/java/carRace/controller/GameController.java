@@ -9,7 +9,7 @@ import carRace.view.Output;
 public class GameController {
 
     public static Cars generateCars() {
-        return Input.getCarsFromUser();
+        return new Cars(Input.getCarNamesFromUser());
     }
 
     public static void race(Cars candidates, MovingStrategy strategy) {
