@@ -29,4 +29,9 @@ public class CarDTOs {
         CarDTOs carDTOs = (CarDTOs) o;
         return Objects.equals(dtos, carDTOs.dtos);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dtos);
+    }
 }
