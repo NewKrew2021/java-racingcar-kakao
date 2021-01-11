@@ -20,20 +20,20 @@ public class CarDTOsTest {
             )
     );
 
-    @Test
     @DisplayName("사이즈 체크")
+    @Test
     public void sizeTest() {
         assertThat(dtos.size()).isEqualTo(6);
     }
 
-    @Test
     @DisplayName("보유한 멤버의 이름을 가져오는 기능 테스트")
+    @Test
     public void getNameOfTest() {
         assertThat(dtos.getNameOf(3)).isEqualTo("test4");
     }
 
-    @Test
     @DisplayName("보유한 멤버의 위치정보를 가져오는 기능 테스트")
+    @Test
     public void getLocationOfTest() {
         assertThat(dtos.getNameOf(5)).isEqualTo("test6");
     }

@@ -27,8 +27,8 @@ public class CarsTest {
             }
     );
 
-    @BeforeEach
     @DisplayName("먼저 정해진 strategy로 차들을 움직여 본다.")
+    @BeforeEach
     public void movingAllCarsAccordingToManualStrategyBeforeTest(){
         testCars.moveAllCarsAccordingTo(
                 new MovingStrategy(){
@@ -42,8 +42,8 @@ public class CarsTest {
         );
     }
 
-    @Test
     @DisplayName("모든 자동차가 주어진 strategy에 맞게 움직였는지 테스트한다.")
+    @Test
     public void moveAllCarsAccordingToTest() {
         CarDTOs realResult = testCars.getCarInformations();
         CarDTOs expectedResult = new CarDTOs(
@@ -60,8 +60,8 @@ public class CarsTest {
         assertThat(realResult).isEqualTo(expectedResult);
     }
 
-    @Test
     @DisplayName("주어진 자동차들중에서 우승자들의 이름을 구하는 기능 테스트")
+    @Test
     public void getWinningCarNamesTest(){
         List<String> realNames = testCars.getWinningCarNames();
         List<String> expectedNames = Arrays.asList("test4", "test5", "test6");
