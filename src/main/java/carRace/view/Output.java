@@ -12,8 +12,7 @@ public class Output {
         System.out.println("실행 결과");
     }
 
-    public static void printAllCars(Cars cars) {
-        CarDTOs informations = cars.getCarInformations();
+    public static void printAllCars(CarDTOs informations) {
 
         for(int i = 0; i < informations.size(); i++){
             String name = informations.getNameOf(i);

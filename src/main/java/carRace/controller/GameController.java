@@ -18,7 +18,7 @@ public class GameController {
 
         for (int i = 0; i < repeatNumber; i++) {
             candidates.moveAllCarsAccordingTo(strategy);
-            Output.printAllCars(candidates);
+            Output.printAllCars(candidates.getCarInformations());
         }
 
         Output.printWinners(candidates.getWinningCarNames());
