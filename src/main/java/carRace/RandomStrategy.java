@@ -6,7 +6,7 @@ public class RandomStrategy implements MovingStrategy{
 
     @Override
     public boolean movable() {
-        return MOVE_BOUND <= getRandomNumber();
+        return getRandomNumber() >= MOVE_BOUND;
     }
 
     public int getRandomNumber() {
