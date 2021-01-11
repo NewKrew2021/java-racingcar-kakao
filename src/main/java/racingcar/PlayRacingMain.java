@@ -10,15 +10,15 @@ public class PlayRacingMain {
     public static void main(String[] args){
         String names = UserInputView.enterCarNames();
         int round = UserInputView.enterRound();
-        Racing rc = new Racing(names, round);
+        Racing racing = new Racing(names, round);
 
         RandomMoveDecisionStrategy randomStrategy = new RandomMoveDecisionStrategy();
         UserOutputView.printProcessTitle();
-        while (!rc.isFinish()) {
-            rc.race(randomStrategy);
-            UserOutputView.printProcessStatus(rc.getCarsMidTermStatus());
+        while (!racing.isFinish()) {
+            racing.race(randomStrategy);
+            UserOutputView.printProcessStatus(racing.getCarsMidTermStatus());
         }
 
-        UserOutputView.printWinnerName(rc.getWinnerNames());
+        UserOutputView.printWinnerName(racing.getWinnerNames());
     }
 }
