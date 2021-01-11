@@ -25,6 +25,10 @@
 > **Car** : 자동차에 대한 클래스. 자동차 정보와 자동차 한개의 움직임에 대한 메소드
 > 
 > **Cars** : 자동차집합에 대한 클래스. 요구되는 기능들은 대부분 자동차집합을 조작함으로써 일어난다.
+> 
+> **MovingStrategy** : 어떻게 움직일것인지를 추상화한 인터페이스
+> 
+> **RandomMovinStrategy** : MovingStrategy를 구현한 클래스. 랜덤하게 숫자를 생성하여 움직일지를 결정해준다.
 
 *View*
 > **Input** : 사용자 입력에 관한 메서드 제공
@@ -40,8 +44,6 @@
 > **CarDTOs** : CarDTO 리스트를 담고 있는 클래스
 
 *utils*
-> **RandomGenerator** : 랜덤생성기능을 담당
-> 
 > **StringUtil** : string관련 util
 
 *Validations*
