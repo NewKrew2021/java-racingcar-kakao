@@ -40,18 +40,10 @@ public class Cars {
     }
 
     private List<Car> getWinnerCars() {
-        List<Car> winnerCars = new ArrayList<>();
-        for(int carIndex : winnerCarsIndices()) {
-            winnerCars.add(this.cars.get(carIndex));
-        }
-        return winnerCars;
-    }
-
-    private List<Integer> winnerCarsIndices() {
-        List<Integer> finalCarPositions = getFinalCarPositions();
-        int farthestCarPosition = max(finalCarPositions);
-        List<Integer> carIndices = getSamePositionIndices(farthestCarPosition, finalCarPositions);
-        return carIndices;
+        int farthestCarPosition = max(getFinalCarPositions());
+        return this.cars.stream()
+                        .filter(car -> isSameBoth(car.getPosition(), farthestCarPosition))
+                        .collect(Collectors.toList());
     }
 
     private List<Integer> getFinalCarPositions() {
@@ -60,16 +52,6 @@ public class Cars {
             positions.add(car.getPosition());
         }
         return positions;
-    }
-
-    private List<Integer> getSamePositionIndices(int position, List<Integer> carPositions) {
-        List<Integer> indices = new ArrayList<>();
-        for (int i = 0; i < carPositions.size(); i++) {
-            if (isSameBoth(position, carPositions.get(i))) {
-                indices.add(i);
-            }
-        }
-        return indices;
     }
 
     private int max(List<Integer> positions) {
