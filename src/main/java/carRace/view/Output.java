@@ -1,7 +1,6 @@
 package carRace.view;
 
 import carRace.domain.Cars;
-import carRace.domain.Winners;
 import carRace.dtos.CarDTOs;
 
 import java.util.List;
@@ -34,9 +33,7 @@ public class Output {
         return builded;
     }
 
-    public static void printWinners(Winners winners) {
-        List<String> names = winners.getWinnersNames();
-
+    public static void printWinners(List<String> names) {
         String formattedNames = names.get(0);
         for(int i = 1; i < names.size(); i++){
             formattedNames += ", " + names.get(i);

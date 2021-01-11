@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -55,16 +56,10 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("주어진 자동차들중에서 우승자를 구하는 기능 테스트")
-    public void getWinnersTest() {
-        Winners realWinners = testCars.getWinners();
-        Winners expectedWinners = new Winners(
-                Arrays.asList(
-                        new Car("test5", 10),
-                        new Car("test6", 10)
-                )
-        );
-
-        assertThat(realWinners).isEqualTo(expectedWinners);
+    @DisplayName("주어진 자동차들중에서 우승자들의 이름을 구하는 기능 테스트")
+    public void getWinningCarNamesTest(){
+        List<String> realNames = testCars.getWinningCarNames();
+        List<String> expectedNames = Arrays.asList("test5", "test6");
+        assertThat(realNames).isEqualTo(expectedNames);
     }
 }

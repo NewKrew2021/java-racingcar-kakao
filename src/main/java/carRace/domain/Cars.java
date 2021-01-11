@@ -29,13 +29,13 @@ public class Cars {
         }
     }
 
-    public Winners getWinners() {
+    public List<String> getWinningCarNames() {
         int maxLocation = getMaxLocationInCars();
 
-        List<Car> cars = carList.stream()
+        return carList.stream()
                 .filter(car -> car.getLocation() == maxLocation)
+                .map(Car::getName)
                 .collect(Collectors.toList());
-        return new Winners(cars);
     }
 
     private int getMaxLocationInCars() {

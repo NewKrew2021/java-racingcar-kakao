@@ -2,12 +2,9 @@ package carRace.controller;
 
 import carRace.domain.MovingStrategy;
 import carRace.domain.RandomMovingStrategy;
-import carRace.utils.RandomGenerator;
 import carRace.domain.Cars;
 import carRace.view.Input;
 import carRace.view.Output;
-
-import java.util.Random;
 
 public class GameController {
 
@@ -24,7 +21,7 @@ public class GameController {
             Output.printAllCars(candidates);
         }
 
-        Output.printWinners(candidates.getWinners());
+        Output.printWinners(candidates.getWinningCarNames());
     }
 
     /* 사용자는 GameController의 메소드만을 호출하므로 이곳에 main을 위치시켜 봤습니다. */
