@@ -25,11 +25,7 @@ public class CarRacingProgramTest {
 
     @Test
     void findWinnerTest(){
-        assertThat(carRacingProgram.findRaceWinner()).isNotEmpty();
+        assertThat(carRacingProgram.findRaceWinner()).asList().isNotEmpty();
     }
 
-    @Test
-    void raceTest(){
-        assertThat(carRacingProgram.race()).isTrue();
-    }
 }

@@ -1,5 +1,8 @@
 package carracing.view;
 
+import carracing.domain.Car;
+import carracing.domain.Cars;
+
 import java.util.List;
 
 public class CarRacingInfoPrint {
@@ -27,13 +30,13 @@ public class CarRacingInfoPrint {
         System.out.println();
     }
 
-    public static void printWinners(List<String> winnerList){
+    public static void printWinners(Cars winnerList){
         StringBuilder winnerBuilder = new StringBuilder();
 
-        for (int i = 0; i < winnerList.size()-1; i++) {
-            winnerBuilder.append(winnerList.get(i)+WINNER_COMMA);
+        for (Car car : winnerList.getCars()) {
+            winnerBuilder.append(car.getName() + WINNER_COMMA);
         }
-        winnerBuilder.append(winnerList.get(winnerList.size()-1));
+        winnerBuilder.delete(winnerBuilder.length()-2, winnerBuilder.length());
 
         winnerBuilder.append(WINNER_PHRASE);
 
