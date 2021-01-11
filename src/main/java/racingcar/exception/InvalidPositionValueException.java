@@ -2,11 +2,9 @@ package racingcar.exception;
 
 public class InvalidPositionValueException extends RuntimeException {
 
-    public InvalidPositionValueException() {
-        super();
-    }
+    private static final String POSITION_EXCEPTION_MESSAGE = "0 이상의 위치만 가능합니다.";
 
-    public InvalidPositionValueException(String message) {
-        super(message);
+    public InvalidPositionValueException() {
+        super(POSITION_EXCEPTION_MESSAGE);
     }
 }

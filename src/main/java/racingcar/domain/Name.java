@@ -7,7 +7,6 @@ import java.util.Objects;
 public class Name {
 
     private static final int MAX_CAR_NAME_LENGTH = 5;
-    private static final String NAME_LENGTH_EXCEPTION_MESSAGE = "이름은 5자 이하만 가능합니다.";
 
     private final String name;
 
@@ -18,7 +17,7 @@ public class Name {
 
     private void validateNameLength(String name) {
         if (name.length() > MAX_CAR_NAME_LENGTH) {
-            throw new InvalidNameLengthException(NAME_LENGTH_EXCEPTION_MESSAGE);
+            throw new InvalidNameLengthException();
         }
     }
 

@@ -2,11 +2,9 @@ package racingcar.exception;
 
 public class InvalidNameLengthException extends RuntimeException {
 
-    public InvalidNameLengthException() {
-        super();
-    }
+    private static final String NAME_LENGTH_EXCEPTION_MESSAGE = "이름은 5자 이하만 가능합니다.";
 
-    public InvalidNameLengthException(String message) {
-        super(message);
+    public InvalidNameLengthException() {
+        super(NAME_LENGTH_EXCEPTION_MESSAGE);
     }
 }

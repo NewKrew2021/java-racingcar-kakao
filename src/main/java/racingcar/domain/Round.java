@@ -7,7 +7,6 @@ import java.util.Objects;
 public class Round {
 
     private static final int MIN_ROUND_VALUE = 0;
-    private static final String ROUND_EXCEPTION_MESSAGE = "0 이상의 이동 횟수를 입력하세요.";
 
     private int round;
 
@@ -18,7 +17,7 @@ public class Round {
 
     private void validateRoundValue(int round) {
         if (round < MIN_ROUND_VALUE) {
-            throw new InvalidRoundValueException(ROUND_EXCEPTION_MESSAGE);
+            throw new InvalidRoundValueException();
         }
     }
 

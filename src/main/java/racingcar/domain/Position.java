@@ -7,7 +7,6 @@ import java.util.Objects;
 public class Position {
 
     public static final int MIN_POSITION_VALUE = 0;
-    private static final String POSITION_EXCEPTION_MESSAGE = "0 이상의 위치만 가능합니다.";
 
     private int position;
 
@@ -18,7 +17,7 @@ public class Position {
 
     private void validatePositionValue(int position) {
         if (position < MIN_POSITION_VALUE) {
-            throw new InvalidPositionValueException(POSITION_EXCEPTION_MESSAGE);
+            throw new InvalidPositionValueException();
         }
     }
 
