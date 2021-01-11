@@ -1,15 +1,19 @@
 package carRace;
 
 public class Car implements Comparable<Car>{
-    private final String name;
+    private final Name name;
     private int location;
 
-    public Car(String name) {
+    private Car(Name name) {
         this.name = name;
     }
 
+    public static Car of(String name) {
+        return new Car(new Name(name));
+    }
+
     public String getName() {
-        return name;
+        return name.getName();
     }
 
     @Override
@@ -24,7 +28,7 @@ public class Car implements Comparable<Car>{
     }
 
     public String toString() {
-        StringBuilder sb = new StringBuilder(name + " : ");
+        StringBuilder sb = new StringBuilder(name.getName() + " : ");
         for (int i = 0; i < location; i++){
             sb.append('-');
         }

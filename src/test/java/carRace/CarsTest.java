@@ -19,10 +19,10 @@ public class CarsTest {
     @BeforeEach
     public void setUp() {
         // car1
-        testCar1 = new Car("car1");
-        testCar2 = new Car("car2");
-        testCar3 = new Car("car3");
-        testCar4 = new Car("car4");
+        testCar1 = Car.of("a");
+        testCar2 = Car.of("b");
+        testCar3 = Car.of("c");
+        testCar4 = Car.of("d");
 
         testCar1.go(() -> true);
         testCar1.go(() -> true);
@@ -47,10 +47,10 @@ public class CarsTest {
     @Test
     @DisplayName("차들의 이름과 위치를 문자열로 반환한다.")
     public void toStringTest() {
-        String expected = "car1 : --\n" +
-                "car2 : -\n" +
-                "car3 : \n" +
-                "car4 : --\n";
+        String expected = "a : --\n" +
+                "b : -\n" +
+                "c : \n" +
+                "d : --\n";
         assertThat(testCars.toString()).isEqualTo(expected);
     }
 }

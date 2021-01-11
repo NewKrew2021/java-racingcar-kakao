@@ -15,7 +15,7 @@ public class CarTest {
     @Test
     @DisplayName("차가 한 칸 이동한다.")
     public void goTest() {
-        Car testCar = new Car("test");
+        Car testCar = Car.of("test");
         testCar.go(() -> true);
         assertThat(testCar.toString()).isEqualTo("test : -");
     }
@@ -24,15 +24,15 @@ public class CarTest {
     @MethodSource("provideCar")
     @DisplayName("차 위치를 기준으로 차를 비교한다.")
     public void compareToTest(Car otherCar, int expected) {
-        Car testCar = new Car("test");
+        Car testCar = Car.of("test");
         testCar.go(() -> true);
         assertThat(testCar.compareTo(otherCar)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> provideCar() {
-        Car car1 = new Car("test1");
-        Car car2 = new Car("test2");
-        Car car3 = new Car("test3");
+        Car car1 = Car.of("long");
+        Car car2 = Car.of("short");
+        Car car3 = Car.of("equal");
         car1.go(() -> true);
         car1.go(() -> true);
         car3.go(() -> true);

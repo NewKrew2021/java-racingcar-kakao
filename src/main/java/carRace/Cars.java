@@ -13,7 +13,7 @@ public class Cars {
     public static Cars fromNames(String[] names) {
         List<Car> newCars = new ArrayList<>();
         for (String name : names) {
-            newCars.add(new Car(name));
+            newCars.add(Car.of(name));
         }
         return new Cars(newCars);
     }
