@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 public class InputChecker {
     private static final int MAX_NAME_LENGTH = 5;
+    private static final int MIN_NAME_LENGTH = 1;
 
     public static boolean isValid(String[] names) {
         if(isEmptyNames(names)){
@@ -24,6 +25,6 @@ public class InputChecker {
     }
 
     private static boolean isAllowedLength(String name) {
-        return 0 < name.length() && name.length() <= MAX_NAME_LENGTH;
+        return MIN_NAME_LENGTH <= name.length() && name.length() <= MAX_NAME_LENGTH;
     }
 }
