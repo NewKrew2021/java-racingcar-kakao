@@ -5,6 +5,7 @@ import carRace.dtos.CarDTOs;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Cars {
@@ -39,13 +40,10 @@ public class Cars {
     }
 
     private int getMaxLocationInCars() {
-        int maxLocation = MINIMUM_LOCATION;
-
-        for(Car car : carList){
-            maxLocation = Math.max(maxLocation, car.getLocation());
-        }
-
-        return maxLocation;
+        return carList.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElse(0);
     }
 
     public CarDTOs getCarInformations() {
