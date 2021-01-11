@@ -1,24 +1,26 @@
 package racingcar;
 
-import racingcar.domain.Racing;
+import racingcar.domain.Cars;
 import racingcar.domain.RandomMoveDecisionStrategy;
+import racingcar.domain.Round;
+import racingcar.utils.Splitter;
 import racingcar.view.UserInputView;
 import racingcar.view.UserOutputView;
 
 public class PlayRacingMain {
 
     public static void main(String[] args){
-        String names = UserInputView.enterCarNames();
-        int round = UserInputView.enterRound();
-        Racing racing = new Racing(names, round);
+        Cars cars = new Cars(Splitter.splitNames(UserInputView.enterCarNames()));
+        Round round = new Round(UserInputView.enterRound());
 
         RandomMoveDecisionStrategy randomStrategy = new RandomMoveDecisionStrategy();
         UserOutputView.printProcessTitle();
-        while (!racing.isFinish()) {
-            racing.race(randomStrategy);
-            UserOutputView.printProcessStatus(racing.getCarsMidTermStatus());
+        while (!round.isEndRound()) {
+            round.spendOneRound();
+            cars.move(randomStrategy);
+            UserOutputView.printProcessStatus(cars.getCars());
         }
 
-        UserOutputView.printWinnerName(racing.getWinnerNames());
+        UserOutputView.printWinnerName(cars.getWinnerNames());
     }
 }
