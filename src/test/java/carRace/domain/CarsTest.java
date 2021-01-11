@@ -1,8 +1,5 @@
 package carRace.domain;
 
-import carRace.domain.Car;
-import carRace.domain.Cars;
-import carRace.domain.Winners;
 import carRace.dtos.CarDTO;
 import carRace.dtos.CarDTOs;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,11 +10,10 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarsTest {
-
     Cars testCars;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         testCars = new Cars(
                 Arrays.asList(
                         new Car("test1", 6),
@@ -31,7 +27,7 @@ public class CarsTest {
     }
 
     @Test
-    public void moveAllCarsTest(){
+    public void moveAllCarsTest() {
         testCars.moveAllCarsAccordingTo(Arrays.asList(1, 2, 3, 4, 5, 6));
 
         CarDTOs realResult = testCars.getCarInformations();
@@ -50,7 +46,7 @@ public class CarsTest {
     }
 
     @Test
-    public void getWinnersTest(){
+    public void getWinnersTest() {
         Winners realWinners = testCars.getWinners();
         Winners expectedWinners = new Winners(
                 Arrays.asList(

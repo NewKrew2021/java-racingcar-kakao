@@ -1,13 +1,10 @@
 package carRace.domain;
 
 import carRace.dtos.CarDTO;
-
 import java.util.Objects;
 
 public class Car{
-
     private static final int LOWER_LIMIT_OF_MOVE = 4;
-
     private final String name;
     private int location;
 
@@ -15,7 +12,7 @@ public class Car{
         this.name = name;
     }
 
-    public Car(String name, int location){
+    public Car(String name, int location) {
         this(name);
         this.location = location;
     }
@@ -24,11 +21,11 @@ public class Car{
         return name;
     }
 
-    public int getLocation(){
+    public int getLocation() {
         return location;
     }
 
-    public CarDTO getDTO(){
+    public CarDTO getDTO() {
         return new CarDTO(name, location);
     }
 

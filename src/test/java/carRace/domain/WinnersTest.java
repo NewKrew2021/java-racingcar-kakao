@@ -1,7 +1,5 @@
 package carRace.domain;
 
-import carRace.domain.Car;
-import carRace.domain.Winners;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -12,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class WinnersTest {
 
     @Test
-    public void getWinnersNamesTest(){
+    public void getWinnersNamesTest() {
         Winners winners = new Winners(
                 Arrays.asList(
                         new Car("test5", 10),
@@ -27,5 +25,4 @@ public class WinnersTest {
 
         assertThat(realResult).isEqualTo(expectedResult);
     }
-
 }

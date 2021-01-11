@@ -5,7 +5,7 @@ import carRace.utils.StringUtil;
 public class InputChecker {
     private static final int MAX_NAME_LENGTH = 5;
 
-    public static boolean isValid(String[] names){
+    public static boolean isValid(String[] names) {
         boolean valid = true;
 
         for (String name : names) {
@@ -14,12 +14,11 @@ public class InputChecker {
         return valid;
     }
 
-    private static boolean isValidForEach(String name){
+    private static boolean isValidForEach(String name) {
         return StringUtil.isAlphabetString(name) && isAllowedLength(name);
     }
 
     private static boolean isAllowedLength(String name) {
         return 0 < name.length() && name.length() <= MAX_NAME_LENGTH;
     }
-
 }

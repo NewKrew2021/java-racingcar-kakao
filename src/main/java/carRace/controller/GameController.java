@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GameController {
 
-    public static Cars generateCars(){
+    public static Cars generateCars() {
         return Input.getCarsFromUser();
     }
 
@@ -29,7 +29,7 @@ public class GameController {
     }
 
     /* 사용자는 GameController의 메소드만을 호출하므로 이곳에 main을 위치시켜 봤습니다. */
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Cars car = generateCars();
         race(car);
     }

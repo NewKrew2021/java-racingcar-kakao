@@ -3,11 +3,10 @@ package carRace.dtos;
 import java.util.Objects;
 
 public class CarDTO {
-
     public final String name;
     public final int location;
 
-    public CarDTO(String name, int location){
+    public CarDTO(String name, int location) {
         this.name = name;
         this.location = location;
     }

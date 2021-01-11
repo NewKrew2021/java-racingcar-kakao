@@ -6,19 +6,19 @@ import java.util.Objects;
 public class CarDTOs {
     private final List<CarDTO> dtos;
 
-    public CarDTOs(List<CarDTO> dtos){
+    public CarDTOs(List<CarDTO> dtos) {
         this.dtos = dtos;
     }
 
-    public int size(){
+    public int size() {
         return dtos.size();
     }
 
-    public String getNameOf(int index){
+    public String getNameOf(int index) {
         return dtos.get(index).name;
     }
 
-    public int getLocationOf(int index){
+    public int getLocationOf(int index) {
         return dtos.get(index).location;
     }
 

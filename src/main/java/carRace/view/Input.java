@@ -19,7 +19,7 @@ public class Input {
         return retryGetCarsFromUser();
     }
 
-    private static Cars retryGetCarsFromUser(){
+    private static Cars retryGetCarsFromUser() {
         String[] names;
 
         do {

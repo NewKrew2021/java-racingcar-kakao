@@ -26,7 +26,7 @@ public class Output {
         System.out.println();
     }
 
-    private static String stringBuildForOneCar(String name, int location){
+    private static String stringBuildForOneCar(String name, int location) {
         String builded = name + " : ";
         for(int i = 0; i < location; i++){
             builded += '-';

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 public class InputCheckerTest {
 
     @Test
-    public void isValidTest(){
+    public void isValidTest() {
         String[] testStrings = new String[]{
                 "hello", "wolrd", "How", "Are", "you"
         };

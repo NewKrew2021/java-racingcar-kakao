@@ -7,11 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.Math.max;
-
 public class Cars {
-
-    private static final int MINIMUM_LOCATION = 0; //TODO Loation 부분을 클래스로 새로 만든후, MINIMUM LOCATION을 반환하도록 해보자.
+    private static final int MINIMUM_LOCATION = 0;
     private final List<Car> carList;
 
     public Cars(String[] names) {
@@ -22,17 +19,17 @@ public class Cars {
     }
 
     /* 이 생성자는 테스트 할때만 사용해야 합니다. */
-    public Cars(List<Car> cars){
+    public Cars(List<Car> cars) {
         carList = cars;
     }
 
-    public void moveAllCarsAccordingTo(List<Integer> movingNumbers){
+    public void moveAllCarsAccordingTo(List<Integer> movingNumbers) {
         for (int i = 0; i < carList.size(); i++) {
             carList.get(i).judgeAndGo(movingNumbers.get(i));
         }
     }
 
-    public Winners getWinners(){
+    public Winners getWinners() {
         int maxLocation = getMaxLocationInCars();
 
         List<Car> cars = carList.stream()
@@ -41,7 +38,7 @@ public class Cars {
         return new Winners(cars);
     }
 
-    private int getMaxLocationInCars(){
+    private int getMaxLocationInCars() {
         int maxLocation = MINIMUM_LOCATION;
 
         for(Car car : carList){
@@ -51,11 +48,11 @@ public class Cars {
         return maxLocation;
     }
 
-    public int size(){
+    public int size() {
         return carList.size();
     }
 
-    public CarDTOs getCarInformations(){
+    public CarDTOs getCarInformations() {
         List<CarDTO> informations = new ArrayList<>();
         for(Car car : carList){
             informations.add(car.getDTO());

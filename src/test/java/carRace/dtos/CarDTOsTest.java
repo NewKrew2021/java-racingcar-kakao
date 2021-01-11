@@ -1,7 +1,5 @@
 package carRace.dtos;
 
-import carRace.dtos.CarDTO;
-import carRace.dtos.CarDTOs;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +8,6 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CarDTOsTest {
-
     CarDTOs dtos;
 
     @BeforeEach
@@ -28,17 +25,17 @@ public class CarDTOsTest {
     }
 
     @Test
-    public void sizeTest(){
+    public void sizeTest() {
         assertThat(dtos.size()).isEqualTo(6);
     }
 
     @Test
-    public void getNameOfTest(){
+    public void getNameOfTest() {
         assertThat(dtos.getNameOf(3)).isEqualTo("test4");
     }
 
     @Test
-    public void getLocationOfTest(){
+    public void getLocationOfTest() {
         assertThat(dtos.getNameOf(5)).isEqualTo("test6");
     }
 }

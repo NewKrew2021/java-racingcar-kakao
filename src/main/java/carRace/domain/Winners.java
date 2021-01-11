@@ -5,14 +5,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class Winners {
-
     private final List<Car> cars;
 
-    public Winners(List<Car> cars){
+    public Winners(List<Car> cars) {
         this.cars = cars;
     }
 
-    public List<String> getWinnersNames(){
+    public List<String> getWinnersNames() {
         List<String> names = new ArrayList<>();
         for(Car car : cars){
             names.add(car.getName());
