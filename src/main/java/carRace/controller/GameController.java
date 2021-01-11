@@ -1,11 +1,13 @@
 package carRace.controller;
 
+import carRace.domain.MovingStrategy;
+import carRace.domain.RandomMovingStrategy;
 import carRace.utils.RandomGenerator;
 import carRace.domain.Cars;
 import carRace.view.Input;
 import carRace.view.Output;
 
-import java.util.List;
+import java.util.Random;
 
 public class GameController {
 
@@ -13,15 +15,12 @@ public class GameController {
         return Input.getCarsFromUser();
     }
 
-    public static void race(Cars candidates) {
+    public static void race(Cars candidates, MovingStrategy strategy) {
         int repeatNumber = Input.getNumOfRepeatFromUser();
-
         Output.printStartMessage();
-        RandomGenerator randomGenerator = new RandomGenerator();
 
         for (int i = 0; i < repeatNumber; i++) {
-            List<Integer> movingNumbers = randomGenerator.getIntegerList(candidates.size());
-            candidates.moveAllCarsAccordingTo(movingNumbers);
+            candidates.moveAllCarsAccordingTo(strategy);
             Output.printAllCars(candidates);
         }
 
@@ -31,6 +30,6 @@ public class GameController {
     /* 사용자는 GameController의 메소드만을 호출하므로 이곳에 main을 위치시켜 봤습니다. */
     public static void main(String[] args) {
         Cars car = generateCars();
-        race(car);
+        race(car, new RandomMovingStrategy());
     }
 }

@@ -2,33 +2,42 @@ package carRace.domain;
 
 import carRace.dtos.CarDTO;
 import carRace.dtos.CarDTOs;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CarsTest {
-    Cars testCars;
 
-    @BeforeEach
-    public void setUp() {
-        testCars = new Cars(
-                Arrays.asList(
-                        new Car("test1", 6),
-                        new Car("test2", 2),
-                        new Car("test3", 4),
-                        new Car("test4", 5),
-                        new Car("test5", 10),
-                        new Car("test6", 10)
-                )
-        );
-    }
+@DisplayName("클래스 Cars")
+public class CarsTest {
+    Cars testCars = new Cars(
+            Arrays.asList(
+                    new Car("test1", 6),
+                    new Car("test2", 2),
+                    new Car("test3", 4),
+                    new Car("test4", 5),
+                    new Car("test5", 10),
+                    new Car("test6", 10)
+            )
+    );
 
     @Test
-    public void moveAllCarsTest() {
-        testCars.moveAllCarsAccordingTo(Arrays.asList(1, 2, 3, 4, 5, 6));
+    @DisplayName("모든 자동차가 주어진 strategy에 맞게 움직였는지 테스트한다.")
+    public void moveAllCarsAccordingToTest() {
+        testCars.moveAllCarsAccordingTo(
+                new MovingStrategy(){
+                    final Queue<Boolean> patterns = new LinkedList<>(Arrays.asList(false, false, false, true, true, true));
+
+                    @Override
+                    public boolean movable(){
+                        return patterns.poll(); //이렇게 테스트 하는게 괜찮은건지... 궁금합니다.
+                    }
+                }
+        );
 
         CarDTOs realResult = testCars.getCarInformations();
         CarDTOs expectedResult = new CarDTOs(
@@ -46,6 +55,7 @@ public class CarsTest {
     }
 
     @Test
+    @DisplayName("주어진 자동차들중에서 우승자를 구하는 기능 테스트")
     public void getWinnersTest() {
         Winners realWinners = testCars.getWinners();
         Winners expectedWinners = new Winners(

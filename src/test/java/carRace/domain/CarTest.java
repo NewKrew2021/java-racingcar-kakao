@@ -30,14 +30,14 @@ public class CarTest {
     @Test
     public void judgeAndGo_Test1() {
         Car car = new Car("mother");
-        car.judgeAndGo(3);
+        car.judgeAndGo(() -> false);
         assertThat(car.getLocation()).isEqualTo(0);
     }
 
     @Test
     public void judgeAndGo_Test2() {
         Car car = new Car("mother");
-        car.judgeAndGo(4);
+        car.judgeAndGo(() -> true);
         assertThat(car.getLocation()).isEqualTo(1);
     }
 }

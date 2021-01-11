@@ -23,9 +23,9 @@ public class Cars {
         carList = cars;
     }
 
-    public void moveAllCarsAccordingTo(List<Integer> movingNumbers) {
+    public void moveAllCarsAccordingTo(MovingStrategy strategy) {
         for (int i = 0; i < carList.size(); i++) {
-            carList.get(i).judgeAndGo(movingNumbers.get(i));
+            carList.get(i).judgeAndGo(strategy);
         }
     }
 

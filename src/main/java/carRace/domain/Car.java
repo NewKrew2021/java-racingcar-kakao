@@ -4,7 +4,6 @@ import carRace.dtos.CarDTO;
 import java.util.Objects;
 
 public class Car{
-    private static final int LOWER_LIMIT_OF_MOVE = 4;
     private final String name;
     private int location;
 
@@ -29,18 +28,10 @@ public class Car{
         return new CarDTO(name, location);
     }
 
-    public void judgeAndGo(int randomNo) {
-        if (judge(randomNo)) {
-            go();
+    public void judgeAndGo(MovingStrategy strategy) {
+        if (strategy.movable()) {
+            location++;
         }
-    }
-
-    private boolean judge(int randomNo) {
-        return LOWER_LIMIT_OF_MOVE <= randomNo;
-    }
-
-    private void go() {
-        location++;
     }
 
     @Override
