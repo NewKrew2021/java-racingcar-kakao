@@ -9,7 +9,7 @@ public class RandomStrategy implements MovingStrategy {
         return getRandomNumber() >= MOVE_BOUND;
     }
 
-    public int getRandomNumber() {
+    protected int getRandomNumber() {
         return (int)(Math.random() * MAX_BOUND);
     }
 }
