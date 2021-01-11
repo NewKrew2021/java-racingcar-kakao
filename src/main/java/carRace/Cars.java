@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Cars {
-    List<Car> carList;
+    private final List<Car> carList;
 
     public Cars(List<Car> carList) {
         this.carList = Collections.unmodifiableList(carList);

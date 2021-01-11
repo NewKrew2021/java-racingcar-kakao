@@ -2,7 +2,7 @@ package carRace;
 
 public class RacingGame {
 
-    MovingStrategy strategy;
+    private final MovingStrategy strategy;
 
     public RacingGame(MovingStrategy strategy) {
         this.strategy = strategy;
