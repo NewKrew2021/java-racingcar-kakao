@@ -12,7 +12,7 @@ public class InputCheckerTest {
     @DisplayName("비어있거나, null인 입력에 대해 테스트")
     @ParameterizedTest
     @NullAndEmptySource
-    void isValidTestForEmptyAndNullStringArrays(String[] strings){
+    void isValidTestForEmptyAndNullStringArrays(String[] strings) {
         assertThat(InputChecker.isValid(strings)).isEqualTo(false);
     }
 
@@ -27,7 +27,7 @@ public class InputCheckerTest {
 
     @DisplayName("실패인 입력에 대해 테스트")
     @Test
-    public void isValidTest_False(){
+    public void isValidTest_False() {
         String[] testStrings = new String[]{
                 "a", " b", "c", "d ", "2f"
         };

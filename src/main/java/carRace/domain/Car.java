@@ -2,7 +2,7 @@ package carRace.domain;
 
 import carRace.dtos.CarDTO;
 
-public class Car{
+public class Car {
     private final String name;
     private int location;
 

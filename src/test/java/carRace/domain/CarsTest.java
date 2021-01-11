@@ -29,7 +29,7 @@ public class CarsTest {
 
     @DisplayName("먼저 정해진 strategy로 차들을 움직여 본다.")
     @BeforeEach
-    public void movingAllCarsAccordingToManualStrategyBeforeTest(){
+    public void movingAllCarsAccordingToManualStrategyBeforeTest() {
         testCars.moveAllCarsAccordingTo(
                 new MovingStrategy(){
                     final Queue<Boolean> patterns = new LinkedList<>(Arrays.asList(false, false, false, true, true, true));
@@ -62,7 +62,7 @@ public class CarsTest {
 
     @DisplayName("주어진 자동차들중에서 우승자들의 이름을 구하는 기능 테스트")
     @Test
-    public void getWinningCarNamesTest(){
+    public void getWinningCarNamesTest() {
         List<String> realNames = testCars.getWinningCarNames();
         List<String> expectedNames = Arrays.asList("test4", "test5", "test6");
         assertThat(realNames).isEqualTo(expectedNames);

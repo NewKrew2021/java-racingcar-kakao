@@ -13,7 +13,7 @@ public class InputChecker {
                 && Arrays.stream(names).allMatch(InputChecker::isValidForEach);
     }
 
-    private static boolean isNotEmptyStrings(String[] names){
+    private static boolean isNotEmptyStrings(String[] names) {
         return !(names == null || 0 == names.length);
     }
 

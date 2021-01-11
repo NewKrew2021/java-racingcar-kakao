@@ -7,7 +7,7 @@ public class StringUtil {
                 && name.chars().allMatch(Character::isAlphabetic);
     }
 
-    private static boolean isNotEmptyString(String string){
+    private static boolean isNotEmptyString(String string) {
         return (string != null) && (string.isEmpty() == false);
     }
 }

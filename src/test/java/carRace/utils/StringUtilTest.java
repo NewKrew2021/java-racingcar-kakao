@@ -21,7 +21,7 @@ public class StringUtilTest {
     @DisplayName("비어있거나, null인 String에 대해 테스트")
     @ParameterizedTest
     @NullAndEmptySource
-    void isAlphabetStringTestForEmptyAndNullString(String string){
+    void isAlphabetStringTestForEmptyAndNullString(String string) {
         assertThat(StringUtil.isAlphabetString(string)).isEqualTo(false);
     }
 
