@@ -3,10 +3,11 @@ package carRace.utils;
 public class StringUtil {
 
     public static boolean isAlphabetString(String name) {
-        boolean valid = true;
-        for (char c : name.toCharArray()) {
-            valid &= Character.isAlphabetic(c);
-        }
-        return valid;
+        return isNotEmptyString(name)
+                && name.chars().allMatch(Character::isAlphabetic);
+    }
+
+    private static boolean isNotEmptyString(String string){
+        return !(string != null || string.isEmpty());
     }
 }

@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Cars {
-    private static final int MINIMUM_LOCATION = 0;
     private final List<Car> carList;
 
     public Cars(String[] names) {
@@ -46,13 +45,5 @@ public class Cars {
             informations.add(car.getDTO());
         }
         return new CarDTOs(informations);
-    }
-
-    public List<CarDTO> getCarInformationsAsList(){ //TODO: if it is not chosen, it has to be removed.
-        List<CarDTO> informations = new ArrayList<>();
-        for(Car car : carList){
-            informations.add(car.getDTO());
-        }
-        return informations;
     }
 }

@@ -9,15 +9,12 @@ public class InputChecker {
     private static final int MIN_NAME_LENGTH = 1;
 
     public static boolean isValid(String[] names) {
-        if(isEmptyNames(names)){
-            return false;
-        }
-
-        return Arrays.stream(names).allMatch(InputChecker::isValidForEach);
+        return isNotEmptyStrings(names)
+                && Arrays.stream(names).allMatch(InputChecker::isValidForEach);
     }
 
-    private static boolean isEmptyNames(String[] names){
-        return names == null || 0 == names.length;
+    private static boolean isNotEmptyStrings(String[] names){
+        return !(names == null || 0 == names.length);
     }
 
     private static boolean isValidForEach(String name) {
