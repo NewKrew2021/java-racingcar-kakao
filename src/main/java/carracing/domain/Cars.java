@@ -13,16 +13,8 @@ public class Cars {
     private final int CAR_MOVING_THRESHOLD = 4;
     private final int CAR_CONDITION_BOUND = 10;
 
-    private Cars(){
-        cars = new ArrayList<>();
-    }
-
     private Cars(List<Car> cars){
         this.cars = cars;
-    }
-
-    public static Cars makeNewCars(){
-        return new Cars();
     }
 
     public static Cars makeNewCars_text(List<String> carNames){

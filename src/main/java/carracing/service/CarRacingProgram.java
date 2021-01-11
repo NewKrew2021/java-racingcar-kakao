@@ -31,7 +31,7 @@ public class CarRacingProgram {
             playOneCycle();
         }
 
-        CarRacingInfoPrint.printWinners(findRaceWinner());
+        CarRacingInfoPrint.printWinners(cars.selectRaceWinners());
 
         return true;
     }
@@ -41,10 +41,6 @@ public class CarRacingProgram {
         cars.printCarsInfo();
 
         CarRacingInfoPrint.printBlankLine();
-    }
-
-    public Cars findRaceWinner(){
-        return cars.selectRaceWinners();
     }
 
     public List<String> splitCarNames(String carNames){

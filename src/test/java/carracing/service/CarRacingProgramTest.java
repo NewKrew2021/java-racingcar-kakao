@@ -23,9 +23,4 @@ public class CarRacingProgramTest {
         }).isInstanceOf(RuntimeException.class);
     }
 
-    @Test
-    void findWinnerTest(){
-        assertThat(carRacingProgram.findRaceWinner()).asList().isNotEmpty();
-    }
-
 }
