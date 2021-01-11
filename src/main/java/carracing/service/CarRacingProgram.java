@@ -47,4 +47,8 @@ public class CarRacingProgram {
         return Arrays.asList(carNames.split(CAR_NAME_IDENTIFY_SYMBOL));
     }
 
+    public Cars getCars(){
+        return cars;
+    }
+
 }
