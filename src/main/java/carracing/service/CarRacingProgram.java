@@ -25,15 +25,13 @@ public class CarRacingProgram {
         return Cars.makeNewCars_text(input);
     }
 
-    public boolean race(){
+    public void race(){
         CarRacingInfoPrint.printResultPhrase();
         for (int i = 0; i < totalMoveCount; i++) {
             playOneCycle();
         }
 
         CarRacingInfoPrint.printWinners(cars.selectRaceWinners());
-
-        return true;
     }
 
     private void playOneCycle(){
