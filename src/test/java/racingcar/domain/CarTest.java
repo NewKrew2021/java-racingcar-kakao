@@ -1,9 +1,10 @@
-package racingcar;
+package racingcar.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import racingcar.exception.InvalidNameLengthException;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 public class CarTest {
 
@@ -20,6 +21,13 @@ public class CarTest {
     }
 
     @Test
+    public void validateName() {
+        assertThatThrownBy(() -> {
+            new Car("youandme");
+        }).isInstanceOf(InvalidNameLengthException.class);
+    }
+
+    @Test
     public void name() {
         assertThat(car.getName()).isEqualTo("mac");
     }
@@ -31,13 +39,13 @@ public class CarTest {
 
     @Test
     public void moveOnce() {
-        car.move(7);
+        car.move(true);
         assertThat(car.getPosition()).isEqualTo(5);
     }
 
     @Test
     public void moveNone() {
-        car.move(2);
+        car.move(false);
         assertThat(car.getPosition()).isEqualTo(4);
     }
 }

@@ -1,17 +1,24 @@
-package racingcar;
+package racingcar.domain;
+
+import racingcar.exception.InvalidPositionValueException;
 
 import java.util.Objects;
 
 public class Position {
 
+    public static final int MIN_POSITION_VALUE = 0;
+
     private int position;
 
-    public Position() {
-        this(1);
+    public Position(int position) {
+        validatePositionValue(position);
+        this.position = position;
     }
 
-    public Position(int position) {
-        this.position = position;
+    private void validatePositionValue(int position) {
+        if (position < MIN_POSITION_VALUE) {
+            throw new InvalidPositionValueException();
+        }
     }
 
     public void goForward() {

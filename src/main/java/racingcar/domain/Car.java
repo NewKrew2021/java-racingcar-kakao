@@ -1,40 +1,31 @@
-package racingcar;
+package racingcar.domain;
 
 import java.util.Objects;
 
 public class Car {
 
-    private static final int MAX_CAR_NAME_LENGTH = 5;
-
-    private final String name;
+    private final Name name;
     private final Position position;
 
     public Car(String name) {
-        this(name, 1);
+        this(name, Position.MIN_POSITION_VALUE);
     }
 
     public Car(String name, int position) {
-        if (!isValidNameLength(name)) {
-            throw new IllegalArgumentException("이름은 5자 이하만 가능합니다.");
-        }
-        this.name = name;
+        this.name = new Name(name);
         this.position = new Position(position);
     }
 
-    private boolean isValidNameLength(String name) {
-        return name.length() <= MAX_CAR_NAME_LENGTH;
-    }
-
     public String getName() {
-        return this.name;
+        return name.getName();
     }
 
     public int getPosition() {
         return position.getPosition();
     }
 
-    public void move(int value) {
-        if (value >= 4) {
+    public void move(boolean canMove) {
+        if (canMove) {
             position.goForward();
         }
     }
